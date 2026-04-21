@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Market Bishop — Morning Report April 21</title>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  html { background: #000 !important; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #000 !important;
+    color: #e8e8f0;
+    padding: 2.5rem 1rem;
+    line-height: 1.6;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: #000 !important;
+    z-index: -9999;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .page { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+
+  /* Alert strip */
+  .alert-strip {
+    background: rgba(255,51,85,0.12) !important;
+    border: 1px solid rgba(255,51,85,0.4);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ff3355;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(255,51,85,0.8);
+    box-shadow: 0 0 20px rgba(255,51,85,0.1);
+  }
+
+  /* Header */
+  .brand { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,170,255,0.55); margin-bottom: 0.5rem; }
+  .page-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 0.3rem; text-shadow: 0 0 30px rgba(0,170,255,0.7), 0 0 60px rgba(0,170,255,0.3); letter-spacing: 0.01em; }
+  .page-sub { font-size: 12px; color: #00aaff; margin-bottom: 0.5rem; text-shadow: 0 0 12px rgba(0,170,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-desc { font-size: 14px; color: rgba(255,255,255,0.4); margin-bottom: 2rem; line-height: 1.65; }
+
+  /* Snapshot bar */
+  .snapshot {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .snap-card {
+    background: rgba(255,255,255,0.025) !important;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 0.6rem 0.75rem;
+  }
+  .snap-label { font-size: 10px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .snap-val { font-size: 15px; font-weight: 700; line-height: 1.2; }
+  .snap-sub { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .val-green { color: #44ff88; text-shadow: 0 0 10px rgba(68,255,136,0.6); }
+  .val-red { color: #ff3355; text-shadow: 0 0 10px rgba(255,51,85,0.6); }
+  .val-amber { color: #ffaa00; text-shadow: 0 0 10px rgba(255,170,0,0.6); }
+  .val-blue { color: #00aaff; text-shadow: 0 0 10px rgba(0,170,255,0.6); }
+  .val-white { color: #fff; }
+
+  /* Sections */
+  .section { margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02) !important; }
+  .section:has(.h-blue)   { border-color: rgba(0,170,255,0.28);  box-shadow: 0 0 28px rgba(0,170,255,0.06); }
+  .section:has(.h-purple) { border-color: rgba(187,85,255,0.28); box-shadow: 0 0 28px rgba(187,85,255,0.06); }
+  .section:has(.h-teal)   { border-color: rgba(0,255,200,0.25);  box-shadow: 0 0 28px rgba(0,255,200,0.05); }
+  .section:has(.h-red)    { border-color: rgba(255,51,85,0.28);  box-shadow: 0 0 28px rgba(255,51,85,0.06); }
+  .section:has(.h-amber)  { border-color: rgba(255,170,0,0.28);  box-shadow: 0 0 28px rgba(255,170,0,0.06); }
+  .section:has(.h-green)  { border-color: rgba(68,255,136,0.25); box-shadow: 0 0 28px rgba(68,255,136,0.05); }
+  .section:has(.h-coral)  { border-color: rgba(255,100,50,0.28); box-shadow: 0 0 28px rgba(255,100,50,0.06); }
+
+  .section-header { padding: 0.65rem 1rem; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .h-blue   { background: rgba(0,170,255,0.09) !important;   color: #00aaff;  text-shadow: 0 0 14px rgba(0,170,255,0.9);  border-bottom-color: rgba(0,170,255,0.15) !important; }
+  .h-purple { background: rgba(187,85,255,0.09) !important;  color: #bb55ff;  text-shadow: 0 0 14px rgba(187,85,255,0.9); border-bottom-color: rgba(187,85,255,0.15) !important; }
+  .h-teal   { background: rgba(0,255,200,0.07) !important;   color: #00ffc8;  text-shadow: 0 0 14px rgba(0,255,200,0.9);  border-bottom-color: rgba(0,255,200,0.12) !important; }
+  .h-red    { background: rgba(255,51,85,0.09) !important;   color: #ff3355;  text-shadow: 0 0 14px rgba(255,51,85,0.9);  border-bottom-color: rgba(255,51,85,0.15) !important; }
+  .h-amber  { background: rgba(255,170,0,0.08) !important;   color: #ffaa00;  text-shadow: 0 0 14px rgba(255,170,0,0.9);  border-bottom-color: rgba(255,170,0,0.15) !important; }
+  .h-green  { background: rgba(68,255,136,0.07) !important;  color: #44ff88;  text-shadow: 0 0 14px rgba(68,255,136,0.9); border-bottom-color: rgba(68,255,136,0.12) !important; }
+  .h-coral  { background: rgba(255,100,50,0.08) !important;  color: #ff6432;  text-shadow: 0 0 14px rgba(255,100,50,0.9); border-bottom-color: rgba(255,100,50,0.15) !important; }
+
+  .section-body { padding: 1rem 1rem 0.85rem; }
+
+  /* Subsections */
+  .subsection { margin-bottom: 1rem; }
+  .subsection-title { font-size: 11px; font-weight: 700; color: rgba(0,255,200,0.75); margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid rgba(0,255,200,0.1); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Rows / dots */
+  .row { display: flex; gap: 10px; margin-bottom: 6px; align-items: flex-start; break-inside: avoid; page-break-inside: avoid; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .item { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; }
+  .item b { font-weight: 700; color: #fff; }
+  .dot-blue   { background: #00aaff; box-shadow: 0 0 5px #00aaff, 0 0 10px rgba(0,170,255,0.6); }
+  .dot-purple { background: #bb55ff; box-shadow: 0 0 5px #bb55ff, 0 0 10px rgba(187,85,255,0.6); }
+  .dot-teal   { background: #00ffc8; box-shadow: 0 0 5px #00ffc8, 0 0 10px rgba(0,255,200,0.6); }
+  .dot-red    { background: #ff3355; box-shadow: 0 0 5px #ff3355, 0 0 10px rgba(255,51,85,0.6); }
+  .dot-amber  { background: #ffaa00; box-shadow: 0 0 5px #ffaa00, 0 0 10px rgba(255,170,0,0.6); }
+  .dot-green  { background: #44ff88; box-shadow: 0 0 5px #44ff88, 0 0 10px rgba(68,255,136,0.6); }
+  .dot-gray   { background: #445; }
+
+  .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 12px 0; }
+
+  /* Callouts */
+  .callout { border-left: 2px solid #ffaa00; padding: 0.6rem 0.85rem; margin: 10px 0; background: rgba(255,170,0,0.06) !important; border-radius: 0 8px 8px 0; box-shadow: -3px 0 14px rgba(255,170,0,0.12); break-inside: avoid; }
+  .callout p { font-size: 13px; color: #ffaa00; line-height: 1.65; }
+  .callout-red   { border-left-color: #ff3355; background: rgba(255,51,85,0.06) !important; box-shadow: -3px 0 14px rgba(255,51,85,0.12); }
+  .callout-red p { color: #ff6680; }
+  .callout-green   { border-left-color: #44ff88; background: rgba(68,255,136,0.05) !important; box-shadow: -3px 0 14px rgba(68,255,136,0.1); }
+  .callout-green p { color: #44ff88; }
+  .callout-blue   { border-left-color: #00aaff; background: rgba(0,170,255,0.06) !important; box-shadow: -3px 0 14px rgba(0,170,255,0.12); }
+  .callout-blue p { color: #00aaff; }
+
+  /* Grid + mini cards */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .mini-card { background: rgba(255,255,255,0.025) !important; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 0.7rem 0.85rem; }
+  .mini-label { font-size: 11px; color: rgba(255,255,255,0.3); margin-bottom: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .mini-val { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .mini-sub { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 3px; }
+
+  /* Tables */
+  .table-wrap { width: 100%; border-collapse: collapse; margin-top: 6px; margin-bottom: 10px; }
+  .table-wrap th { font-size: 11px; color: rgba(255,255,255,0.28); font-weight: 700; text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08); letter-spacing: 0.07em; text-transform: uppercase; }
+  .table-wrap td { font-size: 13px; color: rgba(255,255,255,0.72); padding: 7px 10px 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; }
+  .table-wrap tr:last-child td { border-bottom: none; }
+  .td-green { color: #44ff88 !important; font-weight: 700; text-shadow: 0 0 8px rgba(68,255,136,0.5); }
+  .td-amber { color: #ffaa00 !important; font-weight: 700; text-shadow: 0 0 8px rgba(255,170,0,0.5); }
+  .td-red   { color: #ff3355 !important; font-weight: 700; text-shadow: 0 0 8px rgba(255,51,85,0.5); }
+  .td-blue  { color: #00aaff !important; font-weight: 700; text-shadow: 0 0 8px rgba(0,170,255,0.5); }
+  .td-bold  { font-weight: 700; color: rgba(255,255,255,0.9); }
+
+  /* Ticker pills */
+  .ticker-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .ticker { font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 6px; letter-spacing: 0.05em; border: 1px solid; }
+  .ticker-green { background: rgba(68,255,136,0.08); border-color: rgba(68,255,136,0.3); color: #44ff88; }
+  .ticker-red { background: rgba(255,51,85,0.08); border-color: rgba(255,51,85,0.3); color: #ff3355; }
+  .ticker-amber { background: rgba(255,170,0,0.08); border-color: rgba(255,170,0,0.3); color: #ffaa00; }
+  .ticker-blue { background: rgba(0,170,255,0.08); border-color: rgba(0,170,255,0.3); color: #00aaff; }
+  .ticker-gray { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.5); }
+
+  /* Glossary */
+  .gloss-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gloss-item { background: rgba(255,255,255,0.02) !important; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 0.6rem 0.75rem; }
+  .gloss-term { font-size: 11px; font-weight: 700; color: #00aaff; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .gloss-def { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* Footer */
+  .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 11px; color: rgba(255,255,255,0.18); text-align: center; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  @media print {
+    @page { background: #000 !important; margin: 1.5cm; }
+    html, body { background: #000 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; forced-color-adjust: none !important; }
+    body::before { background: #000 !important; }
+    .section { background: rgba(255,255,255,0.02) !important; }
+    .h-blue   { background: rgba(0,170,255,0.09) !important; }
+    .h-purple { background: rgba(187,85,255,0.09) !important; }
+    .h-teal   { background: rgba(0,255,200,0.07) !important; }
+    .h-red    { background: rgba(255,51,85,0.09) !important; }
+    .h-amber  { background: rgba(255,170,0,0.08) !important; }
+    .h-green  { background: rgba(68,255,136,0.07) !important; }
+    .h-coral  { background: rgba(255,100,50,0.08) !important; }
+    .callout { background: rgba(255,170,0,0.06) !important; }
+    .callout-red { background: rgba(255,51,85,0.06) !important; }
+    .callout-blue { background: rgba(0,170,255,0.06) !important; }
+    .mini-card { background: rgba(255,255,255,0.025) !important; }
+    .row { break-inside: avoid !important; }
+  }
+
+  @media (max-width: 500px) {
+    .snapshot { grid-template-columns: repeat(2, 1fr); }
+    .grid2, .grid3, .gloss-grid { grid-template-columns: 1fr; }
+    body { padding: 1.25rem 0.75rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="alert-strip">⚠ CEASEFIRE EXPIRES TONIGHT — BINARY EVENT ACTIVE — TRUMP ON CNBC NOW</div>
+
+  <p class="brand">The Market Bishop</p>
+  <p class="page-title">Morning Report — April 21</p>
+  <p class="page-sub">Pre-Market · 9:05 AM ET · Ceasefire Expiration Day</p>
+  <p class="page-desc">Today is the day the entire framework was built around. Trump is live on CNBC right now. Futures are green on Iran talk signals, then whipsawing on Hormuz closure reports. The binary fires tonight. This report covers everything that changed overnight and the setup going into the open.</p>
+
+  <!-- SNAPSHOT BAR -->
+  <div class="snapshot">
+    <div class="snap-card">
+      <div class="snap-label">SPX Futures</div>
+      <div class="snap-val val-green">+0.5%</div>
+      <div class="snap-sub">~7,145 est.</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">NQ Futures</div>
+      <div class="snap-val val-green">+0.5%</div>
+      <div class="snap-sub">26,812 MNQ</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">GEX Flip</div>
+      <div class="snap-val val-red">7,070</div>
+      <div class="snap-sub">39 pts below spot</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Net GEX (EOD)</div>
+      <div class="snap-val val-amber">+$982M</div>
+      <div class="snap-sub">Fading — was $2.0B</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">VIX (Mon close)</div>
+      <div class="snap-val val-red">+10%</div>
+      <div class="snap-sub">Vol elevated</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Oil (USO)</div>
+      <div class="snap-val val-red">+4.55%</div>
+      <div class="snap-sub">Hormuz signal</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Ceasefire</div>
+      <div class="snap-val val-red">EXPIRES</div>
+      <div class="snap-sub">Tonight — binary</div>
+    </div>
+    <div class="snap-card">
+      <div class="snap-label">Retail Sales</div>
+      <div class="snap-val val-green">+1.7%</div>
+      <div class="snap-sub">Est. +1.4% — beat</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="section">
+    <div class="section-header h-blue">Quick Reference — Key Terms Used In This Report</div>
+    <div class="section-body">
+      <p style="font-size:12px;color:rgba(255,255,255,0.3);font-style:italic;margin-bottom:10px;">Brief definitions for the positioning and structure language used throughout. Skip if already fluent.</p>
+      <div class="gloss-grid">
+        <div class="gloss-item"><div class="gloss-term">GEX Flip</div><div class="gloss-def">Price where dealer behavior inverts. Above = dealers absorb moves. Below = dealers amplify them.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Charm</div><div class="gloss-def">Delta decay from time passing. In a call-heavy book, every day = dealers sell shares. No off switch.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Vanna</div><div class="gloss-def">How delta changes when IV moves. Negative vanna (now) = vol expansion forces dealer selling.</div></div>
+        <div class="gloss-item"><div class="gloss-term">OI Gamma</div><div class="gloss-def">Open interest gamma — the persistent dealer positioning carried overnight. Currently NEGATIVE in SPY.</div></div>
+        <div class="gloss-item"><div class="gloss-term">GEX Magnet</div><div class="gloss-def">A strike with concentrated positive gamma that attracts price as dealers hedge around it.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Dealer Short</div><div class="gloss-def">Shares dealers are short as a hedge for puts they sold. Unwinding this = forced buying pressure.</div></div>
+        <div class="gloss-item"><div class="gloss-term">NCP / NPP</div><div class="gloss-def">Net Call / Put Premium. Dollar-weighted flow into calls vs puts. More meaningful than simple volume.</div></div>
+        <div class="gloss-item"><div class="gloss-term">0DTE / 1DTE</div><div class="gloss-def">Days to expiration. Short-dated options dominate intraday dealer hedging — highest gamma per dollar.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Buyback Wall</div><div class="gloss-def">Corporate repurchase programs. $428B authorized YTD. Blackout lifts ~2 weeks — ~$18B/week demand.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="section">
+    <div class="section-header h-amber">TL;DR — What You Need To Know</div>
+    <div class="section-body">
+      <div class="row"><span class="dot dot-amber"></span><div class="item"><b>The binary fires tonight.</b> Ceasefire expires Wednesday evening. Trump just told CNBC he doesn't want to extend it and the US military is "ready to go." The entire structure of this market — every scenario in the master notes — resolves today.</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Futures green on talk signals.</b> Two regional officials told AP that both the US and Iran signaled they'll attend new ceasefire talks in Islamabad. Vance is confirmed on the plane. That's the bull wildcard from last night's EOD now visibly activating — but Iran officially denied it within minutes. Classic whipsaw.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>Iran then closed Hormuz "until further notice."</b> Reported by Iran's semi-official IRGC-linked news agency simultaneously with the talk signals. The tape is pricing extreme uncertainty — not a clean bull or bear. Contradictory headlines are the regime right now.</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Trump CNBC is the first tape driver.</b> He's live now at 8:30 AM. His exact language on Iran — "ready to go militarily," "don't want to extend," "blockade is a success" — is setting futures before the open. The interview is the pre-open catalyst. Price is being made in real time.</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item"><b>Retail Sales beat hard (+1.7% vs +1.4% est.).</b> Goldman CEO says recession risk not materially elevated. That's real macro support under the index if the geopolitical noise resolves. Consumer wasn't cracking before Iran stress hit.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>GEX cushion is 39 points.</b> SPY OI gamma went negative Monday close for the first time this cycle. Any directional move amplifies rather than dampens. The 7,070 flip is 39 points below spot. One volatile open on a bad headline clears that margin. Stay alert to the first 30 minutes.</div></div>
+    </div>
+  </div>
+
+  <!-- OVERNIGHT DEVELOPMENTS -->
+  <div class="section">
+    <div class="section-header h-coral">Overnight + Pre-Market Developments</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">Trump CNBC Interview — 8:30 AM ET (Live Now)</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>"We're ready to go militarily"</b> — stated multiple times. "US military ready to go in Iran." "Posture is expect to be bombing Iran."</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>"I don't want to extend ceasefire"</b> — direct. "We don't have that much time." Consistent with prior statements.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>"Iran has no choice but to send people to talks"</b> — simultaneous signal of confidence in leverage and openness to deal.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>"Will end up with great deal"</b> — "I'm in a strong negotiating position." "I'm not going to be rushed."</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>"We totally control the Strait of Hormuz"</b> — framing blockade as leverage, not war. Consistent with a deal-oriented posture.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Fed: disappointed if rates not cut.</b> Defends Powell probe but says he'd be "disappointed" without rate cuts. "US should always have the lowest interest rate in the world." Creates separate Fed uncertainty track.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Tariffs: "I'll remember companies that don't ask for reimbursements."</b> Calls it "brilliant" if Apple/Amazon don't seek tariff refunds. Adds company-specific uncertainty layer into mega-cap names ahead of April 28 earnings.</div></div>
+        <div class="callout"><p>The interview is simultaneously hawkish on Iran ("ready to go") and deal-seeking ("will end up with great deal"). This is deliberate negotiating posture, not a contradiction — the leverage IS the threat. The market is reading both sides and producing the whipsaw in futures. The correct read: Iran talks in Islamabad = the bull path is still available. "Ready to go militarily" = the floor under any deal is being reinforced, not removed.</p></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">The Critical Contradiction — Talks vs. Hormuz Closure</div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>AP: Two regional officials say US and Iran signal they'll attend new ceasefire talks in Islamabad.</b> Vance confirmed in transit. This was the "low probability wildcard" from the EOD — now active.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Iran officially denied it</b> — Foreign Ministry called reports "baseless" and "fabricated." US delegation already landed in Pakistan. Iran: no delegation arriving.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Iran's semi-official IRGC news agency declared Hormuz "closed until further notice"</b> — citing a recent "attack." This headline hit around the same time as the talk signals.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">The two headlines are firing simultaneously and in opposite directions. This is the exact uncertainty structure the options market was pricing — both QQQ puts for downside and GOOGL calls for post-resolution.</div></div>
+        <div class="callout callout-red"><p>The setup is NOT "talks confirmed = bull." It is "bull path now visible but Iran not confirmed at table." Vance in Islamabad without Iranian counterpart = the bull move reverses harder than baseline because hopes were raised. Watch for confirmation that Iranian delegation actually arrives before treating this as resolved.</p></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Macro Data — Retail Sales Beat</div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>US March Retail Sales +1.7% M/M vs. estimate +1.4%.</b> March Gasoline Sales +15.5% vs. Feb +1.3%. Dollar index ticking up after the data, last up 0.20% at 98.25.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item">Goldman CEO: recession risk "not materially elevated right now." Oil could hit $170 in highly escalated Iran conflict scenario — $80-100 "very reasonable" baseline in 3-6 months.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Retail beat matters: the EOD note flagged the risk of a weak retail number confirming the consumer was cracking before Iran stress. That risk did not materialize. Consumer was intact through March.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Overnight Futures — Pre-Market Level Map</div>
+        <table class="table-wrap">
+          <thead><tr><th>Instrument</th><th>Level</th><th>Change</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">MES (S&P Micro)</td><td>7,162.75</td><td class="td-green">+0.21%</td><td>Gapped above Monday close</td></tr>
+            <tr><td class="td-bold">MNQ (Nasdaq Micro)</td><td>26,812.25</td><td class="td-green">+0.24%</td><td>QQQ puts for today now challenged</td></tr>
+            <tr><td class="td-bold">MYM (Dow Micro)</td><td>49,882</td><td class="td-green">+0.49%</td><td>Value outperforming tech again</td></tr>
+            <tr><td class="td-bold">M2K (Russell Micro)</td><td>2,810.6</td><td class="td-green">+0.22%</td><td>Small caps holding — domestic insulation</td></tr>
+            <tr><td class="td-bold">MGC (Gold Micro)</td><td>4,787.8</td><td class="td-red">−0.85%</td><td>Gold fading slightly — risk-on signal at the margin</td></tr>
+            <tr><td class="td-bold">USO (Oil)</td><td>$72.15</td><td class="td-red">−2.01%</td><td>Oil fading from +4.55% Monday — track this</td></tr>
+          </tbody>
+        </table>
+        <div class="callout callout-blue"><p>Oil fading is the most important pre-open signal. If USO continues lower, that's the market pricing de-escalation before any headline confirms it. Oil is tracking Hormuz tick-for-tick. A sustained fade in oil = the market is assigning higher probability to talks succeeding than the Iranian denial suggests.</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GEX STRUCTURE -->
+  <div class="section">
+    <div class="section-header h-teal">GEX Structure — The Cushion Going Into the Open</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">Where the structure stands after Monday's close</div>
+        <div class="grid2">
+          <div class="mini-card"><div class="mini-label">Net GEX</div><div class="mini-val" style="color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,0.6);">+$982M</div><div class="mini-sub">Was +$2.0B a week ago</div></div>
+          <div class="mini-card"><div class="mini-label">GEX Flip Level</div><div class="mini-val" style="color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,0.6);">7,070 SPX</div><div class="mini-sub">39 pts below spot — was 302 pts</div></div>
+          <div class="mini-card"><div class="mini-label">SPY OI Gamma</div><div class="mini-val" style="color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,0.6);">NEGATIVE</div><div class="mini-sub">−$1.86B/1% — first time this cycle</div></div>
+          <div class="mini-card"><div class="mini-label">1DTE GEX</div><div class="mini-val" style="color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,0.6);">Thin</div><div class="mini-sub">5.88% SPX · 2.11% SPY</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">SPX Strike Map for April 21</div>
+        <table class="table-wrap">
+          <thead><tr><th>Strike</th><th>GEX</th><th>Role</th><th>What It Means Today</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#ff3355;font-weight:700;">6,800</td><td class="td-red">−$35M</td><td>Accelerator</td><td>Dealer selling amplifies every tick</td></tr>
+            <tr><td class="td-bold">6,900</td><td class="td-green">+$6M</td><td>Minimal support</td><td>Negligible — not a meaningful floor</td></tr>
+            <tr><td class="td-bold">7,000</td><td class="td-green">+$42M</td><td>First real support</td><td>70 pts below the GEX flip. Below = 6,800 next</td></tr>
+            <tr><td style="color:#ff3355;font-weight:700;text-shadow:0 0 6px rgba(255,51,85,0.5);">7,070</td><td class="td-green">+$13M</td><td>⚠ GEX FLIP</td><td>39 pts below spot. Regime boundary</td></tr>
+            <tr><td style="color:#00aaff;font-weight:700;">7,100</td><td class="td-blue">+$92M</td><td>Spot / Magnet</td><td>Current zone. Dealers support here</td></tr>
+            <tr><td class="td-bold">7,150</td><td class="td-green">+$122M</td><td>Bull magnet</td><td>Ceasefire extension target — first stop up</td></tr>
+            <tr><td style="color:#44ff88;font-weight:700;">7,200</td><td class="td-green">+$145M</td><td>Max magnet</td><td>Full bull resolution target</td></tr>
+            <tr><td class="td-bold">7,300</td><td class="td-green">+$67M</td><td>Extended</td><td>Requires sustained diplomacy progress</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">The Binary In Plain Numbers</div>
+        <div class="grid2">
+          <div class="mini-card" style="border-color:rgba(68,255,136,0.22);">
+            <div class="mini-label">Talks succeed / ceasefire extends</div>
+            <div class="mini-val" style="color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,0.5);">7,150 → 7,200 target zone. +$122M to +$145M magnets active. Vol compresses, vanna flips tailwind. Smooth run.</div>
+          </div>
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);">
+            <div class="mini-label">Talks collapse / ceasefire fails</div>
+            <div class="mini-val" style="color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,0.5);">7,070 flip breaks fast. 7,000 (+$42M) tested. Below 7,000 = thin to 6,800 accelerator. Vol reprices, vanna fires.</div>
+          </div>
+        </div>
+        <div class="callout callout-red"><p>The 39-point GEX cushion between spot and the 7,070 flip is the number that matters most today. Positive gamma did its job Monday — absorbed a −0.5% open into −0.24% close. But one volatile 30-minute session on a bad headline clears that margin. The structure holds until it doesn't, and then it accelerates.</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GREEK FORCES -->
+  <div class="section">
+    <div class="section-header h-purple">Greek Forces — What's Running in the Background</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">Charm — The Quiet Daily Bleed</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Overall charm: +428K</b> — dealers selling shares every single day from time decay alone. No catalyst needed. No escape hatch. Runs 24/7.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>1DTE charm peak: −1,500K at 7,175</b> — calls bought at this strike will rapidly bleed value today if SPX doesn't break higher early. If the bull catalyst doesn't fire in the morning, the upside hedge unwinds and removes lift through the session.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Secondary charm concentration at 7,150 (−500K). The window for calls to hold delta support is front-loaded today — it gets harder as the session progresses without a catalyst.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Vanna — The Vol Amplifier</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Net vanna: −55K</b> — call-heavy book. IV expansion forces dealer selling. VIX is elevated and in backwardation risk mode.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>1DTE vanna is POSITIVE +450K at 7,175</b> — asymmetric setup today. A bull catalyst + vol expansion actually helps the upside call position. The vanna structure for the 1DTE expiry is not purely bearish.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>May 15 vanna: −2,000K at 7,100</b> — the largest negative concentration on the board. Any vol expansion between now and May 15 forces aggressive dealer selling at 7,100. A break of 7,100 risks cascading hedging into the monthly expiry. This is the level dealers will defend hardest.</div></div>
+        <div class="callout callout-red"><p>Sideways is still not neutral. Quiet session = IV compresses = vanna sells + charm sells = slow bleed from both directions with no gamma cushion. The two escapes remain: (A) strong rip higher on a talk confirmation, or (B) controlled pullback that buys new puts and rebuilds a gamma base. Chop bleeds silently.</p></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">SPY OI Gamma — The Structural Break</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>SPY OI gamma is negative (−$1.86B per 1%, −369K shares)</b> — first time this cycle. The persistent positioning dealers carry overnight is short gamma, not long gamma.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">What this means: if SPY opens down, dealers must SELL more to hedge — amplifying the move. If SPY opens up, dealers must BUY — also amplifying. Negative gamma turns dealers from shock absorbers into shock amplifiers in both directions.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item">Volume gamma (today's flow) is still positive (+$44.8B). If institutional flow continues buying on a positive catalyst, the OI structure can repair quickly. The key is getting real buying volume, not just a headlines pop.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CATALYST WATCH -->
+  <div class="section">
+    <div class="section-header h-coral">Catalyst Watch — Today's Event Sequence</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">The Four-Catalyst Sequence</div>
+        <table class="table-wrap">
+          <thead><tr><th>Time</th><th>Catalyst</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold" style="color:#ffaa00;">8:30 AM</td><td class="td-bold">Trump on CNBC (LIVE NOW)</td><td>Military posture ("ready to go") + deal framing ("will end up great"). Sets the pre-market tape. Already moving futures.</td></tr>
+            <tr><td class="td-bold" style="color:#ffaa00;">9:30 AM</td><td class="td-bold">Market Open</td><td>AAPL reaction to Cook news + Trump CNBC digest + Pakistan overnight developments all priced in the first 30 min.</td></tr>
+            <tr><td class="td-bold" style="color:#00aaff;">8:30 AM</td><td class="td-bold">Retail Sales Data (out)</td><td>+1.7% vs +1.4% est. BEAT. Consumer intact. Dollar ticking up. Removes the macro bear tail for today.</td></tr>
+            <tr><td class="td-bold" style="color:#ff3355;">Tonight</td><td class="td-bold">TSLA Earnings (Post-Market)</td><td>5.5% expected move. Institutions had ZERO buy blocks Monday — fully de-risked. Weak print amplifies day's direction.</td></tr>
+            <tr><td class="td-bold" style="color:#ff3355;">Wed Evening</td><td class="td-bold">⚠ Ceasefire Expires</td><td>Trump: "highly unlikely" to extend. Iran: "no plans for talks." Unless Islamabad produces visible engagement, this lapses.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Iran Talks — The Status Right Now</div>
+        <div class="row"><span class="dot dot-green"></span><div class="item">AP: Two regional officials say both sides signaled attendance at Islamabad talks</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">Iran Foreign Ministry officially denied — called reports "baseless and fabricated"</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item">US delegation (Vance, Witkoff, Kushner) confirmed arrived in Pakistan</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">No Iranian delegation confirmed at the table as of pre-market</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>The single tell:</b> watch for confirmation that Iranian representatives actually arrive in Islamabad. That is the trigger for the 7,150 → 7,200 magnet chain to activate. Until then, futures green is speculative positioning on the hope, not the fact.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">AAPL — Cook Transition Parallel Binary</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Tim Cook stepping down announced post-close Monday. AAPL ≈ 7% of SPX. After-hours and pre-market reaction will set the tone for the index's largest component at the open.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item">If successor (likely Jeff Williams) named cleanly: AAPL opens near flat, defensive bid holds, index unaffected by the news.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">If succession is contested or unclear: AAPL sells off, and SPX loses one of its anchors at the worst possible time. AAPL reports April 28 — the transition makes that print a full strategy review, not just a quarterly.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">AAPL P/C ratio was 0.381 Monday (call-heavy). Dealer book has limited put protection. Any significant move triggers large dealer hedging.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EXPECTED RANGES -->
+  <div class="section">
+    <div class="section-header h-blue">Expected Ranges — Options-Implied Weekly Fence Posts</div>
+    <div class="section-body">
+      <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-bottom:10px;font-style:italic;">~70% probability bands for the week. With gamma decaying rapidly, actual ranges may exceed these boundaries more easily than last week. The fence posts are thinner.</p>
+      <div class="grid2">
+        <div class="mini-card">
+          <div class="mini-label">SPY Weekly Range</div>
+          <div class="mini-val val-green">$720.25 upside</div>
+          <div class="mini-val val-red">$698.60 downside</div>
+          <div class="mini-sub">$21.65 width</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">QQQ Weekly Range</div>
+          <div class="mini-val val-green">$661.54 upside</div>
+          <div class="mini-val val-red">$635.17 downside</div>
+          <div class="mini-sub">$26.37 width</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">IWM Weekly Range</div>
+          <div class="mini-val val-green">$282.09 upside</div>
+          <div class="mini-val val-red">$269.00 downside</div>
+          <div class="mini-sub">$13.09 width</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">DIA Weekly Range</div>
+          <div class="mini-val val-green">$502.49 upside</div>
+          <div class="mini-val val-red">$485.68 downside</div>
+          <div class="mini-sub">$16.81 width</div>
+        </div>
+      </div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Today's SPX expected range (from GEX): <b>7,000 – 7,175</b>. The 7,070 GEX flip is the danger line. Below that, dealer behavior inverts and moves accelerate rather than dampen.</div></div>
+    </div>
+  </div>
+
+  <!-- EARNINGS ON DECK -->
+  <div class="section">
+    <div class="section-header h-coral">Earnings On Deck — This Week</div>
+    <div class="section-body">
+      <table class="table-wrap">
+        <thead><tr><th>Ticker</th><th>When</th><th>Expected Move</th><th>What It Reads</th></tr></thead>
+        <tbody>
+          <tr><td class="td-bold" style="color:#ff3355;">TSLA</td><td>Today PM</td><td class="td-amber">5.5%</td><td>Double binary tonight — same session as ceasefire expiry. Zero institutional buy blocks today = fully de-risked going in.</td></tr>
+          <tr><td class="td-bold">UAL / LUV / AAL</td><td>Today–Wed</td><td class="td-amber">6.7–7.2%</td><td>Airlines = direct Hormuz read. Fuel costs + airspace tied to geopolitical resolution. Most important sector tells of the week.</td></tr>
+          <tr><td class="td-bold">NOW / IBM / UNH</td><td>Wed PM</td><td class="td-amber">5.1–8.6%</td><td>Software bellwether (NOW), AI services (IBM), defensive tell (UNH)</td></tr>
+          <tr><td class="td-bold">INTC</td><td>Thu</td><td class="td-amber">9.4%</td><td>Semiconductor bellwether. INTC −4.09% Monday — sector under pressure. Confirms or denies semi weakness thesis.</td></tr>
+          <tr><td class="td-bold">VRT</td><td>Thu</td><td class="td-amber">8.5%</td><td>Data center power — AI infrastructure read-through. VRT +2.37% Monday shows AI infra bid is real.</td></tr>
+          <tr><td class="td-bold" style="color:#ffaa00;">AAPL / MSFT / AMZN / GOOGL / META</td><td>Apr 28</td><td>Large</td><td>~25% of SPX by weight. All five same evening. Largest single earnings day of the year.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTOR SETUP -->
+  <div class="section">
+    <div class="section-header h-teal">Sector Setup — The Rotation in Play</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">Monday EOD Closes — The Bifurcation Map</div>
+        <table class="table-wrap">
+          <thead><tr><th>ETF / Name</th><th>Mon Close</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">XLF Financials</td><td class="td-green">+0.38%</td><td>Cleanest long — lowest bear premium (42%), JPM +2.16% leading</td></tr>
+            <tr><td class="td-bold">XLB Materials</td><td class="td-green">+0.67%</td><td>Inflation/commodity rotation, conviction holding</td></tr>
+            <tr><td class="td-bold">XLE Energy</td><td class="td-green">+0.09%</td><td>Hormuz direct — Defense Production Act signed adding fuel</td></tr>
+            <tr><td class="td-bold">XLRE Real Estate</td><td class="td-green">+0.36%</td><td>Green price but 71% bear premium — hedged accumulation</td></tr>
+            <tr><td class="td-bold">XLK Technology</td><td class="td-green">+0.14%</td><td>Bifurcated — software (NOW +3.17%, DDOG +3.03%) vs semis (INTC −4.09%)</td></tr>
+            <tr><td class="td-bold">XLY Consumer Disc.</td><td class="td-red">−0.45%</td><td>Consumer risk-off continues</td></tr>
+            <tr><td class="td-bold">XLV Health Care</td><td class="td-red">−0.93%</td><td>Worst performer — defensive in price but 82% bear premium</td></tr>
+            <tr><td class="td-bold">XLU Utilities</td><td class="td-red">−0.89%</td><td>Not even utilities safe in current risk-off</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">The AI Infrastructure Bifurcation — Still Intact</div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>Software outperforming:</b> NOW +3.17%, DDOG +3.03%, CRM +2.79%, VRT +2.37%. The market is rotating from the semiconductor layer to the software and power layer — not abandoning AI.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Semis still under pressure:</b> INTC −4.09%, AVGO −1.70%, MU −1.46%, AMD at watch. SOXS flow on Friday proved prescient. Sector-specific semiconductor weakness, not broad AI skepticism.</div></div>
+        <div class="row"><span class="dot dot-blue"></span><div class="item"><b>AI infrastructure weight growing:</b> AI companies now approach 45% of S&P 500 by weight. Nasdaq's 13-session winning streak (longest since 1992, +17.7%) is the backdrop. The index is in a regime, not a bounce.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Morning Scanner — Names On Radar</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>UNH:</b> +7.4% pre-market — the single liquid options mover flagged in the morning scan. Earnings-related move. Health care sector worth watching at the open.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>AMZN: +3% pre-market</b> — boosting investment (AI/infra). Strongest mega-cap pre-market signal. Institutional 13F was reducing AMZN — this move runs against that trend, watch to see if it holds.</div></div>
+        <div class="row"><span class="dot dot-blue"></span><div class="item"><b>On radar (quiet pre-market, 2PM pullback setups):</b></div></div>
+        <div class="ticker-row">
+          <span class="ticker ticker-blue">NBIS</span>
+          <span class="ticker ticker-blue">AMD</span>
+          <span class="ticker ticker-blue">ARM</span>
+          <span class="ticker ticker-blue">DELL</span>
+          <span class="ticker ticker-amber">CVNA</span>
+          <span class="ticker ticker-amber">RIOT</span>
+          <span class="ticker ticker-amber">FCX</span>
+          <span class="ticker ticker-amber">GLXY</span>
+        </div>
+        <div class="row"><span class="dot dot-gray"></span><div class="item" style="font-size:12px;color:rgba(255,255,255,0.4);">NBIS (97 RS), AMD (94 RS), ARM (89 RS) are the three highest RS bench names. CVNA and DELL are new entries. Pull charts at 2PM ET per scanner protocol.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BOTTOM LINE -->
+  <div class="section">
+    <div class="section-header h-purple">Bottom Line — The Pre-Market Read</div>
+    <div class="section-body">
+
+      <div class="subsection">
+        <div class="subsection-title">How The Setup Has Changed Since Monday's Close</div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>Bull path strengthened but not confirmed.</b> Vance is in Pakistan. AP reported both sides signaling talks. Futures gapped green. But Iran denied everything and Hormuz was declared closed in the same breath. The path is visible — the confirmation is not yet there.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Bear path not invalidated.</b> Trump: "don't want to extend," "ready to go militarily." Iran Foreign Ministry: "no plans for talks." If Vance lands and no Iranian delegation shows, the green futures reverse hard on raised expectations collapsing.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Macro backdrop improved.</b> Retail Sales +1.7% beat. Goldman CEO: recession risk not elevated. Consumer intact. The underlying economy is supporting the index even with geopolitical stress — this is the best-case macro read heading into today.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Structure is the most fragile it's been.</b> GEX cushion 39 points. SPY OI gamma negative. 1DTE structure thin. Today has the least mechanical support of any session in the past two weeks. Price is determined by news and flow, not dealer buffering.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">Bull Case vs. Bear Case — Today's Scenarios</div>
+        <div class="grid2">
+          <div class="mini-card" style="border-color:rgba(68,255,136,0.22);">
+            <div class="mini-label">Bull — Talks Materialize</div>
+            <div class="mini-val" style="color:#44ff88;font-size:12px;line-height:1.6;">Iranian delegation confirmed in Islamabad → ceasefire extended or framework agreed → vol compresses → vanna flips tailwind → 7,150 → 7,200 activated. Put unwind fuels it further. Slower and choppier than the 13-day streak but directionally intact.</div>
+          </div>
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);">
+            <div class="mini-label">Bear — Talks Collapse</div>
+            <div class="mini-val" style="color:#ff3355;font-size:12px;line-height:1.6;">No Iranian delegation → ceasefire expires unresolved → Hormuz formally closed → vol reprices → 7,070 flip breaks → 7,000 tested → below 7,000 = 6,800 accelerator. Vanna + negative OI gamma + dealer short all fire simultaneously. Sharp and fast.</div>
+          </div>
+        </div>
+        <div class="callout"><p>Oil is the real-time signal. If oil continues its early fade (USO was −2% overnight after being +4.55% Monday), that's the market pricing de-escalation before headlines confirm it. If oil reverses and rips higher, that's the Hormuz closure landing in price. Watch oil as the first tell before the open. If oil is fading and futures stay green, the bull path has more durability than Iran's denial suggests.</p></div>
+        <div class="callout callout-blue"><p>The buyback wall ($428B authorized, window opens in ~2 weeks, ~$18B/week) is the structural floor under any downside scenario. Combined with the gamma structure rebuilding at May 15 OPEX, the calendar is structurally bullish from early May onward — which is why institutional blocks stayed net +$14.1B Monday despite all the noise. They're pre-positioning for that wall. Any flush this week has a patient bid underneath it on a 2-week horizon.</p></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="subsection">
+        <div class="subsection-title">What to Watch First 30 Minutes</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>SPX / SPY holding 7,100 / $710</b> — this is the first gamma support. Below here is where the thin zone starts. The 7,070 flip is only 30 more points below.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Oil direction (USO)</b> — fading oil = market pricing de-escalation. Ripping oil = Hormuz closure is the operative headline. Oil is faster than geopolitical wire services.</div></div>
+        <div class="row"><span class="dot dot-blue"></span><div class="item"><b>AAPL open</b> — if it gaps down on Cook news + the index is already under pressure = bad combination. If AAPL holds or pops = one less headwind, defensive bid intact.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>Iran Islamabad confirmation</b> — the single binary tell. Any report of an Iranian representative arriving in Pakistan = the bull case confirms and the 7,150 target activates. Absence of that confirmation keeps the outcome open.</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">The Market Bishop &nbsp;·&nbsp; Morning Report — April 21, 2026 &nbsp;·&nbsp; 9:05 AM ET &nbsp;·&nbsp; Pre-Market · Ceasefire Expiration Day</div>
+
+</div>
+</body>
+</html>
