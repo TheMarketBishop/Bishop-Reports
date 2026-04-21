@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Market Bishop — RS Scanner Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #00000a;
+    --card:      #080c16;
+    --card2:     #0a0f1e;
+    --border:    #19233c;
+    --cyan:      #00dcff;
+    --cyan-dim:  #006480;
+    --amber:     #ffaa00;
+    --amber-dim: #7a5000;
+    --green:     #00ff78;
+    --green-dim: #004d25;
+    --orange:    #ff6400;
+    --orange-dim:#4d1e00;
+    --purple:    #a032ff;
+    --purple-dim:#300a4d;
+    --pink:      #ff3264;
+    --white:     #e6f0ff;
+    --muted:     #50607a;
+    --divider:   #141e30;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,220,255,0.015) 2px,
+      rgba(0,220,255,0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--cyan-dim);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 200px; height: 2px;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+  }
+
+  .logo-line {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+
+  .logo-bishop {
+    font-family: 'Orbitron', monospace;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(0,220,255,0.4);
+  }
+
+  .logo-scanner {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    color: var(--amber);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .header-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── Nav sidebar (desktop) ── */
+  .layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .nav {
+    position: sticky;
+    top: 32px;
+  }
+
+  .nav-section {
+    margin-bottom: 24px;
+  }
+
+  .nav-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--green-dim);
+  }
+
+  .nav a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 4px 0 4px 10px;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+    letter-spacing: 0.5px;
+  }
+
+  .nav a:hover {
+    color: var(--cyan);
+    border-left-color: var(--cyan);
+    padding-left: 14px;
+  }
+
+  /* ── Content ── */
+  .content h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .content h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .content p {
+    color: #a0b0c8;
+    margin-bottom: 14px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  /* ── Section blocks ── */
+  .section {
+    margin-bottom: 56px;
+    scroll-margin-top: 32px;
+  }
+
+  /* ── Message cards ── */
+  .msg-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .msg-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+  }
+
+  .msg-card.cyan::before  { background: var(--cyan);   box-shadow: 0 0 8px var(--cyan); }
+  .msg-card.amber::before { background: var(--amber);  box-shadow: 0 0 8px var(--amber); }
+  .msg-card.green::before { background: var(--green);  box-shadow: 0 0 8px var(--green); }
+  .msg-card.orange::before{ background: var(--orange); box-shadow: 0 0 8px var(--orange); }
+  .msg-card.purple::before{ background: var(--purple); box-shadow: 0 0 8px var(--purple); }
+  .msg-card.pink::before  { background: var(--pink);   box-shadow: 0 0 8px var(--pink); }
+
+  .msg-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px 14px 24px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .msg-time {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    font-weight: 400;
+    min-width: 90px;
+  }
+
+  .cyan  .msg-time  { color: var(--cyan); }
+  .amber .msg-time  { color: var(--amber); }
+  .green .msg-time  { color: var(--green); }
+  .orange .msg-time { color: var(--orange); }
+  .purple .msg-time { color: var(--purple); }
+  .pink  .msg-time  { color: var(--pink); }
+
+  .msg-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .msg-body {
+    padding: 18px 20px 18px 24px;
+  }
+
+  .msg-body p {
+    font-size: 15px;
+    color: #8a9ab4;
+    margin-bottom: 10px;
+  }
+
+  .msg-body p:last-child { margin-bottom: 0; }
+
+  /* ── Sub-sections inside cards ── */
+  .subsections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+
+  .subsec {
+    background: var(--card2);
+    border: 1px solid var(--divider);
+    padding: 12px 14px;
+    border-radius: 2px;
+  }
+
+  .subsec-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cyan  .subsec-label { color: var(--cyan); }
+  .amber .subsec-label { color: var(--amber); }
+  .green .subsec-label { color: var(--green); }
+  .orange .subsec-label{ color: var(--orange); }
+  .purple .subsec-label{ color: var(--purple); }
+  .pink  .subsec-label { color: var(--pink); }
+
+  .subsec p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* ── Info boxes ── */
+  .info-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--amber);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .info-box p {
+    font-size: 15px;
+    color: #8a9ab4;
+    margin: 0;
+  }
+
+  .info-box strong {
+    color: var(--amber);
+    font-weight: 600;
+  }
+
+  /* ── Warning box ── */
+  .warn-box {
+    background: rgba(255,50,100,0.05);
+    border: 1px solid rgba(255,50,100,0.25);
+    border-left: 3px solid var(--pink);
+    padding: 16px 20px;
+    margin: 20px 0;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .warn-box p {
+    font-size: 15px;
+    color: #8a9ab4;
+    margin: 0;
+  }
+
+  .warn-box strong { color: var(--pink); }
+
+  /* ── Column reference table ── */
+  .col-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+  }
+
+  .col-table thead tr {
+    border-bottom: 1px solid var(--cyan-dim);
+  }
+
+  .col-table th {
+    text-align: left;
+    padding: 8px 12px;
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .col-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--divider);
+    vertical-align: top;
+  }
+
+  .col-table tr:last-child td { border-bottom: none; }
+
+  .col-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  .col-name {
+    color: var(--amber);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .col-desc { color: var(--muted); font-family: 'Rajdhani', sans-serif; font-size: 14px; }
+
+  /* ── Workflow steps ── */
+  .steps {
+    counter-reset: step;
+    margin: 20px 0;
+  }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    counter-increment: step;
+    background: var(--card2);
+    border: 1px solid var(--cyan-dim);
+    color: var(--cyan);
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-num::before { content: counter(step, decimal-leading-zero); }
+
+  .step-text {
+    font-size: 15px;
+    color: #8a9ab4;
+    padding-top: 6px;
+  }
+
+  .step-text strong { color: var(--white); }
+
+  /* ── Schedule grid ── */
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .sched-time {
+    background: var(--card2);
+    padding: 14px 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    border-bottom: 1px solid var(--divider);
+    display: flex;
+    align-items: center;
+  }
+
+  .sched-desc {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: #8a9ab4;
+    border-bottom: 1px solid var(--divider);
+    border-left: 1px solid var(--divider);
+    display: flex;
+    align-items: center;
+  }
+
+  .sched-time:last-of-type,
+  .sched-desc:last-child { border-bottom: none; }
+
+  .t-cyan   { color: var(--cyan); }
+  .t-amber  { color: var(--amber); }
+  .t-green  { color: var(--green); }
+  .t-orange { color: var(--orange); }
+  .t-purple { color: var(--purple); }
+  .t-pink   { color: var(--pink); }
+
+  /* ── Divider ── */
+  .hdivider {
+    border: none;
+    border-top: 1px solid var(--divider);
+    margin: 48px 0;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 1px solid var(--divider);
+    padding: 24px 0;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; }
+    .nav { display: none; }
+    .subsections { grid-template-columns: 1fr; }
+    .schedule-grid { grid-template-columns: 90px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo-line">
+      <span class="logo-bishop">&#9821; THE MARKET BISHOP</span>
+    </div>
+    <div class="logo-scanner">RS SCANNER — MEMBER GUIDE</div>
+    <div class="header-sub" style="margin-top:8px">What it is, what it shows, and how to use it</div>
+  </header>
+
+  <div class="layout">
+
+    <!-- Nav -->
+    <nav class="nav">
+      <div class="nav-section">
+        <div class="nav-label">Overview</div>
+        <a href="#what">What This Is</a>
+        <a href="#schedule">Daily Schedule</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">The Messages</div>
+        <a href="#morning">9:00 AM Briefing</a>
+        <a href="#daytrade">9:45–10:15 Daytrade</a>
+        <a href="#intraday">3:00 PM Intraday</a>
+        <a href="#closing">4:33 PM Closing</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-label">Reference</div>
+        <a href="#columns">Column Definitions</a>
+        <a href="#workflow">My Workflow</a>
+        <a href="#important">Important Notes</a>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="content">
+
+      <!-- What This Is -->
+      <section class="section" id="what">
+        <h2>Overview</h2>
+        <h3>What This Is</h3>
+        <p>This channel gets automated scanner messages every trading day. The scanner runs on a server and pulls data directly from the Schwab API — no manual work on my end once it's set up.</p>
+        <p>The whole point is to make sure the stocks I'm watching at 2 PM are actually the strongest names in the market. It doesn't tell you when to enter. It tells you what's worth looking at.</p>
+        <p>The RS rating is the same methodology IBD uses. It compares every stock's price performance against every other stock over multiple timeframes. A rating of 95 means that stock has outperformed 95% of everything else. That's who you want to be in.</p>
+
+        <div class="info-box">
+          <p><strong>The scanner is a filter, not a signal.</strong> It narrows down 900+ stocks to the handful worth pulling charts on. You still need to read the chart and find the setup yourself.</p>
+        </div>
+      </section>
+
+      <!-- Schedule -->
+      <section class="section" id="schedule">
+        <h2>Daily Schedule</h2>
+        <h3>When Each Message Posts</h3>
+        <p>Six automated messages every trading day, Monday through Friday.</p>
+
+        <div class="schedule-grid">
+          <div class="sched-time t-cyan">9:00 AM</div>
+          <div class="sched-desc">Morning Briefing — premarket movers + bench preview</div>
+
+          <div class="sched-time t-pink">9:45 AM</div>
+          <div class="sched-desc">Daytrade Scan — first read after the open</div>
+
+          <div class="sched-time t-pink">10:00 AM</div>
+          <div class="sched-desc">Daytrade Scan — confirming who's holding</div>
+
+          <div class="sched-time t-pink">10:15 AM</div>
+          <div class="sched-desc">Daytrade Scan — final morning read</div>
+
+          <div class="sched-time t-orange">3:00 PM</div>
+          <div class="sched-desc">Intraday Scan — live data going into the last hour</div>
+
+          <div class="sched-time t-green">4:33 PM</div>
+          <div class="sched-desc">Closing Scan — full picture after the close</div>
+        </div>
+      </section>
+
+      <hr class="hdivider">
+
+      <!-- Morning Briefing -->
+      <section class="section" id="morning">
+        <h2>9:00 AM</h2>
+        <h3>Morning Briefing</h3>
+        <p>This comes out every morning before the open. It's a quick scan of what's already moving and what my watchlist looks like coming into the day.</p>
+
+        <div class="msg-card amber">
+          <div class="msg-header">
+            <span class="msg-time">PREMARKET MOVERS</span>
+            <span class="msg-title">Full Universe Scan</span>
+          </div>
+          <div class="msg-body">
+            <p>Stocks from the full liquid universe that are already moving 2% or more before the bell. These are worth watching regardless of whether they're on my existing watchlist. The filter requires liquid options and a price above $10 so you're not looking at garbage.</p>
+            <p>If something shows up here with a strong ST RS and decent relative volume, it goes on my radar for the day.</p>
+          </div>
+        </div>
+
+        <div class="msg-card cyan">
+          <div class="msg-header">
+            <span class="msg-time">MOVING</span>
+            <span class="msg-title">Bench Names Already In Motion</span>
+          </div>
+          <div class="msg-body">
+            <p>My established watchlist names that are already moving 2%+ premarket. If something from my bench is gapping up 3-4% before the open, that goes to the top of my list for the day. These are the setups I'm most focused on.</p>
+          </div>
+        </div>
+
+        <div class="msg-card green">
+          <div class="msg-header">
+            <span class="msg-time">QUIET</span>
+            <span class="msg-title">Bench Names Sitting Still</span>
+          </div>
+          <div class="msg-body">
+            <p>The rest of the bench. Still worth pulling up at 2 PM, just not as urgent as the names already moving. These are still market leaders — they just don't have a catalyst yet today.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daytrade -->
+      <section class="section" id="daytrade">
+        <h2>9:45 / 10:00 / 10:15 AM</h2>
+        <h3>Daytrade Scans</h3>
+        <p>Three scans in the first 45 minutes after the open. The reason there are three instead of one is that the first 15 minutes are chaotic. By 9:45 you start to see who's actually holding. By 10:15 the picture is clearer and the fakeouts have mostly shaken out.</p>
+
+        <div class="msg-card green">
+          <div class="msg-header">
+            <span class="msg-time">CALLS</span>
+            <span class="msg-title">Strongest Intraday Leaders</span>
+          </div>
+          <div class="msg-body">
+            <p>The top 8 stocks leading the market right now. Ranked by how strong they are today versus all other stocks, filtered to only include names that are also strong this week. These are the stocks you'd be looking at for call setups.</p>
+          </div>
+        </div>
+
+        <div class="msg-card pink">
+          <div class="msg-header">
+            <span class="msg-time">PUTS</span>
+            <span class="msg-title">Weakest Intraday Stocks</span>
+          </div>
+          <div class="msg-body">
+            <p>The 8 weakest stocks right now. Ranked by how weak they are today versus all other stocks. These are the stocks breaking down that you'd look at for put setups.</p>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <p><strong>Same rule applies here.</strong> The scanner shows you who's strong and who's weak. You still need to pull the chart and find a clean setup before entering anything.</p>
+        </div>
+      </section>
+
+      <!-- Intraday -->
+      <section class="section" id="intraday">
+        <h2>3:00 PM</h2>
+        <h3>Intraday Scan</h3>
+        <p>This is the same full scanner that runs at the close but it runs while the market is still open. The reason this one matters more than the closing scan for same-day trading is timing.</p>
+        <p>The morning briefing shows you yesterday's RS data. By the time the closing scan posts at 4:33 PM, the market is already closed. The 3 PM scan catches names that have been moving all day and now show elevated RS going into the last hour — and you can still act on it.</p>
+        <p>This is what I'm primarily looking at when I sit down at 2 PM to pick my setups for the 3:55 PM entry.</p>
+
+        <div class="msg-card orange">
+          <div class="msg-header">
+            <span class="msg-time">HEATING UP</span>
+            <span class="msg-title">Early Ignition</span>
+          </div>
+          <div class="msg-body">
+            <p>Stocks where short-term RS is accelerating significantly above long-term RS. This is the signal I watch most closely. My biggest swing runner setups started by showing up here a day or two before the main move.</p>
+          </div>
+        </div>
+
+        <div class="msg-card green">
+          <div class="msg-header">
+            <span class="msg-time">ACTIVE BENCH</span>
+            <span class="msg-title">Established Leaders</span>
+          </div>
+          <div class="msg-body">
+            <p>Stocks with both long-term and short-term RS above 80. These are the confirmed market leaders. If one of these sets up cleanly at 2 PM, it's the highest probability play available.</p>
+          </div>
+        </div>
+
+        <div class="msg-card purple">
+          <div class="msg-header">
+            <span class="msg-time">UNUSUAL OPTIONS</span>
+            <span class="msg-title">Abnormal Flow</span>
+          </div>
+          <div class="msg-body">
+            <p>Stocks with abnormal options activity relative to their normal baseline. Filtered by volume-to-open-interest ratio so it's not just showing you the same mega caps every day. When a mid-cap shows 3-4x its normal open interest in a single session, something is going on worth paying attention to.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing -->
+      <section class="section" id="closing">
+        <h2>4:33 PM</h2>
+        <h3>Closing Scan</h3>
+        <p>The main nightly scan. Full picture after the close using final closing data. This is what sets up tomorrow's watchlist.</p>
+        <p>Everything you see here — the bench, the heating up list, the unusual activity — this is what I'm reviewing in the evening to know what names I'm watching tomorrow.</p>
+
+        <div class="subsections">
+          <div class="subsec">
+            <div class="subsec-label" style="color:var(--orange)">Heating Up</div>
+            <p>ST RS accelerating above LT RS. These are the early-stage setups before the move is obvious to everyone. This is where Swing Runner setups start.</p>
+          </div>
+          <div class="subsec">
+            <div class="subsec-label" style="color:var(--green)">Active Bench</div>
+            <p>LT RS and ST RS both above 80. Confirmed leaders. These are the names on my charts every single day.</p>
+          </div>
+          <div class="subsec">
+            <div class="subsec-label" style="color:var(--purple)">Unusual Options</div>
+            <p>Abnormal flow sorted by Vol/OI ratio. Surfaces genuine unusual activity instead of just the highest-volume names.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="hdivider">
+
+      <!-- Column Definitions -->
+      <section class="section" id="columns">
+        <h2>Reference</h2>
+        <h3>Column Definitions</h3>
+        <p>Every column across all three scanner sections.</p>
+
+        <table class="col-table">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>What It Shows</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-name">LT</td>
+              <td class="col-desc">Long-term RS rating. 252 trading days using IBD's weighted formula. Measures sustained momentum over the past year.</td>
+            </tr>
+            <tr>
+              <td class="col-name">ST</td>
+              <td class="col-desc">Short-term RS rating. 20 trading days. Measures recent momentum over the past month.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Gap</td>
+              <td class="col-desc">ST minus LT. Shows how fast momentum is accelerating. A high Gap number means the stock is moving faster recently than its long-term trend — early ignition signal.</td>
+            </tr>
+            <tr>
+              <td class="col-name">RVol</td>
+              <td class="col-desc">Relative volume. Today's volume divided by 20-day average. 2.0x means double the normal volume. Confirms institutional participation.</td>
+            </tr>
+            <tr>
+              <td class="col-name">52WkH%</td>
+              <td class="col-desc">Percent below the 52-week high. A stock at -5% is near its highs. Anything close to 0% with high RS is in a very strong position.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Day%</td>
+              <td class="col-desc">Daily percentage change from previous close.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Liq</td>
+              <td class="col-desc">Options liquidity grade. Three dots — amber = filled, dark = empty. Three filled = Exceptional liquidity. Two = Solid. One = thinner but still tradeable.</td>
+            </tr>
+            <tr>
+              <td class="col-name">NEW</td>
+              <td class="col-desc">This stock wasn't on the bench 48 hours ago. It just broke through the RS threshold. Worth paying extra attention to — fresh momentum.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Vol/OI</td>
+              <td class="col-desc">Options volume divided by open interest. A ratio above 1.0x means more contracts traded today than the total existing open interest — genuinely unusual. Above 2.0x shows in amber.</td>
+            </tr>
+            <tr>
+              <td class="col-name">C:P Ratio</td>
+              <td class="col-desc">Calls to puts ratio. 3:1 means 3 call contracts for every put contract traded. Shows overall directional bias in the options market for that stock.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Intraday RS</td>
+              <td class="col-desc">Daytrade scan only. Today's move from open, ranked against all other stocks right now. 98 means stronger than 98% of everything else today.</td>
+            </tr>
+            <tr>
+              <td class="col-name">Weekly RS</td>
+              <td class="col-desc">Daytrade scan only. Last 5 trading days performance, ranked against all other stocks. Confirms whether today's strength is part of a trend or an isolated move.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Workflow -->
+      <section class="section" id="workflow">
+        <h2>Reference</h2>
+        <h3>My Daily Workflow</h3>
+        <p>How I actually use these scans from start to finish every trading day.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-text"><strong>9:00 AM</strong> — Glance at the morning briefing. Note anything in the premarket movers section. If a bench name is already up 3%+, that's going to the top of my list today.</div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-text"><strong>9:45 to 10:15 AM</strong> — Check the daytrade scans if I'm watching the open. Look for call and put candidates with clean setups. The 10:15 scan is usually the most reliable read.</div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-text"><strong>2:00 PM</strong> — Open charts on the Heating Up names and Active Bench from the 3 PM scan. I'm not scanning anything from scratch. I already know exactly which names are the strongest in the market.</div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-text"><strong>3:55 PM</strong> — Enter whatever setup confirmed during the 2:00 to 3:55 PM window. This is the entry window for swing trades.</div>
+          </div>
+          <div class="step">
+            <div class="step-num"></div>
+            <div class="step-text"><strong>Evening</strong> — Review the 4:33 PM closing scan. Check who's on the bench, who's Heating Up, and whether anything new showed up in unusual activity. Takes 2-3 minutes. Done for the day.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Important Notes -->
+      <section class="section" id="important">
+        <h2>Reference</h2>
+        <h3>Important Notes</h3>
+
+        <div class="warn-box">
+          <p><strong>This is not trade advice.</strong> The scanner shows you what's strong. It does not tell you to buy or sell anything. Every entry decision is yours. Read the chart. Find the setup. Manage your risk.</p>
+        </div>
+
+        <div class="info-box">
+          <p><strong>Weekend and after-hours data is thin.</strong> If you see low RS numbers or n/a values on a weekend, that's normal. The scanner needs live market data to produce meaningful rankings. During market hours on trading days, the data is accurate.</p>
+        </div>
+
+        <div class="info-box">
+          <p><strong>The bench changes every day.</strong> A stock can be on the bench one day and off the next if RS drops. The NEW flag tells you when something just entered — these are worth extra attention because fresh momentum is often the strongest momentum.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    THE MARKET BISHOP &nbsp;|&nbsp; RS SCANNER &nbsp;|&nbsp; MEMBER GUIDE &nbsp;|&nbsp; NOT FINANCIAL ADVICE
+  </footer>
+
+</div>
+
+</body>
+</html>
