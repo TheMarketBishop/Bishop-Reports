@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Market Bishop — Midday Report · April 21</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  html { background: #000 !important; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000 !important; color: #e8e8f0; line-height: 1.6; display: flex; min-height: 100vh; position: relative; }
+  body::before { content: ''; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000 !important; z-index: -9999; }
+
+  .nav { width: 210px; min-width: 210px; position: fixed; top: 0; left: 0; height: 100vh; background: rgba(255,255,255,0.02); border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; padding: 1.5rem 0 1rem; overflow-y: auto; z-index: 100; }
+  .nav-brand { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,170,255,0.5); padding: 0 1.1rem; margin-bottom: 0.25rem; }
+  .nav-title { font-size: 13px; font-weight: 700; color: #fff; padding: 0 1.1rem; margin-bottom: 0.15rem; text-shadow: 0 0 20px rgba(0,170,255,0.5); line-height: 1.3; }
+  .nav-date { font-size: 10px; color: rgba(255,255,255,0.3); padding: 0 1.1rem; margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+  .nav-label { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); padding: 0 1.1rem; margin-bottom: 0.5rem; margin-top: 0.25rem; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 0.42rem 1.1rem; cursor: pointer; border-left: 2px solid transparent; transition: all 0.15s ease; text-decoration: none; }
+  .nav-item:hover { background: rgba(255,255,255,0.04); }
+  .nav-item.active { background: rgba(0,170,255,0.07); border-left-color: #00aaff; }
+  .nav-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .nav-item-text { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.3; transition: color 0.15s; }
+  .nav-item:hover .nav-item-text { color: rgba(255,255,255,0.8); }
+  .nav-item.active .nav-item-text { color: #00aaff; text-shadow: 0 0 10px rgba(0,170,255,0.5); }
+  .nav-item .nav-icon { font-size: 10px; margin-left: auto; opacity: 0; transition: opacity 0.15s; }
+  .nav-item.active .nav-icon, .nav-item:hover .nav-icon { opacity: 1; }
+  .nd-blue { background: #00aaff; box-shadow: 0 0 4px #00aaff; }
+  .nd-purple { background: #bb55ff; box-shadow: 0 0 4px #bb55ff; }
+  .nd-teal { background: #00ffc8; box-shadow: 0 0 4px #00ffc8; }
+  .nd-red { background: #ff3355; box-shadow: 0 0 4px #ff3355; }
+  .nd-amber { background: #ffaa00; box-shadow: 0 0 4px #ffaa00; }
+  .nd-green { background: #44ff88; box-shadow: 0 0 4px #44ff88; }
+  .nd-coral { background: #ff6432; box-shadow: 0 0 4px #ff6432; }
+  .nd-gray { background: rgba(255,255,255,0.25); }
+  .nav-divider { height: 1px; background: rgba(255,255,255,0.05); margin: 0.75rem 1.1rem; }
+  .nav-progress { padding: 0 1.1rem; margin-top: auto; margin-bottom: 0.5rem; }
+  .nav-progress-label { font-size: 9px; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; display: flex; justify-content: space-between; }
+  .nav-progress-bar { height: 2px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .nav-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #00aaff, #bb55ff); border-radius: 2px; box-shadow: 0 0 8px rgba(0,170,255,0.5); transition: width 0.3s ease; }
+  .nav-time { font-size: 9px; color: rgba(255,255,255,0.18); padding: 0 1.1rem; letter-spacing: 0.06em; }
+
+  .page { margin-left: 210px; flex: 1; max-width: 740px; padding: 2.5rem 1.5rem; position: relative; z-index: 1; }
+
+  .brand { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,170,255,0.55); margin-bottom: 0.5rem; }
+  .page-title { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 0.3rem; text-shadow: 0 0 30px rgba(0,170,255,0.7); letter-spacing: 0.01em; }
+  .page-sub { font-size: 12px; color: #00aaff; margin-bottom: 0.4rem; text-shadow: 0 0 12px rgba(0,170,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; }
+  .page-stamp { font-size: 11px; color: rgba(255,255,255,0.25); margin-bottom: 2rem; letter-spacing: 0.04em; line-height: 1.6; }
+
+  .alert-strip { background: rgba(255,51,85,0.12); border: 1px solid rgba(255,51,85,0.35); border-radius: 8px; padding: 0.65rem 1rem; font-size: 12px; color: #ff6680; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 1.5rem; text-shadow: 0 0 10px rgba(255,51,85,0.5); }
+
+  .snapshot { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 2rem; }
+  .snap-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 0.75rem 0.85rem; }
+  .snap-label { font-size: 10px; color: rgba(255,255,255,0.3); margin-bottom: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .snap-val { font-size: 16px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 2px; }
+  .snap-sub { font-size: 10px; color: rgba(255,255,255,0.4); }
+  .val-red { color: #ff3355; text-shadow: 0 0 10px rgba(255,51,85,0.5); }
+  .val-green { color: #44ff88; text-shadow: 0 0 10px rgba(68,255,136,0.5); }
+  .val-amber { color: #ffaa00; text-shadow: 0 0 10px rgba(255,170,0,0.5); }
+  .val-blue { color: #00aaff; text-shadow: 0 0 10px rgba(0,170,255,0.5); }
+
+  .section { margin-bottom: 1.5rem; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.02); scroll-margin-top: 2rem; }
+  .section:has(.h-blue) { border-color: rgba(0,170,255,0.28); box-shadow: 0 0 28px rgba(0,170,255,0.06); }
+  .section:has(.h-purple) { border-color: rgba(187,85,255,0.28); box-shadow: 0 0 28px rgba(187,85,255,0.06); }
+  .section:has(.h-teal) { border-color: rgba(0,255,200,0.25); box-shadow: 0 0 28px rgba(0,255,200,0.05); }
+  .section:has(.h-red) { border-color: rgba(255,51,85,0.28); box-shadow: 0 0 28px rgba(255,51,85,0.06); }
+  .section:has(.h-amber) { border-color: rgba(255,170,0,0.28); box-shadow: 0 0 28px rgba(255,170,0,0.06); }
+  .section:has(.h-green) { border-color: rgba(68,255,136,0.25); box-shadow: 0 0 28px rgba(68,255,136,0.05); }
+  .section:has(.h-coral) { border-color: rgba(255,100,50,0.28); box-shadow: 0 0 28px rgba(255,100,50,0.06); }
+  .section-header { padding: 0.65rem 1rem; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .h-blue { background: rgba(0,170,255,0.09); color: #00aaff; text-shadow: 0 0 14px rgba(0,170,255,0.9); border-bottom-color: rgba(0,170,255,0.15); }
+  .h-purple { background: rgba(187,85,255,0.09); color: #bb55ff; text-shadow: 0 0 14px rgba(187,85,255,0.9); border-bottom-color: rgba(187,85,255,0.15); }
+  .h-teal { background: rgba(0,255,200,0.07); color: #00ffc8; text-shadow: 0 0 14px rgba(0,255,200,0.9); border-bottom-color: rgba(0,255,200,0.12); }
+  .h-red { background: rgba(255,51,85,0.09); color: #ff3355; text-shadow: 0 0 14px rgba(255,51,85,0.9); border-bottom-color: rgba(255,51,85,0.15); }
+  .h-amber { background: rgba(255,170,0,0.08); color: #ffaa00; text-shadow: 0 0 14px rgba(255,170,0,0.9); border-bottom-color: rgba(255,170,0,0.15); }
+  .h-green { background: rgba(68,255,136,0.07); color: #44ff88; text-shadow: 0 0 14px rgba(68,255,136,0.9); border-bottom-color: rgba(68,255,136,0.12); }
+  .h-coral { background: rgba(255,100,50,0.08); color: #ff6432; text-shadow: 0 0 14px rgba(255,100,50,0.9); border-bottom-color: rgba(255,100,50,0.15); }
+  .section-body { padding: 1rem 1rem 0.85rem; }
+
+  .sub { margin-bottom: 1rem; }
+  .sub-title { font-size: 11px; font-weight: 700; color: rgba(0,255,200,0.75); margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px solid rgba(0,255,200,0.1); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .row { display: flex; gap: 10px; margin-bottom: 7px; align-items: flex-start; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .item { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.65; }
+  .item b { font-weight: 700; color: #fff; }
+  .item i { color: rgba(255,255,255,0.65); }
+  .dot-blue { background: #00aaff; box-shadow: 0 0 5px #00aaff; }
+  .dot-purple { background: #bb55ff; box-shadow: 0 0 5px #bb55ff; }
+  .dot-teal { background: #00ffc8; box-shadow: 0 0 5px #00ffc8; }
+  .dot-red { background: #ff3355; box-shadow: 0 0 5px #ff3355; }
+  .dot-amber { background: #ffaa00; box-shadow: 0 0 5px #ffaa00; }
+  .dot-green { background: #44ff88; box-shadow: 0 0 5px #44ff88; }
+  .dot-coral { background: #ff6432; box-shadow: 0 0 5px #ff6432; }
+  .dot-gray { background: #445; }
+
+  .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 12px 0; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
+  .mini-card { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 0.7rem 0.85rem; }
+  .mini-label { font-size: 10px; color: rgba(255,255,255,0.3); margin-bottom: 4px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .mini-val { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .mini-sub { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 3px; line-height: 1.45; }
+
+  .gloss { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gloss-item { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 0.55rem 0.7rem; }
+  .gloss-term { font-size: 11px; font-weight: 700; color: #00aaff; margin-bottom: 3px; text-shadow: 0 0 6px rgba(0,170,255,0.4); }
+  .gloss-def { font-size: 11px; color: rgba(255,255,255,0.55); line-height: 1.45; }
+  .gloss-intro { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; margin-bottom: 10px; }
+
+  .table-wrap { width: 100%; border-collapse: collapse; margin-top: 6px; margin-bottom: 10px; }
+  .table-wrap th { font-size: 10px; color: rgba(255,255,255,0.28); font-weight: 700; text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08); letter-spacing: 0.07em; text-transform: uppercase; }
+  .table-wrap td { font-size: 12.5px; color: rgba(255,255,255,0.72); padding: 7px 10px 7px 0; border-bottom: 1px solid rgba(255,255,255,0.04); line-height: 1.5; }
+  .table-wrap tr:last-child td { border-bottom: none; }
+  .td-green { color: #44ff88 !important; font-weight: 700; text-shadow: 0 0 8px rgba(68,255,136,0.5); }
+  .td-amber { color: #ffaa00 !important; font-weight: 700; text-shadow: 0 0 8px rgba(255,170,0,0.5); }
+  .td-red { color: #ff3355 !important; font-weight: 700; text-shadow: 0 0 8px rgba(255,51,85,0.5); }
+  .td-blue { color: #00aaff !important; font-weight: 700; text-shadow: 0 0 8px rgba(0,170,255,0.5); }
+  .td-bold { font-weight: 700; color: rgba(255,255,255,0.9); }
+
+  .callout { border-left: 2px solid #ffaa00; padding: 0.65rem 0.9rem; margin: 10px 0; background: rgba(255,170,0,0.06); border-radius: 0 8px 8px 0; box-shadow: -3px 0 14px rgba(255,170,0,0.12); }
+  .callout p { font-size: 13px; color: #ffaa00; line-height: 1.65; }
+  .callout-red { border-left-color: #ff3355; background: rgba(255,51,85,0.06); box-shadow: -3px 0 14px rgba(255,51,85,0.12); }
+  .callout-red p { color: #ff6680; }
+  .callout-green { border-left-color: #44ff88; background: rgba(68,255,136,0.05); box-shadow: -3px 0 14px rgba(68,255,136,0.1); }
+  .callout-green p { color: #44ff88; }
+  .callout-blue { border-left-color: #00aaff; background: rgba(0,170,255,0.06); box-shadow: -3px 0 14px rgba(0,170,255,0.12); }
+  .callout-blue p { color: #00aaff; }
+  .callout-purple { border-left-color: #bb55ff; background: rgba(187,85,255,0.06); box-shadow: -3px 0 14px rgba(187,85,255,0.12); }
+  .callout-purple p { color: #bb55ff; }
+  .callout p b { color: inherit; filter: brightness(1.2); }
+
+  .sources { font-size: 11px; color: rgba(255,255,255,0.25); text-align: center; letter-spacing: 0.06em; margin-top: 2rem; padding: 1rem; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">The Market Bishop</div>
+  <div class="nav-title">Midday Report</div>
+  <div class="nav-date">April 21, 2026 · 3:15 PM ET</div>
+
+  <div class="nav-label">Quick Jump</div>
+
+  <a class="nav-item active" href="#tldr"><span class="nav-dot nd-amber"></span><span class="nav-item-text">TL;DR</span><span class="nav-icon">▶</span></a>
+  <a class="nav-item" href="#gloss"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Glossary</span></a>
+  <a class="nav-item" href="#prior"><span class="nav-dot nd-coral"></span><span class="nav-item-text">Prior Session</span></a>
+  <a class="nav-item" href="#session"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Session Recap</span></a>
+
+  <div class="nav-divider"></div>
+
+  <a class="nav-item" href="#gex"><span class="nav-dot nd-teal"></span><span class="nav-item-text">Live GEX Update</span></a>
+  <a class="nav-item" href="#greeks"><span class="nav-dot nd-purple"></span><span class="nav-item-text">Greeks at a Glance</span></a>
+  <a class="nav-item" href="#oigamma"><span class="nav-dot nd-purple"></span><span class="nav-item-text">OI vs Volume Gamma</span></a>
+  <a class="nav-item" href="#flow"><span class="nav-dot nd-teal"></span><span class="nav-item-text">Options Flow</span></a>
+
+  <div class="nav-divider"></div>
+
+  <a class="nav-item" href="#internals"><span class="nav-dot nd-green"></span><span class="nav-item-text">Internals</span></a>
+  <a class="nav-item" href="#noise"><span class="nav-dot nd-amber"></span><span class="nav-item-text">News vs Noise</span></a>
+  <a class="nav-item" href="#risks"><span class="nav-dot nd-red"></span><span class="nav-item-text">Risk Matrix</span></a>
+  <a class="nav-item" href="#afternoon"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Afternoon Setup</span></a>
+  <a class="nav-item" href="#catalysts"><span class="nav-dot nd-coral"></span><span class="nav-item-text">Catalyst Watch</span></a>
+  <a class="nav-item" href="#bottom"><span class="nav-dot nd-gray"></span><span class="nav-item-text">Bottom Line</span></a>
+
+  <div class="nav-divider"></div>
+
+  <div class="nav-progress">
+    <div class="nav-progress-label"><span>Reading Progress</span><span>0%</span></div>
+    <div class="nav-progress-bar"><div class="nav-progress-fill"></div></div>
+  </div>
+  <div class="nav-time">Generated 3:15 PM ET</div>
+</nav>
+
+<main class="page">
+
+  <p class="brand">The Market Bishop</p>
+  <h1 class="page-title">Midday Report — April 21</h1>
+  <p class="page-sub">Session Update · Risk-Off Confirmed · 3:15 PM ET</p>
+  <p class="page-stamp">Report Generated: 3:15 PM ET, Tuesday, April 21, 2026 <br>Session Status: INTRADAY (Midday Report) · Market Hours: 9:30 AM – 4:00 PM ET · ~45 minutes remaining</p>
+
+  <div class="alert-strip">⚠ CRITICAL: Largest single-session bearish flow on record &nbsp;·&nbsp; GEX flipped negative to −$450M &nbsp;·&nbsp; Ceasefire expires in ~25 hours &nbsp;·&nbsp; Five accelerators clustered at price</div>
+
+  <div class="snapshot">
+    <div class="snap-card"><div class="snap-label">SPX / SPY</div><div class="snap-val val-red">7,089 / $706.51</div><div class="snap-sub">−0.28% · intraday low $703.96</div></div>
+    <div class="snap-card"><div class="snap-label">VIX</div><div class="snap-val val-red">20.68</div><div class="snap-sub">P/C 0.80 · IV rank 0.274</div></div>
+    <div class="snap-card"><div class="snap-label">Net GEX</div><div class="snap-val val-red">−$450M</div><div class="snap-sub">Flipped negative · dealers amplify</div></div>
+    <div class="snap-card"><div class="snap-label">Daily Delta Flow</div><div class="snap-val val-red">−184.5M</div><div class="snap-sub">Largest bearish session on record</div></div>
+    <div class="snap-card"><div class="snap-label">P/C Ratio</div><div class="snap-val val-red">2.51</div><div class="snap-sub">New cycle high · put buildup</div></div>
+    <div class="snap-card"><div class="snap-label">F&G Composite</div><div class="snap-val val-amber">53</div><div class="snap-sub">Neutral · Options Sentiment 34</div></div>
+  </div>
+
+  <div class="section" id="tldr">
+    <div class="section-header h-amber">TL;DR — What You Need To Know 🔴</div>
+    <div class="section-body">
+      <div class="row"><span class="dot dot-amber"></span><div class="item">The morning thesis — that the $7,070 flip zone would test on ceasefire weakness — played out exactly. SPX printed a low just off $7,068 aligned with the identified magnet strike, then bounced.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>The structure just broke.</b> GEX flipped to −$450M (first negative reading this cycle). Dealer short delta dropped from 129M → 70M in three hours. 184.5M shares of bearish flow — the largest single-session reading on record, wider than any day during the March selloff.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>Internals broke decisively.</b> A/D ratio 0.58x. Every exchange red simultaneously for the first time in three weeks. The "breadth divergence" that protected every prior scary Monday is gone — breadth now <i>confirms</i> the headlines instead of fighting them.</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Two countervailing signals: hedge funds bought tech at the highest rate in 5 months last week (real long adds, not short covering); semis ran 14 straight green days, historic momentum. These are the reasons a reversal snap-back is still live — but they are backward-looking against a forward binary.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Key level into close: $7,070 on SPX ($706 on SPY). Holds = pin and sideways chop into 4 PM. Breaks with conviction = accelerator chain $705 → $703 → $700 fires fast with negative gamma amplifying it.</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Ceasefire expires Wednesday 4:50 PM ET. Iran not confirmed at Islamabad. Vance trip paused. Trump: "I have all the time in the world." Brent $100+. This is a binary held over 25 hours with negative gamma underneath it.</div></div>
+    </div>
+  </div>
+
+  <div class="section" id="gloss">
+    <div class="section-header h-blue">Quick Reference — Key Terms 🟡</div>
+    <div class="section-body">
+      <p class="gloss-intro">Brief definitions of the technical terms in this report. Skip if fluent.</p>
+      <div class="gloss">
+        <div class="gloss-item"><div class="gloss-term">GEX (Gamma Exposure)</div><div class="gloss-def">Aggregate dealer gamma. Positive = dealers stabilize price. Negative = dealers amplify moves in both directions.</div></div>
+        <div class="gloss-item"><div class="gloss-term">GEX Flip</div><div class="gloss-def">Price level where net GEX crosses zero. Above = cushion. Below = trapdoor. Today it's $7,070.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Dealer Short Delta</div><div class="gloss-def">Aggregate short-stock hedge dealers carry. Shrinking means their forced-buying engine is fading.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Accelerator</div><div class="gloss-def">A strike with heavy negative gamma — breaking through forces dealer selling that amplifies the move.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Magnet</div><div class="gloss-def">A strike with heavy positive gamma — dealers hedge around it, pulling price back to it.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Charm</div><div class="gloss-def">Delta decay from time passing. In a call-heavy book, charm bleeds support daily regardless of price.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Vanna</div><div class="gloss-def">How dealer delta moves with IV. Positive vanna = vol crush triggers dealer buying.</div></div>
+        <div class="gloss-item"><div class="gloss-term">NCP / NPP</div><div class="gloss-def">Net Call / Put Premium. Dollar-weighted flow into each side. Today: puts dominate 10:1.</div></div>
+        <div class="gloss-item"><div class="gloss-term">A/D Ratio</div><div class="gloss-def">Advancing stocks ÷ declining. Above 1.0 = broad participation up. Today 0.58x — broad participation down.</div></div>
+        <div class="gloss-item"><div class="gloss-term">P/C Ratio</div><div class="gloss-def">Puts ÷ calls. Above 1.0 = heavy hedging/bearish. 2.51 today is an extreme reading.</div></div>
+        <div class="gloss-item"><div class="gloss-term">IV Rank</div><div class="gloss-def">Where IV sits in its 52w range (0–1). Today: 0.274 for SPX — not extreme, room to expand.</div></div>
+        <div class="gloss-item"><div class="gloss-term">Dark Pool Level</div><div class="gloss-def">Price where institutions traded significant size off-exchange. Today's key: $706.18 on SPY.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="prior">
+    <div class="section-header h-coral">Prior Session Recap 🟡</div>
+    <div class="section-body">
+      <div class="row"><span class="dot dot-coral"></span><div class="item"><b>Monday April 20 close:</b> SPX 7,109.17 (−0.24%). Net GEX $982M. GEX flip 7,070. Positive gamma held an attempted −0.5% open back to −0.24% — it was working <i>yesterday</i>.</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Yesterday's report flagged SPY OI gamma going <b>negative overnight</b> for the first time this cycle (−$1.86B per 1% move, Net GEX −370K). That condition carried straight into today's open — and today's data confirms the fragility was real, not theoretical.</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Monday's block tape: +$14.1B net, but buy/sell ratio collapsed from 2.5x Friday → 1.3x. MSFT flipped from +$5.08B buyer to −$5.23B seller in one session. TSLA had zero buy blocks across 1,170 prints. Institutional de-risking Monday was the setup for today's distribution.</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item"><b>Overnight into today:</b> Vance trip to Islamabad paused after Iran failed to respond to US negotiating terms. Iran demanding Hormuz "blockade" be lifted before sending delegation. Brent crude ran above $100. US C-17s and tankers reportedly moving to the Middle East.</div></div>
+    </div>
+  </div>
+
+  <div class="section" id="session">
+    <div class="section-header h-blue">Session Recap — Morning to Now 🔴</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">The path so far</div>
+        <div class="row"><span class="dot dot-blue"></span><div class="item"><b>9:30 AM:</b> SPX opened near prior close, SPY around $708. First 30 minutes already weak as overnight news priced through.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>11:22 AM:</b> Internals broke decisively. A/D 0.58x · Volume ratio 0.55x · only 25.3% of stocks above VWAP. Every exchange red simultaneously — first time in three weeks.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>1:15 PM:</b> SPX tagged the $7,070 magnet almost exactly, bouncing off the flip level rather than breaking through. The heaviest positioning strike held on first test — the structure doing its job.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>2:00 PM:</b> Daily delta flow at −133.5M shares — already the largest bearish session recorded. GEX flipped negative to −$450M. Dealer short dropped from 129M → 88M (−32%).</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>3:00 PM:</b> Flow extended to −184.5M (another 51M bearish added in 60 min). P/C jumped to 2.51, new cycle high. Five accelerators now cluster at price between $703–$710.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>3:04 PM (Market Tide):</b> NCP −$22M / NPP +$227M. Puts leading calls ~10:1 in premium. SPY ground back to $706.77 off the $703.96 intraday low.</div></div>
+      </div>
+
+      <div class="callout callout-purple">
+        <p><b>Original read:</b> The thesis baked into the dealer book for weeks finally matched the headline risk. Until today, breadth kept protecting every scary Monday. The minute the ceasefire deadline became real, institutions ran the same move everyone had been hedging. Negative gamma didn't cause the selling — the selling caused the negative gamma, and now the two reinforce each other into the close.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="gex">
+    <div class="section-header h-teal">Live GEX Update 🔴</div>
+    <div class="section-body">
+
+      <div class="grid3">
+        <div class="mini-card"><div class="mini-label">Net GEX</div><div class="mini-val val-red">−$450M</div><div class="mini-sub">Was +$982M at Monday close · $1.43B swing in one session</div></div>
+        <div class="mini-card"><div class="mini-label">GEX Flip</div><div class="mini-val val-amber">$7,070</div><div class="mini-sub">MVC anchor · held on first test · 19 pts below spot</div></div>
+        <div class="mini-card"><div class="mini-label">Near-Term GEX</div><div class="mini-val val-red">−$482M</div><div class="mini-sub">Deeply negative · −$304M of neg gamma rolls off tonight</div></div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">SPY Strike Map — Live at 3:00 PM</div>
+        <table class="table-wrap">
+          <thead><tr><th>Strike</th><th>GEX</th><th>Distance</th><th>Role</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold" style="color:#44ff88;text-shadow:0 0 6px rgba(68,255,136,0.5);">$720</td><td class="td-green">+$86M</td><td>+1.9%</td><td>Far bull magnet</td></tr>
+            <tr><td class="td-bold">$715</td><td class="td-green">+$85M</td><td>+1.2%</td><td>Resistance magnet</td></tr>
+            <tr><td class="td-bold" style="color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,0.5);">$710</td><td class="td-blue">+$122–129M</td><td>+0.5%</td><td>Ceiling magnet · last wall above</td></tr>
+            <tr><td class="td-bold">$708</td><td class="td-green">+$63M</td><td>+0.2%</td><td>Near magnet</td></tr>
+            <tr><td class="td-bold" style="color:#ffaa00;text-shadow:0 0 6px rgba(255,170,0,0.5);">$706.77</td><td class="td-amber">—</td><td>Spot</td><td>Current price</td></tr>
+            <tr><td class="td-bold">$707</td><td class="td-red">−$74M</td><td>+0.1%</td><td>NEW accelerator above price</td></tr>
+            <tr><td class="td-bold">$706</td><td class="td-red">−$57M</td><td>At price</td><td>Accelerator at spot</td></tr>
+            <tr><td class="td-bold">$705</td><td class="td-red">−$63M</td><td>−0.2%</td><td>Accelerator</td></tr>
+            <tr><td class="td-bold" style="color:#ff3355;text-shadow:0 0 6px rgba(255,51,85,0.5);">$703</td><td class="td-red">−$106–115M</td><td>−0.5%</td><td>Strong accelerator · intraday low</td></tr>
+            <tr><td class="td-bold" style="color:#ff3355;text-shadow:0 0 6px rgba(255,51,85,0.5);">$700</td><td class="td-red">−$102–122M</td><td>−0.9%</td><td>Trapdoor · major acceleration</td></tr>
+            <tr><td class="td-bold">$680</td><td class="td-red">−$59M</td><td>−3.7%</td><td>Deeper acceleration zone</td></tr>
+            <tr><td class="td-bold">$675</td><td class="td-red">−$74M</td><td>−4.4%</td><td>Deep accelerator</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-red">
+        <p><b>The structural change that matters:</b> An hour ago there were two accelerators below price. Now there are five, surrounding spot from $707 down to $700. The call wall compressed from $800 to $710 in a single session — the upside expectation collapsed by $90. Put VWAS (volume-weighted average strike) sits at $698, meaning new puts are being placed 1.2% below price. That is where the tape says price wants to go if this breaks.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="greeks">
+    <div class="section-header h-purple">Greeks at a Glance 🔴</div>
+    <div class="section-body">
+      <table class="table-wrap">
+        <thead><tr><th>Greek</th><th>Current Reading</th><th>Trigger</th><th>Direction</th><th>Intensity</th></tr></thead>
+        <tbody>
+          <tr><td class="td-bold">Gamma (GEX)</td><td class="td-red">−$450M net</td><td>Every price tick</td><td>Amplifies both ways</td><td class="td-red">Extreme · regime flipped</td></tr>
+          <tr><td class="td-bold">Vanna</td><td class="td-green">+65.9K</td><td>IV moves</td><td>Vol crush → dealer buys</td><td class="td-amber">Large · asymmetric bull tailwind if headline resolves</td></tr>
+          <tr><td class="td-bold">Charm</td><td class="td-red">Running 24/7</td><td>Time passing</td><td>Daily bleed on call-heavy book</td><td class="td-amber">Persistent · no off switch</td></tr>
+          <tr><td class="td-bold">Delta (Dealer Short)</td><td class="td-red">70M (was 129M)</td><td>Price moves</td><td>Forced-buying engine fading</td><td class="td-red">Down 46% in 3 hours</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-purple">
+        <p><b>The Greek in focus is vanna.</b> IV has risen but SPX IV rank is only 0.274 — not extreme. Vanna at +65.9K means if the ceasefire extends and vol crushes from here, dealers are forced to buy significant stock. That is the mechanical reason a +2–3% snap-back is possible overnight. But it only fires on a headline. Without one, charm runs on the call book through tonight and vanna does nothing. The tailwind is loaded; the trigger is diplomatic.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="oigamma">
+    <div class="section-header h-purple">OI vs Volume Gamma Split 🔴</div>
+    <div class="section-body">
+
+      <div class="grid2">
+        <div class="mini-card"><div class="mini-label">SPY OI Gamma (Persistent)</div><div class="mini-val val-red">NEGATIVE</div><div class="mini-sub">Carried from Monday close · dealers short gamma overnight</div></div>
+        <div class="mini-card"><div class="mini-label">Volume Gamma (Today's Flow)</div><div class="mini-val val-red">Dominantly put</div><div class="mini-sub">90% of today's volume is new positioning · confirms not old unwinds</div></div>
+      </div>
+
+      <div class="callout callout-red">
+        <p><b>This is the worst possible combination.</b> OI gamma was already negative before today started — meaning dealers were <i>carrying</i> short gamma into the session. Then today's volume gamma piled more puts on top of that existing short-gamma base. Normally intraday put buying would at least partially stabilize an already-short book. Today's flow is not hedging — it's additive. The book is getting more fragile in real time, not less.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="flow">
+    <div class="section-header h-teal">Options Flow — Midday 🔴</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">Flow composition through 3:00 PM</div>
+        <div class="grid3">
+          <div class="mini-card"><div class="mini-label">Total Put Premium</div><div class="mini-val val-red">$1.45B</div><div class="mini-sub">New put positions: 5.48M</div></div>
+          <div class="mini-card"><div class="mini-label">Total Call Premium</div><div class="mini-val">$737M</div><div class="mini-sub">Puts are 66% of dollar vol</div></div>
+          <div class="mini-card"><div class="mini-label">New Positioning</div><div class="mini-val val-amber">90%</div><div class="mini-sub">of volume is fresh, not closing</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">Market Tide — SPY 3:04 PM</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>NCP −$22M / NPP +$227M.</b> The net spread is ~$249M favoring puts — a 10:1 ratio. This is not noise; this is positioning.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Single-leg &lt;=90-DTE SPY puts lead calls by $34M+</b> on an intraday basis. Short-term positioning has shifted heavily toward downside. Net Drift on SPY today: calls −$16.79M, puts +$17.61M.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Top Net Impact winners today:</b> UNH, USO (oil hedge), BE, CVNA, SMH, CAR. <b>Top losers:</b> TSLA, SPY, IWM, AAPL, GOOGL, NFLX, AMZN, META, NVDA. Every index proxy and mega-cap tech name is net negative since open.</div></div>
+        <div class="row"><span class="dot dot-blue"></span><div class="item"><b>SPY dark pool level $706.18</b> — SPY broke below this and is using it as resistance into the afternoon. Institutional print above price now acts as a ceiling.</div></div>
+      </div>
+
+      <div class="callout">
+        <p><b>Original read:</b> Mag-7 puts leading calls by $34M on single-leg flow is a rare tell. Single-leg (not spreads) means directional conviction, not hedging. The tape is selling tech into the close specifically, not just the index broadly. That's a meaningful change from Monday's "institutions rotating, not exiting" framing — it says the rotation became distribution in less than 24 hours.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="internals">
+    <div class="section-header h-green">Internals — The Breadth Break 🔴</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">The alignment that matters most</div>
+        <div class="grid3">
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);"><div class="mini-label">A/D Ratio</div><div class="mini-val val-red">0.58x</div><div class="mini-sub">2,963 declining / 1,717 advancing</div></div>
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);"><div class="mini-label">Volume Ratio</div><div class="mini-val val-red">0.55x</div><div class="mini-sub">$3.36B down · $1.85B up</div></div>
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);"><div class="mini-label">Above VWAP</div><div class="mini-val val-red">25.3%</div><div class="mini-sub">1,214 of 4,791 · three-quarters below</div></div>
+        </div>
+
+        <div class="sub-title" style="margin-top:14px;">Exchange breadth — all red simultaneously</div>
+        <table class="table-wrap">
+          <thead><tr><th>Exchange</th><th>Ratio</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">NYSE</td><td class="td-red">0.55x</td><td>Old economy leading down — opposite of Monday</td></tr>
+            <tr><td class="td-bold">NASDAQ</td><td class="td-red">0.60x</td><td>Tech selling confirms single-leg put data</td></tr>
+            <tr><td class="td-bold">NYSE AMEX</td><td class="td-red">0.57x</td><td>Small caps participating in selling</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">The three-week pattern — and why today is different</div>
+        <table class="table-wrap">
+          <thead><tr><th>Date</th><th>Headline</th><th>A/D Ratio</th><th>What Followed</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">Apr 13</td><td>Blockade announced</td><td class="td-green">1.87x</td><td>Rallied all week · internals diverged from fear</td></tr>
+            <tr><td class="td-bold">Apr 17</td><td>Hormuz opens (Fri)</td><td class="td-green">2.34x</td><td>Confirmed rally into OPEX</td></tr>
+            <tr><td class="td-bold">Apr 20</td><td>Ship seized</td><td class="td-green">1.80x</td><td>Held, closed −0.24% · internals diverged</td></tr>
+            <tr><td class="td-bold" style="color:#ff3355;text-shadow:0 0 6px rgba(255,51,85,0.5);">Apr 21</td><td>Ceasefire expiring</td><td class="td-red">0.58x</td><td>Internals now <i>confirm</i> the headlines</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-red">
+        <p>For three weeks, breadth diverged from fear every single time — and breadth was right. Today is the first day since the rally began that breadth, volume, and VWAP all align on the same side. The principle is clear: take breadth as seriously on the way down as on the way up. The same signal that said "buy the dip" for three weeks just said something else.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="noise">
+    <div class="section-header h-amber">The News-vs-Noise Problem 🟡</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">Overnight news matters. And also doesn't.</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Every headline that hits between now and the 9:30 AM open tomorrow can reverse the setup entirely. The structure is balanced on a <b>25-hour binary</b> where a single statement from Tehran or Washington rewrites the chart.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">The Vance trip went from "on" to "paused" to "uncertain" to "could resume quickly" — all within four hours today. Iran said it won't talk until the blockade is lifted. Then Iran's Fatemeh Mohajerani said their delegation is led by a field commander "with military and diplomatic experience" without confirming whether talks are actually underway in Pakistan. The headlines contradict themselves hour by hour.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">This is the core trap: overnight news <i>feels</i> decisive because it's the most recent input, but most of it gets reversed or reinterpreted by morning. The first version of a breaking story is usually wrong. Reports of troop movements, leaders' statements, and "paused" vs "on hold" framing are noise in aggregate — the signal is only the final status at 9:30 AM tomorrow.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">What is actually signal</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Ceasefire expires Wed 4:50 PM ET.</b> That is a hard clock. Not a headline, a deadline.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Brent above $100.</b> Markets are pricing through oil regardless of Twitter noise. Oil is running ahead of stocks as the purest real-time read on Hormuz.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Trump: "I have all the time in the world."</b> A direct, public statement of leverage, not a rumor. It matters more than any reported diplomatic back-and-forth.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Prediction markets on Hormuz normalization by Apr 30:</b> 20¢ yes / 79¢ no. Money-weighted probability, not opinion.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">What is mostly noise</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">"C-17s moving to the Middle East" — high-engagement, visually dramatic, ambiguous meaning. Could be staging for kinetic action; could be routine positioning to pressure negotiations. Cannot distinguish from a screenshot.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">"Vance trip paused / could resume" — process headlines, not outcome headlines. The only data that matters is whether Iran sends a delegation before 4:50 PM Wednesday. Everything before that is theater.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Presidential speech on non-market topics (Tim Cook commentary, NATO criticism, Fed rates) — landed pre-market but had no durable price impact. Markets don't know what to do with these on binary days and mostly ignore them within hours.</div></div>
+      </div>
+
+      <div class="callout">
+        <p><b>Framework: only three news items actually move the structure overnight.</b> (1) Iran confirms a delegation to Islamabad. (2) Ceasefire is extended by either side. (3) Kinetic action begins before the deadline. Everything else is process noise that shifts sentiment by hours but not days. Trade the structure in front of you; treat overnight news as potential-but-not-likely to flip it.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="risks">
+    <div class="section-header h-red">Risk Matrix — Into Close and Overnight 🔴</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">Risks stacked highest to lowest probability</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>1. Negative gamma cascade into close.</b> If SPX loses $7,070 in the final 45 minutes with conviction, the five accelerators between $707 and $700 fire. With net GEX at −$450M, the move is amplified — dealers sell to rehedge, price pushes lower, forced selling compounds. A −1% close would not be surprising; a −2% close is entirely possible on this structure.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>2. Overnight gap down.</b> 505K contracts expire today. −$304M of negative GEX rolls off, but the remaining near-term structure stays at −$482M. Tomorrow's market opens in an amplification regime, not a suppression one. A bad Iran headline overnight opens lower and accelerates from there.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>3. Volatility repricing.</b> SPX IV rank is only 0.274. Plenty of room to expand. If headline ambiguity continues, IV can push from current ~18% realized toward 25–30% by Wednesday. That repricing alone would drag price lower through vanna even without a new catalyst.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>4. TSLA earnings after close Wednesday.</b> Expected move 5.5%. Institutions had zero TSLA buy blocks yesterday — it's de-risked. A weak print into the ceasefire outcome doubles the binary on the same night.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>5. Reflexive reversal on a surprise deal.</b> Vanna +65.9K means an unexpected ceasefire extension or Iran delegation confirmation triggers fast dealer buying. Snap-back could be +2–3% in a session. This is the tail, not the base case — prediction markets price permanent peace by tomorrow at 4¢.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>6. Secondary risks worth flagging.</b> TSA funding running out in weeks. Warsh confirmation only 33% by May 15 (Fed Chair transition uncertainty). Depression rate at 19.1% and rising (consumer backdrop softening). Background tail risks for now, not session drivers.</div></div>
+      </div>
+
+      <div class="callout callout-red">
+        <p>The asymmetry is the story. A bull resolution unwinds structure slowly — vanna tailwind, put unwind, magnet ladder at $710/$715/$720. A bear resolution fires fast — accelerators stacked at $707/$706/$705/$703/$700, amplified by the whole dealer book. Slow up, fast down. The trading range is wider on the downside because the mechanics are wider on the downside.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="afternoon">
+    <div class="section-header h-blue">Afternoon Setup 🟡</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">Three scenarios into the 4:00 PM close</div>
+        <div class="grid2">
+          <div class="mini-card" style="border-color:rgba(68,255,136,0.22);"><div class="mini-label">Bull path (least likely)</div><div class="mini-val val-green">Pin and recover</div><div class="mini-sub">$7,070 holds as MVC, $710 magnet pulls SPY back to $708–710. Needs a positive headline to trigger vanna crush. Closes down &lt;0.25%.</div></div>
+          <div class="mini-card" style="border-color:rgba(255,170,0,0.22);"><div class="mini-label">Base case</div><div class="mini-val val-amber">Sideways pin</div><div class="mini-sub">$706–$710 range into close. Negative gamma active but no trigger to break. Closes between −0.3% and −0.5%.</div></div>
+        </div>
+        <div style="margin-top:10px;">
+          <div class="mini-card" style="border-color:rgba(255,51,85,0.22);"><div class="mini-label">Bear path</div><div class="mini-val val-red">Accelerator chain fires</div><div class="mini-sub">$7,070 breaks with volume in final 30 min. $705 accelerator triggers dealer selling. Cascade to $703, possible extension to $700. Closes −1% to −2%. Overnight gap risk compounds.</div></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">Sector read — where afternoon conviction is concentrated</div>
+        <table class="table-wrap">
+          <thead><tr><th>Sector</th><th>ETF</th><th>Change</th><th>Read</th></tr></thead>
+          <tbody>
+            <tr><td class="td-bold">Energy</td><td>XLE</td><td class="td-green">+1.27%</td><td>Only green sector · Hormuz driver · XOM/CVX/COP leading</td></tr>
+            <tr><td class="td-bold">Technology</td><td>XLK</td><td class="td-green">+0.53%</td><td>Software-led (MSFT +2.04, ORCL +3.6, PLTR +0.67, ANET +3.53)</td></tr>
+            <tr><td class="td-bold">Consumer Disc</td><td>XLY</td><td class="td-red">−0.29%</td><td>Shallow red · AAPL −1.87% dragging</td></tr>
+            <tr><td class="td-bold">Financials</td><td>XLF</td><td class="td-red">−0.43%</td><td>JPM −0.84 · banks mild weakness</td></tr>
+            <tr><td class="td-bold">Materials</td><td>XLB</td><td class="td-red">−0.55%</td><td>Broad commodity exposure weak ex-energy</td></tr>
+            <tr><td class="td-bold">Healthcare</td><td>XLV</td><td class="td-red">−0.84%</td><td>UNH 0% · LLY −1.71 · JNJ −2.19 · defensives not defending</td></tr>
+            <tr><td class="td-bold">Industrials</td><td>XLI</td><td class="td-red">−1.09%</td><td>GE −5.15 · RTX −3.77 · airlines weak on fuel</td></tr>
+            <tr><td class="td-bold">Utilities</td><td>XLU</td><td class="td-red">−1.52%</td><td>Defensive bid broken · unusual for risk-off</td></tr>
+            <tr><td class="td-bold">Real Estate</td><td>XLRE</td><td class="td-red">−1.52%</td><td>Rate-sensitive weakness</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-blue">
+        <p><b>Original read on sector divergence:</b> Software holding green while defensives sell is unusual in a risk-off tape. Two takeaways. (1) The selling is not panic — it's positioned risk management around a specific binary event. If this was genuine fear, XLU and XLV would catch a bid. (2) The tech bid is hedge funds (highest tech buying in 5 months last week, +34% 14-day semi ratio vs S&P at an all-time high). Institutions are still constructive on structural AI demand — they are selling index exposure, not quality growth. That distinction matters for tomorrow.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section" id="catalysts">
+    <div class="section-header h-coral">Catalyst Watch — Next 48 Hours 🔴</div>
+    <div class="section-body">
+
+      <table class="table-wrap">
+        <thead><tr><th>When</th><th>Event</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td class="td-bold">3:15–4:00 PM today</td><td>Power hour close</td><td>$7,070 defends or accelerators fire</td></tr>
+          <tr><td class="td-bold">After close today</td><td>505K contracts expire</td><td>−$304M of neg gamma rolls off · remaining −$482M carries</td></tr>
+          <tr><td class="td-bold">Overnight</td><td>Iran response to Islamabad</td><td>Binary · delegation sent = vanna crush · silence = gap down</td></tr>
+          <tr><td class="td-bold">Tomorrow 9:30 AM</td><td>Open</td><td>Opens in amplification regime, not suppression</td></tr>
+          <tr><td class="td-bold">Tomorrow afternoon</td><td>Retail sales data</td><td>Consumer read into ceasefire expiry</td></tr>
+          <tr><td class="td-bold" style="color:#ff3355;text-shadow:0 0 6px rgba(255,51,85,0.5);">Wed 4:50 PM ET</td><td class="td-red">Ceasefire expires</td><td>Hard deadline · Trump has explicitly ruled out extension</td></tr>
+          <tr><td class="td-bold">Wed postmarket</td><td>TSLA earnings (5.5% exp)</td><td>De-risked · weak print doubles the binary</td></tr>
+          <tr><td class="td-bold">Thu 4/23</td><td>INTC earnings (9.4% exp)</td><td>Semi bellwether · sector health read</td></tr>
+          <tr><td class="td-bold">Fri 4/24</td><td>Weekly OPEX</td><td>47% cumulative gamma gone · wider ranges</td></tr>
+          <tr><td class="td-bold">Mon 4/28</td><td>AAPL/MSFT/AMZN/GOOGL/META</td><td>~25% of SPX reports same evening · largest earnings day of year</td></tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div class="section" id="bottom">
+    <div class="section-header h-purple">Bottom Line — The Midday Read 🔴</div>
+    <div class="section-body">
+
+      <div class="sub">
+        <div class="sub-title">What actually happened today</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">The structure finally matched the macro. For three weeks the dealer book kept catching every dip because breadth was bullish even when headlines were not. Today was the first day where breadth <i>and</i> headlines both said the same thing — and the structure flipped from stabilizing to amplifying.</div></div>
+        <div class="row"><span class="dot dot-red"></span><div class="item">Monday's EOD report flagged SPY OI gamma going negative as a warning. Today that warning materialized. Every condition the bear case needed — ceasefire expiring without engagement, Hormuz closed, Vance grounded, institutions selling mega-cap — is now in place simultaneously.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">But the structure is still a binary, not a trend. Vanna +65.9K means a bullish catalyst triggers rapid dealer buying. Semis ran 14 straight green days. Hedge funds piled into tech at the highest rate in 5 months (real long adds, not covering). The reversal mechanic is loaded.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">The real risk profile</div>
+        <div class="row"><span class="dot dot-red"></span><div class="item"><b>Downside if headline is bad or silent:</b> $7,070 breaks, accelerator chain fires, SPY $700 tested overnight. Realistic range: $698–$703 by open Wednesday. VIX toward 25.</div></div>
+        <div class="row"><span class="dot dot-green"></span><div class="item"><b>Upside if headline is good:</b> Vanna crushes IV, $710 magnet pulls, possible extension to $715–$720 over the following 48 hours. Realistic range: +1.5% to +3% over two sessions. VIX back to 17.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Base case (no headline):</b> Sideways chop in the $703–$710 zone for the next 24 hours until the 4:50 PM Wednesday deadline forces a resolution. Charm bleeds through overnight in a call-heavy book regardless.</div></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="sub">
+        <div class="sub-title">The honest caveat on overnight news</div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">Everything written above can be reversed by a single headline in the next 16 hours. That is not a weakness of the analysis — that is the actual state of the market right now. The structure is not predictive; it's conditional on outcomes that have not happened yet. Treat any bold directional conviction tonight as overconfident.</div></div>
+        <div class="row"><span class="dot dot-amber"></span><div class="item">The highest-value move is to recognize where the tape is <i>already</i> positioned for the downside (put premium 10:1, single-leg Mag-7 puts, 184M bearish shares, GEX flipped), and where it is <i>not yet</i> positioned for the upside (IV not at extreme, vanna tailwind loaded, defensives still selling). A surprise in either direction has very different magnitudes of reaction because the crowded side is the downside.</div></div>
+      </div>
+
+      <div class="callout callout-purple">
+        <p>Historical context worth holding: across 20 post-WWII conflicts, the average S&P drawdown was −6% and recovered in ~28 days. Markets have cleared two world wars, Korea, Vietnam, the Gulf, 9/11, GFC, COVID, and Ukraine. <b>Markets price war. They don't collapse from it.</b> The mechanical structure says the next move is violent in whichever direction the ceasefire decides. The broader frame says that whatever happens tomorrow, the S&P will likely be higher 30 days later than it is right now in almost every historical comparison.</p>
+      </div>
+
+      <div class="callout callout-red">
+        <p><b>Into the close:</b> $7,070 on SPX and $706 on SPY are the levels everything rotates around. Hold them = pin. Lose them with conviction = cascade. The rest of the day is about which one the tape picks in the final 45 minutes.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="sources">Sources: Alphatica · UnusualWhales · Kobeissi Letter · Polymarket / Kalshi · Quant Data · Bloomberg · Watcher.Guru · + other sources</p>
+
+</main>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(item.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+  const sections = document.querySelectorAll('.section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === '#' + entry.target.id));
+        const ids = [...sections].map(s => s.id);
+        const idx = ids.indexOf(entry.target.id);
+        const pct = Math.round(((idx + 1) / ids.length) * 100);
+        document.querySelector('.nav-progress-fill').style.width = pct + '%';
+        document.querySelector('.nav-progress-label span:last-child').textContent = pct + '%';
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
