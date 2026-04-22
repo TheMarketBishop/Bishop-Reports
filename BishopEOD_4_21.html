@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Market Bishop &#8212; EOD Report &middot; April 21, 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+html{background:#000!important}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#000!important;color:#e8e8f0;line-height:1.6;display:flex;min-height:100vh}
+body::before{content:'';position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000!important;z-index:-9999}
+.nav{width:210px;min-width:210px;position:fixed;top:0;left:0;height:100vh;background:rgba(255,255,255,.02);border-right:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;padding:1.5rem 0 1rem;overflow-y:auto;z-index:100;transition:width .3s,min-width .3s,padding .3s,border-color .3s}
+.nav-brand{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,170,255,.5);padding:0 1.1rem;margin-bottom:.25rem}
+.nav-title{font-size:13px;font-weight:700;color:#fff;padding:0 1.1rem;margin-bottom:.15rem;text-shadow:0 0 20px rgba(0,170,255,.5);line-height:1.3}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);padding:0 1.1rem;margin-bottom:.5rem;letter-spacing:.06em}
+.nav-collapse-btn{display:flex;align-items:center;gap:7px;padding:.5rem 1.1rem;margin-top:.25rem;cursor:pointer;border:none;background:none;color:#00aaff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 0 10px rgba(0,170,255,.7);transition:color .15s,text-shadow .15s;width:100%;text-align:left}
+.nav-collapse-btn:hover{color:#55ccff;text-shadow:0 0 16px rgba(0,170,255,1)}
+.nav-collapse-btn::before{content:'\25C4';font-size:10px;transition:transform .25s}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 1.1rem;margin-bottom:.5rem;margin-top:.25rem}
+.nav-item{display:flex;align-items:center;gap:8px;padding:.42rem 1.1rem;cursor:pointer;border-left:2px solid transparent;transition:all .15s;text-decoration:none}
+.nav-item:hover{background:rgba(255,255,255,.04)}
+.nav-item.active{background:rgba(0,170,255,.07);border-left-color:#00aaff}
+.nav-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.nav-item-text{font-size:11.5px;color:rgba(255,255,255,.5);transition:color .15s}
+.nav-item:hover .nav-item-text{color:rgba(255,255,255,.8)}
+.nav-item.active .nav-item-text{color:#00aaff;text-shadow:0 0 10px rgba(0,170,255,.5)}
+.nd-blue{background:#00aaff;box-shadow:0 0 4px #00aaff}.nd-purple{background:#bb55ff;box-shadow:0 0 4px #bb55ff}.nd-teal{background:#00ffc8;box-shadow:0 0 4px #00ffc8}.nd-red{background:#ff3355;box-shadow:0 0 4px #ff3355}.nd-amber{background:#ffaa00;box-shadow:0 0 4px #ffaa00}.nd-green{background:#44ff88;box-shadow:0 0 4px #44ff88}.nd-coral{background:#ff6432;box-shadow:0 0 4px #ff6432}.nd-gray{background:rgba(255,255,255,.25)}
+.nav-divider{height:1px;background:rgba(255,255,255,.05);margin:.75rem 1.1rem}
+.nav-progress{padding:0 1.1rem;margin-top:auto;margin-bottom:.5rem}
+.nav-progress-label{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:flex;justify-content:space-between}
+.nav-progress-bar{height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.nav-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#00aaff,#bb55ff);border-radius:2px;transition:width .3s}
+.nav-time{font-size:9px;color:rgba(255,255,255,.18);padding:0 1.1rem}
+.nav-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:rgba(0,0,0,.85);border:1px solid rgba(0,170,255,.35);border-radius:8px;width:38px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:8px;backdrop-filter:blur(8px);box-shadow:0 0 16px rgba(0,170,255,.15);transition:all .2s}
+.nav-toggle:hover{border-color:rgba(0,170,255,.7);box-shadow:0 0 20px rgba(0,170,255,.3)}
+.nav-toggle span{display:block;width:18px;height:2px;background:#00aaff;border-radius:2px;box-shadow:0 0 4px rgba(0,170,255,.6);transition:all .25s;transform-origin:center}
+.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-collapsed .nav{width:0;min-width:0;overflow:hidden;padding:0;border-right-color:transparent}
+.nav-collapsed .page-wrapper{margin-left:0}
+.nav-collapsed .nav-toggle{display:flex}
+.nav-collapsed .nav-collapse-btn::before{transform:rotate(180deg)}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;backdrop-filter:blur(2px)}
+.page-wrapper{margin-left:210px;flex:1;display:flex;justify-content:center;min-height:100vh;transition:margin-left .3s}
+.page{width:100%;max-width:740px;padding:2.5rem 1.5rem;position:relative;z-index:1}
+@media(max-width:768px){body{flex-direction:column}.nav{width:240px!important;min-width:240px!important;transform:translateX(-100%);transition:transform .3s;z-index:150}.nav-open .nav{transform:translateX(0)}.nav-open .nav-overlay{display:block}.page-wrapper{margin-left:0!important}.nav-toggle{display:flex}.nav-collapse-btn{display:none}.page{padding:4.5rem 1rem 2rem}}
+@media(max-width:500px){.gloss{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.snapshot{grid-template-columns:repeat(2,1fr)}}
+.brand{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,170,255,.55);margin-bottom:.5rem}
+.page-title{font-size:26px;font-weight:700;color:#fff;margin-bottom:.3rem;text-shadow:0 0 30px rgba(0,170,255,.7),0 0 60px rgba(0,170,255,.3)}
+.page-sub{font-size:12px;color:#00aaff;margin-bottom:.4rem;text-shadow:0 0 12px rgba(0,170,255,.6);letter-spacing:.08em;text-transform:uppercase}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:1rem;letter-spacing:.04em;line-height:1.6}
+.disclaimer-short{display:flex;align-items:flex-start;gap:8px;background:rgba(255,170,0,.05);border:1px solid rgba(255,170,0,.18);border-radius:8px;padding:.6rem .9rem;margin-bottom:1.25rem;font-size:12px;color:rgba(255,255,255,.45);line-height:1.55}
+.disclaimer-short b{color:#ffaa00;font-weight:700}
+.disc-icon{font-size:13px;flex-shrink:0;margin-top:1px;opacity:.6}
+.snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:2rem}
+.snap-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.75rem .85rem}
+.snap-label{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px;letter-spacing:.06em;text-transform:uppercase}
+.snap-val{font-size:16px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:2px}
+.snap-sub{font-size:10px;color:rgba(255,255,255,.4);line-height:1.4}
+.val-red{color:#ff3355;text-shadow:0 0 10px rgba(255,51,85,.5)}.val-green{color:#44ff88;text-shadow:0 0 10px rgba(68,255,136,.5)}.val-amber{color:#ffaa00;text-shadow:0 0 10px rgba(255,170,0,.5)}.val-blue{color:#00aaff;text-shadow:0 0 10px rgba(0,170,255,.5)}
+.section{margin-bottom:1.5rem;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);scroll-margin-top:2rem}
+.section:has(.h-blue){border-color:rgba(0,170,255,.28);box-shadow:0 0 28px rgba(0,170,255,.06)}.section:has(.h-purple){border-color:rgba(187,85,255,.28);box-shadow:0 0 28px rgba(187,85,255,.06)}.section:has(.h-teal){border-color:rgba(0,255,200,.25);box-shadow:0 0 28px rgba(0,255,200,.05)}.section:has(.h-red){border-color:rgba(255,51,85,.28);box-shadow:0 0 28px rgba(255,51,85,.06)}.section:has(.h-amber){border-color:rgba(255,170,0,.28);box-shadow:0 0 28px rgba(255,170,0,.06)}.section:has(.h-green){border-color:rgba(68,255,136,.25);box-shadow:0 0 28px rgba(68,255,136,.05)}.section:has(.h-coral){border-color:rgba(255,100,50,.28);box-shadow:0 0 28px rgba(255,100,50,.06)}
+.section-header{padding:.65rem 1rem;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.05)}
+.h-blue{background:rgba(0,170,255,.09);color:#00aaff;text-shadow:0 0 14px rgba(0,170,255,.9);border-bottom-color:rgba(0,170,255,.15)}.h-purple{background:rgba(187,85,255,.09);color:#bb55ff;text-shadow:0 0 14px rgba(187,85,255,.9);border-bottom-color:rgba(187,85,255,.15)}.h-teal{background:rgba(0,255,200,.07);color:#00ffc8;text-shadow:0 0 14px rgba(0,255,200,.9);border-bottom-color:rgba(0,255,200,.12)}.h-red{background:rgba(255,51,85,.09);color:#ff3355;text-shadow:0 0 14px rgba(255,51,85,.9);border-bottom-color:rgba(255,51,85,.15)}.h-amber{background:rgba(255,170,0,.08);color:#ffaa00;text-shadow:0 0 14px rgba(255,170,0,.9);border-bottom-color:rgba(255,170,0,.15)}.h-green{background:rgba(68,255,136,.07);color:#44ff88;text-shadow:0 0 14px rgba(68,255,136,.9);border-bottom-color:rgba(68,255,136,.12)}.h-coral{background:rgba(255,100,50,.08);color:#ff6432;text-shadow:0 0 14px rgba(255,100,50,.9);border-bottom-color:rgba(255,100,50,.15)}
+.section-body{padding:1rem 1rem .85rem}
+.sub{margin-bottom:1rem}
+.sub-title{font-size:11px;font-weight:700;color:rgba(0,255,200,.75);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(0,255,200,.1);letter-spacing:.06em;text-transform:uppercase}
+.row{display:flex;gap:10px;margin-bottom:7px;align-items:flex-start}
+.dot{width:6px;height:6px;border-radius:50%;margin-top:8px;flex-shrink:0}
+.item{font-size:14px;color:rgba(255,255,255,.8);line-height:1.65}
+.item b{font-weight:700;color:#fff}
+.dot-blue{background:#00aaff;box-shadow:0 0 5px #00aaff}.dot-purple{background:#bb55ff;box-shadow:0 0 5px #bb55ff}.dot-teal{background:#00ffc8;box-shadow:0 0 5px #00ffc8}.dot-red{background:#ff3355;box-shadow:0 0 5px #ff3355}.dot-amber{background:#ffaa00;box-shadow:0 0 5px #ffaa00}.dot-green{background:#44ff88;box-shadow:0 0 5px #44ff88}.dot-coral{background:#ff6432;box-shadow:0 0 5px #ff6432}.dot-gray{background:#445}
+.divider{height:1px;background:rgba(255,255,255,.05);margin:12px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.mini-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.7rem .85rem}
+.mini-label{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase}
+.mini-val{font-size:13px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.5}
+.mini-sub{font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;line-height:1.45}
+.gloss{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.gloss-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:.55rem .7rem}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;margin-bottom:3px;text-shadow:0 0 6px rgba(0,170,255,.4)}
+.gloss-def{font-size:11px;color:rgba(255,255,255,.55);line-height:1.45}
+.gloss-intro{font-size:12px;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:10px}
+.table-wrap{width:100%;border-collapse:collapse;margin-top:6px;margin-bottom:10px}
+.table-wrap th{font-size:10px;color:rgba(255,255,255,.28);font-weight:700;text-align:left;padding:5px 10px 5px 0;border-bottom:1px solid rgba(255,255,255,.08);letter-spacing:.07em;text-transform:uppercase}
+.table-wrap td{font-size:12.5px;color:rgba(255,255,255,.72);padding:7px 10px 7px 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.5}
+.table-wrap tr:last-child td{border-bottom:none}
+.td-green{color:#44ff88!important;font-weight:700;text-shadow:0 0 8px rgba(68,255,136,.5)}.td-amber{color:#ffaa00!important;font-weight:700;text-shadow:0 0 8px rgba(255,170,0,.5)}.td-red{color:#ff3355!important;font-weight:700;text-shadow:0 0 8px rgba(255,51,85,.5)}.td-blue{color:#00aaff!important;font-weight:700;text-shadow:0 0 8px rgba(0,170,255,.5)}.td-bold{font-weight:700;color:rgba(255,255,255,.9)}
+.callout{border-left:2px solid #ffaa00;padding:.65rem .9rem;margin:10px 0;background:rgba(255,170,0,.06);border-radius:0 8px 8px 0;box-shadow:-3px 0 14px rgba(255,170,0,.12)}
+.callout p{font-size:13px;color:#ffaa00;line-height:1.65}
+.callout-red{border-left-color:#ff3355;background:rgba(255,51,85,.06);box-shadow:-3px 0 14px rgba(255,51,85,.12)}.callout-red p{color:#ff6680}
+.callout-green{border-left-color:#44ff88;background:rgba(68,255,136,.05);box-shadow:-3px 0 14px rgba(68,255,136,.1)}.callout-green p{color:#44ff88}
+.callout-blue{border-left-color:#00aaff;background:rgba(0,170,255,.06);box-shadow:-3px 0 14px rgba(0,170,255,.12)}.callout-blue p{color:#00aaff}
+.callout-purple{border-left-color:#bb55ff;background:rgba(187,85,255,.06);box-shadow:-3px 0 14px rgba(187,85,255,.12)}.callout-purple p{color:#bb55ff}
+.callout p b{color:inherit;filter:brightness(1.2)}
+.sources{font-size:11px;color:rgba(255,255,255,.25);text-align:center;letter-spacing:.06em;margin-top:2rem;padding:1rem}
+.disclaimer-full{margin-top:3rem;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.015)}
+.disc-full-header{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);padding:.6rem 1rem;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.disc-full-body{padding:1rem 1rem .85rem;display:flex;flex-direction:column;gap:.75rem}
+.disc-full-body p{font-size:11.5px;color:rgba(255,255,255,.32);line-height:1.7}
+.disc-full-body p b{color:rgba(255,255,255,.5);font-weight:700}
+.disc-final{border-top:1px solid rgba(255,255,255,.05);padding-top:.75rem;margin-top:.25rem;font-size:11px!important;color:rgba(255,255,255,.25)!important}
+.disc-final b{color:rgba(255,255,255,.4)!important}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">The Market Bishop</div>
+  <div class="nav-title">EOD Report</div>
+  <div class="nav-date">April 21, 2026 &nbsp;&middot;&nbsp; Post-Close + AH</div>
+  <button class="nav-collapse-btn" id="collapseBtn">&nbsp;Hide Menu</button>
+  <div class="nav-label">Sections</div>
+  <a class="nav-item active" href="#tldr"><span class="nav-dot nd-amber"></span><span class="nav-item-text">TL;DR</span></a>
+  <a class="nav-item" href="#gloss"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Glossary</span></a>
+  <a class="nav-item" href="#changed"><span class="nav-dot nd-coral"></span><span class="nav-item-text">What Changed</span></a>
+  <a class="nav-item" href="#session"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Session Recap</span></a>
+  <a class="nav-item" href="#ceasefire"><span class="nav-dot nd-green"></span><span class="nav-item-text">Ceasefire &#8212; Bullish Case</span></a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" href="#gex"><span class="nav-dot nd-teal"></span><span class="nav-item-text">EOD GEX Structure</span></a>
+  <a class="nav-item" href="#blocktape"><span class="nav-dot nd-teal"></span><span class="nav-item-text">Block Tape EOD</span></a>
+  <a class="nav-item" href="#greeks"><span class="nav-dot nd-purple"></span><span class="nav-item-text">Greek Forces EOD</span></a>
+  <a class="nav-item" href="#afterhours"><span class="nav-dot nd-amber"></span><span class="nav-item-text">After-Hours</span></a>
+  <div class="nav-divider"></div>
+  <a class="nav-item" href="#vol"><span class="nav-dot nd-red"></span><span class="nav-item-text">Volatility Structure</span></a>
+  <a class="nav-item" href="#sectors"><span class="nav-dot nd-coral"></span><span class="nav-item-text">Sector Rotation</span></a>
+  <a class="nav-item" href="#flow"><span class="nav-dot nd-teal"></span><span class="nav-item-text">Options Flow</span></a>
+  <a class="nav-item" href="#catalysts"><span class="nav-dot nd-coral"></span><span class="nav-item-text">Catalyst Watch</span></a>
+  <a class="nav-item" href="#decay"><span class="nav-dot nd-red"></span><span class="nav-item-text">Gamma Decay</span></a>
+  <a class="nav-item" href="#tomorrow"><span class="nav-dot nd-blue"></span><span class="nav-item-text">Tomorrow's Setup</span></a>
+  <a class="nav-item" href="#bottom"><span class="nav-dot nd-purple"></span><span class="nav-item-text">Bottom Line</span></a>
+  <div class="nav-divider"></div>
+  <div class="nav-progress">
+    <div class="nav-progress-label"><span>Progress</span><span>0%</span></div>
+    <div class="nav-progress-bar"><div class="nav-progress-fill"></div></div>
+  </div>
+  <div class="nav-time">Generated Post-Close ET &middot; April 21, 2026</div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="page-wrapper">
+<main class="page">
+
+<p class="brand">The Market Bishop</p>
+<h1 class="page-title">EOD Report &#8212; April 21</h1>
+<p class="page-sub">Post-Close &nbsp;&middot;&nbsp; Ceasefire Extended Indefinitely &nbsp;&middot;&nbsp; Full Breakdown + After-Hours</p>
+<p class="page-stamp">Generated: Post-Close ET &nbsp;&middot;&nbsp; Tuesday April 21, 2026 &nbsp;&middot;&nbsp; Session: CLOSED &nbsp;&middot;&nbsp; After-hours developments included</p>
+
+<div class="disclaimer-short">
+  <span class="disc-icon">&#9888;</span>
+  <span><b>Not financial advice.</b> All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan &#8212; past analysis does not guarantee future results.</span>
+</div>
+
+<!-- SNAPSHOT BAR -->
+<div class="snapshot">
+  <div class="snap-card"><div class="snap-label">SPX Close / SPY</div><div class="snap-val val-red">7,064 / $704.08</div><div class="snap-sub">&minus;0.65% session &middot; AH +0.4% post-ceasefire ext.</div></div>
+  <div class="snap-card"><div class="snap-label">VIX Close</div><div class="snap-val val-red">20.65</div><div class="snap-sub">P/C 0.82 &middot; IV Rank 0.274 &middot; Vol expanding</div></div>
+  <div class="snap-card"><div class="snap-label">Net GEX (EOD)</div><div class="snap-val val-red">&minus;$628M</div><div class="snap-sub">Deepest negative of entire cycle</div></div>
+  <div class="snap-card"><div class="snap-label">Block Net Flow</div><div class="snap-val val-red">&minus;$49.5B</div><div class="snap-sub">3.9&times; sell/buy &middot; First net sell day of cycle</div></div>
+  <div class="snap-card"><div class="snap-label">Daily Delta Flow</div><div class="snap-val val-red">&minus;326.3M</div><div class="snap-sub">All-time record &middot; nearly 2&times; prior record</div></div>
+  <div class="snap-card"><div class="snap-label">F&amp;G Composite</div><div class="snap-val val-amber">50</div><div class="snap-sub">Neutral &middot; Momentum 88 &middot; Options 33</div></div>
+</div>
+
+<!-- TL;DR -->
+<div class="section" id="tldr">
+  <div class="section-header h-amber">TL;DR &#8212; What You Need To Know</div>
+  <div class="section-body">
+    <div class="row"><span class="dot dot-green"></span><div class="item"><b>The single biggest headline of the week happened at 4:09 PM.</b> President Trump extended the US ceasefire with Iran indefinitely at Pakistan's request, pending Iran forming a unified proposal. SPY ripped +0.4% in minutes after-hours. The worst-case war binary &#8212; the one that structured every bearish thesis, every put position, and every sell block this week &#8212; has been removed from the near-term calendar.</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item"><b>The session underneath it was the most destructive single day of the entire cycle.</b> &minus;326.3M shares of short delta (a new all-time record, nearly 2&times; the prior high set just hours earlier). &minus;$49.5B block net sell at 3.9&times; ratio, every mega-cap liquidated simultaneously. Net GEX collapsed to &minus;$628M, deepest negative reading of the cycle. A/D 0.58&times;, every exchange red &#8212; breadth confirmed distribution for the first time in three weeks.</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">GEX structure remains deeply negative: GEX flip at 7,055 is just 9 points below where we closed. The 7,000&#8211;7,075 zone has flipped entirely negative. Positive gamma doesn't re-engage until 7,100 (+$59M). <b>Tomorrow's key level: SPX must open above 7,100 and hold it.</b> Below 7,055 and you're back in negative gamma with no mechanical floor until 7,000.</div></div>
+    <div class="row"><span class="dot dot-green"></span><div class="item">Vanna is now +69.6K (bullish). The massive put build today means a vol crush from ceasefire relief forces mechanical dealer buying &#8212; the identical engine that powered 13 consecutive green days. 6.84M new put positions opened against a binary that no longer has a hard deadline. That's your snap-back fuel. SPY futures at ~7,094 (+0.42%) are already knocking on 7,100.</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">Bearish engulfing candle: technically "NOT DETECTED" per chart scan &#8212; price requirements met but pattern didn't fully confirm algorithmically. After-hours recovery further negates any daily candle bear signal.</div></div>
+    <div class="row"><span class="dot dot-blue"></span><div class="item"><b>Wednesday is still the key session.</b> IBM, NOW, and UAL report. Iran's response to the extension determines whether the snap-back fires or fades. Key range: 7,025&#8211;7,175. Clear 7,100 = magnets at 7,150/7,200 activate. Lose 7,055 = negative gamma amplifies every tick lower.</div></div>
+  </div>
+</div>
+
+<!-- GLOSSARY -->
+<div class="section" id="gloss">
+  <div class="section-header h-blue">Quick Reference &#8212; Key Terms Used In This Report</div>
+  <div class="section-body">
+    <p class="gloss-intro">Brief definitions for the options and structural mechanics terms used throughout. Skip if already fluent in dealer-positioning language.</p>
+    <div class="gloss">
+      <div class="gloss-item"><div class="gloss-term">GEX (Gamma Exposure)</div><div class="gloss-def">Aggregate dealer gamma. Positive = dealers stabilize (buy dips). Negative = dealers amplify every move. Currently &minus;$628M.</div></div>
+      <div class="gloss-item"><div class="gloss-term">GEX Flip</div><div class="gloss-def">Price where GEX crosses from positive to negative. At 7,055 &#8212; 9 pts below close. Below this, moves overshoot in both directions.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Vanna</div><div class="gloss-def">How delta changes when IV changes. Now +69.6K (bullish). Vol crush from ceasefire relief forces automatic dealer buying.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Charm</div><div class="gloss-def">Delta decay from time alone. Runs 24/7. In today's put-heavy book, charm now partially creates dealer buying as put deltas bleed daily.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Dealer Short Delta</div><div class="gloss-def">Shares dealers must buy back to stay hedged. Was 215M at peak, now 83M &#8212; the forced-buying engine is 61% smaller but still active.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Accelerator Zone</div><div class="gloss-def">A strike with heavy negative GEX. When breached, forces dealer selling &#8212; amplifying the move. $703, $700, $680 are all loaded below.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Magnet Strike</div><div class="gloss-def">A strike with heavy positive GEX that mechanically pulls price. 7,100 (+$59M), 7,150 (+$96M), 7,200 (+$121M) all active above.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Put Unwind</div><div class="gloss-def">When protective put holders close positions. Triggers dealer short-covering (buying). The reflexive engine behind the 13-day rally &#8212; now primed to fire again.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Block Flow</div><div class="gloss-def">Institutional trades &ge;$500K. Today: &minus;$49.5B net, 3.9&times; sell ratio. First net sell day of the cycle. Every mega-cap simultaneously liquidated.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT CHANGED SINCE MIDDAY -->
+<div class="section" id="changed">
+  <div class="section-header h-coral">What Changed Since the Midday Report</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">Final-hour deterioration</div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Daily delta flow exploded from &minus;184.5M at 3:00 PM to &minus;326.3M at close &#8212; nearly doubled in the final hour. New all-time record by a factor that isn't close</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">A $15M put spike hit right before close as news landed that Iran told Pakistan it would not attend Wednesday talks. The tape was front-running the worst case at precisely the wrong moment</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">GEX deepened from &minus;$450M at midday to &minus;$628M at close. Near-term GEX: &minus;$699M. Both the deepest readings of the entire cycle</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">6.84M new put positions opened. 5.80M new call positions opened. 91% of all volume was new positioning &#8212; both sides building at record scale ahead of what looked like a binary Wednesday</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">The game-changer at 4:09 PM ET</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Trump issues formal presidential statement extending the ceasefire indefinitely.</b> At Pakistan's request (PM Sharif, Field Marshal Munir), the US will hold planned military action while Iran works toward a unified proposal. Military blockade continues. No new hard deadline</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">SPY immediately ripped +0.4% after-hours, moving from $704 toward $706&#8211;707. The binary the market spent all session hedging against no longer has a date attached to it</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">WTI crude fell back below $90/barrel from the intraday high above $92. Oil pulling back on the ceasefire headline is real signal &#8212; the Hormuz risk premium is starting to drain</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Iran's response: hostile and contradictory. Parliament advisor called the extension "an attempt to buy time for a surprise attack." Iran's military warned of "powerful attacks on predetermined targets." Iran said it did not ask for the extension. These signals require watching but don't change the mechanical setup</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL SESSION RECAP -->
+<div class="section" id="session">
+  <div class="section-header h-blue">Full Session Recap &#8212; April 21</div>
+  <div class="section-body">
+    <div class="row"><span class="dot dot-blue"></span><div class="item">SPX opened near 7,100 and immediately tested the 7,068 MVC level flagged in the midday report. Dealer support at the magnet strike held exactly as expected on the open</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item">By 11:22 AM breadth confirmed distribution for the first time in three weeks &#8212; A/D 0.58&times;, every exchange below 0.60&times;, only 25.3% of stocks above VWAP. The divergence that protected bulls on every prior scary Monday finally collapsed</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item">GEX flipped negative by midday &#8212; first negative reading of the entire cycle &#8212; converting dealers from shock absorbers to amplifiers for both directions simultaneously</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">Dark pool data showed massive institutional liquidity anchored at $708.52 ($1.79B notional) and $704.03 ($1.27B notional). These acted as intraday reference levels throughout the session</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item">News that Iran would not attend Wednesday talks triggered the final-hour cascade. SPY broke $706, tested $703.38 intraday, and negative gamma amplified every tick lower into the close</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item">SPY closed $704.08, &minus;0.65%. Volume: 56M shares &#8212; well above average, confirming genuine institutional participation on the sell side</div></div>
+    <div class="callout callout-red"><p>Bearish engulfing candle was triggered and flagged &#8212; all four price requirements met &#8212; but the pattern was officially classified as "NOT DETECTED" by the algo scan. Today's body met the criteria on price, but the pattern did not fully confirm algorithmically. The after-hours recovery further negates the bearish candle read.</p></div>
+  </div>
+</div>
+
+<!-- CEASEFIRE EXTENSION &#8212; THE BULLISH CASE -->
+<div class="section" id="ceasefire">
+  <div class="section-header h-green">&#9650; The Ceasefire Extension &#8212; Why This Is Structurally Bullish</div>
+  <div class="section-body">
+    <div class="callout callout-green"><p><b>The most important market event in two weeks happened 9 minutes after the close.</b> Trump extended the ceasefire indefinitely. The binary that structured every put position, every sell block, and every GEX deterioration this week has been removed from the calendar. This is not noise &#8212; it is the single highest-impact macro catalyst available, arriving at the exact moment when the structure was most loaded with fear premium ready to unwind.</p></div>
+    <div class="sub">
+      <div class="sub-title">The mechanical bull case &#8212; why it fires automatically</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Vanna +69.6K = automatic buying on vol crush.</b> The current book is now put-heavy. When IV compresses (which it will as war premium drains from the ceasefire extension), put deltas shrink and dealers are mathematically forced to buy shares to rebalance. This is not sentiment. It is a contractual obligation. The ceasefire extension is exactly the catalyst needed to unlock this compression from current IV (37.82, IV rank 0.274) back toward pre-crisis levels of 15&#8211;16%</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>6.84M new put positions need exits.</b> Every one of those puts was opened to hedge a binary that now has no hard deadline. The path of least resistance for those positions is closure. Closure = dealers buying back their short hedges = mechanical buying. This is the identical reflexive loop that generated 13 consecutive green days after the original put unwind &#8212; and today loaded even more puts into that engine</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Iran's government is "seriously fractured" &#8212; Trump's own words.</b> A fractured adversary that can't form a unified position is a negotiating adversary, not a warring one. The incoherence of Iran's response (denying they requested an extension while Pakistan publicly confirmed they did, and thanked Trump) signals internal chaos rather than military resolve. Pakistan PM Sharif publicly thanked Trump for "graciously accepting our request" &#8212; a formal diplomatic acknowledgment that active mediation is alive</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>SPY bull flag remains fully confirmed on the daily chart.</b> All six requirements met: pole gain, flag slope, tight range, bar count, retracement, and up-bar dominance. Today's pullback was the flag consolidation. The after-hours recovery keeps the pattern alive and unbroken. Bull flags resolve higher statistically and the mechanics now support that resolution</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Magnet chain above is completely intact: 7,100 (+$59M) &#8594; 7,150 (+$96M) &#8594; 7,200 (+$121M).</b> These strikes carry substantial positive GEX. The moment SPX clears 7,100, dealers flip back to buying dips and the magnet chain provides structured upward momentum. Futures at +0.42% (~7,094) are already sitting directly in front of the gate</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Hedge fund tech exposure at a 5-year high.</b> Last week saw the highest rate of genuine institutional long adds in global tech in 5 months &#8212; not short covering, actual long accumulation. That conviction exists in the backdrop and will reload once the binary resolves favorably. The institutions that sold today were de-risking a binary, not changing their view</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>$428B buyback wall reactivates in ~2 weeks.</b> Corporate buyback blackouts end as earnings season winds down. ~$18B/week in price-insensitive algorithmic demand returns to the tape in early May. The ceasefire extension buys the time needed for this structural bid to reactivate without a geopolitical disruption overwhelming it. That timing alignment is significant</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Oil pulled back below $90 on the headline.</b> WTI settling near $89&#8211;90 after touching $92 intraday signals real de-escalation premium being priced out. Every dollar oil falls is inflationary pressure removed from the economy and margin pressure removed from airlines, industrials, and consumer names. The Hormuz risk premium is the most direct inflationary headwind markets face right now &#8212; and it's starting to compress</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">The caveats &#8212; what could still go wrong</div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Iran publicly denied requesting the extension, called the blockade an "act of war," and warned of "powerful attacks on predetermined targets." Iran's Tasnim: Hormuz blockade amounts to continued hostility and Iran will break it by force if necessary. These are real escalation signals, not rhetorical posturing</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">The Hormuz blockade continues. Oil is still +3&#8211;4% above pre-conflict levels. UAL just reported a $340M Q1 fuel cost increase from the Iran war. Economic damage compounds daily the strait stays closed</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Vance trip to Pakistan was cancelled. The diplomatic mechanism for Iran to submit a "unified proposal" has no defined venue, no timeline, and no framework. This is a pause, not a resolution pathway</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">GEX is still &minus;$628M with a flip only 9 points below close. One negative headline tomorrow fires into the most dangerous gamma structure of the entire cycle with almost no cushion</div></div>
+    </div>
+    <div class="callout"><p>The honest read: a pause is not a peace deal. But mechanically, a pause with no hard deadline is enough to trigger the put unwind, the vanna tailwind, and the magnet chain activation. Markets don't need resolution &#8212; they need removal of the worst-case tail. That just happened. The bigger the fear built up in the structure, the bigger the snap-back when that fear resolves.</p></div>
+  </div>
+</div>
+
+<!-- EOD GEX -->
+<div class="section" id="gex">
+  <div class="section-header h-teal">EOD GEX Structure &#8212; April 22 Setup</div>
+  <div class="section-body">
+    <div class="grid3">
+      <div class="mini-card"><div class="mini-label">SPX Close</div><div class="mini-val val-red">7,064</div><div class="mini-sub">Sitting inside the negative GEX zone</div></div>
+      <div class="mini-card"><div class="mini-label">Net GEX (AH adjusted)</div><div class="mini-val val-amber">+$496M</div><div class="mini-sub">Halved from +$982M Monday &#8212; largest single-session drop of cycle</div></div>
+      <div class="mini-card"><div class="mini-label">GEX Flip</div><div class="mini-val val-red">7,055</div><div class="mini-sub">Only 9 pts below close. Regime boundary.</div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">How the zone collapsed &#8212; 7,000 flipped from floor to trap</div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">7,000 &#8212; which carried +$308M two weeks ago and was the magnet that pulled SPX from 6,556 &#8212; is now &minus;$16M. 7,050 is &minus;$17M. 7,025 is &minus;$15M. The entire 6,900&#8211;7,075 band flipped negative in a single session</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">8 of the top 10 volume GEX strikes today were put buying. Heaviest flow: 7,050 (&minus;$64M), 7,000 (&minus;$60M), 7,075 (&minus;$37M). Aggressive put layering right at spot &#8212; immediate protection, not distant hedging</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Positive gamma starts at 7,100 (+$59M) and builds through 7,150 (+$96M) and 7,200 (+$121M). Magnets above are intact. The gap between spot and the positive zone is ~36 pts &#8212; exactly what futures have already covered overnight</div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">SPX strike map for April 22</div>
+      <table class="table-wrap">
+        <thead><tr><th>Strike</th><th>GEX</th><th>Role</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td style="color:#ff3355;font-weight:700">6,800</td><td class="td-red">&minus;$45M</td><td>Max accelerator</td><td>Destination if 7,000 breaks with force</td></tr>
+          <tr><td class="td-bold">6,900</td><td class="td-red">&minus;$10M</td><td>No support</td><td>Thin air on sustained sell-off</td></tr>
+          <tr><td class="td-bold">7,000</td><td class="td-red">&minus;$16M</td><td>Former floor &#8212; now trap</td><td>Was +$308M magnet 2 weeks ago</td></tr>
+          <tr><td class="td-bold">7,050</td><td class="td-red">&minus;$17M</td><td>Negative zone</td><td>Between flip and 7,000 &#8212; no safety net</td></tr>
+          <tr><td style="color:#ffaa00;font-weight:700">7,055</td><td class="td-amber">GEX FLIP</td><td>Regime boundary</td><td>9 pts below close. Must hold for bull case</td></tr>
+          <tr><td style="color:#ffaa00;font-weight:700">7,064</td><td class="td-amber">&minus;$12M</td><td>Close price &#8212; negative zone</td><td>Spot still in danger at close</td></tr>
+          <tr><td style="color:#44ff88;font-weight:700">7,100</td><td class="td-green">+$59M</td><td>Positive gamma begins</td><td><b>THE key level. Must clear + hold tomorrow</b></td></tr>
+          <tr><td style="color:#44ff88;font-weight:700">7,150</td><td class="td-green">+$96M</td><td>Magnet</td><td>First bull target once 7,100 clears</td></tr>
+          <tr><td style="color:#44ff88;font-weight:700">7,200</td><td class="td-green">+$121M</td><td>Max magnet</td><td>Full bull resolution level</td></tr>
+          <tr><td class="td-bold">7,300</td><td class="td-green">+$58M</td><td>Extended magnet</td><td>Sustained diplomacy / sustained rally target</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-blue"><p><b>Tomorrow's expected range: 7,025&#8211;7,175.</b> Futures at ~7,094 (+0.42%) are already pushing toward the 7,100 gate. Clear 7,100 and hold it &#8212; positive gamma activates, dealers buy dips, magnets at 7,150&#8211;7,200 pull price. Fade below 7,055 &#8212; negative gamma re-engages, every tick gets amplified, and 7,000 (now a trap) is the next test with nothing mechanical supporting it.</p></div>
+  </div>
+</div>
+
+<!-- BLOCK TAPE -->
+<div class="section" id="blocktape">
+  <div class="section-header h-teal">Block Tape EOD &#8212; The Institutional Receipt</div>
+  <div class="section-body">
+    <div class="grid2">
+      <div class="mini-card"><div class="mini-label">Net Block Flow</div><div class="mini-val val-red">&minus;$49.5B</div><div class="mini-sub">$66.4B sells / $16.8B buys &middot; First net sell day of cycle</div></div>
+      <div class="mini-card"><div class="mini-label">Sell/Buy Ratio</div><div class="mini-val val-red">3.9&times;</div><div class="mini-sub">Was 1.3&times; Monday &middot; 2.5&times; Friday &middot; Conviction shift is stark</div></div>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Every major name sold</div>
+      <table class="table-wrap">
+        <thead><tr><th>Ticker</th><th>Net Flow</th><th>Blocks</th><th>Read</th></tr></thead>
+        <tbody>
+          <tr><td class="td-bold">NVDA</td><td class="td-red">&minus;$7.43B</td><td>1,565</td><td>Was top institutional buyer for 3+ weeks. Complete 180 today.</td></tr>
+          <tr><td class="td-bold">AAPL</td><td class="td-red">&minus;$5.45B</td><td>891</td><td>$3M buys vs $5.5B sells. Essentially zero buy side.</td></tr>
+          <tr><td class="td-bold">SPY</td><td class="td-red">&minus;$5.11B</td><td>4,482</td><td>Index-level liquidation across 4,482 prints.</td></tr>
+          <tr><td class="td-bold">QQQ</td><td class="td-red">&minus;$4.98B</td><td>2,996</td><td>Tech ETF sold in coordination with individual names.</td></tr>
+          <tr><td class="td-bold">GOOGL</td><td class="td-red">&minus;$3.24B</td><td>366</td><td>Near-zero buys. Pre-earnings Apr 28 de-risk.</td></tr>
+          <tr><td class="td-bold">AMZN</td><td class="td-red">&minus;$3.20B</td><td>553</td><td>Reversed from Monday. Pre-earnings de-risk.</td></tr>
+          <tr><td class="td-bold">MSFT</td><td class="td-red">&minus;$2.70B</td><td>661</td><td>$10.3B swing in 2 days (was +$5.08B buyer Monday).</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub">
+      <div class="sub-title">The lone buyer &#8212; AVGO stands alone</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>AVGO (Broadcom) +$3.22B across 274 blocks</b> &#8212; the only institutional buyer in a sea of red. Not tech broadly. Not semis broadly. Broadcom specifically. 274 prints of deliberate conviction accumulation while every other mega-cap was liquidated. Someone has a thesis unique to AVGO that is not correlated with the general fear</div></div>
+    </div>
+    <div class="callout callout-red"><p>This is not sector rotation or reshuffling. &minus;$49.5B net sell at 3.9&times; ratio with every mega-cap sold simultaneously is coordinated institutional de-risking ahead of a known binary. The institutions that drove the 13-day rally took their chips off the table today. The ceasefire extension means those same hands will likely reload on Wednesday &#8212; the same conviction that bought the original blockade fear will buy back the ceasefire relief.</p></div>
+    <div class="sub">
+      <div class="sub-title">Notable unusual options flow (from triage doc)</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>CAR $750C 5/8 exp &#8212; $38M in premium ($123.35 avg).</b> Largest single options print of the day. CAR hit highest daily volume since Nov 2021 short squeeze. AH showing $755+</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">AMD $400C 8/21 exp &#8212; $3.2M. TXN $255C 5/15 exp &#8212; $2.54M. ARM $230C 9/18 exp &#8212; $956K. Multi-month semiconductor upside calls suggesting institutional conviction in semis recovery through summer</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">AAPL $255P 5/1 exp &#8212; $802K premium, bid-side opener. An aggressive downside bet on AAPL below $255 within 10 days &#8212; notable given AAPL reports April 28</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">ADI $370P 4/24 exp &#8212; $2M near-term put. DIS $101P 5/15 &#8212; $1.1M. INTC $60P 5/8 &#8212; $615K. Near-term put flow concentrated in semis and consumer names</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GREEK FORCES -->
+<div class="section" id="greeks">
+  <div class="section-header h-purple">Greek Forces EOD &#8212; Overnight Mechanics</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">Vanna &#8212; flipped bullish, loaded to fire</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Vanna: +69.6K (bullish).</b> Today's massive put buying fundamentally shifted the book composition. The dominant exposure is now put-heavy &#8212; meaning when IV compresses on ceasefire relief, put deltas shrink and dealers are mathematically forced to BUY shares. SPX IV at 37.82 (rank 0.274) has significant room to compress toward 15&#8211;16% (pre-conflict levels). That compression IS the vanna fuel &#8212; it activates automatically</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">VIX IV rank at 1.467 (extremely elevated) means vol-of-vol itself is priced for a large VIX move. A rapid VIX collapse on ceasefire confirmation would be the single most powerful amplifier of the vanna buying engine &#8212; compounding the put unwind with forced mechanical buying simultaneously</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Charm &#8212; now partially constructive</div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Charm runs 24/7 regardless of news. In a call-heavy book it was purely headwind (dealers selling shares as call deltas decayed). With today's put accumulation shifting the dominant exposure, charm now works partially in the bullish direction &#8212; put deltas also decay daily, requiring dealers to reduce short hedges and add buy-side pressure</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Dealer short delta &#8212; the engine at 61% below peak</div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">83M shares remaining. Down from 215M peak (Friday), down from 129M this morning. The forced-buying engine that made the 13-day rally feel effortless is 61% smaller &#8212; but still present</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">83M dealer short + vanna +69.6K firing on vol crush + 6.84M puts unwinding = three mechanical forces compounding simultaneously on a good headline. The scale is smaller than the original rally, but the structure is identical. A violent snap-back remains very much on the table if 7,100 clears</div></div>
+    </div>
+    <div class="callout callout-purple"><p><b>The Greek setup for the bull case is actually well-configured right now.</b> Vanna +69.6K (vol crush = automatic buying), 83M dealer short remaining (buying fuel), 6.84M puts to close (reflexive engine), and magnet chain at 7,100&#8211;7,200 intact (the destination). The ceasefire extension is the catalyst that fires all three simultaneously. This is exactly how the original rally worked &#8212; same mechanics, smaller but still meaningful scale.</p></div>
+  </div>
+</div>
+
+<!-- AFTER HOURS -->
+<div class="section" id="afterhours">
+  <div class="section-header h-amber">After-Hours Developments</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">The headline &#8212; ceasefire extended indefinitely (4:09 PM ET)</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Formal presidential statement from Trump: at Pakistan's request (Field Marshal Asim Munir, PM Shehbaz Sharif), the US will hold planned military action while Iran works toward submitting a unified proposal. Military blockade of Iranian ports continues. US forces remain "ready and able." No new hard deadline</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Pakistan PM Sharif publicly thanked Trump for "graciously accepting our request" &#8212; a formal diplomatic acknowledgment that active mediation continues. Pakistan's credibility as mediator is now staked on keeping talks moving forward</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">SPY +0.4% AH immediately. WTI crude pared gains to $89.61 from $92+ intraday. Markets priced removal of the binary event almost instantly</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Iran contradictory response: parliament advisor called extension "an attempt to buy time for a surprise attack." Iran said it "did not ask for an extension." Iran's top military command warned of "powerful attacks on predetermined targets." Iran's Tasnim said the blockade is continued hostility and Hormuz will remain closed &#8212; broken "by force" if necessary</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Trump posted on Truth Social detailing Iran's military degradation: "entire Navy at the bottom of the sea, Air Force gone, Nuclear Labs obliterated, losing $500M/day." Provides context for US negotiating confidence and willingness to grant time</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Other material after-hours items</div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">META will install tracking software on US employee computers &#8212; capturing mouse movements, keystrokes, screen snapshots &#8212; for AI training. Regulatory and reputational risk heading into April 28 earnings</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item">IBM reports Wednesday AH. Two competitors absorbed into other companies &#8212; competitive field consolidating around IBM, which favors incumbents. Fewer platforms means IBM's consulting arm (IBM Consulting) becomes a more essential integration layer for enterprise deals. Bellwether for AI enterprise spend</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item">SpaceX secures $60B deal to acquire Cursor &#8212; major AI dev tool acquisition. Relevant for AI infrastructure investment thesis</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item">China silver imports +78% MoM in March, all-time record at ~836 tonnes. YTD: ~1,626 tonnes, highest on record. Driven by retail investors buying silver bars as gold alternative, and solar manufacturers front-loading ahead of export tax rebate removal April 1</div></div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item">US blocking Iraq's dollar shipments to squeeze Iran-backed militias (WSJ) &#8212; additional pressure tightening around Iran's economic position, reinforcing US negotiating leverage</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">Pentagon's largest-ever budget request: $75B earmarked for drones and counter-drone tech. Defense complex direct beneficiary regardless of ceasefire outcome</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- VOLATILITY -->
+<div class="section" id="vol">
+  <div class="section-header h-red">Volatility Structure</div>
+  <div class="section-body">
+    <div class="grid3">
+      <div class="mini-card"><div class="mini-label">SPX IV</div><div class="mini-val val-red">37.82</div><div class="mini-sub">IV rank: 0.274 &middot; 52W HI: 0.493 &middot; Room to expand or compress</div></div>
+      <div class="mini-card"><div class="mini-label">VIX Close</div><div class="mini-val val-red">20.65</div><div class="mini-sub">VIX IV rank: 1.467 &#8212; vol-of-vol at extreme levels</div></div>
+      <div class="mini-card"><div class="mini-label">RV vs IV</div><div class="mini-val val-amber">RV 0.178 / IV 0.168</div><div class="mini-sub">VRP &minus;0.010 &middot; Modest backwardation. RV slightly above IV</div></div>
+    </div>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">IV rank at 0.274 means we're not yet at crisis vol &#8212; substantial room in both directions. Up toward 25&#8211;30%+ if ceasefire fails. Down toward 15&#8211;16% if the extension holds. That compression range is the vanna fuel. The ceasefire extension is exactly the catalyst needed to unlock it</div></div>
+    <div class="row"><span class="dot dot-red"></span><div class="item">VIX IV rank at 1.467 is the alarming reading &#8212; the market is buying volatility on VIX itself at historically extreme rates. This signals a large sudden VIX move is priced in both directions. A rapid VIX collapse on ceasefire confirmation is the single most powerful amplifier of the vanna buying engine</div></div>
+    <div class="row"><span class="dot dot-blue"></span><div class="item">SPX term structure: contango (longer-dated IV higher than near-term). Not yet in full backwardation (crisis mode). The market prices more potential volatility in May/June than April &#8212; consistent with the gamma decay schedule opening a wide vol window through May 15 OPEX</div></div>
+  </div>
+</div>
+
+<!-- SECTORS -->
+<div class="section" id="sectors">
+  <div class="section-header h-coral">Sector Rotation EOD</div>
+  <div class="section-body">
+    <table class="table-wrap">
+      <thead><tr><th>Sector / ETF</th><th>Change</th><th>Bear Prem</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">XLE &#8212; Energy</td><td class="td-green">+1.27%</td><td>36%</td><td>Hormuz premium holding in price. Low bear prem = conviction long</td></tr>
+        <tr><td class="td-bold">XLK &#8212; Tech</td><td class="td-green">+0.53%</td><td>55%</td><td>Software green: PANW +4.49%, ORCL +3.60%, MSFT +2.04%. Semis lagged</td></tr>
+        <tr><td class="td-bold">XLF &#8212; Financials</td><td class="td-red">&minus;0.43%</td><td>49%</td><td>Gave back some Monday gains. JPM still resilient at &minus;0.84%</td></tr>
+        <tr><td class="td-bold">XLC &#8212; Communication</td><td class="td-red">&minus;1.06%</td><td>57%</td><td>NFLX &minus;2.23%, GOOGL &minus;1.15%, GOOG &minus;1.14% dragging</td></tr>
+        <tr><td class="td-bold">XLI &#8212; Industrials</td><td class="td-red">&minus;1.09%</td><td>40%</td><td>GE &minus;5.14%, RTX &minus;3.77%. Defense/aerospace complex selling hard</td></tr>
+        <tr><td class="td-bold">XLV &#8212; Health Care</td><td class="td-red">&minus;0.84%</td><td>47%</td><td>UNH &minus;3.40%, JNJ &minus;2.19%. High put hedging signals hidden concern</td></tr>
+        <tr><td class="td-bold">XLU &#8212; Utilities</td><td class="td-red">&minus;1.52%</td><td>51%</td><td>Rate-sensitive sector selling in elevated vol environment</td></tr>
+        <tr><td class="td-bold">XLRE &#8212; Real Estate</td><td class="td-red">&minus;1.52%</td><td>51%</td><td>Monday's defensive bid is gone. DLR, WELL, PLD all lower</td></tr>
+      </tbody>
+    </table>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">Session bifurcation: energy and select software (PANW +4.49%, ORCL +3.60%, ANET +3.53%, CSCO +2.05%, PLTR +0.67%) stayed green while everything macro-sensitive bled. This pattern &#8212; AI infrastructure and software accumulation while defense/industrial/consumer de-risks &#8212; is consistent with pre-earnings repositioning combined with war-related sector rotation</div></div>
+    <div class="row"><span class="dot dot-amber"></span><div class="item">ETF flows from Apr 20 (released today): SOXS (3&times; inverse semi ETF) was the top inflow at $8.45M &#8212; confirming institutions had pre-positioned short semis. XLE continued attracting flows ($3.3M inflow). The SOXS bet paid off precisely with INTC &minus;4.09%, AVGO &minus;1.70%, MU &minus;0.75%</div></div>
+  </div>
+</div>
+
+<!-- OPTIONS FLOW -->
+<div class="section" id="flow">
+  <div class="section-header h-teal">Options Flow &#8212; The Positioning Read</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">Market tide EOD (3:59 PM)</div>
+      <div class="grid3">
+        <div class="mini-card"><div class="mini-label">NCP (Net Call Premium)</div><div class="mini-val val-red">&minus;$51M</div><div class="mini-sub">Call destruction all session</div></div>
+        <div class="mini-card"><div class="mini-label">NPP (Net Put Premium)</div><div class="mini-val val-red">+$298M</div><div class="mini-sub">Put buying dominant &#8212; nearly 6:1 ratio</div></div>
+        <div class="mini-card"><div class="mini-label">Zero/Weekly NPP</div><div class="mini-val val-red">+$71.49M</div><div class="mini-sub">Short-dated put dominance confirmed at close</div></div>
+      </div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Total put premium today: $2.4B. Call premium: $737M. 70% of all dollar volume went to downside protection. 6.84M new put positions. 5.80M new call positions. 91% new positioning &#8212; both sides building at record scale. This is crisis-level options activity in a market that moved only 0.65%</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Why the put build is bullish for Wednesday</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Every put opened today hedged a binary that now has no hard deadline. The path of least resistance for 6.84M put positions is closure. Closure = dealers covering shorts = reflexive buying loop. This is the identical engine that generated 13 green days &#8212; and today's put build is even larger than what originally loaded the engine</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Vanna +69.6K compounds this: as puts close, IV falls, put deltas shrink further &#8212; requiring even more dealer buying. Two forces firing simultaneously in the same direction. The bigger the fear load, the bigger the unwind. Today was the biggest fear load of the cycle</div></div>
+    </div>
+    <div class="callout callout-blue"><p>The market placed a $2.4B bet on the ceasefire expiring in crisis. That bet was wrong within 90 minutes of the close. The mechanical unwinding of $2.4B in put positions is the fuel for Wednesday's bull case. The bigger the fear &#8212; the bigger the snap-back when it resolves.</p></div>
+  </div>
+</div>
+
+<!-- CATALYST WATCH -->
+<div class="section" id="catalysts">
+  <div class="section-header h-coral">Catalyst Watch &#8212; Next 24&#8211;48 Hours</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">Geopolitical &#8212; the open questions</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Ceasefire: Extended indefinitely.</b> Iran's response is the key variable. Any positive signal from Tehran &#8212; agreement to talks, naming a delegation, even constructive silence &#8212; extends the relief rally. Pakistan PM Sharif is publicly invested in this succeeding</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>Hormuz blockade: Continues.</b> Iran explicitly said the blockade is "continued hostility" and they will break it by force if it persists. Oil still +3&#8211;4% above pre-conflict. UAL confirmed $340M Q1 fuel cost increase. Economic pressure compounds daily</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Iran's military threats:</b> Top joint command warned of "powerful attacks on predetermined targets." These are on record and must not be dismissed as posturing</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Earnings &#8212; key binary events this week</div>
+      <table class="table-wrap">
+        <thead><tr><th>Ticker</th><th>When</th><th>Expected Move</th><th>Context</th></tr></thead>
+        <tbody>
+          <tr><td class="td-bold">TSLA</td><td>Tonight (Apr 21 AH)</td><td>5.5%</td><td>Zero institutional buy blocks today. Clean binary pre-print</td></tr>
+          <tr><td class="td-bold">IBM / NOW</td><td>Wed Apr 22 AH</td><td>~5% / 8.6%</td><td>IBM: competitor consolidation tailwind. NOW: AI enterprise spend signal</td></tr>
+          <tr><td class="td-bold">UAL / LUV</td><td>Tue&#8211;Wed</td><td>~7%</td><td>Direct war/ceasefire/fuel read. UAL confirmed $340M Q1 fuel cost increase</td></tr>
+          <tr><td class="td-bold">INTC / VRT</td><td>Thu Apr 23</td><td>9.4% / 8.5%</td><td>INTC: semi bellwether. VRT: AI data center power &#8212; was green all selloff</td></tr>
+          <tr><td class="td-bold">AAPL/MSFT/AMZN/GOOGL/META</td><td>Mon Apr 28 AH</td><td>Various</td><td>~25% of SPX weight reports the same evening. Largest single event of the year</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sub">
+      <div class="sub-title">Structural catalysts &#8212; medium term</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Corporate buyback wall: ~2 weeks out.</b> $428B in YTD authorizations (+36% YoY). ~$18B/week in price-insensitive demand reactivates as earnings blackouts end in early May. Combined with the ceasefire extension, this double tailwind (geopolitical + structural buying) creates a meaningful window for sustained recovery</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Kevin Warsh Fed confirmation:</b> Prediction markets at 33% odds before May 15. Senate opposition blocking nominations. Policy uncertainty persists until resolved. Trump's public comments on rates ("US should have the lowest rates in the world") create headline risk for the Fed relationship</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GAMMA DECAY -->
+<div class="section" id="decay">
+  <div class="section-header h-red">Gamma Decay Schedule &#8212; How Structure Deteriorates From Here</div>
+  <div class="section-body">
+    <table class="table-wrap">
+      <thead><tr><th>Date</th><th>Event</th><th>Cum. % Gone</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr><td class="td-bold">Apr 21 (today)</td><td>Session close &#8212; ceasefire extended</td><td class="td-red">~38%</td><td>Negative gamma regime persists. Moves amplify both ways</td></tr>
+        <tr><td class="td-bold">Apr 22 (Wed)</td><td>IBM / NOW / UAL earnings</td><td class="td-red">~42%</td><td>Binary paused not resolved. Iran response is the key variable</td></tr>
+        <tr><td class="td-bold">Apr 24 (Fri)</td><td>Weekly OPEX</td><td class="td-red">47%</td><td>Another structural layer expires. Intraday ranges widen further</td></tr>
+        <tr><td class="td-bold">Apr 28 (Mon)</td><td>Mega-cap earnings night</td><td class="td-red">52%</td><td>AAPL/MSFT/AMZN/GOOGL/META same evening &#8212; 25% of SPX</td></tr>
+        <tr><td class="td-bold">Early May</td><td>Buyback blackouts end</td><td class="td-amber">~58%</td><td>$18B/week structural bid reactivates &#8212; first major structural positive</td></tr>
+        <tr><td class="td-bold">May 15 (Fri)</td><td>May monthly OPEX</td><td class="td-red">82%</td><td>SPX vanna &minus;2,000K at 7,100. Most dangerous concentration. Then resets.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-red"><p>Every day from here to May 15, the market operates with less mechanical support as gamma decays. The ceasefire extension is the most important factor in surviving that window intact &#8212; it reduces the probability of a destabilizing catalyst during the most structurally fragile stretch of the cycle. The early May buyback activation is the structural offset: as gamma protection falls, corporate demand rises to partially replace it.</p></div>
+  </div>
+</div>
+
+<!-- TOMORROW'S SETUP -->
+<div class="section" id="tomorrow">
+  <div class="section-header h-blue">Tomorrow's Setup &#8212; April 22</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">The single key level: SPX 7,100</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Above 7,100 and holding:</b> Positive gamma activates. Dealers flip back to buying dips. Vanna fires as vol crushes from war premium. 6.84M puts begin unwinding &#8212; forcing additional mechanical buying. Magnets at 7,150 (+$96M) and 7,200 (+$121M) pull price. Session can run +2&#8211;3% with all three engines firing simultaneously</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>Below 7,055 (GEX flip):</b> Negative gamma re-engages. Every tick gets amplified. 7,000&#8211;7,025 (now entirely negative GEX) provides no support. Below 7,000, the &minus;$45M accelerator at 6,800 becomes the next reference with nothing mechanical in between</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item"><b>Chop between 7,055&#8211;7,100:</b> Charm bleeds every hour. Vanna doesn't fully fire. Puts decay slowly but large mechanical triggers don't activate. Worst outcome for directional positioning &#8212; maximum time decay, minimum resolution</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">Pre-market data</div>
+      <div class="grid2">
+        <div class="mini-card"><div class="mini-label">SPX Futures (AH)</div><div class="mini-val val-green">~7,094</div><div class="mini-sub">+0.42% on ceasefire ext. Knocking on the 7,100 gate</div></div>
+        <div class="mini-card"><div class="mini-label">Expected Range</div><div class="mini-val val-amber">7,025 &#8211; 7,175</div><div class="mini-sub">Bias cautiously higher if 7,100 clears and holds</div></div>
+      </div>
+      <div class="row"><span class="dot dot-blue"></span><div class="item">Dark pool anchors for tomorrow: $708.52 ($1.79B notional) and $704.03 ($1.27B notional) &#8212; established today as high-liquidity zones. These will act as intraday reference levels for institutional execution</div></div>
+      <div class="row"><span class="dot dot-amber"></span><div class="item">TSLA reports tonight. Zero buy blocks today &#8212; institutions fully de-risked. A strong TSLA print adds pre-market tailwind on top of the ceasefire relief. A weak print creates a counter-force that could overwhelm the ceasefire positive at the open</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM LINE -->
+<div class="section" id="bottom">
+  <div class="section-header h-purple">Bottom Line &#8212; April 21 Full EOD Read</div>
+  <div class="section-body">
+    <div class="sub">
+      <div class="sub-title">Two stories in one session</div>
+      <div class="row"><span class="dot dot-red"></span><div class="item"><b>Story 1 &#8212; The session (bearish):</b> The most destructive single day of the entire cycle by every measurable metric. &minus;326.3M delta flow (all-time record). &minus;$628M GEX (cycle low). &minus;$49.5B block net sell (first net sell day). A/D 0.58&times;, every exchange red, breadth confirming distribution for the first time in three weeks. By every structural datapoint, the bulls' resilience infrastructure cracked today.</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item"><b>Story 2 &#8212; 4:09 PM (bullish):</b> The single binary event that structured all of the above positioning was removed from the calendar. Trump extended the ceasefire indefinitely. SPY ripped +0.4% in minutes. The worst-case mechanical cascade &#8212; $703 accelerator firing into negative GEX with 83M shares of dealer short to amplify &#8212; was cancelled before it could deploy.</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">The bull case &#8212; loaded for a violent snap-back</div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Vanna +69.6K + vol compression from war premium draining = automatic mechanical dealer buying. Not sentiment. Math.</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">6.84M new put positions opened against a binary that now has no hard deadline. Path of least resistance is closure. Closure = reflexive buying loop. Largest single-day put build of the cycle = largest potential snap-back fuel</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Futures at 7,094 are already knocking on 7,100. A clean open above that level converts the entire mechanical setup from potential to kinetic. The magnets at 7,150 and 7,200 activate and pull with dealer support underneath</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">Iran is "seriously fractured" per Trump's own words. Pakistan PM publicly staked credibility on the extension. A fractured adversary with a credible mediator is a negotiating adversary. The diplomatic channel is active and backed by real geopolitical stakes</div></div>
+      <div class="row"><span class="dot dot-green"></span><div class="item">SPY bull flag confirmed daily. Hedge funds at 5-year high tech exposure. $428B buyback wall approaching in ~2 weeks. Semis on a 14-day historical streak. The structural bull thesis did not change &#8212; it was temporarily overwhelmed by war binary fear. That fear just got paused.</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="sub">
+      <div class="sub-title">The bear case &#8212; still structurally present</div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">GEX at &minus;$628M with a flip 9 points below close. Any negative Iran headline tomorrow fires into the most dangerous gamma structure of the cycle with essentially no cushion before the accelerator chain activates below 7,000</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Iran's military threats are explicit and on record. Blockade continues. Hormuz closed. Oil still elevated. Economic damage compounds daily. The ceasefire extension bought time &#8212; it did not repair the underlying damage</div></div>
+      <div class="row"><span class="dot dot-red"></span><div class="item">Institutional block tape showed coordinated liquidation. The same hands that drove the rally have taken chips off the table. Reloading requires earnings confirmation, not just a ceasefire pause</div></div>
+    </div>
+    <div class="callout callout-green"><p><b>The mechanically honest read:</b> The ceasefire extension changed the probability distribution materially. The catastrophic bear case &#8212; the binary cascade &#8212; has been pushed to a lower-probability tail. The mechanical setup (vanna +69.6K, 6.84M puts to unwind, futures +0.42%, magnet chain at 7,100&#8211;7,200 intact) strongly favors a bullish open on Wednesday. <b>Clear 7,100 and hold it.</b> That is the gate between the next leg up and a relief bounce that fades back into negative gamma.</p></div>
+    <div class="callout callout-purple"><p>Historical context: across 20 post-WWII conflicts, the average S&P drawdown was &minus;6% and it recovered in ~28 days. Markets have absorbed two world wars, Korea, Vietnam, the Gulf War, 9/11, GFC, COVID, and Ukraine. <b>Markets price war. They do not collapse from it.</b> Whatever happens with Iran, the structural case for higher equities 30 days from now is stronger tonight than it was at 3:59 PM. The ceasefire extension bought exactly the time needed for the structural buyers &#8212; buybacks, earnings beats, hedge fund reloading &#8212; to reassert themselves.</p></div>
+  </div>
+</div>
+
+<p class="sources">Sources: Alphatica &middot; UnusualWhales &middot; Kobeissi Letter &middot; Quant Data &middot; Walter Bloomberg / DeltaOne &middot; Spectator Index &middot; Bloomberg &middot; Watcher.Guru &middot; Polymarket / Kalshi &middot; + other sources</p>
+
+<div class="disclaimer-full">
+  <div class="disc-full-header">IMPORTANT DISCLAIMER &amp; LEGAL NOTICE &#8212; PLEASE READ</div>
+  <div class="disc-full-body">
+    <p><b>For informational and educational purposes only.</b> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name &#8212; including but not limited to pre-market reports, midday reports, end-of-day reports, session notes, and any other written or visual materials &#8212; are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, legal advice, tax advice, or any other form of professional advice of any kind.</p>
+    <p><b>Personal opinions only &#8212; not professional recommendations.</b> All market commentary, analysis, directional observations, level calls, scenario frameworks, and commentary on market structure, options positioning, dealer behavior, geopolitical developments, and macroeconomic conditions are the sole personal opinions of the author. These opinions are formed based on publicly available data and third-party sources believed to be reliable, but no representation or warranty is made regarding their accuracy, completeness, or timeliness. Opinions may change at any time without notice.</p>
+    <p><b>No buy, sell, or hold recommendation.</b> Nothing in any report, post, note, or communication published by The Market Bishop should be interpreted as a recommendation, solicitation, or offer to buy, sell, or hold any financial instrument, security, derivative, options contract, futures contract, exchange-traded fund, cryptocurrency, commodity, or any other asset or investment vehicle. Any reference to specific securities, ETFs, tickers, strikes, expiries, or price levels is strictly for the purpose of illustrating market mechanics and analytical frameworks &#8212; not to direct trading decisions.</p>
+    <p><b>Options trading involves substantial risk of loss.</b> Options and derivatives are complex financial instruments that carry a high degree of risk. Options trading is not suitable for all investors. You can lose the entire amount of your investment, and in certain strategies, losses can exceed your initial investment. The mechanics of options described in these reports &#8212; including but not limited to dealer delta hedging, gamma exposure, vanna, charm, and GEX &#8212; are educational explanations of observed market behavior, not predictive frameworks. Past structural patterns do not predict future price movements.</p>
+    <p><b>No fiduciary relationship.</b> By reading, accessing, or using any content published by The Market Bishop, you acknowledge and agree that no fiduciary, advisory, or professional relationship of any kind is created between you and the author. The author is not a registered investment advisor, broker-dealer, financial planner, CPA, attorney, or licensed professional of any kind in any jurisdiction. You should consult a qualified, licensed financial professional before making any investment or trading decisions.</p>
+    <p><b>You are solely responsible for your own decisions.</b> All trading and investment decisions are made solely at your own discretion and risk. The Market Bishop accepts no responsibility or liability for any losses, damages, missed opportunities, or negative outcomes of any kind &#8212; direct, indirect, incidental, consequential, or otherwise &#8212; arising from your use of or reliance on any information, analysis, or opinion published here. Markets are inherently unpredictable. No analysis, however detailed, can guarantee any outcome.</p>
+    <p><b>Third-party data and sources.</b> This report references data and commentary from third-party sources including but not limited to data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not control, verify, or warrant the accuracy of third-party content. All third-party data is used strictly for educational commentary and illustration of market dynamics.</p>
+    <p><b>Forward-looking statements.</b> Any statements regarding potential future market movements, price targets, scenario outcomes, or catalyst resolutions are speculative in nature and subject to significant uncertainty. Forward-looking statements are not guarantees of future performance. Actual market outcomes may differ materially from any scenarios described.</p>
+    <p class="disc-final">By accessing and reading this report, you confirm that you have read, understood, and agreed to this disclaimer in its entirety. If you do not agree with any part of this disclaimer, you should not access or use this content. <b>The Market Bishop &middot; All Rights Reserved.</b></p>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(item.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+    item.classList.add('active');
+    if(window.innerWidth<=768)closeMobileNav();
+  });
+});
+const sections=document.querySelectorAll('.section[id]');
+const navItems=document.querySelectorAll('.nav-item');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navItems.forEach(item=>item.classList.toggle('active',item.getAttribute('href')==='#'+entry.target.id));
+      const ids=[...sections].map(s=>s.id);
+      const idx=ids.indexOf(entry.target.id);
+      const pct=Math.round(((idx+1)/ids.length)*100);
+      document.querySelector('.nav-progress-fill').style.width=pct+'%';
+      document.querySelector('.nav-progress-label span:last-child').textContent=pct+'%';
+    }
+  });
+},{threshold:0.3});
+sections.forEach(s=>observer.observe(s));
+const bodyEl=document.body;
+const navToggle=document.getElementById('navToggle');
+const collapseBtn=document.getElementById('collapseBtn');
+const overlay=document.getElementById('navOverlay');
+function isMobile(){return window.innerWidth<=768}
+function openMobileNav(){bodyEl.classList.add('nav-open');navToggle.setAttribute('aria-expanded','true')}
+function closeMobileNav(){bodyEl.classList.remove('nav-open');navToggle.setAttribute('aria-expanded','false')}
+function toggleDesktopCollapse(){
+  bodyEl.classList.toggle('nav-collapsed');
+  const c=bodyEl.classList.contains('nav-collapsed');
+  collapseBtn.innerHTML=c?'&nbsp;Show Menu':'&nbsp;Hide Menu';
+  collapseBtn.title=c?'Expand sidebar':'Collapse sidebar';
+}
+navToggle.addEventListener('click',()=>{
+  if(isMobile()){bodyEl.classList.contains('nav-open')?closeMobileNav():openMobileNav();}
+  else{bodyEl.classList.remove('nav-collapsed');collapseBtn.innerHTML='&nbsp;Hide Menu';}
+});
+overlay.addEventListener('click',closeMobileNav);
+collapseBtn.addEventListener('click',toggleDesktopCollapse);
+window.addEventListener('resize',()=>{if(!isMobile())closeMobileNav();});
+</script>
+</body>
+</html>
