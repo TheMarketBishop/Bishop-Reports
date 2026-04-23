@@ -1,0 +1,447 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>The Market Bishop · Pre-Market Report · April 23 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:rgba(255,255,255,.88);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.7;display:flex;min-height:100vh}
+::selection{background:rgba(0,170,255,.3)}
+a{color:#00aaff;text-decoration:none}a:hover{text-decoration:underline}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:210px;min-width:210px;height:100vh;background:rgba(8,8,14,.97);border-right:1px solid rgba(0,170,255,.12);padding:1.2rem .9rem;overflow-y:auto;z-index:100;display:flex;flex-direction:column;backdrop-filter:blur(12px)}
+.nav-brand{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#00aaff;text-shadow:0 0 10px rgba(0,170,255,.5);margin-bottom:.15rem}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:.5rem}
+.nav-collapse-btn{display:flex;align-items:center;gap:7px;padding:.5rem 1.1rem;margin-top:.25rem;cursor:pointer;border:none;background:none;color:#00aaff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 0 10px rgba(0,170,255,.7);transition:color .15s,text-shadow .15s;width:100%;text-align:left}
+.nav-collapse-btn:hover{color:#55ccff;text-shadow:0 0 16px rgba(0,170,255,1)}.nav-collapse-btn::before{content:'◀';font-size:10px;transition:transform .25s ease}
+.nav-sep{height:1px;background:rgba(0,170,255,.1);margin:.6rem 0}
+.nav-section-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin:.6rem 0 .35rem .5rem}
+.nav-item{display:flex;align-items:center;gap:.55rem;padding:.4rem .55rem;border-radius:6px;font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.nav-item:hover{color:rgba(255,255,255,.85);background:rgba(0,170,255,.06)}
+.nav-item.active{color:#00aaff;background:rgba(0,170,255,.08);font-weight:600}
+.nav-item.active .nav-item-text{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.4);transition:color .3s ease,text-shadow .3s ease}
+.nav-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0}.nav-item.active .nav-dot{background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.6)}
+.nav-progress{margin-top:auto;padding-top:.8rem}
+.nav-progress-label{display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,.25);margin-bottom:.35rem;letter-spacing:.06em}
+.nav-progress-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}.nav-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00aaff,#aa55ff);border-radius:3px;transition:width .4s cubic-bezier(.22,1,.36,1)}
+
+/* LAYOUT */
+.page-wrapper{margin-left:210px;flex:1;display:flex;justify-content:center;min-height:100vh;transition:margin-left .3s ease}
+.page{width:100%;max-width:740px;padding:2.5rem 1.5rem;position:relative;z-index:1}
+.brand{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.6)}
+.page-title{font-size:26px;font-weight:800;margin:.15rem 0 .1rem;letter-spacing:-.01em}
+.page-sub{font-size:13px;color:rgba(255,255,255,.4)}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-top:.3rem;margin-bottom:.8rem}
+
+/* NAV TOGGLE */
+.nav-toggle{display:none;position:fixed;top:14px;left:14px;z-index:200;background:rgba(0,0,0,.85);border:1px solid rgba(0,170,255,.35);border-radius:8px;width:38px;height:38px;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:8px;backdrop-filter:blur(8px);box-shadow:0 0 16px rgba(0,170,255,.15);transition:all .2s ease}
+.nav-toggle:hover{border-color:rgba(0,170,255,.7);box-shadow:0 0 20px rgba(0,170,255,.3)}
+.nav-toggle span{display:block;width:18px;height:2px;background:#00aaff;border-radius:2px;box-shadow:0 0 4px rgba(0,170,255,.6);transition:all .25s ease;transform-origin:center}
+.nav-open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-open .nav-toggle span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-collapsed .nav{width:0;min-width:0;overflow:hidden;padding:0;border-right-color:transparent}
+.nav-collapsed .page-wrapper{margin-left:0}
+.nav-collapsed .nav-toggle{display:flex}
+.nav-collapsed .nav-collapse-btn::before{transform:rotate(180deg)}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:99;backdrop-filter:blur(2px)}
+
+/* SNAPSHOT */
+.snapshot{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.5rem}
+.snap-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,170,255,.12);border-radius:10px;padding:.7rem .85rem;text-align:center}
+.snap-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem}
+.snap-value{font-size:18px;font-weight:800;color:#fff}.snap-value.val-green{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}.snap-value.val-red{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}.snap-value.val-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}.snap-value.val-blue{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.3)}
+
+/* SECTIONS */
+.section{margin-bottom:1.5rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
+.section.in-view{opacity:1;transform:translateY(0)}
+.section-header{padding:.65rem 1rem;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.06)}
+.h-blue{background:rgba(0,170,255,.06);color:#00aaff;text-shadow:0 0 10px rgba(0,170,255,.4);border-bottom-color:rgba(0,170,255,.12)}
+.h-purple{background:rgba(170,85,255,.06);color:#aa55ff;text-shadow:0 0 10px rgba(170,85,255,.4);border-bottom-color:rgba(170,85,255,.12)}
+.h-teal{background:rgba(0,210,180,.06);color:#00d2b4;text-shadow:0 0 10px rgba(0,210,180,.4);border-bottom-color:rgba(0,210,180,.12)}
+.h-red{background:rgba(255,51,85,.06);color:#ff3355;text-shadow:0 0 10px rgba(255,51,85,.4);border-bottom-color:rgba(255,51,85,.12)}
+.h-amber{background:rgba(255,170,0,.06);color:#ffaa00;text-shadow:0 0 10px rgba(255,170,0,.4);border-bottom-color:rgba(255,170,0,.12)}
+.h-green{background:rgba(68,255,136,.06);color:#44ff88;text-shadow:0 0 10px rgba(68,255,136,.4);border-bottom-color:rgba(68,255,136,.12)}
+.h-coral{background:rgba(255,127,80,.06);color:#ff7f50;text-shadow:0 0 10px rgba(255,127,80,.4);border-bottom-color:rgba(255,127,80,.12)}
+.section-body{padding:1rem}
+.section-body p{margin-bottom:.65rem;font-size:14px;color:rgba(255,255,255,.78);line-height:1.75}
+
+/* BULLETS */
+ul.dots{list-style:none;padding:0}ul.dots li{position:relative;padding-left:1.1rem;margin-bottom:.5rem;font-size:14px;color:rgba(255,255,255,.78);line-height:1.7}
+ul.dots li::before{content:'';position:absolute;left:0;top:.55rem;width:6px;height:6px;border-radius:50%;background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.5)}
+ul.dots.green li::before{background:#44ff88;box-shadow:0 0 6px rgba(68,255,136,.5)}
+ul.dots.red li::before{background:#ff3355;box-shadow:0 0 6px rgba(255,51,85,.5)}
+ul.dots.amber li::before{background:#ffaa00;box-shadow:0 0 6px rgba(255,170,0,.5)}
+ul.dots.purple li::before{background:#aa55ff;box-shadow:0 0 6px rgba(170,85,255,.5)}
+
+/* CALLOUTS */
+.callout{background:rgba(255,170,0,.04);border-left:3px solid #ffaa00;border-radius:0 8px 8px 0;padding:.75rem 1rem;font-size:13.5px;color:rgba(255,255,255,.75);margin:.75rem 0;line-height:1.7}
+.callout b{color:#ffaa00;font-weight:700}
+.callout-red{background:rgba(255,51,85,.04);border-left-color:#ff3355}.callout-red b{color:#ff3355}
+.callout-green{background:rgba(68,255,136,.04);border-left-color:#44ff88}.callout-green b{color:#44ff88}
+.callout-blue{background:rgba(0,170,255,.04);border-left-color:#00aaff}.callout-blue b{color:#00aaff}
+
+/* MINI CARDS */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.mini-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.7rem .85rem;transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s ease,box-shadow .25s ease}
+.mini-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18);box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 12px rgba(255,255,255,.04)}
+.mc-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.15rem}
+.mc-value{font-size:16px;font-weight:700;color:#fff}.mc-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:.1rem}
+
+/* GLOSSARY */
+.gloss{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.gloss-item{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem .75rem;transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s ease,box-shadow .25s ease}
+.gloss-item:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18);box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 12px rgba(255,255,255,.04)}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,.3);margin-bottom:.15rem}
+.gloss-def{font-size:11.5px;color:rgba(255,255,255,.5);line-height:1.55}
+
+/* VALUES */
+.val-green{color:#44ff88}.val-red{color:#ff3355}.val-amber{color:#ffaa00}
+
+/* TABLES */
+table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:left;padding:.45rem .5rem;border-bottom:1px solid rgba(255,255,255,.1)}table.data td{font-size:13px;padding:.45rem .5rem;border-bottom:1px solid rgba(255,255,255,.04);color:rgba(255,255,255,.75)}
+
+/* COMMODITIES */
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:.25rem}
+.comm-group{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.85rem 1rem}
+.comm-group-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.65rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.comm-row{display:flex;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.04)}.comm-row:last-child{border-bottom:none}
+.comm-name{flex:1;font-size:12.5px;color:rgba(255,255,255,.7)}
+.comm-price{font-size:12.5px;color:rgba(255,255,255,.9);font-weight:600;margin-right:.75rem;min-width:70px;text-align:right}
+.comm-chg{font-size:12px;font-weight:700;min-width:52px;text-align:right}
+
+/* DISCLAIMERS */
+.disclaimer-short{display:flex;align-items:flex-start;gap:8px;background:rgba(255,170,0,.05);border:1px solid rgba(255,170,0,.18);border-radius:8px;padding:.6rem .9rem;margin-bottom:1.25rem;font-size:12px;color:rgba(255,255,255,.45);line-height:1.55}
+.disclaimer-short b{color:#ffaa00;font-weight:700}.disc-icon{font-size:13px;flex-shrink:0;margin-top:1px;opacity:.6}
+.disclaimer-full{margin-top:3rem;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.015)}
+.disc-full-header{background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);padding:.6rem 1rem;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.disc-full-body{padding:1rem 1rem .85rem;display:flex;flex-direction:column;gap:.75rem}
+.disc-full-body p{font-size:11.5px;color:rgba(255,255,255,.32);line-height:1.7}.disc-full-body p b{color:rgba(255,255,255,.5);font-weight:700}
+.disc-final{border-top:1px solid rgba(255,255,255,.05);padding-top:.75rem;margin-top:.25rem;font-size:11px!important;color:rgba(255,255,255,.25)!important}.disc-final b{color:rgba(255,255,255,.4)!important}
+
+/* SOURCES */
+.sources{margin-top:2rem;font-size:11px;color:rgba(255,255,255,.2);line-height:1.7;border-top:1px solid rgba(255,255,255,.06);padding-top:1rem}
+
+/* ANIMATION EFFECTS */
+.brand,.page-title,.page-sub,.page-stamp{opacity:0;animation:openIn forwards;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+.brand{animation-duration:1.0s;animation-delay:.1s}.page-title{animation-duration:1.3s;animation-delay:.45s}.page-sub{animation-duration:1.0s;animation-delay:.85s}.page-stamp{animation-duration:.9s;animation-delay:1.15s}
+.disclaimer-short{opacity:0;animation:fadeUp .85s cubic-bezier(.16,1,.3,1) 1.4s forwards}
+.snapshot .snap-card{opacity:0;animation:cardIn .7s cubic-bezier(.16,1,.3,1) forwards}
+.snapshot .snap-card:nth-child(1){animation-delay:1.65s}.snapshot .snap-card:nth-child(2){animation-delay:1.82s}.snapshot .snap-card:nth-child(3){animation-delay:1.99s}.snapshot .snap-card:nth-child(4){animation-delay:2.16s}.snapshot .snap-card:nth-child(5){animation-delay:2.33s}.snapshot .snap-card:nth-child(6){animation-delay:2.50s}
+@keyframes openIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+#gloss{opacity:0;transform:translateY(24px);transition:none;animation:openIn .9s cubic-bezier(.16,1,.3,1) 2.85s forwards}
+#tldr{opacity:0;transform:translateY(24px);transition:none;animation:openIn .9s cubic-bezier(.16,1,.3,1) 3.15s forwards}
+@keyframes neonPulse{0%{filter:brightness(1)}40%{filter:brightness(1.5)}100%{filter:brightness(1)}}
+.section.in-view .section-header{animation:neonPulse .8s ease-out .15s 1}
+.snap-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 18px rgba(0,170,255,.08)}
+.nav-item{transition:all .25s cubic-bezier(.22,1,.36,1)}.nav-item.active{transition:all .3s cubic-bezier(.22,1,.36,1)}.nav-progress-fill{transition:width .4s cubic-bezier(.22,1,.36,1)}
+@keyframes calloutPulse{0%,100%{box-shadow:-3px 0 14px rgba(255,170,0,.12)}50%{box-shadow:-3px 0 22px rgba(255,170,0,.28)}}
+@keyframes calloutPulseRed{0%,100%{box-shadow:-3px 0 14px rgba(255,51,85,.12)}50%{box-shadow:-3px 0 22px rgba(255,51,85,.28)}}
+@keyframes calloutPulseGreen{0%,100%{box-shadow:-3px 0 14px rgba(68,255,136,.1)}50%{box-shadow:-3px 0 22px rgba(68,255,136,.25)}}
+@keyframes calloutPulseBlue{0%,100%{box-shadow:-3px 0 14px rgba(0,170,255,.12)}50%{box-shadow:-3px 0 22px rgba(0,170,255,.28)}}
+.callout{animation:calloutPulse 3s ease-in-out infinite}.callout-red{animation:calloutPulseRed 3s ease-in-out infinite}.callout-green{animation:calloutPulseGreen 3s ease-in-out infinite}.callout-blue{animation:calloutPulseBlue 3s ease-in-out infinite}
+@media print{.section,.snapshot,.disclaimer-short,#gloss,#tldr{opacity:1!important;transform:none!important;animation:none!important}.brand,.page-title,.page-sub,.page-stamp{opacity:1!important;animation:none!important}.snapshot .snap-card{opacity:1!important;animation:none!important}.callout,.callout-red,.callout-green,.callout-blue{animation:none!important}.section.in-view .section-header{animation:none!important}body::before{content:'';position:fixed;inset:0;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.nav,.nav-toggle,.nav-overlay{display:none!important}.page-wrapper{margin-left:0!important}}
+@media(max-width:768px){body{flex-direction:column}.nav{width:240px!important;min-width:240px!important;transform:translateX(-100%);transition:transform .3s ease;z-index:150}.nav-open .nav{transform:translateX(0)}.nav-open .nav-overlay{display:block}.page-wrapper{margin-left:0!important}.nav-toggle{display:flex}.nav-collapse-btn{display:none}.page{padding:2.5rem 1rem 2rem;padding-top:4.5rem}}
+@media(max-width:500px){.gloss{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.comm-grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+
+<nav class="nav">
+<div class="nav-brand">The Market Bishop</div>
+<div class="nav-date">April 23, 2026 · Pre-Market</div>
+<button class="nav-collapse-btn" id="collapseBtn" title="Collapse sidebar">&nbsp;Hide Menu</button>
+<div class="nav-sep"></div>
+<div class="nav-section-label">Sections</div>
+<a class="nav-item" href="#snapshot"><span class="nav-dot"></span><span class="nav-item-text">Snapshot</span></a>
+<a class="nav-item" href="#gloss"><span class="nav-dot"></span><span class="nav-item-text">Glossary</span></a>
+<a class="nav-item" href="#tldr"><span class="nav-dot"></span><span class="nav-item-text">TL;DR</span></a>
+<a class="nav-item" href="#overnight"><span class="nav-dot"></span><span class="nav-item-text">Overnight</span></a>
+<a class="nav-item" href="#gex"><span class="nav-dot"></span><span class="nav-item-text">GEX Structure</span></a>
+<a class="nav-item" href="#greeks"><span class="nav-dot"></span><span class="nav-item-text">Greek Forces</span></a>
+<a class="nav-item" href="#catalyst"><span class="nav-dot"></span><span class="nav-item-text">Catalyst Watch</span></a>
+<a class="nav-item" href="#ranges"><span class="nav-dot"></span><span class="nav-item-text">Expected Ranges</span></a>
+<a class="nav-item" href="#earnings"><span class="nav-dot"></span><span class="nav-item-text">Earnings on Deck</span></a>
+<a class="nav-item" href="#sectors"><span class="nav-dot"></span><span class="nav-item-text">Sector Setup</span></a>
+<a class="nav-item" href="#commodities"><span class="nav-dot"></span><span class="nav-item-text">Commodities</span></a>
+<a class="nav-item" href="#bottom"><span class="nav-dot"></span><span class="nav-item-text">Bottom Line</span></a>
+<div class="nav-progress">
+<div class="nav-progress-label"><span>Reading progress</span><span>0%</span></div>
+<div class="nav-progress-bar"><div class="nav-progress-fill"></div></div>
+</div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay"></div>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+
+<div class="page-wrapper"><main class="page">
+
+<div class="brand">The Market Bishop</div>
+<h1 class="page-title">Pre-Market Report</h1>
+<div class="page-sub">Wednesday, April 23, 2026</div>
+<div class="page-stamp">Generated ~9:15 AM ET · Data as of 9:00 AM ET</div>
+
+<div class="disclaimer-short">
+<span class="disc-icon">⚠</span>
+<span><b>Not financial advice.</b> All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</span>
+</div>
+
+<!-- SNAPSHOT -->
+<div class="snapshot" id="snapshot">
+<div class="snap-card"><div class="snap-label">MES Futures</div><div class="snap-value val-green">7,152</div><div class="mc-sub">+14 from close</div></div>
+<div class="snap-card"><div class="snap-label">VIX</div><div class="snap-value val-green">19.36</div><div class="mc-sub">↓ from 20.78</div></div>
+<div class="snap-card"><div class="snap-label">Net GEX</div><div class="snap-value val-green">+$1.02B</div><div class="mc-sub">Doubled overnight</div></div>
+<div class="snap-card"><div class="snap-label">GEX Flip</div><div class="snap-value val-blue">7,084</div><div class="mc-sub">54 pts cushion</div></div>
+<div class="snap-card"><div class="snap-label">Status</div><div class="snap-value val-amber">FILTERING</div><div class="mc-sub">Ignoring Iran noise</div></div>
+<div class="snap-card"><div class="snap-label">Earnings</div><div class="snap-value val-green">3 for 3</div><div class="mc-sub">TSLA · TXN · IBM</div></div>
+</div>
+
+<!-- GLOSSARY (Morning = first above fold, delay 2.85s) -->
+<section class="section" id="gloss">
+<div class="section-header h-blue">Glossary</div>
+<div class="section-body">
+<p style="font-size:12.5px;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:.65rem">Quick reference — key terms used in this report.</p>
+<div class="gloss">
+<div class="gloss-item"><div class="gloss-term">GEX</div><div class="gloss-def">Gamma Exposure — net dealer gamma positioning; positive = dealers buy dips / sell rips (stabilizing)</div></div>
+<div class="gloss-item"><div class="gloss-term">GEX Flip</div><div class="gloss-def">Strike where dealer gamma flips from positive to negative — the structural floor</div></div>
+<div class="gloss-item"><div class="gloss-term">Magnet</div><div class="gloss-def">Strike with high positive gamma — price tends to drift toward and pin at magnets</div></div>
+<div class="gloss-item"><div class="gloss-term">Vanna</div><div class="gloss-def">Sensitivity of delta to implied volatility — when IV falls, positive vanna forces dealers to buy</div></div>
+<div class="gloss-item"><div class="gloss-term">Charm</div><div class="gloss-def">Time-decay of delta — as options near expiry, charm adjustments force dealer hedging flows</div></div>
+<div class="gloss-item"><div class="gloss-term">Block Tape</div><div class="gloss-def">Institutional trades &gt;$500K — net flow shows whether large players are buying or selling</div></div>
+<div class="gloss-item"><div class="gloss-term">A/D Ratio</div><div class="gloss-def">Advance/Decline ratio — measures breadth; above 1.0 = more stocks rising than falling</div></div>
+<div class="gloss-item"><div class="gloss-term">Power Trend</div><div class="gloss-def">Technical trigger: 21 EMA &gt; 50 SMA, price above EMA 10+ days, SMA trending up, close green</div></div>
+<div class="gloss-item"><div class="gloss-term">Composite Score</div><div class="gloss-def">Weighted aggregate of volatility, breadth, momentum, bonds, options, and market data metrics</div></div>
+</div>
+</div>
+</section>
+
+<!-- TL;DR (Morning = second, delay 3.15s) -->
+<section class="section" id="tldr">
+<div class="section-header h-amber">TL;DR — What You Need To Know</div>
+<div class="section-body">
+<ul class="dots amber">
+<li><b>GEX doubled to +$1.02B overnight.</b> Every strike from 7,000 to 7,400 is now positive gamma. The structural weakness from Tuesday is completely healed. Dealers are buying every dip between here and 7,200.</li>
+<li><b>Earnings went 3-for-3.</b> TSLA beat massively on margins and FCF but is selling off pre-market (-3.15%) — classic "sell the beat." TXN posted the strongest semi print of the season (+22.6% EPS surprise). IBM extended to 13 straight beats.</li>
+<li><b>The market is filtering Iran noise.</b> Ships seized in Hormuz after the ceasefire. Trump ordered Navy to shoot mine-placers. Pakistan brokering a breakthrough "tonight or tomorrow." Five consecutive sessions of absorbing bearish Iran headlines with minimal price impact. Kevin's read: the market is strong and doing everything to ignore the news.</li>
+<li><b>$710 is the floor. $720 is the target. $703 is the nearest risk.</b> Max magnet sits at 7,200 SPX (+$172M), 62 points above yesterday's close. Range today: 7,075–7,200. The path from here to 7,200 is paved with positive gamma at every strike.</li>
+<li><b>Watch tonight: INTC and VRT.</b> Intel expected move ±9.4%, pre-market already -4.72%. Vertiv is the AI power infrastructure proxy. These are the biggest remaining earnings binaries of the week.</li>
+</ul>
+</div>
+</section>
+
+<!-- OVERNIGHT DEVELOPMENTS -->
+<section class="section" id="overnight">
+<div class="section-header h-purple">Overnight Developments</div>
+<div class="section-body">
+<p>Yesterday's midday report flagged the mega-cap mask — SPY +0.80% at midday with internals not confirming (A/D 0.97×, NYSE 0.86×, VWAP 51%). The session resolved emphatically: SPX closed +1.05% at 7,138, Nasdaq hit an all-time high, and the institutional tape flipped from −$49.5B sell to +$29.0B buy in 24 hours. Every name in the top 8 was net buy — NVDA swung $13B in a single day. Institutional average ticket hit $45,703, the highest ever recorded.</p>
+
+<p><b>Earnings swept 3-for-3 after the bell.</b> TSLA posted EPS $0.41 vs $0.35 expected with gross margin of 21.1% vs 17.7% estimated and free cash flow of $1.44B vs -$1.86B estimated — an enormous beat on every line. FSD subscriptions rose 51% to 1.28M. The stock initially jumped 4–5% after-hours, then reversed to -2.61% overnight and is now -3.15% pre-market. TXN delivered a 22.6% EPS beat with Q2 guidance of $5.0–5.4B that exceeded all street models — Data Center revenues surged 70%. IBM extended its streak to 13 consecutive beats with Software +11% and IBM Z infrastructure +51%.</p>
+
+<p><b>Geopolitically, the market continues to filter.</b> Iran seized two container ships in the Strait of Hormuz after the ceasefire extension — an escalation from firing on ships to physical seizure. Trump ordered the Navy to shoot any boat placing mines and tripled minesweepers. Pakistan is brokering a proposal to reopen Hormuz in exchange for partial sanctions relief, with diplomatic sources suggesting a breakthrough "tonight or tomorrow." The Pentagon told Congress that mine clearance will take 6 months and won't begin until the war formally ends. Brent crude is back above $100. The market absorbed all of this and barely flinched — futures dipped to 7,072 overnight (testing the $703 accelerator zone) and recovered to 7,152, above yesterday's close.</p>
+
+<div class="callout" style="margin-top:1rem">
+<b>Kevin's read:</b> "Market is strong and doing everything to try to ignore the news." This is the dominant behavioral pattern — five consecutive sessions of noise-filtering. The market responds to binary resolution signals (ceasefire extension), not to rhetoric or incremental escalation. Until a headline breaks the structure (accelerators at $703/$700 go live), the grind higher is the primary path.
+</div>
+</div>
+</section>
+
+<!-- GEX STRUCTURE -->
+<section class="section" id="gex">
+<div class="section-header h-teal">GEX Structure</div>
+<div class="section-body">
+<p>This is the most important structural development of the session. Net GEX doubled from +$496M to <b>+$1.02B</b> — the fastest single-day recovery since the selloff low. Nine of the ten top-volume GEX strikes were call buying. The negative pocket at 7,000–7,075 that represented the structural weakness going into yesterday has completely healed.</p>
+
+<div class="grid3" style="margin:.75rem 0">
+<div class="mini-card"><div class="mc-label">Net GEX</div><div class="mc-value val-green">+$1.02B</div><div class="mc-sub">Doubled from $496M</div></div>
+<div class="mini-card"><div class="mc-label">GEX Flip</div><div class="mc-value val-blue">7,084</div><div class="mc-sub">54 pts below spot</div></div>
+<div class="mini-card"><div class="mc-label">Max Magnet</div><div class="mc-value">7,200</div><div class="mc-sub">+$172M · 62 pts above</div></div>
+</div>
+
+<p><b>Strike map (Apr 22 close → Apr 23 session):</b></p>
+<table class="data">
+<tr><th>Strike</th><th>GEX</th><th>Role</th></tr>
+<tr><td>6,800</td><td class="val-red">−$38M</td><td>Max accelerator (shrunk from prior)</td></tr>
+<tr><td>7,000</td><td class="val-green">+$58M</td><td>Flipped back to POSITIVE (was −$16M Tue)</td></tr>
+<tr><td>7,050</td><td class="val-green">+$30M</td><td>Support</td></tr>
+<tr><td>7,100</td><td class="val-green">+$97M</td><td>Magnet</td></tr>
+<tr><td>7,138</td><td class="val-green">+$77M</td><td>Spot (yesterday's close)</td></tr>
+<tr><td>7,150</td><td class="val-green">+$116M</td><td>Magnet</td></tr>
+<tr><td>7,200</td><td class="val-green">+$172M</td><td>MAX MAGNET — primary target</td></tr>
+<tr><td>7,300</td><td class="val-green">+$75M</td><td>Magnet (extended target)</td></tr>
+<tr><td>7,400</td><td class="val-green">+$52M</td><td>Magnet (outer range)</td></tr>
+</table>
+
+<div class="callout-green" style="margin-top:.75rem">
+<b>Structure verdict: Bullish.</b> Every strike from 7,000 to 7,400 is positive. Dealers buy every dip along the path to 7,200. The range is 7,075–7,200 with a grinding bias higher. This is not an explosive setup — dealer short delta at 117.7M shares is down from the 215M OpEx peak. The grind will be slow, steady, and headline-sensitive.
+</div>
+</div>
+</section>
+
+<!-- GREEK FORCES -->
+<section class="section" id="greeks">
+<div class="section-header h-purple">Greek Forces</div>
+<div class="section-body">
+<p><b>Vanna:</b> Still supportive. Yesterday's midday report showed +17.5K; the overnight alert noted +14.2K. IV compressed from 18.8% to 16.5% through the session and further to an estimated 15.5% at close. Falling IV with positive vanna = dealers forced to buy delta. The vanna tailwind is active but diminishing — the vol crush from 27% to 15.5% has consumed most of the fuel from the original April 14 rip.</p>
+
+<p><b>Charm:</b> Working in the background. No massive near-term expiry wall like the April 17 OpEx, but the daily theta decay on the put side continues to release delta obligations. Charm is supportive but not the primary driver today — vanna and gamma structure are doing the heavier lifting.</p>
+
+<p><b>IV skew:</b> +0.52% — nearly flat. No panic, no FOMO. The options market is pricing a steady grind, not a breakout or breakdown. VIX IV Rank at 1.467 remains extreme, meaning both bull and bear tail moves are amplified relative to recent history.</p>
+
+<div class="callout-blue">
+<b>Greek summary:</b> All three forces (gamma, vanna, charm) are directionally aligned and pointing higher. This is the first time since the April 17 OpEx that the entire Greek complex has been constructive simultaneously. The difference: velocity. The OpEx setup had 3.2M puts expiring and 215M shares of dealer short delta. This setup has moderate flow and 117M shares. Grind, not rip.
+</div>
+</div>
+</section>
+
+<!-- CATALYST WATCH -->
+<section class="section" id="catalyst">
+<div class="section-header h-red">Catalyst Watch</div>
+<div class="section-body">
+<ul class="dots red">
+<li><b>8:30 AM — PMI Flash (Manufacturing &amp; Services):</b> Manufacturing forecast 52.5, Services forecast 51.0 (prior 49.8 — back above expansion). A hot print could briefly spook rate-cut expectations; a miss would confirm the slowdown narrative. Initial jobless claims at 210K forecast release simultaneously.</li>
+<li><b>TSLA Earnings Call Narrative (overnight → today):</b> The numbers beat but the stock is selling off. Today's price action on TSLA will be driven by the call narrative — Cybercab production timeline, FSD unsupervised expansion, $20B CapEx guidance, and Musk's tone on demand. TSLA typically moves far more than options price (avg PMIE 9.06% vs ±3.7% expected move).</li>
+<li><b>Iran / Pakistan Diplomacy:</b> "Tonight or tomorrow" breakthrough timeline from RIA diplomatic sources. If confirmed, crude collapses and equity structure accelerates. If it fails, the market has been pricing failure for 5 sessions and may shrug again.</li>
+<li><b>After the bell — INTC &amp; VRT:</b> Intel is the semi bellwether with ±9.4% expected move; already -4.72% pre-market as institutions de-risk. Vertiv (VRT) is the AI data center power proxy with ±8.5% expected move.</li>
+<li><b>Power Trend Activation:</b> All 4 technical requirements now met on SPX. This systematic trigger forces algorithmic buying programs to activate — expect sustained bid underneath the market.</li>
+</ul>
+</div>
+</section>
+
+<!-- EXPECTED RANGES -->
+<section class="section" id="ranges">
+<div class="section-header h-blue">Expected Ranges</div>
+<div class="section-body">
+<div class="grid3" style="margin-bottom:.75rem">
+<div class="mini-card"><div class="mc-label">SPX Range</div><div class="mc-value">7,075–7,200</div><div class="mc-sub">Close: 7,138</div></div>
+<div class="mini-card"><div class="mc-label">SPY Range</div><div class="mc-value">$707–$720</div><div class="mc-sub">Close: $711.21</div></div>
+<div class="mini-card"><div class="mc-label">QQQ</div><div class="mc-value">$650–$660</div><div class="mc-sub">Close: $655.11</div></div>
+</div>
+<p><b>Key levels:</b> $710 SPY remains the primary magnet/floor — this is the third consecutive session where $710 has been the gravitational center. Resistance at $715 then $720 (max magnet zone). Support at $707 (7,075 SPX), with accelerators at $703 (−$75M) and $700 (−$68M). The accelerators have shrunk significantly — $703 was −$136M on Tuesday, now −$75M. The vol crush is draining the accelerators of their power.</p>
+</div>
+</section>
+
+<!-- EARNINGS ON DECK -->
+<section class="section" id="earnings">
+<div class="section-header h-green">Earnings on Deck</div>
+<div class="section-body">
+<p><b>Tonight (April 23 after the bell):</b></p>
+<table class="data">
+<tr><th>Ticker</th><th>Expected Move</th><th>Pre-Market</th><th>Notes</th></tr>
+<tr><td><b>INTC</b></td><td>±9.4%</td><td class="val-red">−4.72%</td><td>Semi bellwether; institutions de-risking ahead of print</td></tr>
+<tr><td><b>VRT</b></td><td>±8.5%</td><td>—</td><td>AI data center power proxy; green through every selloff</td></tr>
+</table>
+
+<p style="margin-top:.75rem"><b>Last night's results (carry-forward):</b></p>
+<table class="data">
+<tr><th>Ticker</th><th>EPS Beat</th><th>Revenue Beat</th><th>Pre-Market</th></tr>
+<tr><td><b>TSLA</b></td><td class="val-green">$0.41 vs $0.35 (+17%)</td><td class="val-green">$22.3B vs $22.2B</td><td class="val-red">−3.15%</td></tr>
+<tr><td><b>TXN</b></td><td class="val-green">$1.68 vs $1.37 (+22.6%)</td><td class="val-green">$4.83B vs $4.52B</td><td class="val-green">+9.52% 5D</td></tr>
+<tr><td><b>IBM</b></td><td class="val-green">$1.91 vs $1.81</td><td class="val-green">$15.9B vs $15.64B</td><td>−7.06% 5D</td></tr>
+</table>
+
+<div class="callout" style="margin-top:.75rem">
+<b>Mega-cap earnings wall:</b> April 28 — AAPL, MSFT, AMZN, GOOGL, META all report on the same night. This is the single largest binary event still ahead. Current positioning suggests the market is building a gamma cushion ahead of it.
+</div>
+</div>
+</section>
+
+<!-- SECTOR SETUP -->
+<section class="section" id="sectors">
+<div class="section-header h-coral">Sector Setup</div>
+<div class="section-body">
+<p><b>Yesterday's close (Apr 22):</b> XLK +2.20% led, followed by XLE +1.20% and XLC +0.61%. Defensive laggards: XLRE −0.73%, XLI −0.23%, XLU −0.18%, XLF −0.17%. Growth over value: SPYG +1.78% vs SPYV +0.15%. The rotation is firmly into tech and semis — SOXX posted its 16th consecutive green day, an all-time record since 1994.</p>
+
+<p><b>Pre-market movers:</b> MRVL +17.96% 5D is the standout — memory and AI custom silicon demand. AMD +9.06%, OKLO +12.77% 5D (nuclear fuel chain narrative accelerating), HIMS +7.48%. On the downside: NFLX −13.50% 5D (post-earnings fade), SMCI −9.46% 5D ext (accounting concerns persist).</p>
+
+<p><b>Breadth remains the structural warning.</b> NYSE closed at 0.51× yesterday — the tape is buying mega-caps while the average stock sells. S&amp;P 500 market breadth has dropped to one of the narrowest levels since the Dot-com bubble. This is not a reason to be bearish yet — narrow breadth can persist for months in a momentum-driven market — but it is the primary risk if/when the rotation reverses.</p>
+
+<div class="callout-blue">
+<b>AAII sentiment flipped:</b> Bulls jumped from 31.7% to 46%, bears collapsed from 42.8% to 34.4%. The crowd was maximum fear at 51.4% bearish on April 1 — right at the bottom. Retail is now unwinding the fear trade, consistent with the put-unwind mechanics driving the gamma structure higher.
+</div>
+</div>
+</section>
+
+<!-- COMMODITIES -->
+<section class="section" id="commodities">
+<div class="section-header h-teal">Commodities</div>
+<div class="section-body">
+<div class="comm-grid">
+<div class="comm-group">
+<div class="comm-group-label">ENERGY</div>
+<div class="comm-row"><span class="comm-name">Crude Oil (WTI)</span><span class="comm-price">$93.47</span><span class="comm-chg val-green">+0.55%</span></div>
+<div class="comm-row"><span class="comm-name">Brent Crude</span><span class="comm-price">$102.47</span><span class="comm-chg val-green">+0.55%</span></div>
+<div class="comm-row"><span class="comm-name">Natural Gas</span><span class="comm-price">$2.673</span><span class="comm-chg val-red">−1.80%</span></div>
+</div>
+<div class="comm-group">
+<div class="comm-group-label">PRECIOUS METALS</div>
+<div class="comm-row"><span class="comm-name">Gold</span><span class="comm-price">$4,755.40</span><span class="comm-chg val-green">+0.05%</span></div>
+<div class="comm-row"><span class="comm-name">Silver</span><span class="comm-price">$76.79</span><span class="comm-chg val-red">−1.50%</span></div>
+<div class="comm-row"><span class="comm-name">Platinum</span><span class="comm-price">$2,038.80</span><span class="comm-chg val-red">−2.36%</span></div>
+</div>
+<div class="comm-group">
+<div class="comm-group-label">INDUSTRIAL</div>
+<div class="comm-row"><span class="comm-name">Copper</span><span class="comm-price">$6.0720</span><span class="comm-chg val-red">−0.92%</span></div>
+<div class="comm-row"><span class="comm-name">Bitcoin</span><span class="comm-price">$77,794</span><span class="comm-chg val-red">−0.53%</span></div>
+<div class="comm-row"><span class="comm-name">Wheat</span><span class="comm-price">609'6</span><span class="comm-chg val-green">+0.45%</span></div>
+<div class="comm-row"><span class="comm-name">Lumber</span><span class="comm-price">$583.50</span><span class="comm-chg val-green">+1.21%</span></div>
+</div>
+</div>
+<div class="callout" style="margin-top:1rem">
+<b>Crude</b> is elevated but stable — WTI +0.55%, Brent holding above $100 on Hormuz tensions. This supports <b>XLE</b> but is not accelerating — the market is pricing persistent supply disruption, not escalation. <b>Precious metals</b> diverging: gold flat while silver (−1.50%) and platinum (−2.36%) sell off — this is a risk-on signal (silver and platinum are industrial). <b>Bitcoin</b> at $77.8K, slightly red but crypto funds saw $1.4B inflows last week — structural bid intact. vs. EOD yesterday: WTI +$0.66 from $92.81. Gold +$7 from $4,748. Brent +$0.85 from $101.62.
+</div>
+</div>
+</section>
+
+<!-- BOTTOM LINE -->
+<section class="section" id="bottom">
+<div class="section-header h-amber">Bottom Line</div>
+<div class="section-body">
+<p>The structure healed overnight and the setup is the most constructive it has been since the April 17 OpEx peak. GEX doubled to +$1.02B with every strike positive, earnings went 3-for-3, the block tape printed the most aggressive institutional buy session of the cycle, and the Power Trend activated on SPX. Kevin's read — that the market is strong and filtering the noise — is confirmed by the data.</p>
+
+<div class="callout-green" style="margin:.75rem 0">
+<b>Bull case:</b> $710 holds as the floor. Gamma structure grinds price to the 7,200 max magnet ($720 SPY). PMI confirms expansion. Pakistan diplomacy produces a breakthrough and crude collapses. INTC/VRT beat tonight and the semi rotation extends. April seasonality (SPY avg +2.48%) does the rest.
+</div>
+
+<div class="callout-red" style="margin:.75rem 0">
+<b>Bear case:</b> Hormuz escalation breaks through the noise filter — a shooting incident, cable cuts, or formal mine warfare triggers a vol reprice. The accelerators at $703/700 go live and breadth finally matters. TSLA selling off on a massive beat is a yellow flag for earnings season — if the market can't hold stocks that beat this hard, what happens when someone misses?
+</div>
+
+<p><b>What resolves it:</b> Watch $710 SPY. If it holds as the floor today, the grind continues. If it breaks with volume, the $703 accelerator zone becomes the test. Pakistan diplomacy and INTC/VRT tonight are the catalysts. The market has shown it wants higher — the question is whether the world lets it.</p>
+</div>
+</section>
+
+<!-- SOURCES -->
+<div class="sources">
+Sources: Data providers, quantitative research platforms, financial news services, social media, and publicly available market data referenced for educational commentary only.
+</div>
+
+<!-- FULL LEGAL DISCLAIMER -->
+<div class="disclaimer-full">
+<div class="disc-full-header">IMPORTANT DISCLAIMER &amp; LEGAL NOTICE — PLEASE READ</div>
+<div class="disc-full-body">
+<p><b>For informational and educational purposes only.</b> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name — including but not limited to pre-market reports, midday reports, end-of-day reports, session notes, and any other written or visual materials — are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, legal advice, tax advice, or any other form of professional advice of any kind.</p>
+<p><b>Personal opinions only — not professional recommendations.</b> All market commentary, analysis, directional observations, level calls, scenario frameworks, and commentary on market structure, options positioning, dealer behavior, geopolitical developments, and macroeconomic conditions are the sole personal opinions of the author. These opinions are formed based on publicly available data and third-party sources believed to be reliable, but no representation or warranty is made regarding their accuracy, completeness, or timeliness. Opinions may change at any time without notice.</p>
+<p><b>No buy, sell, or hold recommendation.</b> Nothing in any report, post, note, or communication published by The Market Bishop should be interpreted as a recommendation, solicitation, or offer to buy, sell, or hold any financial instrument, security, derivative, options contract, futures contract, exchange-traded fund, cryptocurrency, commodity, or any other asset or investment vehicle. Any reference to specific securities, ETFs, tickers, strikes, expiries, or price levels is strictly for the purpose of illustrating market mechanics and analytical frameworks — not to direct trading decisions.</p>
+<p><b>Options trading involves substantial risk of loss.</b> Options and derivatives are complex financial instruments that carry a high degree of risk. Options trading is not suitable for all investors. You can lose the entire amount of your investment, and in certain strategies, losses can exceed your initial investment. The mechanics of options described in these reports — including but not limited to dealer delta hedging, gamma exposure, vanna, charm, and GEX — are educational explanations of observed market behavior, not predictive frameworks. Past structural patterns do not predict future price movements.</p>
+<p><b>No fiduciary relationship.</b> By reading, accessing, or using any content published by The Market Bishop, you acknowledge and agree that no fiduciary, advisory, or professional relationship of any kind is created between you and the author. The author is not a registered investment advisor, broker-dealer, financial planner, CPA, attorney, or licensed professional of any kind in any jurisdiction. You should consult a qualified, licensed financial professional before making any investment or trading decisions.</p>
+<p><b>You are solely responsible for your own decisions.</b> All trading and investment decisions are made solely at your own discretion and risk. The Market Bishop accepts no responsibility or liability for any losses, damages, missed opportunities, or negative outcomes of any kind — direct, indirect, incidental, consequential, or otherwise — arising from your use of or reliance on any information, analysis, or opinion published here. Markets are inherently unpredictable. No analysis, however detailed, can guarantee any outcome.</p>
+<p><b>Third-party data and sources.</b> This report references data and commentary from third-party sources including but not limited to data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not control, verify, or warrant the accuracy of third-party content. References to third-party analysis do not constitute endorsement. All third-party data is used strictly for educational commentary and illustration of market dynamics.</p>
+<p><b>Forward-looking statements.</b> Any statements regarding potential future market movements, price targets, scenario outcomes, or catalyst resolutions are speculative in nature and subject to significant uncertainty. Forward-looking statements are not guarantees of future performance. Actual market outcomes may differ materially from any scenarios described. Geopolitical, macroeconomic, regulatory, and other developments can materially change market conditions at any time.</p>
+<p class="disc-final">By accessing and reading this report, you confirm that you have read, understood, and agreed to this disclaimer in its entirety. If you do not agree with any part of this disclaimer, you should not access or use this content. <b>The Market Bishop · All Rights Reserved.</b></p>
+</div>
+</div>
+
+</main></div>
+
+<script>
+(function(){
+const colBtn=document.getElementById('collapseBtn'),tog=document.getElementById('navToggle'),ov=document.getElementById('navOverlay');
+colBtn?.addEventListener('click',()=>{document.body.classList.toggle('nav-collapsed');colBtn.innerHTML=document.body.classList.contains('nav-collapsed')?'&nbsp;Show Menu':'&nbsp;Hide Menu';});
+tog?.addEventListener('click',()=>{if(document.body.classList.contains('nav-collapsed')){document.body.classList.remove('nav-collapsed');colBtn.innerHTML='&nbsp;Hide Menu';}else{document.body.classList.toggle('nav-open');}});
+ov?.addEventListener('click',()=>document.body.classList.remove('nav-open'));
+document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.body.classList.remove('nav-open');document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active');});});
+const revealEls=document.querySelectorAll('.section:not(#gloss):not(#tldr)');
+if('IntersectionObserver' in window){const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('in-view'));}
+const sections=document.querySelectorAll('.section[id],.snapshot[id]');const navItems=document.querySelectorAll('.nav-item[href^="#"]');const fill=document.querySelector('.nav-progress-fill');const pctLabel=document.querySelector('.nav-progress-label span:last-child');
+function updateNav(){const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;const pct=dh>0?Math.min(100,Math.round((st/dh)*100)):0;if(fill)fill.style.width=pct+'%';if(pctLabel)pctLabel.textContent=pct+'%';let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight*.4)cur=s.id;});if(cur)navItems.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));}
+window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+})();
+</script>
+</body></html>
