@@ -22,15 +22,21 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 #gloss{opacity:0;transform:translateY(24px);transition:none;animation:openIn .9s cubic-bezier(.16,1,.3,1) 3.15s forwards}
 @keyframes neonPulse{0%{filter:brightness(1)}40%{filter:brightness(1.5)}100%{filter:brightness(1)}}.section.in-view .section-header{animation:neonPulse .8s ease-out .15s 1}.snap-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 18px rgba(0,170,255,.08)}.nav-item{transition:all .25s cubic-bezier(.22,1,.36,1)}.nav-item.active{transition:all .3s cubic-bezier(.22,1,.36,1)}.nav-progress-fill{transition:width .4s cubic-bezier(.22,1,.36,1)}
 @keyframes calloutPulse{0%,100%{box-shadow:-3px 0 14px rgba(255,170,0,.12)}50%{box-shadow:-3px 0 22px rgba(255,170,0,.28)}}@keyframes calloutPulseRed{0%,100%{box-shadow:-3px 0 14px rgba(255,51,85,.12)}50%{box-shadow:-3px 0 22px rgba(255,51,85,.28)}}@keyframes calloutPulseGreen{0%,100%{box-shadow:-3px 0 14px rgba(68,255,136,.1)}50%{box-shadow:-3px 0 22px rgba(68,255,136,.25)}}@keyframes calloutPulseBlue{0%,100%{box-shadow:-3px 0 14px rgba(0,170,255,.12)}50%{box-shadow:-3px 0 22px rgba(0,170,255,.28)}}.callout{animation:calloutPulse 3s ease-in-out infinite}.callout-red{animation:calloutPulseRed 3s ease-in-out infinite}.callout-green{animation:calloutPulseGreen 3s ease-in-out infinite}.callout-blue{animation:calloutPulseBlue 3s ease-in-out infinite}
-@media print{.section,.snapshot,.disclaimer-short,#gloss,#tldr{opacity:1!important;transform:none!important;animation:none!important}.brand,.page-title,.page-sub,.page-stamp{opacity:1!important;animation:none!important}.snapshot .snap-card{opacity:1!important;animation:none!important}.callout,.callout-red,.callout-green,.callout-blue{animation:none!important}.section.in-view .section-header{animation:none!important}body::before{content:'';position:fixed;inset:0;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.nav,.nav-toggle,.nav-overlay{display:none!important}.page-wrapper{margin-left:0!important}}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px);transition:all .3s ease}.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);transition:all .3s ease}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.section-header{position:relative;cursor:pointer}.section-header:hover{padding-right:2.5rem}.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}.section-header:hover .anchor-icon{opacity:.5}.section-header .anchor-icon.copied{opacity:1}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+@media print{.section,.snapshot,.disclaimer-short,#gloss,#tldr{opacity:1!important;transform:none!important;animation:none!important}.brand,.page-title,.page-sub,.page-stamp{opacity:1!important;animation:none!important}.snapshot .snap-card{opacity:1!important;animation:none!important}.callout,.callout-red,.callout-green,.callout-blue{animation:none!important}.section.in-view .section-header{animation:none!important}body::before{content:'';position:fixed;inset:0;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.nav,.nav-toggle,.nav-overlay,.read-time,.anchor-toast{display:none!important}.page-wrapper{margin-left:0!important}}
 @media(max-width:768px){body{flex-direction:column}.nav{width:240px!important;min-width:240px!important;transform:translateX(-100%);transition:transform .3s ease;z-index:150}.nav-open .nav{transform:translateX(0)}.nav-open .nav-overlay{display:block}.page-wrapper{margin-left:0!important}.nav-toggle{display:flex}.nav-collapse-btn{display:none}.page{padding:2.5rem 1rem 2rem;padding-top:4.5rem}}@media(max-width:500px){.gloss{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.comm-grid{grid-template-columns:1fr}}
 </style></head><body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
 <nav class="nav"><div class="nav-brand">The Market Bishop</div><div class="nav-date">April 28, 2026 · Midday</div><a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a><button class="nav-collapse-btn" id="collapseBtn" title="Collapse sidebar">&nbsp;Hide Menu</button><div class="nav-sep"></div><div class="nav-section-label">Sections</div>
 <a class="nav-item" href="#snapshot"><span class="nav-dot"></span><span class="nav-item-text">Snapshot</span></a><a class="nav-item" href="#tldr"><span class="nav-dot"></span><span class="nav-item-text">TL;DR</span></a><a class="nav-item" href="#gloss"><span class="nav-dot"></span><span class="nav-item-text">Glossary</span></a><a class="nav-item" href="#recap"><span class="nav-dot"></span><span class="nav-item-text">Session Recap</span></a><a class="nav-item" href="#gex"><span class="nav-dot"></span><span class="nav-item-text">Live GEX</span></a><a class="nav-item" href="#flow"><span class="nav-dot"></span><span class="nav-item-text">Options Flow</span></a><a class="nav-item" href="#internals"><span class="nav-dot"></span><span class="nav-item-text">Internals</span></a><a class="nav-item" href="#greeks"><span class="nav-dot"></span><span class="nav-item-text">Greek Forces</span></a><a class="nav-item" href="#focus"><span class="nav-dot"></span><span class="nav-item-text">Focus Stocks</span></a><a class="nav-item" href="#afternoon"><span class="nav-dot"></span><span class="nav-item-text">Afternoon Setup</span></a><a class="nav-item" href="#catalyst"><span class="nav-dot"></span><span class="nav-item-text">Catalyst Watch</span></a><a class="nav-item" href="#bottom"><span class="nav-dot"></span><span class="nav-item-text">Bottom Line</span></a>
 <div class="nav-progress"><div class="nav-progress-label"><span>Reading progress</span><span>0%</span></div><div class="nav-progress-bar"><div class="nav-progress-fill"></div></div></div></nav>
 <div class="nav-overlay" id="navOverlay"></div><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
 <div class="page-wrapper"><main class="page">
-<div class="brand">The Market Bishop</div><h1 class="page-title">Midday Report</h1><div class="page-sub">Tuesday, April 28, 2026</div><div class="page-stamp">Generated ~3:30 PM ET · Data as of 3:25 PM ET</div>
+<div class="brand">The Market Bishop</div><h1 class="page-title">Midday Report</h1><div class="page-sub">Tuesday, April 28, 2026</div><div class="page-stamp"><span class="stamp-live">Generated ~3:30 PM ET · Data as of 3:25 PM ET</span></div>
 <div class="disclaimer-short"><span class="disc-icon">⚠</span><span><b>Not financial advice.</b> All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</span></div>
 
 <div class="snapshot" id="snapshot">
@@ -43,7 +49,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 </div>
 
 <section class="section" id="tldr">
-<div class="section-header h-amber">TL;DR — What You Need To Know</div>
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <ul class="dots amber">
 <li><b>Kevin called it — this was not a sell-off.</b> Strong tech stocks gapped down on the OpenAI miss but regained most of their drawdowns through the session. NVDA opened −2.8%, now −1.18%. MSFT opened −1.2%, now +0.86%. AAPL +0.99%. The pattern Kevin identified this morning — pullback to test trend strength — played out exactly. Composite swung from −8.5 at the $709.60 low to +22.8 by 2:15 PM as vanna kicked in when vol stopped expanding.</li>
@@ -56,7 +62,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 </section>
 
 <section class="section" id="gloss">
-<div class="section-header h-blue">Glossary</div>
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p style="font-size:12.5px;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:.65rem">Quick reference — key terms used in this report.</p>
 <div class="gloss">
@@ -72,7 +78,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- SESSION RECAP -->
 <section class="section" id="recap">
-<div class="section-header h-coral">Session Recap — Morning to Now</div>
+<div class="section-header h-coral">Session Recap — Morning to Now<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p>The morning thesis from the prereport was "retracement testing trend strength, not yet a sell-off." The session confirmed it in three acts.</p>
 
@@ -90,7 +96,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- LIVE GEX -->
 <section class="section" id="gex">
-<div class="section-header h-teal">Live GEX Update</div>
+<div class="section-header h-teal">Live GEX Update<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="grid3" style="margin-bottom:.75rem">
 <div class="mini-card"><div class="mc-label">Near-Term GEX</div><div class="mc-value val-red">−$348M</div><div class="mc-sub">Deteriorated from −$286M AM</div></div>
@@ -120,7 +126,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- OPTIONS FLOW -->
 <section class="section" id="flow">
-<div class="section-header h-teal">Options Flow Midday</div>
+<div class="section-header h-teal">Options Flow Midday<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>The flow story of the session is the dip-buying.</b> After the $710 break, aggressive call buying stepped in at scale. QQQ: millions worth of put sellers during the dip, then millions worth of call flow after the bounce. NVDA: millions in bullish flow at 1:32 PM. MU: $2.7M on a single $600 strike call sweeper at 9:38 AM — someone betting on a move to $600 from $506. SPY: calls crossed puts by 2:52 PM.</p>
 
@@ -134,7 +140,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- INTERNALS -->
 <section class="section" id="internals">
-<div class="section-header h-blue">Internals</div>
+<div class="section-header h-blue">Internals<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="grid3" style="margin-bottom:.75rem">
 <div class="mini-card"><div class="mc-label">A/D Ratio</div><div class="mc-value val-red">0.66×</div><div class="mc-sub">2,804 declining vs 1,850 adv</div></div>
@@ -150,7 +156,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- GREEK FORCES -->
 <section class="section" id="greeks">
-<div class="section-header h-purple">Greek Forces Update</div>
+<div class="section-header h-purple">Greek Forces Update<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>Vanna: fired exactly as predicted.</b> Dealer effective vanna at +42.4K kicked in when vol stopped expanding at the morning low. IV pulled back from 18.5% to 17.3% and dealers started buying. This is the same mechanic that's fired every time this cycle — vol expands, pushes price lower, then vanna reversal triggers the snap-back. The snap-back potential into tomorrow is enormous: if FOMC + earnings crush vol from 17.3% back to 15–16%, the dealer buying is mechanically significant.</p>
 
@@ -162,7 +168,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- FOCUS STOCKS -->
 <section class="section" id="focus">
-<div class="section-header h-purple">Focus Stocks</div>
+<div class="section-header h-purple">Focus Stocks<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="grid3" style="margin-bottom:.6rem">
 <div class="mini-card"><div class="mc-label">MSFT</div><div class="mc-value val-green">$428.46</div><div class="mc-sub">+0.86% · recovered from −1.2% open</div></div>
@@ -193,7 +199,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- AFTERNOON SETUP -->
 <section class="section" id="afternoon">
-<div class="section-header h-blue">Afternoon Setup</div>
+<div class="section-header h-blue">Afternoon Setup<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>Into the close (3:30 PM–4:00 PM):</b> SPY at $711.62, above the $710 accelerator. The structure into the close is about defending $710 and seeing whether the afternoon call buying has legs. If $710 holds through the close, the $710 level converts from today's breakdown level to tomorrow's support — the accelerator that broke gets absorbed into the structure and becomes a reference point.</p>
 
@@ -205,7 +211,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- CATALYST WATCH -->
 <section class="section" id="catalyst">
-<div class="section-header h-coral">Catalyst Watch</div>
+<div class="section-header h-coral">Catalyst Watch<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <ul class="dots red">
 <li><b>Tonight AMC — Visa (V) ±$10 implied:</b> 24 straight beats, highest-confidence signal of the season. BKNG (travel), SBUX (consumer), HOOD (retail sentiment, ~8% implied), ENPH (solar/green energy), BE (hydrogen/fuel cell).</li>
@@ -221,7 +227,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 
 <section class="section" id="bottom">
-<div class="section-header h-amber">Bottom Line</div>
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p>Kevin's morning thesis is confirmed: this was a retracement testing trend strength, not a sell-off. Strong stocks gapped down and recovered — NVDA, MSFT, AAPL all regained their drawdowns. The $710 accelerator broke and got bought. Consumer Confidence beat. The composite swung 25 points bullish while price was lower. The structure is improving under the surface even as the headline tape looks red. Kevin is personally bullish heading into tomorrow, and the data supports it.</p>
 
@@ -253,8 +259,98 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 <p class="disc-final">By accessing this report, you confirm agreement with this disclaimer. <b>The Market Bishop · All Rights Reserved.</b></p>
 </div>
 </div>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
 </main></div>
 <script>
-(function(){const colBtn=document.getElementById('collapseBtn'),tog=document.getElementById('navToggle'),ov=document.getElementById('navOverlay');colBtn?.addEventListener('click',()=>{document.body.classList.toggle('nav-collapsed');colBtn.innerHTML=document.body.classList.contains('nav-collapsed')?'&nbsp;Show Menu':'&nbsp;Hide Menu';});tog?.addEventListener('click',()=>{if(document.body.classList.contains('nav-collapsed')){document.body.classList.remove('nav-collapsed');colBtn.innerHTML='&nbsp;Hide Menu';}else{document.body.classList.toggle('nav-open');}});ov?.addEventListener('click',()=>document.body.classList.remove('nav-open'));document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.body.classList.remove('nav-open');document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active');});});const revealEls=document.querySelectorAll('.section:not(#gloss):not(#tldr)');if('IntersectionObserver' in window){const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('in-view'));}const sections=document.querySelectorAll('.section[id],.snapshot[id]');const navItems=document.querySelectorAll('.nav-item[href^="#"]');const fill=document.querySelector('.nav-progress-fill');const pctLabel=document.querySelector('.nav-progress-label span:last-child');function updateNav(){const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;const pct=dh>0?Math.min(100,Math.round((st/dh)*100)):0;if(fill)fill.style.width=pct+'%';if(pctLabel)pctLabel.textContent=pct+'%';let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight*.4)cur=s.id;});if(cur)navItems.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));}window.addEventListener('scroll',updateNav,{passive:true});updateNav();})();
+(function(){
+// Nav collapse + mobile
+const colBtn=document.getElementById('collapseBtn'),tog=document.getElementById('navToggle'),ov=document.getElementById('navOverlay');
+colBtn?.addEventListener('click',()=>{document.body.classList.toggle('nav-collapsed');colBtn.innerHTML=document.body.classList.contains('nav-collapsed')?'&nbsp;Show Menu':'&nbsp;Hide Menu';});
+tog?.addEventListener('click',()=>{if(document.body.classList.contains('nav-collapsed')){document.body.classList.remove('nav-collapsed');colBtn.innerHTML='&nbsp;Hide Menu';}else{document.body.classList.toggle('nav-open');}});
+ov?.addEventListener('click',()=>document.body.classList.remove('nav-open'));
+document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.body.classList.remove('nav-open');document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active');});});
+
+// Scroll reveal (excludes #gloss and #tldr — those are timed)
+const revealEls=document.querySelectorAll('.section:not(#gloss):not(#tldr)');
+if('IntersectionObserver' in window){const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('in-view'));}
+
+// Nav progress + active section tracking
+const sections=document.querySelectorAll('.section[id],.snapshot[id]');
+const navItems=document.querySelectorAll('.nav-item[href^="#"]');
+const fill=document.querySelector('.nav-progress-fill');
+const pctLabel=document.querySelector('.nav-progress-label span:last-child');
+
+// Reading time
+const page=document.querySelector('.page');
+const text=page?page.textContent:'';
+const words=text.trim().split(/\s+/).length;
+const wpm=230;
+const totalMinutes=Math.ceil(words/wpm);
+const readTimeEl=document.getElementById('readTime');
+const readTimeText=document.getElementById('readTimeText');
+if(readTimeText)readTimeText.textContent=totalMinutes+' min read';
+let hasScrolled=false;
+
+function updateNav(){
+const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
+const pct=dh>0?Math.min(100,Math.round((st/dh)*100)):0;
+if(fill)fill.style.width=pct+'%';
+if(pctLabel)pctLabel.textContent=pct+'%';
+let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight*.4)cur=s.id;});
+if(cur)navItems.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+// Reading time countdown
+if(st>50)hasScrolled=true;
+const pctF=dh>0?Math.min(1,st/dh):0;
+const remaining=Math.max(0,Math.ceil(totalMinutes*(1-pctF)));
+if(readTimeText){
+if(remaining===0){readTimeText.textContent='Done ✓';}
+else if(!hasScrolled){readTimeText.textContent=totalMinutes+' min read';}
+else if(remaining===1){readTimeText.textContent='< 1 min left';}
+else{readTimeText.textContent=remaining+' min left';}
+}
+}
+window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+
+// Anchor copy — dynamically attach to all section headers
+document.querySelectorAll('.section-header').forEach(h=>{
+h.addEventListener('click',function(){
+const sec=this.closest('.section');
+if(!sec||!sec.id)return;
+const url=window.location.href.split('#')[0]+'#'+sec.id;
+navigator.clipboard.writeText(url).then(()=>{
+const icon=this.querySelector('.anchor-icon');
+if(icon){icon.classList.add('copied');icon.textContent='✓';}
+const toast=document.getElementById('anchorToast');
+if(toast)toast.classList.add('show');
+setTimeout(()=>{if(toast)toast.classList.remove('show');if(icon){icon.classList.remove('copied');icon.textContent='🔗';}},1800);
+});
+});
+});
+
+// Sparklines
+function drawSpark(id,data,color){
+const svg=document.getElementById(id);if(!svg)return;
+const w=48,h=18,pad=2;
+const min=Math.min(...data),max=Math.max(...data),range=max-min||1;
+const pts=data.map((v,i)=>{const x=pad+(i/(data.length-1))*(w-pad*2);const y=pad+(1-(v-min)/range)*(h-pad*2);return x+','+y;}).join(' ');
+svg.setAttribute('viewBox','0 0 '+w+' '+h);
+const last=pts.split(' ').pop().split(',');
+svg.innerHTML='<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2" fill="'+color+'" opacity="0.9"/>';
+}
+// Sparkline data — directional trends based on the week's moves
+drawSpark('spark-wti',[93.4,95.1,96.6,97.9,99.9],'#44ff88');
+drawSpark('spark-brent',[101.5,102.8,103.9,104.5,105.1],'#44ff88');
+drawSpark('spark-natgas',[2.82,2.78,2.74,2.73,2.72],'#ff3355');
+drawSpark('spark-gasoline',[3.28,3.32,3.35,3.39,3.43],'#44ff88');
+drawSpark('spark-gold',[4755,4714,4690,4620,4585],'#ff3355');
+drawSpark('spark-silver',[75.5,74.2,73.8,73.1,72.5],'#ff3355');
+drawSpark('spark-plat',[2018,1990,1965,1945,1933],'#ff3355');
+drawSpark('spark-pall',[1510,1490,1475,1460,1445],'#ff3355');
+drawSpark('spark-copper',[13200,13150,13080,13010,12972],'#ff3355');
+drawSpark('spark-btc',[77600,77200,76800,76500,76335],'#ff3355');
+drawSpark('spark-wheat',[620,625,630,635,641],'#44ff88');
+drawSpark('spark-lumber',[585,584,582,580,579],'#ff3355');
+})();
 </script>
 </body></html>
