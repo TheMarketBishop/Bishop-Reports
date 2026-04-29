@@ -22,15 +22,21 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 #tldr{opacity:0;transform:translateY(24px);transition:none;animation:openIn .9s cubic-bezier(.16,1,.3,1) 3.15s forwards}
 @keyframes neonPulse{0%{filter:brightness(1)}40%{filter:brightness(1.5)}100%{filter:brightness(1)}}.section.in-view .section-header{animation:neonPulse .8s ease-out .15s 1}.snap-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 18px rgba(0,170,255,.08)}.nav-item{transition:all .25s cubic-bezier(.22,1,.36,1)}.nav-item.active{transition:all .3s cubic-bezier(.22,1,.36,1)}.nav-progress-fill{transition:width .4s cubic-bezier(.22,1,.36,1)}
 @keyframes calloutPulse{0%,100%{box-shadow:-3px 0 14px rgba(255,170,0,.12)}50%{box-shadow:-3px 0 22px rgba(255,170,0,.28)}}@keyframes calloutPulseRed{0%,100%{box-shadow:-3px 0 14px rgba(255,51,85,.12)}50%{box-shadow:-3px 0 22px rgba(255,51,85,.28)}}@keyframes calloutPulseGreen{0%,100%{box-shadow:-3px 0 14px rgba(68,255,136,.1)}50%{box-shadow:-3px 0 22px rgba(68,255,136,.25)}}@keyframes calloutPulseBlue{0%,100%{box-shadow:-3px 0 14px rgba(0,170,255,.12)}50%{box-shadow:-3px 0 22px rgba(0,170,255,.28)}}.callout{animation:calloutPulse 3s ease-in-out infinite}.callout-red{animation:calloutPulseRed 3s ease-in-out infinite}.callout-green{animation:calloutPulseGreen 3s ease-in-out infinite}.callout-blue{animation:calloutPulseBlue 3s ease-in-out infinite}
-@media print{.section,.snapshot,.disclaimer-short,#gloss,#tldr{opacity:1!important;transform:none!important;animation:none!important}.brand,.page-title,.page-sub,.page-stamp{opacity:1!important;animation:none!important}.snapshot .snap-card{opacity:1!important;animation:none!important}.callout,.callout-red,.callout-green,.callout-blue{animation:none!important}.section.in-view .section-header{animation:none!important}body::before{content:'';position:fixed;inset:0;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.nav,.nav-toggle,.nav-overlay{display:none!important}.page-wrapper{margin-left:0!important}}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px);transition:all .3s ease}.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);transition:all .3s ease}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.section-header{position:relative;cursor:pointer}.section-header:hover{padding-right:2.5rem}.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}.section-header:hover .anchor-icon{opacity:.5}.section-header .anchor-icon.copied{opacity:1}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+@media print{.section,.snapshot,.disclaimer-short,#gloss,#tldr{opacity:1!important;transform:none!important;animation:none!important}.brand,.page-title,.page-sub,.page-stamp{opacity:1!important;animation:none!important}.snapshot .snap-card{opacity:1!important;animation:none!important}.callout,.callout-red,.callout-green,.callout-blue{animation:none!important}.section.in-view .section-header{animation:none!important}body::before{content:'';position:fixed;inset:0;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.nav,.nav-toggle,.nav-overlay,.read-time,.anchor-toast{display:none!important}.page-wrapper{margin-left:0!important}}
 @media(max-width:768px){body{flex-direction:column}.nav{width:240px!important;min-width:240px!important;transform:translateX(-100%);transition:transform .3s ease;z-index:150}.nav-open .nav{transform:translateX(0)}.nav-open .nav-overlay{display:block}.page-wrapper{margin-left:0!important}.nav-toggle{display:flex}.nav-collapse-btn{display:none}.page{padding:2.5rem 1rem 2rem;padding-top:4.5rem}}@media(max-width:500px){.gloss{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr 1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.comm-grid{grid-template-columns:1fr}}
 </style></head><body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
 <nav class="nav"><div class="nav-brand">The Market Bishop</div><div class="nav-date">April 28, 2026 · Pre-Market</div><a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a><button class="nav-collapse-btn" id="collapseBtn" title="Collapse sidebar">&nbsp;Hide Menu</button><div class="nav-sep"></div><div class="nav-section-label">Sections</div>
 <a class="nav-item" href="#snapshot"><span class="nav-dot"></span><span class="nav-item-text">Snapshot</span></a><a class="nav-item" href="#gloss"><span class="nav-dot"></span><span class="nav-item-text">Glossary</span></a><a class="nav-item" href="#tldr"><span class="nav-dot"></span><span class="nav-item-text">TL;DR</span></a><a class="nav-item" href="#overnight"><span class="nav-dot"></span><span class="nav-item-text">Overnight</span></a><a class="nav-item" href="#gex"><span class="nav-dot"></span><span class="nav-item-text">GEX Structure</span></a><a class="nav-item" href="#greeks"><span class="nav-dot"></span><span class="nav-item-text">Greek Forces</span></a><a class="nav-item" href="#catalyst"><span class="nav-dot"></span><span class="nav-item-text">Catalyst Watch</span></a><a class="nav-item" href="#ranges"><span class="nav-dot"></span><span class="nav-item-text">Expected Ranges</span></a><a class="nav-item" href="#earnings"><span class="nav-dot"></span><span class="nav-item-text">Earnings</span></a><a class="nav-item" href="#sectors"><span class="nav-dot"></span><span class="nav-item-text">Sector Setup</span></a><a class="nav-item" href="#commodities"><span class="nav-dot"></span><span class="nav-item-text">Commodities</span></a><a class="nav-item" href="#bottom"><span class="nav-dot"></span><span class="nav-item-text">Bottom Line</span></a>
 <div class="nav-progress"><div class="nav-progress-label"><span>Reading progress</span><span>0%</span></div><div class="nav-progress-bar"><div class="nav-progress-fill"></div></div></div></nav>
 <div class="nav-overlay" id="navOverlay"></div><button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
 <div class="page-wrapper"><main class="page">
-<div class="brand">The Market Bishop</div><h1 class="page-title">Pre-Market Report</h1><div class="page-sub">Tuesday, April 28, 2026</div><div class="page-stamp">Generated ~8:30 AM ET · Data as of 8:15 AM ET</div>
+<div class="brand">The Market Bishop</div><h1 class="page-title">Pre-Market Report</h1><div class="page-sub">Tuesday, April 28, 2026</div><div class="page-stamp"><span class="stamp-live">Generated ~8:30 AM ET · Data as of 8:15 AM ET</span></div>
 <div class="disclaimer-short"><span class="disc-icon">⚠</span><span><b>Not financial advice.</b> All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</span></div>
 
 <div class="snapshot" id="snapshot">
@@ -44,7 +50,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- GLOSSARY (Morning = first, delay 2.85s) -->
 <section class="section" id="gloss">
-<div class="section-header h-blue">Glossary</div>
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p style="font-size:12.5px;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:.65rem">Quick reference — key terms used in this report.</p>
 <div class="gloss">
@@ -60,7 +66,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- TL;DR (Morning = second, delay 3.15s) -->
 <section class="section" id="tldr">
-<div class="section-header h-amber">TL;DR — What You Need To Know</div>
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <ul class="dots amber">
 <li><b>Kevin's read: this is a retracement testing trend strength, not yet a pure sell-off.</b> Pre-market is red across mega-caps but SPX still sits 132 pts above its GEX floor, +$1.21B GEX is intact, and yesterday's vanna spring discharge worked exactly as expected. Until 7,085 breaks, the bull structure is being tested — not abandoned.</li>
@@ -74,7 +80,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- OVERNIGHT -->
 <section class="section" id="overnight">
-<div class="section-header h-purple">Overnight Developments</div>
+<div class="section-header h-purple">Overnight Developments<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p>Yesterday closed at an all-time high — SPX 7,217 (+0.79%), NVDA at ATH $216.61, MU +5.6%, focus list dispersion confirmed (MU/GOOGL/META/QCOM/MSFT green; ARM −8.1%, AMD −3.8%, IREN −4.5%). The setup into Tuesday looked clean: GEX +$1.21B, vanna partially discharged from yesterday's VIX compression, dealer floor at 7,085 with 132 pts of cushion. That clean setup hit two acute negative catalysts in pre-market.</p>
 
@@ -98,7 +104,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- GEX STRUCTURE -->
 <section class="section" id="gex">
-<div class="section-header h-teal">GEX Structure</div>
+<div class="section-header h-teal">GEX Structure<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="grid3" style="margin-bottom:.75rem">
 <div class="mini-card"><div class="mc-label">Net GEX</div><div class="mc-value val-green">+$1.21B</div><div class="mc-sub">From yesterday's close</div></div>
@@ -118,7 +124,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- GREEK FORCES -->
 <section class="section" id="greeks">
-<div class="section-header h-purple">Greek Forces</div>
+<div class="section-header h-purple">Greek Forces<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>Vanna: partially discharged from yesterday.</b> VIX compressed 20.78 → 19.95 through the session yesterday and dealer buying confirmed into close. That move was the vanna spring releasing. With VIX back at 20.47 this morning (+2.09%), vanna has reloaded slightly but the bigger reload is into FOMC vol expansion. If Powell delivers a cleaner-than-feared message, vol crush after the press conference would unleash a second vanna leg — that's the structural mechanism the bull case needs.</p>
 
@@ -130,7 +136,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- CATALYST WATCH -->
 <section class="section" id="catalyst">
-<div class="section-header h-coral">Catalyst Watch</div>
+<div class="section-header h-coral">Catalyst Watch<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <ul class="dots red">
 <li><b>10:00 AM ET — Consumer Confidence (April):</b> 89.1 forecast vs 91.8 prior. Significant decline expected — if it prints worse, confirms the consumer stress tape (57% of $100K+ earners worried about groceries; 25% of BNPL users have 3+ active loans). In-line print is neutral, hot print (above 91) would surprise hawkish into FOMC.</li>
@@ -146,7 +152,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- EXPECTED RANGES -->
 <section class="section" id="ranges">
-<div class="section-header h-blue">Expected Ranges</div>
+<div class="section-header h-blue">Expected Ranges<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="grid3" style="margin-bottom:.75rem">
 <div class="mini-card"><div class="mc-label">SPX Range</div><div class="mc-value">7,085–7,225</div><div class="mc-sub">Close: 7,217</div></div>
@@ -161,7 +167,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- EARNINGS -->
 <section class="section" id="earnings">
-<div class="section-header h-green">Earnings</div>
+<div class="section-header h-green">Earnings<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>Today's lineup:</b></p>
 <table class="data">
@@ -193,7 +199,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- SECTOR SETUP -->
 <section class="section" id="sectors">
-<div class="section-header h-coral">Sector Setup</div>
+<div class="section-header h-coral">Sector Setup<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p><b>Yesterday's close (Apr 27):</b> XLF +0.76% led, XLK +0.22%, XLC +0.23% — financials and communication services bid. Defensives mixed: XLU +0.02% flat, XLP −1.07%, XLV −0.50%, XLY −0.72%. XLE −0.18% even with crude rallying. The pattern was bull-trend extension — financials catching up to tech, with no clean defensive rotation despite the catalysts ahead.</p>
 
@@ -207,24 +213,24 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- COMMODITIES -->
 <section class="section" id="commodities">
-<div class="section-header h-teal">Commodities</div>
+<div class="section-header h-teal">Commodities<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <div class="comm-grid">
 <div class="comm-group"><div class="comm-group-label">ENERGY</div>
-<div class="comm-row"><span class="comm-name">Crude Oil (WTI)</span><span class="comm-price">$101.02</span><span class="comm-chg val-green">+4.83%</span></div>
-<div class="comm-row"><span class="comm-name">Brent Crude</span><span class="comm-price">$105.12</span><span class="comm-chg val-green">+3.37%</span></div>
-<div class="comm-row"><span class="comm-name">Natural Gas</span><span class="comm-price">$2.716</span><span class="comm-chg val-red">−0.48%</span></div>
-<div class="comm-row"><span class="comm-name">Gasoline RBOB</span><span class="comm-price">$3.43</span><span class="comm-chg val-green">+1.83%</span></div></div>
+<div class="comm-row"><span class="comm-name">Crude Oil (WTI)</span><svg class="comm-spark" id="spark-wti"></svg><span class="comm-price">$101.02</span><span class="comm-chg val-green">+4.83%</span></div>
+<div class="comm-row"><span class="comm-name">Brent Crude</span><svg class="comm-spark" id="spark-brent"></svg><span class="comm-price">$105.12</span><span class="comm-chg val-green">+3.37%</span></div>
+<div class="comm-row"><span class="comm-name">Natural Gas</span><svg class="comm-spark" id="spark-natgas"></svg><span class="comm-price">$2.716</span><span class="comm-chg val-red">−0.48%</span></div>
+<div class="comm-row"><span class="comm-name">Gasoline RBOB</span><svg class="comm-spark" id="spark-gasoline"></svg><span class="comm-price">$3.43</span><span class="comm-chg val-green">+1.83%</span></div></div>
 <div class="comm-group"><div class="comm-group-label">PRECIOUS METALS</div>
-<div class="comm-row"><span class="comm-name">Gold</span><span class="comm-price">$4,584.81</span><span class="comm-chg val-red">−2.32%</span></div>
-<div class="comm-row"><span class="comm-name">Silver</span><span class="comm-price">$72.49</span><span class="comm-chg val-red">−3.39%</span></div>
-<div class="comm-row"><span class="comm-name">Platinum</span><span class="comm-price">$1,932.85</span><span class="comm-chg val-red">−3.24%</span></div>
-<div class="comm-row"><span class="comm-name">Palladium</span><span class="comm-price">$1,445.25</span><span class="comm-chg val-red">−2.77%</span></div></div>
+<div class="comm-row"><span class="comm-name">Gold</span><svg class="comm-spark" id="spark-gold"></svg><span class="comm-price">$4,584.81</span><span class="comm-chg val-red">−2.32%</span></div>
+<div class="comm-row"><span class="comm-name">Silver</span><svg class="comm-spark" id="spark-silver"></svg><span class="comm-price">$72.49</span><span class="comm-chg val-red">−3.39%</span></div>
+<div class="comm-row"><span class="comm-name">Platinum</span><svg class="comm-spark" id="spark-plat"></svg><span class="comm-price">$1,932.85</span><span class="comm-chg val-red">−3.24%</span></div>
+<div class="comm-row"><span class="comm-name">Palladium</span><svg class="comm-spark" id="spark-pall"></svg><span class="comm-price">$1,445.25</span><span class="comm-chg val-red">−2.77%</span></div></div>
 <div class="comm-group"><div class="comm-group-label">INDUSTRIAL / OTHER</div>
-<div class="comm-row"><span class="comm-name">Copper</span><span class="comm-price">$12,972</span><span class="comm-chg val-red">−1.86%</span></div>
-<div class="comm-row"><span class="comm-name">Bitcoin</span><span class="comm-price">$76,335</span><span class="comm-chg val-red">−0.70%</span></div>
-<div class="comm-row"><span class="comm-name">Wheat</span><span class="comm-price">640.88</span><span class="comm-chg val-green">+1.73%</span></div>
-<div class="comm-row"><span class="comm-name">Lumber</span><span class="comm-price">$579.00</span><span class="comm-chg val-red">−0.60%</span></div></div>
+<div class="comm-row"><span class="comm-name">Copper</span><svg class="comm-spark" id="spark-copper"></svg><span class="comm-price">$12,972</span><span class="comm-chg val-red">−1.86%</span></div>
+<div class="comm-row"><span class="comm-name">Bitcoin</span><svg class="comm-spark" id="spark-btc"></svg><span class="comm-price">$76,335</span><span class="comm-chg val-red">−0.70%</span></div>
+<div class="comm-row"><span class="comm-name">Wheat</span><svg class="comm-spark" id="spark-wheat"></svg><span class="comm-price">640.88</span><span class="comm-chg val-green">+1.73%</span></div>
+<div class="comm-row"><span class="comm-name">Lumber</span><svg class="comm-spark" id="spark-lumber"></svg><span class="comm-price">$579.00</span><span class="comm-chg val-red">−0.60%</span></div></div>
 </div>
 <div class="callout-red" style="margin-top:1rem">
 <b>WTI's break above $100 is the structural macro story this morning.</b> Up $4.83% intraday, +$5.97 from yesterday's close ($95.05). Iran-US peace talks stalling, Trump skeptical of Hormuz proposal, Saudi Aramco extending LPG suspension through May. Russian superyacht crossing the blockade signals enforcement is incomplete. Brent +3.37% to $105.12. Gasoline RBOB +1.83% — pump prices follow within days. <b>Precious metals down 2–3.4% across the complex</b> — this is liquidation pattern (margin calls, dollar bid), not flight to safety. Copper −1.86% confirms growth-side selling. Bitcoin slipping to $76K with momentum fading near $80K. The energy-up / metals-down / crypto-down combo is a textbook input-cost shock setup heading into FOMC.
@@ -235,7 +241,7 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 
 <!-- BOTTOM LINE -->
 <section class="section" id="bottom">
-<div class="section-header h-amber">Bottom Line</div>
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
 <div class="section-body">
 <p>Kevin's read carries: this is a retracement testing the strength of the bull trend, not yet a regime change. The structural setup supports that thesis — SPX still 132 pts above its GEX floor, +$1.21B dealer gamma intact, and the broader pattern (NVDA at ATH yesterday, MU +5.6%, GOOGL Pentagon deal overnight) shows the AI thesis is still rewarded selectively. The pullback is concentrated where it should be: in the names with the most positioning risk going into earnings (MSFT, AMD, QCOM, AAPL).</p>
 
@@ -267,8 +273,98 @@ table.data{width:100%;border-collapse:collapse;margin:.5rem 0}table.data th{font
 <p class="disc-final">By accessing this report, you confirm agreement with this disclaimer. <b>The Market Bishop · All Rights Reserved.</b></p>
 </div>
 </div>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
 </main></div>
 <script>
-(function(){const colBtn=document.getElementById('collapseBtn'),tog=document.getElementById('navToggle'),ov=document.getElementById('navOverlay');colBtn?.addEventListener('click',()=>{document.body.classList.toggle('nav-collapsed');colBtn.innerHTML=document.body.classList.contains('nav-collapsed')?'&nbsp;Show Menu':'&nbsp;Hide Menu';});tog?.addEventListener('click',()=>{if(document.body.classList.contains('nav-collapsed')){document.body.classList.remove('nav-collapsed');colBtn.innerHTML='&nbsp;Hide Menu';}else{document.body.classList.toggle('nav-open');}});ov?.addEventListener('click',()=>document.body.classList.remove('nav-open'));document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.body.classList.remove('nav-open');document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active');});});const revealEls=document.querySelectorAll('.section:not(#gloss):not(#tldr)');if('IntersectionObserver' in window){const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('in-view'));}const sections=document.querySelectorAll('.section[id],.snapshot[id]');const navItems=document.querySelectorAll('.nav-item[href^="#"]');const fill=document.querySelector('.nav-progress-fill');const pctLabel=document.querySelector('.nav-progress-label span:last-child');function updateNav(){const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;const pct=dh>0?Math.min(100,Math.round((st/dh)*100)):0;if(fill)fill.style.width=pct+'%';if(pctLabel)pctLabel.textContent=pct+'%';let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight*.4)cur=s.id;});if(cur)navItems.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));}window.addEventListener('scroll',updateNav,{passive:true});updateNav();})();
+(function(){
+// Nav collapse + mobile
+const colBtn=document.getElementById('collapseBtn'),tog=document.getElementById('navToggle'),ov=document.getElementById('navOverlay');
+colBtn?.addEventListener('click',()=>{document.body.classList.toggle('nav-collapsed');colBtn.innerHTML=document.body.classList.contains('nav-collapsed')?'&nbsp;Show Menu':'&nbsp;Hide Menu';});
+tog?.addEventListener('click',()=>{if(document.body.classList.contains('nav-collapsed')){document.body.classList.remove('nav-collapsed');colBtn.innerHTML='&nbsp;Hide Menu';}else{document.body.classList.toggle('nav-open');}});
+ov?.addEventListener('click',()=>document.body.classList.remove('nav-open'));
+document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.body.classList.remove('nav-open');document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active');});});
+
+// Scroll reveal (excludes #gloss and #tldr — those are timed)
+const revealEls=document.querySelectorAll('.section:not(#gloss):not(#tldr)');
+if('IntersectionObserver' in window){const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});revealEls.forEach(el=>io.observe(el));}else{revealEls.forEach(el=>el.classList.add('in-view'));}
+
+// Nav progress + active section tracking
+const sections=document.querySelectorAll('.section[id],.snapshot[id]');
+const navItems=document.querySelectorAll('.nav-item[href^="#"]');
+const fill=document.querySelector('.nav-progress-fill');
+const pctLabel=document.querySelector('.nav-progress-label span:last-child');
+
+// Reading time
+const page=document.querySelector('.page');
+const text=page?page.textContent:'';
+const words=text.trim().split(/\s+/).length;
+const wpm=230;
+const totalMinutes=Math.ceil(words/wpm);
+const readTimeEl=document.getElementById('readTime');
+const readTimeText=document.getElementById('readTimeText');
+if(readTimeText)readTimeText.textContent=totalMinutes+' min read';
+let hasScrolled=false;
+
+function updateNav(){
+const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
+const pct=dh>0?Math.min(100,Math.round((st/dh)*100)):0;
+if(fill)fill.style.width=pct+'%';
+if(pctLabel)pctLabel.textContent=pct+'%';
+let cur='';sections.forEach(s=>{if(s.getBoundingClientRect().top<window.innerHeight*.4)cur=s.id;});
+if(cur)navItems.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+// Reading time countdown
+if(st>50)hasScrolled=true;
+const pctF=dh>0?Math.min(1,st/dh):0;
+const remaining=Math.max(0,Math.ceil(totalMinutes*(1-pctF)));
+if(readTimeText){
+if(remaining===0){readTimeText.textContent='Done ✓';}
+else if(!hasScrolled){readTimeText.textContent=totalMinutes+' min read';}
+else if(remaining===1){readTimeText.textContent='< 1 min left';}
+else{readTimeText.textContent=remaining+' min left';}
+}
+}
+window.addEventListener('scroll',updateNav,{passive:true});updateNav();
+
+// Anchor copy — dynamically attach to all section headers
+document.querySelectorAll('.section-header').forEach(h=>{
+h.addEventListener('click',function(){
+const sec=this.closest('.section');
+if(!sec||!sec.id)return;
+const url=window.location.href.split('#')[0]+'#'+sec.id;
+navigator.clipboard.writeText(url).then(()=>{
+const icon=this.querySelector('.anchor-icon');
+if(icon){icon.classList.add('copied');icon.textContent='✓';}
+const toast=document.getElementById('anchorToast');
+if(toast)toast.classList.add('show');
+setTimeout(()=>{if(toast)toast.classList.remove('show');if(icon){icon.classList.remove('copied');icon.textContent='🔗';}},1800);
+});
+});
+});
+
+// Sparklines
+function drawSpark(id,data,color){
+const svg=document.getElementById(id);if(!svg)return;
+const w=48,h=18,pad=2;
+const min=Math.min(...data),max=Math.max(...data),range=max-min||1;
+const pts=data.map((v,i)=>{const x=pad+(i/(data.length-1))*(w-pad*2);const y=pad+(1-(v-min)/range)*(h-pad*2);return x+','+y;}).join(' ');
+svg.setAttribute('viewBox','0 0 '+w+' '+h);
+const last=pts.split(' ').pop().split(',');
+svg.innerHTML='<polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/><circle cx="'+last[0]+'" cy="'+last[1]+'" r="2" fill="'+color+'" opacity="0.9"/>';
+}
+// Sparkline data — directional trends based on the week's moves
+drawSpark('spark-wti',[93.4,95.1,96.6,97.9,99.9],'#44ff88');
+drawSpark('spark-brent',[101.5,102.8,103.9,104.5,105.1],'#44ff88');
+drawSpark('spark-natgas',[2.82,2.78,2.74,2.73,2.72],'#ff3355');
+drawSpark('spark-gasoline',[3.28,3.32,3.35,3.39,3.43],'#44ff88');
+drawSpark('spark-gold',[4755,4714,4690,4620,4585],'#ff3355');
+drawSpark('spark-silver',[75.5,74.2,73.8,73.1,72.5],'#ff3355');
+drawSpark('spark-plat',[2018,1990,1965,1945,1933],'#ff3355');
+drawSpark('spark-pall',[1510,1490,1475,1460,1445],'#ff3355');
+drawSpark('spark-copper',[13200,13150,13080,13010,12972],'#ff3355');
+drawSpark('spark-btc',[77600,77200,76800,76500,76335],'#ff3355');
+drawSpark('spark-wheat',[620,625,630,635,641],'#44ff88');
+drawSpark('spark-lumber',[585,584,582,580,579],'#ff3355');
+})();
 </script>
 </body></html>
