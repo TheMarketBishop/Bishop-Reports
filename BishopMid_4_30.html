@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Market Bishop · Midday Report · April 30 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:rgba(255,255,255,.88);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(0,170,255,.3);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(0,170,255,.3);border-radius:3px}
+nav{position:fixed;top:0;left:0;width:210px;height:100vh;background:rgba(6,6,12,.97);border-right:1px solid rgba(0,170,255,.08);padding:1.5rem 1rem;z-index:100;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+nav.collapsed{transform:translateX(-210px)}
+.nav-brand{font-size:11px;font-weight:700;letter-spacing:.12em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;margin-bottom:.3rem;opacity:0;animation:fadeUp .5s ease forwards 1.8s}
+.nav-home{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(0,170,255,.6);text-decoration:none;padding:.3rem 0;margin-bottom:.3rem;transition:color .2s,text-shadow .2s}
+.nav-home:hover{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.5);text-decoration:none}
+.nav-collapse-btn{font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;padding:.3rem 0;margin-bottom:.8rem;transition:color .2s}
+.nav-collapse-btn:hover{color:rgba(255,255,255,.6)}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:.5rem;margin-top:.5rem}
+.nav-links{list-style:none;flex:1;overflow-y:auto}
+.nav-links li{margin-bottom:.15rem}
+.nav-links a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;padding:.25rem .4rem;display:block;border-radius:4px;transition:all .25s cubic-bezier(.22,1,.36,1);letter-spacing:.02em}
+.nav-links a:hover{color:#00aaff;background:rgba(0,170,255,.06);text-shadow:0 0 8px rgba(0,170,255,.2)}
+.nav-links a.active{color:#00aaff;background:rgba(0,170,255,.08);text-shadow:0 0 8px rgba(0,170,255,.3);border-left:2px solid #00aaff;padding-left:calc(.4rem - 2px)}
+.nav-progress{margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+.nav-progress-label{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;margin-bottom:.4rem}
+.nav-progress-bar{height:2px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+.nav-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00aaff,#aa55ff);border-radius:1px;transition:width .15s ease}
+.page{margin-left:calc(210px + (100% - 210px - 740px) / 2);max-width:740px;padding:2.5rem 2rem 4rem}
+.page-brand{font-size:11px;font-weight:700;letter-spacing:.14em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.page-title{font-size:22px;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:.2rem;opacity:0;animation:fadeUp .5s ease forwards 1.85s}
+.page-sub{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 2.0s}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:1rem;opacity:0;animation:fadeUp .5s ease forwards 2.15s}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}
+@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.disclaimer-bar{background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.12);border-radius:8px;padding:.6rem 1rem;margin-bottom:1.5rem;font-size:11px;color:rgba(255,170,0,.7);text-shadow:0 0 6px rgba(255,170,0,.15);opacity:0;animation:fadeUp .5s ease forwards 2.3s}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:2rem}
+.snap-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.8rem;text-align:center;transition:transform .2s ease,box-shadow .2s ease;opacity:0;animation:cardIn .5s ease forwards}
+.snap-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,170,255,.08)}
+.snap-card:nth-child(1){animation-delay:2.35s}.snap-card:nth-child(2){animation-delay:2.4s}.snap-card:nth-child(3){animation-delay:2.45s}.snap-card:nth-child(4){animation-delay:2.5s}.snap-card:nth-child(5){animation-delay:2.55s}.snap-card:nth-child(6){animation-delay:2.6s}
+.snap-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.3rem}
+.snap-value{font-size:18px;font-weight:700;color:rgba(255,255,255,.9)}
+.snap-detail{font-size:10px;color:rgba(255,255,255,.35);margin-top:.2rem}
+.snap-up{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.snap-down{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}
+.snap-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}
+.section{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;margin-bottom:2rem}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-header{position:relative;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.06em;padding:.6rem 0;margin-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.section-header:hover{padding-right:2.5rem}
+.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}
+.section-header:hover .anchor-icon{opacity:.5}
+.section-header .anchor-icon.copied{opacity:1}
+.h-blue{color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);border-color:rgba(0,170,255,.15)}
+.h-purple{color:#aa55ff;text-shadow:0 0 12px rgba(170,85,255,.3);border-color:rgba(170,85,255,.15)}
+.h-teal{color:#00d2b4;text-shadow:0 0 12px rgba(0,210,180,.3);border-color:rgba(0,210,180,.15)}
+.h-red{color:#ff3355;text-shadow:0 0 12px rgba(255,51,85,.3);border-color:rgba(255,51,85,.15)}
+.h-amber{color:#ffaa00;text-shadow:0 0 12px rgba(255,170,0,.3);border-color:rgba(255,170,0,.15)}
+.h-green{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.3);border-color:rgba(68,255,136,.15)}
+.h-coral{color:#ff7f50;text-shadow:0 0 12px rgba(255,127,80,.3);border-color:rgba(255,127,80,.15)}
+.section p,.section ul{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.8rem}
+.section ul{list-style:none;padding-left:0}
+.section li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+.section li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.4)}
+.li-amber::before{background:#ffaa00!important;box-shadow:0 0 6px rgba(255,170,0,.4)!important}
+.li-teal::before{background:#00d2b4!important;box-shadow:0 0 6px rgba(0,210,180,.4)!important}
+.li-purple::before{background:#aa55ff!important;box-shadow:0 0 6px rgba(170,85,255,.4)!important}
+.li-green::before{background:#44ff88!important;box-shadow:0 0 6px rgba(68,255,136,.4)!important}
+.li-coral::before{background:#ff7f50!important;box-shadow:0 0 6px rgba(255,127,80,.4)!important}
+.li-red::before{background:#ff3355!important;box-shadow:0 0 6px rgba(255,51,85,.4)!important}
+strong{color:rgba(255,255,255,.95)}
+.callout{border-left:3px solid rgba(0,170,255,.3);background:rgba(0,170,255,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheBlue 3s ease-in-out infinite}
+.callout-amber{border-color:rgba(255,170,0,.3);background:rgba(255,170,0,.04);animation:breatheAmber 3s ease-in-out infinite}
+.callout-teal{border-color:rgba(0,210,180,.3);background:rgba(0,210,180,.04);animation:breatheTeal 3s ease-in-out infinite}
+.callout-purple{border-color:rgba(170,85,255,.3);background:rgba(170,85,255,.04);animation:breathePurple 3s ease-in-out infinite}
+@keyframes breatheBlue{0%,100%{box-shadow:0 0 8px rgba(0,170,255,.05)}50%{box-shadow:0 0 16px rgba(0,170,255,.12)}}
+@keyframes breatheAmber{0%,100%{box-shadow:0 0 8px rgba(255,170,0,.05)}50%{box-shadow:0 0 16px rgba(255,170,0,.12)}}
+@keyframes breatheTeal{0%,100%{box-shadow:0 0 8px rgba(0,210,180,.05)}50%{box-shadow:0 0 16px rgba(0,210,180,.12)}}
+@keyframes breathePurple{0%,100%{box-shadow:0 0 8px rgba(170,85,255,.05)}50%{box-shadow:0 0 16px rgba(170,85,255,.12)}}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.gloss-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem .7rem;transition:transform .2s ease,box-shadow .2s ease}
+.gloss-item:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,170,255,.06)}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,.2);margin-bottom:.2rem}
+.gloss-def{font-size:10px;color:rgba(255,255,255,.5);line-height:1.5}
+.mini-card{background:rgba(255,255,255,.02);border:1px solid rgba(170,85,255,.1);border-radius:10px;padding:.8rem 1rem;margin-bottom:.75rem;transition:transform .2s ease,box-shadow .2s ease}
+.mini-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(170,85,255,.08)}
+.mini-card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+.mini-card-ticker{font-size:14px;font-weight:700;color:#aa55ff;text-shadow:0 0 8px rgba(170,85,255,.3)}
+.mini-card-price{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.mini-card-detail{font-size:11px;color:rgba(255,255,255,.45)}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:12px}
+.data-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);text-transform:uppercase;padding:.4rem .5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.data-table td{padding:.4rem .5rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.03)}
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.comm-group-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.5rem}
+.comm-row{display:flex;align-items:center;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:11px}
+.comm-name{color:rgba(255,255,255,.6);flex:1}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+.comm-price{color:rgba(255,255,255,.85);font-weight:600;margin-right:.5rem;white-space:nowrap}
+.comm-change{font-weight:600;white-space:nowrap}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}
+.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px)}
+.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}
+.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.bottom-line{border-top:1px solid rgba(255,170,0,.15);padding-top:1.5rem;margin-top:1rem}
+.sources-footer{font-size:10px;color:rgba(255,255,255,.2);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.04)}
+.legal{margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.04);border-radius:10px}
+.legal p{font-size:10px;color:rgba(255,255,255,.25);margin-bottom:.6rem;line-height:1.6}
+.legal strong{color:rgba(255,255,255,.35)}
+@keyframes openIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes neonPulse{0%{filter:brightness(1);transform:scale(1)}30%{filter:brightness(2);transform:scale(1.02)}60%{filter:brightness(1.6);transform:scale(1.01)}100%{filter:brightness(1);transform:scale(1)}}
+@media(max-width:768px){
+nav{transform:translateX(-210px)}
+nav.open{transform:translateX(0)}
+.page{margin-left:0;padding:1.5rem 1rem 3rem}
+.gloss-grid{grid-template-columns:1fr}
+.comm-grid{grid-template-columns:1fr}
+.snapshot{grid-template-columns:repeat(2,1fr)}
+.hamburger{display:flex!important}
+.read-time{top:14px;right:14px}
+}
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;width:32px;height:32px;background:rgba(6,6,12,.9);border:1px solid rgba(0,170,255,.15);border-radius:6px;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#00aaff}
+@media print{
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:-1}
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+nav,.hamburger,.read-time,.anchor-toast{display:none!important}
+.page{margin-left:0;max-width:100%}
+.section{opacity:1!important;transform:none!important;animation:none!important}
+.snap-card,.gloss-item,.mini-card{opacity:1!important;animation:none!important}
+.page-brand,.page-title,.page-sub,.page-stamp,.disclaimer-bar{opacity:1!important;animation:none!important}
+.stamp-live{animation:none!important}
+.callout,.callout-amber,.callout-teal,.callout-purple{animation:none!important}
+}
+</style>
+</head>
+<body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
+<div class="hamburger" id="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">☰</div>
+<nav id="mainNav">
+<div class="nav-brand">The Market Bishop</div>
+<div class="nav-date">April 30, 2026 · Midday</div>
+<a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a>
+<div class="nav-collapse-btn" id="navCollapse" onclick="document.querySelector('nav').classList.toggle('collapsed')">Hide Menu</div>
+<div class="nav-label">Sections</div>
+<ul class="nav-links">
+<li><a href="#snapshot">Snapshot</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#gloss">Glossary</a></li>
+<li><a href="#recap">Session Recap</a></li>
+<li><a href="#gex">Live GEX</a></li>
+<li><a href="#flow">Options Flow</a></li>
+<li><a href="#internals">Internals</a></li>
+<li><a href="#greeks">Greek Forces</a></li>
+<li><a href="#focus">Focus Stocks</a></li>
+<li><a href="#afternoon">Afternoon Setup</a></li>
+<li><a href="#catalyst">Catalyst Watch</a></li>
+<li><a href="#bottom">Bottom Line</a></li>
+</ul>
+<div class="nav-progress">
+<div class="nav-progress-label">Reading progress</div>
+<div class="nav-progress-bar"><div class="nav-progress-fill" id="progressFill"></div></div>
+</div>
+</nav>
+
+<main class="page">
+<div class="page-brand">The Market Bishop</div>
+<div class="page-title">Midday Report</div>
+<div class="page-sub">Wednesday, April 30, 2026</div>
+<div class="page-stamp"><span class="stamp-live">Generated ~2:00 PM ET · Data as of intraday session</span></div>
+
+<div class="disclaimer-bar">⚠ Not financial advice. All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</div>
+
+<div class="snapshot" id="snapshot">
+<div class="snap-card"><div class="snap-label">SPY Intraday</div><div class="snap-value snap-up">$716.83</div><div class="snap-detail">+0.74% · Grinding through $715 MVC</div></div>
+<div class="snap-card"><div class="snap-label">S&P 500 Futures</div><div class="snap-value snap-up">7,220</div><div class="snap-detail">+0.73% · Above 7,200 magnet</div></div>
+<div class="snap-card"><div class="snap-label">VIX</div><div class="snap-value snap-up">19.57</div><div class="snap-detail">−3.4% · Vol crushing hard</div></div>
+<div class="snap-card"><div class="snap-label">P/C Ratio</div><div class="snap-value snap-up">0.68</div><div class="snap-detail">Call-heavy · 29.7M calls vs 20.3M puts</div></div>
+<div class="snap-card"><div class="snap-label">WTI Crude</div><div class="snap-value snap-down">$103.77</div><div class="snap-detail">−2.9% · Pulling back from $110+</div></div>
+<div class="snap-card"><div class="snap-label">Status</div><div class="snap-value snap-up">BULLISH</div><div class="snap-detail">Kevin right again · AMD + GOOGL printing</div></div>
+</div>
+
+<div class="section" id="tldr" style="opacity:0;animation:fadeUp .5s ease forwards 2.85s">
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
+<ul>
+<li class="li-amber"><strong>Kevin's bullish thesis confirmed for a 4th straight session.</strong> Called it this morning — slower grind, and that's exactly what's playing out. SPY grinding through $715-$717 with broadening breadth. GOOGL calls continue to print massively. AMD had an amazing session as a focus pick. MU didn't perform on the sympathy play — WDC/SNDK tonight will determine if that thesis reactivates.</li>
+<li class="li-amber"><strong>The internals FLIPPED bullish — best breadth reading in two weeks.</strong> A/D ratio surged to 2.16x (from 0.47x yesterday). Volume ratio 1.60x. 71.7% above session VWAP. Every exchange green. The 3-day divergence between tape and internals resolved — the tape was right, and now the internals confirm it. This is the broadest participation since the Hormuz reopening rally April 17.</li>
+<li class="li-amber"><strong>The rotation is the story: old economy leading, tech flat on its own earnings day.</strong> XLI +2.50% (CAT +9%), XLV +2.22% (LLY +7%), XLU +1.71%, XLP +1.48%. Meanwhile XLK is flat at −0.01% despite GOOGL +7% and MSFT gapping up. META −10% ($175B wipeout) is the drag. Market rewarded beats but punished AI spending. Kevin likes AMD, GOOGL and tech for call swings.</li>
+<li class="li-amber"><strong>GEX improved massively — from −$519M to −$34M.</strong> Event gamma drained overnight. The $710 accelerator that threatened all week never fired. $715 is the new MVC with +$179M magnet pull. Structure is lighter, freer, more reactive. VIX crushed to 19.57 (−3.4%).</li>
+<li class="li-amber"><strong>AAPL tonight is the last Mag-7 verdict.</strong> The beat-and-sell pattern is 4 of 5 among mega-caps. AAPL breaks it or confirms it. Tim Cook's last earnings. $3.75B block positioning. The laggard of the group (−1% YTD vs Nasdaq +14% in April) — the bar may be lower.</li>
+<li class="li-amber"><strong>April 2026 is the 3rd best April in 23 years.</strong> SPY +9.42% this month. Only beaten by COVID 2020 recovery and GFC 2009 bounce. Both were crisis recoveries — this one isn't. The AI infrastructure thesis drove it.</li>
+</ul>
+</div>
+
+<div class="section" id="gloss" style="opacity:0;animation:fadeUp .5s ease forwards 3.15s">
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
+<p style="font-style:italic;font-size:11px;color:rgba(255,255,255,.4);margin-bottom:.8rem">Quick reference — key terms used in this report.</p>
+<div class="gloss-grid">
+<div class="gloss-item"><div class="gloss-term">Beat-and-Sell</div><div class="gloss-def">The dominant earnings pattern this week: mega-caps beat estimates then sell off. MSFT −3% AH, META −10%, AMZN flat. Only GOOGL rallied. 4 of 5 mega-caps beat and sold. AAPL tonight determines if this pattern holds or breaks.</div></div>
+<div class="gloss-item"><div class="gloss-term">Breadth Flip</div><div class="gloss-def">After 3 days of the tape buying against negative internals (A/D as low as 0.47x), today the internals confirmed the tape: A/D 2.16x, volume ratio 1.60x, 71.7% above VWAP. Broadest reading since April 17. The institutions were right to front-load.</div></div>
+<div class="gloss-item"><div class="gloss-term">Old Economy Rotation</div><div class="gloss-def">Industrials +2.50%, Healthcare +2.22%, Utilities +1.71%, Staples +1.48%. Tech flat at −0.01%. The market beat expectations in AI but is rotating profits into value sectors. The AI capex backlash (META −10%) is accelerating this shift.</div></div>
+<div class="gloss-item"><div class="gloss-term">$715 MVC</div><div class="gloss-def">The Maximum Value Contract — the strike with the greatest absolute gamma exposure on SPY. At $715 with +$179M magnet pull, this level acts as a gravitational center. SPY spent the morning grinding toward it and is now trading through it at $716.83.</div></div>
+<div class="gloss-item"><div class="gloss-term">Event Gamma Drain</div><div class="gloss-def">After FOMC + mega-cap earnings, the options that were priced for those events expired or collapsed in IV. Total GEX improved from −$519M to −$34M. The structure is dramatically lighter — less dealer hedging pressure, more organic price discovery.</div></div>
+<div class="gloss-item"><div class="gloss-term">3rd Best April</div><div class="gloss-def">SPY +9.42% in April 2026. Only April 2020 (+12.70%, COVID snap) and April 2009 (+9.93%, GFC bounce) were better. Both were crisis recoveries. This one was driven by AI infrastructure earnings. April has a 74% win rate with +1.97% average — this month was 5x that.</div></div>
+</div>
+</div>
+
+<div class="section" id="recap">
+<div class="section-header h-blue">Session Recap — Morning to Now<span class="anchor-icon">🔗</span></div>
+<p>The morning thesis was "bullish but slower grind." The market delivered exactly that — and then some. SPY opened at $711.17 (−0.06%), absorbed the PCE/GDP data dump at 8:30 AM without flinching, then ground steadily higher through the morning. The $712 level broke cleanly, $715 MVC was hit by 11 AM, and SPY is now at $716.83 (+0.74%).</p>
+<p><strong>The gap-up from GOOGL/MSFT held and extended.</strong> GOOGL surpassed $4.5 trillion in market cap — added $300B+ in a single session, now larger than both Japan's and India's GDP. Bulls kept slamming the call tape all morning. Meanwhile META crashed −10%, wiping $175B in market cap — the worst day since October 2025. The dispersion is extreme: GOOGL +7% and META −10% in the same session, same sector. The concentration regime working exactly as designed.</p>
+<p><strong>The real surprise: the rotation.</strong> The morning report predicted XLK would lead on the GOOGL/MSFT gap-up. Instead, tech is flat (XLK −0.01%) while industrials (+2.50%), healthcare (+2.22%), utilities (+1.71%), and staples (+1.48%) run. CAT carried a +9% move from yesterday. LLY popped +7% on Mounjaro/Zepbound earnings. The market took the mega-cap beats and rotated the proceeds into value. The AI capex backlash (META raising guidance to $125-145B) is real — the market wants revenue, not spending.</p>
+<p><strong>Kevin's picks outperformed.</strong> AMD had an amazing session — strong move as a focus pick. GOOGL calls continue to print from the earnings call two days ago. MU didn't perform on the WDC/SNDK sympathy thesis — it needs tonight's storage earnings to reactivate. Kevin likes AMD, GOOGL, and tech for call swings going forward.</p>
+<div class="callout">Oil pulling back hard: WTI $103.77 (−2.9%), Brent $108.98 (−1.3%). The overnight spike to $120 Brent faded completely. SPR drawn down −7.12M barrels (largest since Oct 2022), US oil exports hit 14M bbl/day record. The market is absorbing the oil headwind while the supply situation deteriorates underneath — that tension resolves on Iran news, per Kevin's second leg thesis.</div>
+</div>
+
+<div class="section" id="gex">
+<div class="section-header h-teal">Live GEX Update<span class="anchor-icon">🔗</span></div>
+<p><strong>The structure improved dramatically overnight and is holding intraday.</strong> This is the cleanest GEX profile of the entire week.</p>
+<table class="data-table">
+<tr><th>Metric</th><th>Yesterday EOD</th><th>Current</th><th>Change</th></tr>
+<tr><td>Total GEX</td><td>−$519M</td><td>−$34M</td><td>Near flat — massive improvement</td></tr>
+<tr><td>GEX Flip</td><td>7,095</td><td>7,095</td><td>Holding — 125 pts below spot</td></tr>
+<tr><td>$710 Accelerator</td><td>−$251M</td><td>Drained</td><td>Event gamma expired. Didn't fire.</td></tr>
+<tr><td>$715 MVC</td><td>N/A</td><td>+$179M magnet</td><td>New gravity center — SPY grinding through it</td></tr>
+<tr><td>Dealer Short</td><td>87.8M shares</td><td>100.5M shares</td><td>Rebuilt 13M overnight on earnings stabilization</td></tr>
+</table>
+<p>The event gamma that dominated all week — FOMC + mega-cap earnings — drained out overnight. Total GEX went from −$519M to −$34M. That's a regime change. The structure is lighter, freer, and more responsive to organic flow. The $710 accelerator that had −$251M (largest ever recorded at price) simply evaporated as the options expired worthless.</p>
+<p><strong>The $715 level is the new MVC</strong> with +$179M magnet pull, 0.5% above yesterday's close. SPY ground toward it all morning and broke through at 11 AM. The $1.8B call wall at $715 is now acting as a floor rather than a ceiling. Above here, the next magnet targets are $720 and then the 7,300 SPX level (+$90M).</p>
+<p><strong>IV crushed from 19.3% pre-FOMC to 17.8% this morning.</strong> A 1.5-point compression. VIX at 19.57 (−3.4%) and falling. The vol crush is doing quiet work underneath — every tick lower in IV triggers more vanna-driven dealer buying.</p>
+</div>
+
+<div class="section" id="flow">
+<div class="section-header h-teal">Options Flow Midday<span class="anchor-icon">🔗</span></div>
+<p><strong>The tape is aggressively bullish.</strong> Put/call ratio at 0.68 — call-heavy. 29.7M calls traded vs 20.3M puts. Call premium at $22.8B vs put premium at $10.3B. The money is overwhelmingly positioned for upside.</p>
+<p><strong>Notable flow today:</strong></p>
+<ul>
+<li class="li-teal"><strong>SPY $1.8B call wall at $715</strong> — bulls smashed through it. Someone added $1.5M in $760 strike calls (6% OTM). The conviction is high.</li>
+<li class="li-teal"><strong>$7M call spike on QQQ</strong> — aggressive tech index buying despite XLK being flat. Positioning for the AAPL reaction.</li>
+<li class="li-teal"><strong>GOOGL call tape relentless</strong> — bulls kept slamming calls all morning as the stock cleared $370 and market cap passed $4.5T.</li>
+<li class="li-teal"><strong>NVDA call buying continues</strong> — despite the $6.86B institutional sell yesterday, the options tape is bidding calls today.</li>
+<li class="li-teal"><strong>TLT $4M put floor trade</strong> — 14,000 contracts at the $85 strike, Nov expiry. Bond bears positioning for higher rates. 10Y pressure continuing.</li>
+<li class="li-teal"><strong>XHB $1.1M call sweep</strong> — homebuilder ETF. Contrarian positioning into rate-sensitive sectors.</li>
+</ul>
+<p>The flow character today is unambiguous: calls everywhere, size increasing, strikes moving OTM. The $760 SPY calls are a statement — someone is positioning for a significant move higher in the next few weeks. 73% of premium went to calls. Kevin's tech call swing thesis aligns perfectly with the tape.</p>
+</div>
+
+<div class="section" id="internals">
+<div class="section-header h-blue">Internals<span class="anchor-icon">🔗</span></div>
+<p><strong>The internals flipped — and the magnitude of the flip is the signal.</strong></p>
+<table class="data-table">
+<tr><th>Metric</th><th>Yesterday</th><th>Today</th><th>Read</th></tr>
+<tr><td>A/D Ratio</td><td>0.47x</td><td>2.16x</td><td>4.6x improvement — broadest in 2 weeks</td></tr>
+<tr><td>Volume Ratio</td><td>0.36x</td><td>1.60x</td><td>Up volume leading $1.94B to $1.21B</td></tr>
+<tr><td>VWAP</td><td>—</td><td>71.7% above</td><td>Strong participation</td></tr>
+<tr><td>NYSE</td><td>—</td><td>2.82x</td><td>Broad-based buying</td></tr>
+<tr><td>Nasdaq</td><td>—</td><td>1.89x</td><td>Tech participating despite XLK flat</td></tr>
+</table>
+<p>For three straight days the internals and the tape told opposite stories. Breadth said sell (A/D as low as 0.47x). The tape kept buying ($26B → $33B → $21B in block flow). We flagged the divergence every session. Today the internals resolved it: 3,168 advancing vs 1,467 declining. The tape was the better signal.</p>
+<p><strong>The sector breadth is the key detail.</strong> This isn't just GOOGL +7% dragging the index up. 10 of 11 sectors are green at the 1:48 PM snapshot. Only XLK is flat — and that's because META −10% is offsetting GOOGL +7%. The breadth is real, it's broad, and it's the strongest since the Hormuz reopening rally. Kevin's bullish thesis now has internals confirmation for the first time in days.</p>
+</div>
+
+<div class="section" id="greeks">
+<div class="section-header h-purple">Greek Forces Update<span class="anchor-icon">🔗</span></div>
+<p><strong>Vanna: firing.</strong> VIX crushed from 19.93 at yesterday's close to 19.57 now (−3.4% intraday). IV compressed from 19.3% pre-FOMC to 17.8% at today's open. The vanna setup we flagged for three days is now actively triggering — dealers buying delta as volatility compresses. This is the third vanna event of the cycle and the strongest. If AAPL delivers tonight and VIX drops below 18, the full vanna-driven dealer buying cascade fires.</p>
+<p><strong>Charm: releasing steadily.</strong> With no scheduled catalysts between now and AAPL post-close, charm is the dominant Greek force this afternoon. Time decay on expiring options forces dealers to unwind hedges = buying pressure. The afternoon should be a quiet, steady grind. The charm pressure accelerates into Friday's month-end expiry.</p>
+<p><strong>Dealer book: rebuilt to 100.5M shares short</strong> (from 87.8M yesterday). The engine added 13M shares of short delta overnight as earnings stabilization allowed dealers to rebuild positioning. Call and put delta nearly balanced. The larger short delta engine means more fuel for buying when vol compresses further.</p>
+<div class="callout-purple">The Greek setup into the close: vanna actively firing (VIX −3.4%), charm releasing steadily, dealer book rebuilt with more firepower. The mechanics favor Kevin's grind thesis — slow, steady upward pressure. The explosive move happens if AAPL delivers tonight and vol drops below 18.</div>
+</div>
+
+<div class="section" id="focus">
+<div class="section-header h-purple">Focus Stocks<span class="anchor-icon">🔗</span></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">GOOGL</span><span class="mini-card-price">~$370+ (+7%)</span></div><div class="mini-card-detail">CONTINUES TO PRINT. Market cap passed $4.5T — $300B added today. Larger than Japan and India GDP. Kevin's earnings call from 2 days ago: contracts +200%+. Call tape relentless. Kevin likes this for ongoing call swing.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">AMD</span><span class="mini-card-price">Amazing session</span></div><div class="mini-card-detail">Kevin's focus pick delivered. Strong intraday performance. Kevin likes AMD for call swings. GOOGL/MSFT AI capex guidance (Azure +40%, Cloud +63%) is the read-through for AMD GPU demand.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">AAPL</span><span class="mini-card-price">~$271</span></div><div class="mini-card-detail">Reports tonight. THE event. Tim Cook's last. Beat-and-sell pattern is 4 of 5. AAPL is −1% YTD vs Nasdaq +14% April — bar may be lower. $3.75B block positioning. Breaks or confirms the pattern.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">META</span><span class="mini-card-price">~$604 (−10%)</span></div><div class="mini-card-detail">CRASHED. −$175B market cap wipeout. Worst day since Oct 2025. CapEx raised to $125-145B. Market punishing AI spending. The drag on XLK keeping tech flat despite GOOGL +7%.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MSFT</span><span class="mini-card-price">~$417 (−3% from AH)</span></div><div class="mini-card-detail">Beat-and-sell. Record $82.9B revenue, Azure +40%, but stock gave back +2.6% AH gains. Losing OpenAI exclusivity weighing on sentiment. Beat wasn't enough.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MU</span><span class="mini-card-price">Didn't perform</span></div><div class="mini-card-detail">Sympathy play didn't trigger today. Needs WDC/SNDK to beat tonight for reactivation. Kevin acknowledged — watching tonight's storage prints.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NVDA</span><span class="mini-card-price">~$213</span></div><div class="mini-card-detail">Call buying continuing today despite yesterday's $6.86B institutional sell. The options tape disagrees with the block tape. GOOGL Cloud +63% is bullish demand read-through.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">INTC</span><span class="mini-card-price">Holding gains</span></div><div class="mini-card-detail">Kevin's swing holding after +10% yesterday. First time ever in block tape top-8. Trump: "I'm very proud of that company." Foundry thesis intact.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">LLY</span><span class="mini-card-price">~$912 (+7%)</span></div><div class="mini-card-detail">Biggest healthcare mover. Mounjaro/Zepbound demand driving. XLV +2.22% — healthcare leading the rotation.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">CAT</span><span class="mini-card-price">~$863 (carrying +9%)</span></div><div class="mini-card-detail">Industrial bellwether carrying yesterday's earnings strength. XLI +2.50% — the old economy rotation trade.</div></div>
+</div>
+
+<div class="section" id="afternoon">
+<div class="section-header h-purple">Afternoon Setup<span class="anchor-icon">🔗</span></div>
+<p><strong>The afternoon should be a quiet grind.</strong> No scheduled catalysts between now and AAPL post-close. PCE/GDP absorbed. FOMC is behind us. The macro calendar is clear. This is the setup where charm-driven buying does its work: steady, unspectacular upward drift as time decay forces dealers to unwind hedges.</p>
+<table class="data-table">
+<tr><th>Level</th><th>SPY</th><th>SPX</th><th>Read</th></tr>
+<tr><td>Current</td><td>$716.83</td><td>~7,220</td><td>Above $715 MVC — grinding</td></tr>
+<tr><td>Resistance</td><td>$720</td><td>7,300</td><td>Next magnet above (+$90M)</td></tr>
+<tr><td>Support</td><td>$715</td><td>7,200</td><td>$715 MVC now floor, not ceiling</td></tr>
+<tr><td>Flip</td><td>—</td><td>7,095</td><td>125 pts below — comfortable cushion</td></tr>
+</table>
+<p><strong>Kevin's slower grind thesis is playing out perfectly.</strong> The morning pre-market report called for a grind higher at a decelerating pace. SPY gained +0.74% — solid but not explosive. The breadth is broad (2.16x A/D), the structure is clean (GEX −$34M), vol is compressing (VIX 19.57), and the afternoon setup favors continuation. This is exactly the environment Kevin described: bullish, but measured.</p>
+<p><strong>The last hour positioning for AAPL will be the tell.</strong> Watch call/put flow into 3:30-4:00 PM on AAPL. If institutions add more calls on top of the $3.75B block position from yesterday, the expectation is a beat. If puts get heavy in the final hour, the smart money is hedging for another beat-and-sell.</p>
+</div>
+
+<div class="section" id="catalyst">
+<div class="section-header h-coral">Catalyst Watch<span class="anchor-icon">🔗</span></div>
+<p><strong>Afternoon (nothing scheduled — quiet into close):</strong></p>
+<ul>
+<li class="li-coral"><strong>Last-hour AAPL positioning flow</strong> — the only intraday signal left. Watch 3:30-4:00 PM call/put ratio on AAPL options.</li>
+</ul>
+<p><strong>Post-close tonight:</strong></p>
+<ul>
+<li class="li-coral"><strong>AAPL earnings</strong> — Tim Cook's last. Beat-and-sell pattern is 4 of 5 among mega-caps. Expected move ±$8.90 (±3.3%). EPS est $1.92. The $3.75B block position is the conviction signal. iOS 27 Siri camera mode + visual AI for WWDC June. AAPL is −1% YTD — the bar is lower than for the other mega-caps.</li>
+<li class="li-coral"><strong>WDC/SNDK</strong> — storage validation. Expected move ±$35.55 (±8.2%). If they beat like STX did Tuesday (+18% AH), MU sympathy reactivates tomorrow. Kevin's setup.</li>
+<li class="li-coral"><strong>AMGN, RDDT, RBLX, ROKU, FSLR, ZETA, AIG, AEM, DXCM, HUN, FND, AXTI</strong> — heavy after-hours slate.</li>
+</ul>
+<p><strong>Tomorrow May 1:</strong></p>
+<ul>
+<li class="li-coral"><strong>ISM Manufacturing</strong> — first factory read post-oil spike.</li>
+<li class="li-coral"><strong>XOM, CVX, MRNA, EL, LYB, CL, D, ARES pre-market</strong> — energy earnings with oil at $103+.</li>
+<li class="li-coral"><strong>Midterm year seasonal weakness window begins</strong> — historical flag, Kevin fades it.</li>
+</ul>
+<div class="callout-amber">April 2026 closes today as the 3rd best April in 23 years: SPY +9.42%. Only COVID 2020 recovery (+12.70%) and GFC 2009 bounce (+9.93%) were better. Both were crisis recoveries. This one was driven by AI infrastructure earnings — a different animal entirely. Kevin's thesis navigated the entire month.</div>
+</div>
+
+<div class="section visible bottom-line" id="bottom">
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
+<p>Kevin was right again. Called it bullish this morning, called the slower grind, and the market delivered exactly that — SPY grinding through $715-$717 with the broadest breadth in two weeks. <strong>GOOGL calls continue to print. AMD had an amazing session. The thesis is working.</strong> Kevin likes AMD, GOOGL, and a few other tech names for call swings — the AI infrastructure conviction remains high even as the broader market rotates into old economy.</p>
+<p>The session tells a nuanced story: the earnings beats landed, the market went up, but the money went to industrials (+2.50%), healthcare (+2.22%), and utilities (+1.71%) — not tech. XLK is flat on a day when 3 of its 4 biggest names beat earnings. META's −10% wipeout ($175B) on AI capex concerns is the explanation. The market wants revenue growth, not spending growth. But Kevin's tech call conviction is undimmed — the names he picked (GOOGL, AMD) are outperforming the sector.</p>
+<p>The structure is the cleanest it's been all week. GEX improved from −$519M to −$34M. VIX crushed to 19.57 (−3.4%). Breadth flipped from 0.47x to 2.16x. The tape-vs-internals divergence resolved in the tape's favor. Oil is pulling back (WTI $103.77, −2.9%). Every macro risk from this morning (PCE, GDP, Iran) was absorbed without damage.</p>
+<p><strong>Bull path to close (Kevin's base case):</strong> SPY holds above $715 MVC and grinds toward $720 into the close. GOOGL sustains +7% gap. AMD holds strength. VIX continues compressing — vanna firing as vol drops below 19. The afternoon is quiet with no scheduled catalysts until AAPL post-close. Charm releases steadily. The grind continues. Then AAPL delivers tonight and breaks the beat-and-sell pattern — the bar is lower (stock −1% YTD vs Nasdaq +14% April) and the $3.75B block buy says institutions expect a beat. WDC/SNDK beat continues storage validation → MU sympathy reactivates tomorrow.</p>
+<p><strong>Bear path to close:</strong> META −10% contagion spreads to broader tech. The AI capex backlash narrative (META raised to $125-145B) rattles AAPL sentiment — if the market is punishing AI spending, Cook needs to be careful with WWDC AI framing. 10Y yield pushes toward 4.50%. SPR drawdown (−7.12M barrels, largest since Oct 2022) and gasoline at lowest seasonal since 2014 reignites inflation fears. AAPL beats and sells like the other 4 — confirms the beat-and-sell pattern and tech enters May exhausted.</p>
+<p><strong>What resolves it:</strong> AAPL post-close. Tim Cook's farewell print. The $3.75B block positioning. If AAPL rallies, it breaks the 4-of-5 beat-and-sell pattern and gives tech permission for a fresh leg. If it sells, the pattern is confirmed and Kevin's pullback-before-second-leg thesis kicks in sooner. Either way, Kevin's framework holds: bullish into the second leg, which comes on Iran de-escalation. WDC/SNDK tonight for the storage read-through — if they beat, MU sympathy activates tomorrow even though it didn't trigger today.</p>
+</div>
+
+<div class="sources-footer">Sources: Data providers, quantitative research platforms, financial news services, social media, and publicly available market data referenced for educational commentary only.</div>
+
+<div class="legal">
+<p><strong>IMPORTANT DISCLAIMER &amp; LEGAL NOTICE — PLEASE READ</strong></p>
+<p><strong>For informational and educational purposes only.</strong> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, or any other form of professional advice.</p>
+<p><strong>Personal opinions only — not professional recommendations.</strong> All market commentary, analysis, directional observations, level calls, and scenario frameworks are the sole personal opinions of the author based on publicly available data and third-party sources believed to be reliable.</p>
+<p><strong>No buy, sell, or hold recommendation.</strong> Nothing published by The Market Bishop should be interpreted as a recommendation to buy, sell, or hold any financial instrument. References to specific securities, strikes, or price levels are strictly for illustrating market mechanics.</p>
+<p><strong>Options trading involves substantial risk of loss.</strong> Options are complex instruments that carry a high degree of risk. The mechanics described — including dealer hedging, gamma exposure, vanna, and charm — are educational explanations, not predictive frameworks.</p>
+<p><strong>No fiduciary relationship.</strong> By reading or using any content published by The Market Bishop, no fiduciary, advisory, or professional relationship is created. The author is not a registered investment advisor or licensed professional. Consult a qualified professional before making any investment decisions.</p>
+<p><strong>You are solely responsible for your own decisions.</strong> All trading and investment decisions are made at your own discretion and risk. The Market Bishop accepts no liability for any losses arising from reliance on this content.</p>
+<p><strong>Third-party data and sources.</strong> This report references data from third-party sources including data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not verify or warrant the accuracy of third-party content.</p>
+<p><strong>Forward-looking statements.</strong> Any statements regarding potential future market movements are speculative and subject to significant uncertainty. Actual outcomes may differ materially from any scenarios described.</p>
+<p>By accessing this report, you confirm agreement with this disclaimer. The Market Bishop · All Rights Reserved.</p>
+</div>
+</main>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var s=window.scrollY;var p=h>0?Math.min((s/h)*100,100):0;document.getElementById('progressFill').style.width=p+'%';});
+(function(){var txt=document.querySelector('.page').textContent||'';var words=txt.trim().split(/\s+/).length;var totalMin=Math.ceil(words/230);var el=document.getElementById('readTimeText');var hasScrolled=false;el.textContent=totalMin+' min read';window.addEventListener('scroll',function(){if(window.scrollY>50)hasScrolled=true;var h=document.documentElement.scrollHeight-window.innerHeight;var pct=h>0?window.scrollY/h:0;if(pct>=.95){el.textContent='Done ✓';}else if(hasScrolled){var left=Math.max(1,Math.ceil(totalMin*(1-pct)));el.textContent=left+' min left';}else{el.textContent=totalMin+' min read';}});})();
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){obs.observe(s);});
+var pulseObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var h=e.target.querySelector('.section-header');if(h)h.style.animation='neonPulse .9s ease';pulseObs.unobserve(e.target);}});},{threshold:0.15});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){pulseObs.observe(s);});
+document.querySelectorAll('.section-header').forEach(function(h){h.addEventListener('click',function(){var sec=h.closest('.section');if(!sec||!sec.id)return;var url=window.location.href.split('#')[0]+'#'+sec.id;navigator.clipboard.writeText(url).then(function(){var icon=h.querySelector('.anchor-icon');if(icon)icon.classList.add('copied');var toast=document.getElementById('anchorToast');toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');if(icon)icon.classList.remove('copied');},1800);});});});
+document.getElementById('navCollapse').addEventListener('click',function(){this.textContent=document.querySelector('nav').classList.contains('collapsed')?'Hide Menu':'Show Menu';});
+(function(){var sections=document.querySelectorAll('.section[id],.snapshot');var navLinks=document.querySelectorAll('.nav-links a');function updateActive(){var scrollPos=window.scrollY+120;var current='';sections.forEach(function(s){if(s.offsetTop<=scrollPos){current=s.id;}});navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});}window.addEventListener('scroll',updateActive);updateActive();})();
+function drawSpark(id,data,color){var svg=document.getElementById(id);if(!svg||!data||data.length<2)return;var w=48,h=18,pad=2;var min=Math.min.apply(null,data),max=Math.max.apply(null,data);var range=max-min||1;var pts=data.map(function(v,i){var x=pad+i*((w-2*pad)/(data.length-1));var y=h-pad-(v-min)/(range)*(h-2*pad);return x+','+y;});var poly=document.createElementNS('http://www.w3.org/2000/svg','polyline');poly.setAttribute('points',pts.join(' '));poly.setAttribute('fill','none');poly.setAttribute('stroke',color);poly.setAttribute('stroke-width','1.5');poly.setAttribute('stroke-linecap','round');svg.appendChild(poly);var lastPts=pts[pts.length-1].split(',');var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',lastPts[0]);dot.setAttribute('cy',lastPts[1]);dot.setAttribute('r','2');dot.setAttribute('fill',color);svg.appendChild(dot);}
+</script>
+</body>
+</html>
