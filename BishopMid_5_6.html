@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Market Bishop · Midday Report · May 6 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:rgba(255,255,255,.88);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(0,170,255,.3);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(0,170,255,.3);border-radius:3px}
+nav{position:fixed;top:0;left:0;width:210px;height:100vh;background:rgba(6,6,12,.97);border-right:1px solid rgba(0,170,255,.08);padding:1.5rem 1rem;z-index:100;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+nav.collapsed{transform:translateX(-210px)}
+.nav-brand{font-size:11px;font-weight:700;letter-spacing:.12em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;margin-bottom:.3rem;opacity:0;animation:fadeUp .5s ease forwards 1.8s}
+.nav-home{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(0,170,255,.6);text-decoration:none;padding:.3rem 0;margin-bottom:.3rem;transition:color .2s,text-shadow .2s}
+.nav-home:hover{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.5);text-decoration:none}
+.nav-collapse-btn{font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;padding:.3rem 0;margin-bottom:.8rem;transition:color .2s}
+.nav-collapse-btn:hover{color:rgba(255,255,255,.6)}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:.5rem;margin-top:.5rem}
+.nav-links{list-style:none;flex:1;overflow-y:auto}
+.nav-links li{margin-bottom:.15rem}
+.nav-links a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;padding:.25rem .4rem;display:block;border-radius:4px;transition:all .25s cubic-bezier(.22,1,.36,1);letter-spacing:.02em}
+.nav-links a:hover{color:#00aaff;background:rgba(0,170,255,.06);text-shadow:0 0 8px rgba(0,170,255,.2)}
+.nav-links a.active{color:#00aaff;background:rgba(0,170,255,.08);text-shadow:0 0 8px rgba(0,170,255,.3);border-left:2px solid #00aaff;padding-left:calc(.4rem - 2px)}
+.nav-progress{margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+.nav-progress-label{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;margin-bottom:.4rem}
+.nav-progress-bar{height:2px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+.nav-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00aaff,#aa55ff);border-radius:1px;transition:width .15s ease}
+.page{margin-left:calc(210px + (100% - 210px - 740px) / 2);max-width:740px;padding:2.5rem 2rem 4rem}
+.page-brand{font-size:11px;font-weight:700;letter-spacing:.14em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.page-title{font-size:22px;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:.2rem;opacity:0;animation:fadeUp .5s ease forwards 1.85s}
+.page-sub{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 2.0s}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:1rem;opacity:0;animation:fadeUp .5s ease forwards 2.15s}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}
+@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.disclaimer-bar{background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.12);border-radius:8px;padding:.6rem 1rem;margin-bottom:1.5rem;font-size:11px;color:rgba(255,170,0,.7);text-shadow:0 0 6px rgba(255,170,0,.15);opacity:0;animation:fadeUp .5s ease forwards 2.3s}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:2rem}
+.snap-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.8rem;text-align:center;transition:transform .2s ease,box-shadow .2s ease;opacity:0;animation:cardIn .5s ease forwards}
+.snap-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,170,255,.08)}
+.snap-card:nth-child(1){animation-delay:2.35s}.snap-card:nth-child(2){animation-delay:2.4s}.snap-card:nth-child(3){animation-delay:2.45s}.snap-card:nth-child(4){animation-delay:2.5s}.snap-card:nth-child(5){animation-delay:2.55s}.snap-card:nth-child(6){animation-delay:2.6s}
+.snap-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.3rem}
+.snap-value{font-size:18px;font-weight:700;color:rgba(255,255,255,.9)}
+.snap-detail{font-size:10px;color:rgba(255,255,255,.35);margin-top:.2rem}
+.snap-up{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.snap-down{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}
+.snap-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}
+.section{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;margin-bottom:2rem}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-header{position:relative;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.06em;padding:.6rem 0;margin-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.section-header:hover{padding-right:2.5rem}
+.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}
+.section-header:hover .anchor-icon{opacity:.5}
+.section-header .anchor-icon.copied{opacity:1}
+.h-blue{color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);border-color:rgba(0,170,255,.15)}
+.h-purple{color:#aa55ff;text-shadow:0 0 12px rgba(170,85,255,.3);border-color:rgba(170,85,255,.15)}
+.h-teal{color:#00d2b4;text-shadow:0 0 12px rgba(0,210,180,.3);border-color:rgba(0,210,180,.15)}
+.h-red{color:#ff3355;text-shadow:0 0 12px rgba(255,51,85,.3);border-color:rgba(255,51,85,.15)}
+.h-amber{color:#ffaa00;text-shadow:0 0 12px rgba(255,170,0,.3);border-color:rgba(255,170,0,.15)}
+.h-green{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.3);border-color:rgba(68,255,136,.15)}
+.h-coral{color:#ff7f50;text-shadow:0 0 12px rgba(255,127,80,.3);border-color:rgba(255,127,80,.15)}
+.section p,.section ul{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.8rem}
+.section ul{list-style:none;padding-left:0}
+.section li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+.section li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.4)}
+.li-amber::before{background:#ffaa00!important;box-shadow:0 0 6px rgba(255,170,0,.4)!important}
+.li-teal::before{background:#00d2b4!important;box-shadow:0 0 6px rgba(0,210,180,.4)!important}
+.li-purple::before{background:#aa55ff!important;box-shadow:0 0 6px rgba(170,85,255,.4)!important}
+.li-green::before{background:#44ff88!important;box-shadow:0 0 6px rgba(68,255,136,.4)!important}
+.li-coral::before{background:#ff7f50!important;box-shadow:0 0 6px rgba(255,127,80,.4)!important}
+.li-red::before{background:#ff3355!important;box-shadow:0 0 6px rgba(255,51,85,.4)!important}
+strong{color:rgba(255,255,255,.95)}
+.callout{border-left:3px solid rgba(0,170,255,.3);background:rgba(0,170,255,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheBlue 3s ease-in-out infinite}
+.callout-amber{border-left:3px solid rgba(255,170,0,.3);background:rgba(255,170,0,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheAmber 3s ease-in-out infinite}
+.callout-teal{border-left:3px solid rgba(0,210,180,.3);background:rgba(0,210,180,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheTeal 3s ease-in-out infinite}
+.callout-purple{border-left:3px solid rgba(170,85,255,.3);background:rgba(170,85,255,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breathePurple 3s ease-in-out infinite}
+@keyframes breatheBlue{0%,100%{box-shadow:0 0 8px rgba(0,170,255,.05)}50%{box-shadow:0 0 16px rgba(0,170,255,.12)}}
+@keyframes breatheAmber{0%,100%{box-shadow:0 0 8px rgba(255,170,0,.05)}50%{box-shadow:0 0 16px rgba(255,170,0,.12)}}
+@keyframes breatheTeal{0%,100%{box-shadow:0 0 8px rgba(0,210,180,.05)}50%{box-shadow:0 0 16px rgba(0,210,180,.12)}}
+@keyframes breathePurple{0%,100%{box-shadow:0 0 8px rgba(170,85,255,.05)}50%{box-shadow:0 0 16px rgba(170,85,255,.12)}}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.gloss-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem .7rem;transition:transform .2s ease,box-shadow .2s ease}
+.gloss-item:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,170,255,.06)}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,.2);margin-bottom:.2rem}
+.gloss-def{font-size:10px;color:rgba(255,255,255,.5);line-height:1.5}
+.mini-card{background:rgba(255,255,255,.02);border:1px solid rgba(170,85,255,.1);border-radius:10px;padding:.8rem 1rem;margin-bottom:.75rem;transition:transform .2s ease,box-shadow .2s ease}
+.mini-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(170,85,255,.08)}
+.mini-card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+.mini-card-ticker{font-size:14px;font-weight:700;color:#aa55ff;text-shadow:0 0 8px rgba(170,85,255,.3)}
+.mini-card-price{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.mini-card-detail{font-size:11px;color:rgba(255,255,255,.45)}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:12px}
+.data-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);text-transform:uppercase;padding:.4rem .5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.data-table td{padding:.4rem .5rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.03)}
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.comm-group-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.5rem}
+.comm-row{display:flex;align-items:center;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:11px}
+.comm-name{color:rgba(255,255,255,.6);flex:1}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+.comm-price{color:rgba(255,255,255,.85);font-weight:600;margin-right:.5rem;white-space:nowrap}
+.comm-change{font-weight:600;white-space:nowrap}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}
+.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px)}
+.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}
+.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.bottom-line{border-top:1px solid rgba(255,170,0,.15);padding-top:1.5rem;margin-top:1rem}
+.sources-footer{font-size:10px;color:rgba(255,255,255,.2);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.04)}
+.legal{margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.04);border-radius:10px}
+.legal p{font-size:10px;color:rgba(255,255,255,.25);margin-bottom:.6rem;line-height:1.6}
+.legal strong{color:rgba(255,255,255,.35)}
+@keyframes openIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes neonPulse{0%{filter:brightness(1);transform:scale(1)}30%{filter:brightness(2);transform:scale(1.02)}60%{filter:brightness(1.6);transform:scale(1.01)}100%{filter:brightness(1);transform:scale(1)}}
+@media(max-width:768px){nav{transform:translateX(-210px)}nav.open{transform:translateX(0)}.page{margin-left:0;padding:1.5rem 1rem 3rem}.gloss-grid{grid-template-columns:1fr}.comm-grid{grid-template-columns:1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.hamburger{display:flex!important}.read-time{top:14px;right:14px}}
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;width:32px;height:32px;background:rgba(6,6,12,.9);border:1px solid rgba(0,170,255,.15);border-radius:6px;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#00aaff}
+@media print{body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}nav,.hamburger,.read-time,.anchor-toast{display:none!important}.page{margin-left:0;max-width:100%}.section{opacity:1!important;transform:none!important;animation:none!important}.snap-card,.gloss-item,.mini-card{opacity:1!important;animation:none!important}.page-brand,.page-title,.page-sub,.page-stamp,.disclaimer-bar{opacity:1!important;animation:none!important}.stamp-live{animation:none!important}.callout,.callout-amber,.callout-teal,.callout-purple{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
+<div class="hamburger" id="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">☰</div>
+<nav id="mainNav">
+<div class="nav-brand">The Market Bishop</div>
+<div class="nav-date">May 6, 2026 · Midday</div>
+<a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a>
+<div class="nav-collapse-btn" id="navCollapse" onclick="document.querySelector('nav').classList.toggle('collapsed')">Hide Menu</div>
+<div class="nav-label">Sections</div>
+<ul class="nav-links">
+<li><a href="#snapshot">Snapshot</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#gloss">Glossary</a></li>
+<li><a href="#recap">Session Recap</a></li>
+<li><a href="#gex">Live GEX</a></li>
+<li><a href="#flow">Options Flow</a></li>
+<li><a href="#internals">Internals</a></li>
+<li><a href="#greeks">Greek Forces</a></li>
+<li><a href="#focus">Focus Stocks</a></li>
+<li><a href="#afternoon">Afternoon Setup</a></li>
+<li><a href="#catalyst">Catalyst Watch</a></li>
+<li><a href="#bottom">Bottom Line</a></li>
+</ul>
+<div class="nav-progress"><div class="nav-progress-label">Reading progress</div><div class="nav-progress-bar"><div class="nav-progress-fill" id="progressFill"></div></div></div>
+</nav>
+
+<main class="page">
+<div class="page-brand">The Market Bishop</div>
+<div class="page-title">Midday Report</div>
+<div class="page-sub">Wednesday, May 6, 2026</div>
+<div class="page-stamp"><span class="stamp-live">Generated ~2:45 PM ET · Markets live</span></div>
+
+<div class="disclaimer-bar">⚠ Not financial advice. All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</div>
+
+<div class="snapshot" id="snapshot">
+<div class="snap-card"><div class="snap-label">SPY</div><div class="snap-value snap-up">$733.17</div><div class="snap-detail">+1.30% · NEW ALL-TIME HIGH</div></div>
+<div class="snap-card"><div class="snap-label">VIX</div><div class="snap-value snap-up">19.23</div><div class="snap-detail">−2.8% · Vol crushed again</div></div>
+<div class="snap-card"><div class="snap-label">Net GEX</div><div class="snap-value snap-up">+$1.36B</div><div class="snap-detail">Highest since Apr 17 OpEx</div></div>
+<div class="snap-card"><div class="snap-label">AMD</div><div class="snap-value snap-up">+17%</div><div class="snap-detail">Above $400 · Best day since Oct '25</div></div>
+<div class="snap-card"><div class="snap-label">P/C Ratio</div><div class="snap-value snap-up">0.62</div><div class="snap-detail">Most call-heavy of entire cycle</div></div>
+<div class="snap-card"><div class="snap-label">WTI Crude</div><div class="snap-value snap-down">~$101</div><div class="snap-detail">−4.5% · Iran deal pricing</div></div>
+</div>
+
+<div class="section" id="tldr" style="opacity:0;animation:fadeUp .5s ease forwards 2.85s">
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
+<ul>
+<li class="li-amber"><strong>Kevin's three overnight catalysts all fired simultaneously and the market exploded higher.</strong> SPY $733.17 (+1.30%) — new all-time high. Iran 14-point MOU near (oil crashed to $101, −4.5%), AMD +17% above $400 (best day since Oct 2025, $39M calls in first 15 min), and NVDA/Corning photonics deal (GLW +16%). Kevin called every single one of these. He's been right for a month. GEX rebuilt to +$1.36B — the highest since the April 17 OpEx. Dealers are short 191.4M shares (89% of all-time record). The structure is the strongest non-event-day reading ever published.</li>
+<li class="li-amber"><strong>$920M in crude oil shorts were placed 70 minutes before the Axios Iran deal report dropped.</strong> Someone made $125M in an hour. The options market knew before the news broke. This is the Iran second-leg catalyst Kevin identified weeks ago — now arriving. Trump said "one week" timeframe, "optimistic about framework." Oil below $95 intraday before recovering to $101.</li>
+<li class="li-amber"><strong>NVDA saw $175M+ in bullish flow — $88M in a single clip at 10:45 AM.</strong> Two monster orders: $57M in 7/17 $195 calls and $31.5M in 5/15 $195 calls. P/C ratio 0.62 — the most call-heavy session of the entire cycle. Call premium $37B vs put premium $13.7B (2.7:1). Institutions aren't hedging — they're pressing into the AI infrastructure thesis at maximum conviction.</li>
+<li class="li-amber"><strong>$730 magnet has +$281M at price with six magnets $730-$735 totaling $851M.</strong> Pure runway to $750. GEX flip at $711 gives 2.9% cushion — approaching April's comfort zone. IV 15.1% at cycle lows. SPX is now 1.9% from the year-end target of 7,462 — in early May. Kevin's bull thesis, confirmed at every layer for a month, is producing its most decisive session yet.</li>
+<li class="li-amber"><strong>Israel struck Beirut targeting a Hezbollah Radwan Force commander.</strong> The one risk variable Kevin has always flagged. The market absorbed it without flinching — SPY didn't even dip. Kevin's framework: Iran de-escalation outweighs Israel escalation until it doesn't. Watch for retaliation overnight.</li>
+</ul>
+</div>
+
+<div class="section" id="gloss" style="opacity:0;animation:fadeUp .5s ease forwards 3.15s">
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
+<p style="font-style:italic;font-size:11px;color:rgba(255,255,255,.4);margin-bottom:.8rem">Quick reference — key terms used in this report.</p>
+<div class="gloss-grid">
+<div class="gloss-item"><div class="gloss-term">Three-Catalyst Convergence</div><div class="gloss-def">Today's defining feature: Iran MOU near (oil crashed), AMD +17% (AI silicon confirmed), NVDA/Corning photonics deal (GLW +16%). All three arrived overnight. Kevin identified each catalyst in advance. The simultaneous firing produced the strongest non-event-day structure ever published.</div></div>
+<div class="gloss-item"><div class="gloss-term">$920M Crude Shorts</div><div class="gloss-def">Placed 70 minutes before the Axios report on Iran's 14-point MOU framework. $125M profit in under an hour. Flagged as potential insider trading. The options market front-ran the news — the biggest tell that Iran de-escalation is real, not trial balloon.</div></div>
+<div class="gloss-item"><div class="gloss-term">191.4M Dealer Short</div><div class="gloss-def">Dealers are short 191.4M shares — 89% of the all-time record (215M on Apr 17 OpEx). This is the fuel tank. When vol compresses further (VIX already −2.8% today), dealers are mechanically forced to buy delta. Larger short position = more forced buying on any additional vol crush.</div></div>
+<div class="gloss-item"><div class="gloss-term">AI Bubble Dead</div><div class="gloss-def">Kevin's thesis, now confirmed at every layer: INTC (CPUs), AMD +17% (GPUs), SNDK +118% sequential (storage), MU (memory), NVDA/Corning (photonics). Real demand, real revenue, real margin expansion. Not speculation — infrastructure buildout with cash flows backing it.</div></div>
+<div class="gloss-item"><div class="gloss-term">$730-$735 Magnet Cluster</div><div class="gloss-def">Six gamma magnets between $730-$735 with $851M total positive gamma. The $730 strike alone has +$281M. These magnets pull price and pin it — dealers hedge by buying as price approaches. This creates the "grind higher" character Kevin has described all week.</div></div>
+<div class="gloss-item"><div class="gloss-term">Second Leg Arriving</div><div class="gloss-def">Kevin's forward framework from Apr 30: after the earnings-driven first leg, a shallow retracement (happened May 4), then a real second leg catalyzed by Iran de-escalation. The 14-point MOU framework is that catalyst. Oil crashing below $95 intraday is the market pricing it in.</div></div>
+</div>
+</div>
+
+<div class="section" id="recap">
+<div class="section-header h-blue">Session Recap — Morning to Now<span class="anchor-icon">🔗</span></div>
+<p>The session opened with three catalysts detonating simultaneously — Kevin identified all three in the morning report and the market confirmed every one of them before lunch.</p>
+<p><strong>Act 1 (pre-market through 10:00 AM): Gap-up and GO.</strong> SPY gapped up on the Iran MOU news (Axios reported a 14-point framework near finalization). Oil cratered — WTI dropped from $105.74 Friday close to below $95 intraday before recovering to ~$101. AMD gapped +12% on its earnings beat (revenue $7.44B, data center up 57% YoY) and immediately ran to +17% above $400. GLW (Corning) surged +16% on the NVDA photonics partnership. The first 30 minutes set the tone: this was not a tentative open, it was institutional conviction from the bell.</p>
+<p><strong>Act 2 (10:00 AM–12:30 PM): NVDA monster flow + semiconductor cascade.</strong> At 10:45 AM, an $88M clip hit NVDA — $57M in 7/17 $195 calls and $31.5M in 5/15 $195 calls. Total NVDA bullish flow crossed $175M+ by midday. SMCI +15% on sympathy. DIS +8% and UBER +6% added to the breadth story from their morning earnings beats. SPY pushed through $730 and held. The $730 magnet (+$281M) pulled price and pinned it — exactly the magnet behavior the GEX structure predicted.</p>
+<p><strong>Act 3 (12:30 PM–now): Grind and hold.</strong> SPY settled into the $731-$733 range with the $730-$735 magnet cluster acting as gravity. The P/C ratio compressed to 0.62 — the most call-heavy reading of the entire cycle. Composite accelerated through lunch to +27.4 (Lean Bullish). Daily flow hit +83.5M shares long — strongest since Thursday. Kevin's thesis from this morning: "sell-offs get bought, focus on strength." The market didn't even give a sell-off to buy — it just went straight up.</p>
+<div class="callout">$920M in crude oil shorts were placed 70 minutes before the Axios report on Iran's 14-point MOU framework. $125M gain in under an hour. The options market front-ran the biggest geopolitical development of the cycle. This is not a trial balloon — someone with real size had real conviction. Kevin's second-leg catalyst is arriving.</div>
+</div>
+
+<div class="section" id="gex">
+<div class="section-header h-teal">Live GEX Update<span class="anchor-icon">🔗</span></div>
+<table class="data-table">
+<tr><th>Metric</th><th>Pre-Market</th><th>Current (~2:30 PM)</th><th>Change</th></tr>
+<tr><td>Total GEX</td><td>~+$800M (est.)</td><td>+$1.36B</td><td>Highest since Apr 17 OpEx (+$2.0B)</td></tr>
+<tr><td>GEX Flip</td><td>$711</td><td>$711</td><td>Holding — 2.9% cushion below</td></tr>
+<tr><td>$730 Magnet</td><td>+$281M</td><td>+$281M</td><td>Price pinned right at it</td></tr>
+<tr><td>$730-$735 Cluster</td><td>$851M total</td><td>$851M total</td><td>Six magnets — pure runway to $750</td></tr>
+<tr><td>Dealer Short</td><td>~180M</td><td>191.4M shares</td><td>89% of all-time record (215M)</td></tr>
+<tr><td>IV</td><td>15.3%</td><td>15.1%</td><td>At cycle lows — stable</td></tr>
+<tr><td>IV Skew</td><td>—</td><td>+2.51%</td><td>Widest of week — riding AND hedging</td></tr>
+</table>
+<p><strong>This is the strongest non-event-day GEX structure ever published.</strong> +$1.36B on a normal Wednesday — not an OpEx, not a Fed day, not a scheduled catalyst. The last time GEX was this high was April 17 OpEx at +$2.0B, and that was mechanically forced by expiration dynamics. Today it's organic: real institutions placing real bets on the Iran de-escalation + AI infrastructure convergence.</p>
+<p><strong>The $730-$735 magnet cluster is doing exactly what gamma magnets do:</strong> pulling price and holding it. SPY has been in a $731-$733 range since noon because the six magnets totaling $851M create a gravitational field. Price wants to stay here — and when it does, dealers accumulate more gamma, making the pin stronger. The breakout direction is up because the GEX flip at $711 is 2.9% below (approaching April's comfort zone) and there's no negative gamma resistance above $735.</p>
+<p><strong>Dealers at 191.4M shares short</strong> — the fuel tank is 89% full compared to the all-time record. Every tick lower in VIX forces additional delta buying. The engine is primed for a vanna-driven ramp if VIX breaks below 19 into the close.</p>
+</div>
+
+<div class="section" id="flow">
+<div class="section-header h-teal">Options Flow Midday<span class="anchor-icon">🔗</span></div>
+<p><strong>The tape is the most aggressively bullish of the entire cycle.</strong> P/C ratio 0.62 — call-heavy at a level not seen since the April 17 OpEx. Call premium $37B vs put premium $13.7B — a 2.7:1 ratio. This isn't retail enthusiasm; this is institutional size pressing into strength.</p>
+<p><strong>Key flow signals:</strong></p>
+<ul>
+<li><strong>NVDA $175M+ bullish flow.</strong> The $88M clip at 10:45 AM was two orders: $57M in 7/17 $195 calls and $31.5M in 5/15 $195 calls. This is someone with massive conviction on a specific timeframe — July and mid-May. The photonics deal with Corning is the catalyst anchor, but the size suggests they see something bigger (possibly the full AI infrastructure capex cycle accelerating).</li>
+<li><strong>AMD $39M in calls in the first 15 minutes.</strong> Then sustained flow all morning. The +17% move is being bought, not faded. Options market says the AMD gap holds.</li>
+<li class="li-teal"><strong>$920M crude oil shorts 70 minutes before the Axios Iran report.</strong> This is the flow signal of the session. Someone front-ran the biggest geopolitical development with nearly $1B in conviction. $125M profit in an hour. The crude shorts are telling you: the Iran deal is real.</li>
+<li><strong>Composite +27.4 (Lean Bullish)</strong> — accelerated through lunch. Daily flow +83.5M shares long. The buyers didn't take the morning gap and leave — they kept pressing all day.</li>
+</ul>
+<div class="callout-teal">IV skew at +2.51% (widest of the week) is the nuanced tell: institutions are riding the rally AND hedging tail risk simultaneously. They're buying upside calls (pressing) while maintaining puts (insurance). This is sophisticated positioning — not euphoria. The flow character says: "we believe in this move but we respect the Israel risk."</div>
+</div>
+
+<div class="section" id="internals">
+<div class="section-header h-blue">Internals<span class="anchor-icon">🔗</span></div>
+<p><strong>The breadth picture is mixed — leadership is narrow but conviction is high.</strong> A/D ratio at 0.81x means fewer stocks are advancing than declining, which is unusual on a +1.30% SPY day. But the cumulative TICK at +10,261 shows strong and persistent buyer bias underneath. The disconnect: the rally is being driven by specific names (AMD +17%, SMCI +15%, DIS +8%, GLW +16%, UBER +6%) rather than broad-based participation.</p>
+<p><strong>Sector rotation shows the Iran/AI split clearly:</strong></p>
+<table class="data-table">
+<tr><th>Sector</th><th>Current</th><th>Read</th></tr>
+<tr><td>XLI</td><td style="color:#44ff88">+2.53%</td><td>SESSION LEADER. Industrial demand thesis + oil relief.</td></tr>
+<tr><td>XLK</td><td style="color:#44ff88">+2.11%</td><td>AMD +17% + NVDA flow. AI infrastructure driving.</td></tr>
+<tr><td>XLB</td><td style="color:#44ff88">+1.90%</td><td>Materials rallying on industrial strength + copper.</td></tr>
+<tr><td>XLY</td><td style="color:#44ff88">+1.76%</td><td>Consumer discretionary bid — UBER +6%, consumer holds.</td></tr>
+<tr><td>XLRE</td><td style="color:#44ff88">+1.61%</td><td>Rate-sensitive benefiting from oil decline narrative.</td></tr>
+<tr><td>XLC</td><td style="color:#44ff88">+1.56%</td><td>Communication services steady.</td></tr>
+<tr><td>XLF</td><td style="color:#44ff88">+0.68%</td><td>Financials lagging. Quiet day.</td></tr>
+<tr><td>XLP</td><td style="color:#44ff88">+0.26%</td><td>Staples flat. Defensive rotation absent.</td></tr>
+<tr><td>XLV</td><td style="color:#44ff88">+0.14%</td><td>Healthcare barely green.</td></tr>
+<tr><td>XLU</td><td style="color:#ff3355">−1.11%</td><td>Utilities sold. Rate-cut expectations repricing.</td></tr>
+<tr><td>XLE</td><td style="color:#ff3355">−4.44%</td><td>ENERGY CRUSHED. Oil −4.5%. Iran deal = production increase.</td></tr>
+</table>
+<p><strong>The sector story is the Iran trade in real time.</strong> XLE −4.44% is the biggest single-sector move of the week — energy is pricing in an Iran deal that brings more supply to market. XLI +2.53% is the flip side: cheaper oil = lower input costs for industrials. XLK +2.11% is the AMD/NVDA semiconductor story. The market is rotating from energy into AI + industrials. Kevin's positioning (AMD, MRVL, CSCO, INTC, DELL) is entirely on the winning side of this rotation.</p>
+<div class="callout">SNDK forensic flag: institutional put accumulation detected underneath SNDK's +18.5% rally. Divergence between price action (bullish) and options positioning (protective). Worth watching — could be hedging, could be distribution. Kevin's focus remains on AMD and the semiconductor chain.</div>
+</div>
+
+<div class="section" id="greeks">
+<div class="section-header h-purple">Greek Forces Update<span class="anchor-icon">🔗</span></div>
+<p><strong>Vanna: actively firing at maximum intensity.</strong> VIX down −2.8% to 19.23, IV at 15.1% (cycle lows). With dealers short 191.4M shares, every tick lower in VIX forces mechanical delta buying. The vanna engine is the single largest tailwind underneath today's rally — it's why SPY grinds higher without pullbacks. If VIX breaks below 19 into the close, the cascade accelerates.</p>
+<p><strong>Charm: releasing steadily into the week.</strong> Mid-week charm dynamics are moderate — no major expirations until Friday. But the steady release adds to the dealer buying pressure. The charm + vanna combination is why the grind character persists: no violent moves, just methodical upward pressure as dealers cover shorts.</p>
+<p><strong>Dealer book at 191.4M shares short:</strong> 89% of the all-time record (215M on April 17). The short delta engine has been rebuilt to maximum levels on the back of the GEX expansion to +$1.36B. This is the mechanical foundation of Kevin's thesis — the larger the short position, the more forceful the buying when vol compresses. Today's −2.8% VIX move triggered significant forced buying, and there's more fuel in the tank.</p>
+<div class="callout-purple">The Greek setup into the close: vanna firing at maximum (VIX −2.8%, IV at cycle lows), charm releasing steadily, dealer short position at 89% of all-time record. If VIX breaks below 19, the vanna cascade fires its strongest burst. The mechanical setup is uniformly bullish — there is no Greek headwind today. This is the cleanest dealer-driven tailwind of the entire cycle.</div>
+</div>
+
+<div class="section" id="focus">
+<div class="section-header h-purple">Focus Stocks<span class="anchor-icon">🔗</span></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">AMD</span><span class="mini-card-price">+17% (above $400)</span></div><div class="mini-card-detail">KEVIN IS LONG. Best day since Oct 2025. $39M in calls in first 15 minutes. Revenue $7.44B, data center +57% YoY. Above $400 for the first time. The AMD sympathy chain is firing across the board: MRVL, MU, SMCI +15%, AVGO, QCOM, TSM, NVDA, ARM. Kevin called this before earnings. AI silicon demand confirmed — no bubble.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NVDA</span><span class="mini-card-price">$175M+ bullish flow</span></div><div class="mini-card-detail">$88M single clip at 10:45 AM — $57M 7/17 $195C + $31.5M 5/15 $195C. The Corning photonics partnership announced overnight is the catalyst. Total bullish flow $175M+. Institutions pressing hard on AI infrastructure. The flow conviction is the highest single-day reading for any name this cycle.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MRVL</span><span class="mini-card-price">Kevin long — sympathy bid</span></div><div class="mini-card-detail">KEVIN IS LONG. AMD sympathy chain activated. Marvell's custom silicon and networking chips are the connective tissue of AI data centers. Every dollar AMD takes in the data center flows through the Marvell interconnect layer.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">INTC</span><span class="mini-card-price">Kevin long</span></div><div class="mini-card-detail">KEVIN IS LONG. AAPL fab talks rumored (confirmed +13% yesterday). Best month in 55-year history in April. Foundry turnaround thesis alive. Kevin's Trump portfolio name. AI demand for CPUs confirmed alongside GPUs.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">CSCO</span><span class="mini-card-price">Kevin long</span></div><div class="mini-card-detail">KEVIN IS LONG. AI infrastructure networking. Every data center buildout requires Cisco networking at scale. AMD's +57% data center revenue = more networking demand.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">DELL</span><span class="mini-card-price">Kevin long</span></div><div class="mini-card-detail">KEVIN IS LONG. AI server infrastructure. Enterprise deployment arm. AMD's data center surge directly feeds Dell's server pipeline.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">GLW (Corning)</span><span class="mini-card-price">+16%</span></div><div class="mini-card-detail">NVDA photonics deal overnight. Corning's optical interconnect technology is the next bottleneck in AI infrastructure — Kevin flagged this as a focus name this morning. The +16% gap is being held.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">SMCI</span><span class="mini-card-price">+15%</span></div><div class="mini-card-detail">AMD sympathy chain + AI server demand. SMCI's GPU server assembly business directly benefits from every data center buildout. Running hot alongside AMD.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MU</span><span class="mini-card-price">Sympathy active</span></div><div class="mini-card-detail">AMD data center +57% = more memory demand. SNDK already confirmed storage demand at +118% sequential. MU is the memory completion of Kevin's AI demand thesis at every layer of the stack.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">IREN</span><span class="mini-card-price">Earnings tomorrow</span></div><div class="mini-card-detail">Kevin bullish. AI data center infrastructure layer. Reports tomorrow — Kevin's next conviction call after AMD delivered today.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NBIS</span><span class="mini-card-price">Kevin bullish</span></div><div class="mini-card-detail">Kevin flagged as a focus name this morning alongside IREN. AI infrastructure play.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">DIS</span><span class="mini-card-price">+8%</span></div><div class="mini-card-detail">Morning earnings beat. Disney+ subscriber growth exceeded expectations. Adding to breadth story but not a Kevin core position.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">UBER</span><span class="mini-card-price">+6%</span></div><div class="mini-card-detail">Morning earnings beat. Gross bookings growth accelerating. Consumer spending holding up despite oil. Adding to breadth story.</div></div>
+</div>
+
+<div class="section" id="afternoon">
+<div class="section-header h-purple">Afternoon Setup<span class="anchor-icon">🔗</span></div>
+<table class="data-table">
+<tr><th>Metric</th><th>Level</th><th>Detail</th></tr>
+<tr><td>SPY Range into Close</td><td>$730–$738</td><td>$730 magnet is floor · Six magnets pull to $735</td></tr>
+<tr><td>SPX Target</td><td>7,350–7,400</td><td>1.9% from year-end target (7,462)</td></tr>
+<tr><td>GEX Flip</td><td>$711</td><td>2.9% below — approaching comfort zone</td></tr>
+<tr><td>Bias</td><td>Bullish</td><td>Kevin's call · Sell-offs get bought</td></tr>
+</table>
+<p><strong>The afternoon setup is the cleanest of the entire cycle.</strong> GEX +$1.36B with no negative gamma zones anywhere near current price. Dealers short 191.4M shares with VIX at 19.23 and falling — the vanna tailwind persists. The $730-$735 magnet cluster ($851M total) holds price in a narrow band that only breaks higher. IV at cycle lows means no vol expansion is expected. The composite at +27.4 and daily flow at +83.5M shares long means buying pressure sustained through lunch.</p>
+<p><strong>The afternoon script writes itself:</strong> SPY holds $730-$733, AMD holds above $400, NVDA flow continues pressing. Into 3:30 PM the MOC (market-on-close) imbalance prints — if it's buy-side (likely given the flow character), the final 30 minutes push SPY toward $735. ARM earnings after close extend the semiconductor narrative into the overnight session.</p>
+<p><strong>The only disruption scenario is geopolitical:</strong> Israel's Beirut strike on a Hezbollah Radwan Force commander could trigger retaliation headlines that briefly spike VIX. But the market already absorbed the strike this morning without flinching — SPY didn't even dip. Kevin's framework: Iran progress outweighs Israel noise. The $920M crude shorts say the institutional read agrees.</p>
+</div>
+
+<div class="section" id="catalyst">
+<div class="section-header h-coral">Catalyst Watch<span class="anchor-icon">🔗</span></div>
+<p><strong>Rest of today:</strong></p>
+<ul>
+<li class="li-coral"><strong>ARM earnings tonight PM</strong> — semiconductor narrative Day 2. AMD +17% set the tone; ARM extends it or challenges it. Kevin's sympathy chain includes ARM. If ARM confirms AI demand for custom silicon (Arm-based chips in cloud), the overnight futures gap up again.</li>
+<li class="li-coral"><strong>MOC imbalance (~3:45 PM)</strong> — given the session character (P/C 0.62, +83.5M daily flow, composite +27.4), a buy-side MOC imbalance is the base case. If it prints $1B+ buy-side, the close pushes toward $735.</li>
+<li class="li-coral"><strong>Israel-Hezbollah overnight</strong> — the Beirut strike targeting a Radwan Force commander is the open variable. Kevin's primary risk flag. If Hezbollah retaliates, VIX spikes overnight and futures pull back. If it's absorbed (likely per Kevin's framework), it's noise.</li>
+<li class="li-coral"><strong>Iran MOU 48-hour window</strong> — Trump said "one week," "optimistic about framework." The $920M crude shorts suggest the deal is near. Any headline confirming framework solidification sends oil below $95 again and SPY gaps higher.</li>
+</ul>
+<p><strong>Tomorrow:</strong></p>
+<ul>
+<li class="li-coral"><strong>IREN earnings</strong> — Kevin bullish. AI data center infrastructure layer. This is Kevin's next conviction call after AMD delivered today.</li>
+<li class="li-coral"><strong>SpaceX/Anthropic compute partnership details</strong> — Colossus 1 access, 300MW capacity. AI infrastructure expansion continues.</li>
+</ul>
+<p><strong>This week:</strong></p>
+<ul>
+<li class="li-coral"><strong>Nonfarm payrolls Friday</strong> — labor market read at the end of the rally window. Strong = bullish (economy healthy). Weak = bearish (slowing). Kevin expects the market to absorb it regardless — sell-offs get bought.</li>
+<li class="li-coral"><strong>Iran deal resolution</strong> — within Trump's "one week" window. The biggest macro catalyst of Q2.</li>
+</ul>
+<div class="callout-amber">Kevin's framework: ARM tonight is the immediate binary event. IREN tomorrow is the next conviction play. Iran MOU in 48 hours is the macro catalyst. Israel-Hezbollah is the tail risk. Through it all: sell-offs get bought, focus on strength. Kevin has been right for a month.</div>
+</div>
+
+<div class="section visible bottom-line" id="bottom">
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
+<p>Kevin has been right for a month and today is the most decisive confirmation yet. <strong>SPY $733.17 (+1.30%) — new all-time high.</strong> All three overnight catalysts fired: Iran 14-point MOU near (oil −4.5%), AMD +17% above $400, NVDA/Corning photonics deal. Every one of these was Kevin's call before the data confirmed it. The AI bubble is dead — proven at CPUs (INTC), GPUs (AMD), storage (SNDK), memory (MU), and now photonics (NVDA/Corning/GLW). Kevin is long AMD, MRVL, CSCO, INTC, DELL and has been long the entire run.</p>
+<p>The structure underneath is the strongest of the entire cycle. GEX +$1.36B — highest since April 17 OpEx. Dealers short 191.4M shares (89% of the all-time record). Six magnets between $730-$735 totaling $851M in positive gamma. P/C ratio 0.62 — the most call-heavy session of the cycle. NVDA saw $175M+ in bullish flow with an $88M single clip. The mechanical setup and the flow are aligned: this market wants to go higher into the close.</p>
+<p>The Iran catalyst Kevin identified weeks ago is arriving. $920M in crude shorts placed 70 minutes before the Axios report — someone knew. Trump said "one week" and "optimistic." Oil crashed below $95 intraday before recovering to $101. The second leg thesis is activating in real time. The only risk variable is Israel — the Beirut strike on a Hezbollah commander is the one thing that could disrupt Iran de-escalation. The market absorbed it today. Kevin's framework: Iran progress outweighs Israel noise until a ceasefire actually breaks.</p>
+<p><strong>Bull path to close (Kevin's base case):</strong> AMD holds above $400, NVDA flow continues pressing, the $730-$735 magnet cluster pulls SPY into the close. VIX drops further, vanna fires, dealers buy. ARM earnings tonight extend the semiconductor narrative into Day 2. IREN tomorrow keeps AI infrastructure in focus. SPX grinds toward the 7,462 year-end target — now just 1.9% away in early May. Kevin rides the longs: AMD, MRVL, CSCO, INTC, DELL, IREN, NBIS.</p>
+<p><strong>Bear path to close:</strong> Israel-Hezbollah retaliation cycle escalates overnight. Iran MOU collapses before framework solidifies — oil reverses hard above $110. AMD gives back the gap as profit-taking hits after +17%. A/D ratio at 0.81x means the breadth is narrow — if the leaders fade, there's no cavalry underneath. GEX flip at $711 is 2.9% below — would take a major shock to reach, but the structure unwinds fast in negative gamma.</p>
+<p><strong>What resolves it:</strong> ARM earnings tonight PM — semiconductor narrative Day 2. Does AMD hold above $400 into the close? Does Iran MOU progress or does Israel Beirut strike derail it? IREN tomorrow is Kevin's next conviction call. Sell-offs get bought — Kevin has been right every time. Size measured, conviction maximum.</p>
+</div>
+
+<div class="sources-footer">Sources: Data providers, quantitative research platforms, financial news services, social media, and publicly available market data referenced for educational commentary only.</div>
+
+<div class="legal">
+<p><strong>IMPORTANT DISCLAIMER &amp; LEGAL NOTICE — PLEASE READ</strong></p>
+<p><strong>For informational and educational purposes only.</strong> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, or any other form of professional advice.</p>
+<p><strong>Personal opinions only — not professional recommendations.</strong> All market commentary, analysis, directional observations, level calls, and scenario frameworks are the sole personal opinions of the author based on publicly available data and third-party sources believed to be reliable.</p>
+<p><strong>No buy, sell, or hold recommendation.</strong> Nothing published by The Market Bishop should be interpreted as a recommendation to buy, sell, or hold any financial instrument. References to specific securities, strikes, or price levels are strictly for illustrating market mechanics.</p>
+<p><strong>Options trading involves substantial risk of loss.</strong> Options are complex instruments that carry a high degree of risk. The mechanics described — including dealer hedging, gamma exposure, vanna, and charm — are educational explanations, not predictive frameworks.</p>
+<p><strong>No fiduciary relationship.</strong> By reading or using any content published by The Market Bishop, no fiduciary, advisory, or professional relationship is created. The author is not a registered investment advisor or licensed professional. Consult a qualified professional before making any investment decisions.</p>
+<p><strong>You are solely responsible for your own decisions.</strong> All trading and investment decisions are made at your own discretion and risk. The Market Bishop accepts no liability for any losses arising from reliance on this content.</p>
+<p><strong>Third-party data and sources.</strong> This report references data from third-party sources including data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not verify or warrant the accuracy of third-party content.</p>
+<p><strong>Forward-looking statements.</strong> Any statements regarding potential future market movements are speculative and subject to significant uncertainty. Actual outcomes may differ materially from any scenarios described.</p>
+<p>By accessing this report, you confirm agreement with this disclaimer. The Market Bishop · All Rights Reserved.</p>
+</div>
+</main>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var s=window.scrollY;var p=h>0?Math.min((s/h)*100,100):0;document.getElementById('progressFill').style.width=p+'%';});
+(function(){var txt=document.querySelector('.page').textContent||'';var words=txt.trim().split(/\s+/).length;var totalMin=Math.ceil(words/230);var el=document.getElementById('readTimeText');var hasScrolled=false;el.textContent=totalMin+' min read';window.addEventListener('scroll',function(){if(window.scrollY>50)hasScrolled=true;var h=document.documentElement.scrollHeight-window.innerHeight;var pct=h>0?window.scrollY/h:0;if(pct>=.95){el.textContent='Done ✓';}else if(hasScrolled){var left=Math.max(1,Math.ceil(totalMin*(1-pct)));el.textContent=left+' min left';}else{el.textContent=totalMin+' min read';}});})();
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){obs.observe(s);});
+var pulseObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var h=e.target.querySelector('.section-header');if(h)h.style.animation='neonPulse .9s ease';pulseObs.unobserve(e.target);}});},{threshold:0.15});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){pulseObs.observe(s);});
+document.querySelectorAll('.section-header').forEach(function(h){h.addEventListener('click',function(){var sec=h.closest('.section');if(!sec||!sec.id)return;var url=window.location.href.split('#')[0]+'#'+sec.id;navigator.clipboard.writeText(url).then(function(){var icon=h.querySelector('.anchor-icon');if(icon)icon.classList.add('copied');var toast=document.getElementById('anchorToast');toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');if(icon)icon.classList.remove('copied');},1800);});});});
+document.getElementById('navCollapse').addEventListener('click',function(){this.textContent=document.querySelector('nav').classList.contains('collapsed')?'Hide Menu':'Show Menu';});
+(function(){var sections=document.querySelectorAll('.section[id],.snapshot');var navLinks=document.querySelectorAll('.nav-links a');function updateActive(){var scrollPos=window.scrollY+120;var current='';sections.forEach(function(s){if(s.offsetTop<=scrollPos){current=s.id;}});navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});}window.addEventListener('scroll',updateActive);updateActive();})();
+function drawSpark(id,data,color){var svg=document.getElementById(id);if(!svg||!data||data.length<2)return;var w=48,h=18,pad=2;var min=Math.min.apply(null,data),max=Math.max.apply(null,data);var range=max-min||1;var pts=data.map(function(v,i){var x=pad+i*((w-2*pad)/(data.length-1));var y=h-pad-(v-min)/(range)*(h-2*pad);return x+','+y;});var poly=document.createElementNS('http://www.w3.org/2000/svg','polyline');poly.setAttribute('points',pts.join(' '));poly.setAttribute('fill','none');poly.setAttribute('stroke',color);poly.setAttribute('stroke-width','1.5');poly.setAttribute('stroke-linecap','round');svg.appendChild(poly);var lastPts=pts[pts.length-1].split(',');var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',lastPts[0]);dot.setAttribute('cy',lastPts[1]);dot.setAttribute('r','2');dot.setAttribute('fill',color);svg.appendChild(dot);}
+</script>
+</body>
+</html>
