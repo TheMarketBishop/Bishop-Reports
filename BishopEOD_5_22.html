@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Market Bishop · End-of-Day Report · May 22 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:rgba(255,255,255,.88);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(0,170,255,.3);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(0,170,255,.3);border-radius:3px}
+nav{position:fixed;top:0;left:0;width:210px;height:100vh;background:rgba(6,6,12,.97);border-right:1px solid rgba(0,170,255,.08);padding:1.5rem 1rem;z-index:100;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+nav.collapsed{transform:translateX(-210px)}
+.nav-brand{font-size:11px;font-weight:700;letter-spacing:.12em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;margin-bottom:.3rem;opacity:0;animation:fadeUp .5s ease forwards 1.8s}
+.nav-home{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(0,170,255,.6);text-decoration:none;padding:.3rem 0;margin-bottom:.3rem;transition:color .2s,text-shadow .2s}
+.nav-home:hover{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.5);text-decoration:none}
+.nav-collapse-btn{font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;padding:.3rem 0;margin-bottom:.8rem;transition:color .2s}
+.nav-collapse-btn:hover{color:rgba(255,255,255,.6)}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:.5rem;margin-top:.5rem}
+.nav-links{list-style:none;flex:1;overflow-y:auto}
+.nav-links li{margin-bottom:.15rem}
+.nav-links a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;padding:.25rem .4rem;display:block;border-radius:4px;transition:all .25s cubic-bezier(.22,1,.36,1);letter-spacing:.02em}
+.nav-links a:hover{color:#00aaff;background:rgba(0,170,255,.06);text-shadow:0 0 8px rgba(0,170,255,.2)}
+.nav-links a.active{color:#00aaff;background:rgba(0,170,255,.08);text-shadow:0 0 8px rgba(0,170,255,.3);border-left:2px solid #00aaff;padding-left:calc(.4rem - 2px)}
+.nav-progress{margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+.nav-progress-label{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;margin-bottom:.4rem}
+.nav-progress-bar{height:2px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+.nav-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00aaff,#aa55ff);border-radius:1px;transition:width .15s ease}
+.page{margin-left:calc(210px + (100% - 210px - 740px) / 2);max-width:740px;padding:2.5rem 2rem 4rem}
+.page-brand{font-size:11px;font-weight:700;letter-spacing:.14em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.page-title{font-size:22px;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:.2rem;opacity:0;animation:fadeUp .5s ease forwards 1.85s}
+.page-sub{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 2.0s}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:1rem;opacity:0;animation:fadeUp .5s ease forwards 2.15s}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}
+@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.disclaimer-bar{background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.12);border-radius:8px;padding:.6rem 1rem;margin-bottom:1.5rem;font-size:11px;color:rgba(255,170,0,.7);text-shadow:0 0 6px rgba(255,170,0,.15);opacity:0;animation:fadeUp .5s ease forwards 2.3s}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:2rem}
+.snap-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.8rem;text-align:center;transition:transform .2s ease,box-shadow .2s ease;opacity:0;animation:cardIn .5s ease forwards}
+.snap-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,170,255,.08)}
+.snap-card:nth-child(1){animation-delay:2.35s}.snap-card:nth-child(2){animation-delay:2.4s}.snap-card:nth-child(3){animation-delay:2.45s}.snap-card:nth-child(4){animation-delay:2.5s}.snap-card:nth-child(5){animation-delay:2.55s}.snap-card:nth-child(6){animation-delay:2.6s}
+.snap-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.3rem}
+.snap-value{font-size:18px;font-weight:700;color:rgba(255,255,255,.9)}
+.snap-detail{font-size:10px;color:rgba(255,255,255,.35);margin-top:.2rem}
+.snap-up{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.snap-down{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}
+.snap-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}
+.section{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;margin-bottom:2rem}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-header{position:relative;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.06em;padding:.6rem 0;margin-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.section-header:hover{padding-right:2.5rem}
+.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}
+.section-header:hover .anchor-icon{opacity:.5}
+.section-header .anchor-icon.copied{opacity:1}
+.h-blue{color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);border-color:rgba(0,170,255,.15)}
+.h-purple{color:#aa55ff;text-shadow:0 0 12px rgba(170,85,255,.3);border-color:rgba(170,85,255,.15)}
+.h-teal{color:#00d2b4;text-shadow:0 0 12px rgba(0,210,180,.3);border-color:rgba(0,210,180,.15)}
+.h-red{color:#ff3355;text-shadow:0 0 12px rgba(255,51,85,.3);border-color:rgba(255,51,85,.15)}
+.h-amber{color:#ffaa00;text-shadow:0 0 12px rgba(255,170,0,.3);border-color:rgba(255,170,0,.15)}
+.h-green{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.3);border-color:rgba(68,255,136,.15)}
+.h-coral{color:#ff7f50;text-shadow:0 0 12px rgba(255,127,80,.3);border-color:rgba(255,127,80,.15)}
+.section p,.section ul{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.8rem}
+.section ul{list-style:none;padding-left:0}
+.section li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+.section li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.4)}
+.li-amber::before{background:#ffaa00!important;box-shadow:0 0 6px rgba(255,170,0,.4)!important}
+.li-teal::before{background:#00d2b4!important;box-shadow:0 0 6px rgba(0,210,180,.4)!important}
+.li-purple::before{background:#aa55ff!important;box-shadow:0 0 6px rgba(170,85,255,.4)!important}
+.li-green::before{background:#44ff88!important;box-shadow:0 0 6px rgba(68,255,136,.4)!important}
+.li-coral::before{background:#ff7f50!important;box-shadow:0 0 6px rgba(255,127,80,.4)!important}
+.li-red::before{background:#ff3355!important;box-shadow:0 0 6px rgba(255,51,85,.4)!important}
+strong{color:rgba(255,255,255,.95)}
+.callout{border-left:3px solid rgba(0,170,255,.3);background:rgba(0,170,255,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheBlue 3s ease-in-out infinite}
+.callout-amber{border-color:rgba(255,170,0,.3);background:rgba(255,170,0,.04);animation:breatheAmber 3s ease-in-out infinite}
+.callout-teal{border-color:rgba(0,210,180,.3);background:rgba(0,210,180,.04);animation:breatheTeal 3s ease-in-out infinite}
+.callout-purple{border-color:rgba(170,85,255,.3);background:rgba(170,85,255,.04);animation:breathePurple 3s ease-in-out infinite}
+@keyframes breatheBlue{0%,100%{box-shadow:0 0 8px rgba(0,170,255,.05)}50%{box-shadow:0 0 16px rgba(0,170,255,.12)}}
+@keyframes breatheAmber{0%,100%{box-shadow:0 0 8px rgba(255,170,0,.05)}50%{box-shadow:0 0 16px rgba(255,170,0,.12)}}
+@keyframes breatheTeal{0%,100%{box-shadow:0 0 8px rgba(0,210,180,.05)}50%{box-shadow:0 0 16px rgba(0,210,180,.12)}}
+@keyframes breathePurple{0%,100%{box-shadow:0 0 8px rgba(170,85,255,.05)}50%{box-shadow:0 0 16px rgba(170,85,255,.12)}}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.gloss-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem .7rem;transition:transform .2s ease,box-shadow .2s ease}
+.gloss-item:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,170,255,.06)}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,.2);margin-bottom:.2rem}
+.gloss-def{font-size:10px;color:rgba(255,255,255,.5);line-height:1.5}
+.mini-card{background:rgba(255,255,255,.02);border:1px solid rgba(170,85,255,.1);border-radius:10px;padding:.8rem 1rem;margin-bottom:.75rem;transition:transform .2s ease,box-shadow .2s ease}
+.mini-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(170,85,255,.08)}
+.mini-card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+.mini-card-ticker{font-size:14px;font-weight:700;color:#aa55ff;text-shadow:0 0 8px rgba(170,85,255,.3)}
+.mini-card-price{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.mini-card-detail{font-size:11px;color:rgba(255,255,255,.45)}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:12px}
+.data-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);text-transform:uppercase;padding:.4rem .5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.data-table td{padding:.4rem .5rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.03)}
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.comm-group-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.5rem}
+.comm-row{display:flex;align-items:center;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:11px}
+.comm-name{color:rgba(255,255,255,.6);flex:1}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+.comm-price{color:rgba(255,255,255,.85);font-weight:600;margin-right:.5rem;white-space:nowrap}
+.comm-change{font-weight:600;white-space:nowrap}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}
+.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px)}
+.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}
+.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.bottom-line{border-top:1px solid rgba(255,170,0,.15);padding-top:1.5rem;margin-top:1rem}
+.sources-footer{font-size:10px;color:rgba(255,255,255,.2);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.04)}
+.legal{margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.04);border-radius:10px}
+.legal p{font-size:10px;color:rgba(255,255,255,.25);margin-bottom:.6rem;line-height:1.6}
+.legal strong{color:rgba(255,255,255,.35)}
+@keyframes openIn{from{opacity:0;transform:scale(.98)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes neonPulse{0%{filter:brightness(1);transform:scale(1)}30%{filter:brightness(2);transform:scale(1.02)}60%{filter:brightness(1.6);transform:scale(1.01)}100%{filter:brightness(1);transform:scale(1)}}
+@media(max-width:768px){nav{transform:translateX(-210px)}nav.open{transform:translateX(0)}.page{margin-left:0;padding:1.5rem 1rem 3rem}.gloss-grid{grid-template-columns:1fr}.comm-grid{grid-template-columns:1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.hamburger{display:flex!important}.read-time{top:14px;right:14px}}
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;width:32px;height:32px;background:rgba(6,6,12,.9);border:1px solid rgba(0,170,255,.15);border-radius:6px;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#00aaff}
+@media print{body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}nav,.hamburger,.read-time,.anchor-toast{display:none!important}.page{margin-left:0;max-width:100%}.section{opacity:1!important;transform:none!important;animation:none!important}.snap-card,.gloss-item,.mini-card{opacity:1!important;animation:none!important}.page-brand,.page-title,.page-sub,.page-stamp,.disclaimer-bar{opacity:1!important;animation:none!important}.stamp-live{animation:none!important}.callout,.callout-amber,.callout-teal,.callout-purple{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
+<div class="hamburger" id="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">☰</div>
+<nav id="mainNav">
+<div class="nav-brand">The Market Bishop</div>
+<div class="nav-date">May 22, 2026 · End of Day</div>
+<a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a>
+<div class="nav-collapse-btn" id="navCollapse" onclick="document.querySelector('nav').classList.toggle('collapsed')">Hide Menu</div>
+<div class="nav-label">Sections</div>
+<ul class="nav-links">
+<li><a href="#snapshot">Snapshot</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#gloss">Glossary</a></li>
+<li><a href="#changed">What Changed</a></li>
+<li><a href="#recap">Session Recap</a></li>
+<li><a href="#gex">EOD GEX</a></li>
+<li><a href="#tape">Block Tape</a></li>
+<li><a href="#greeks">Greek Forces</a></li>
+<li><a href="#afterhours">After-Hours</a></li>
+<li><a href="#vol">Volatility</a></li>
+<li><a href="#focus">Focus Stocks</a></li>
+<li><a href="#sectors">Sector Rotation</a></li>
+<li><a href="#commodities">Commodities</a></li>
+<li><a href="#catalyst">Catalyst Watch</a></li>
+<li><a href="#gamma">Gamma Decay</a></li>
+<li><a href="#tuesday">Tuesday's Setup</a></li>
+<li><a href="#bottom">Bottom Line</a></li>
+</ul>
+<div class="nav-progress"><div class="nav-progress-label">Reading progress</div><div class="nav-progress-bar"><div class="nav-progress-fill" id="progressFill"></div></div></div>
+</nav>
+
+<main class="page">
+<div class="page-brand">The Market Bishop</div>
+<div class="page-title">End-of-Day Report</div>
+<div class="page-sub">Friday, May 22, 2026</div>
+<div class="page-stamp"><span class="stamp-live">Generated ~5:15 PM ET · Data as of market close + after-hours</span></div>
+
+<div class="disclaimer-bar">⚠ Not financial advice. All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</div>
+
+<div class="snapshot" id="snapshot">
+<div class="snap-card"><div class="snap-label">SPY Close</div><div class="snap-value snap-up">~$745.57</div><div class="snap-detail">+0.58% · 8th consecutive green week</div></div>
+<div class="snap-card"><div class="snap-label">SPX Close</div><div class="snap-value snap-up">~7,500</div><div class="snap-detail">Tagged 7,500 magnet · Near ATH</div></div>
+<div class="snap-card"><div class="snap-label">VIX</div><div class="snap-value snap-up">19.65</div><div class="snap-detail">+1.5% · Slight bounce into weekend</div></div>
+<div class="snap-card"><div class="snap-label">GEX</div><div class="snap-value snap-up">+$1.57B</div><div class="snap-detail">NEW ALL-TIME HIGH · Record structure</div></div>
+<div class="snap-card"><div class="snap-label">DELL</div><div class="snap-value snap-up">+16%</div><div class="snap-detail">ALL-TIME HIGH · Kevin's focus name</div></div>
+<div class="snap-card"><div class="snap-label">Status</div><div class="snap-value snap-up">BULLISH</div><div class="snap-detail">Warsh Day 1 · Record structure into weekend</div></div>
+</div>
+
+<div class="section" id="tldr" style="opacity:0;animation:fadeUp .5s ease forwards 2.85s">
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
+<ul>
+<li class="li-amber"><strong>Kevin's bullish thesis confirmed for the entire week — S&amp;P 500 positive for 8 consecutive weeks, Dow hit 50,000, GEX set a new all-time high at +$1.57B.</strong> SPY closed ~$745.57 (+0.58%), $2.60 from the all-time high of $748.17. The $750 magnet at +$475M is a new all-time single-magnet record. All 10 top GEX levels are magnets — zero accelerators. The strongest structure ever recorded, heading into a 3-day weekend. Kevin called every day this week: pullback Tue, recovery Wed, digestion Thu, gap-up Fri.</li>
+<li class="li-amber"><strong>Kevin Warsh was officially sworn in as the 17th Federal Reserve Chair.</strong> First White House swearing-in in ~40 years. Warsh said "inflation can be lower, growth will be strong." Trump: "stock market doing well because Warsh is liked." Powell stays as governor. Fed hike odds jumped to 43% — the market is pricing tightening risk alongside all-time highs. Fed Governor Waller said rates could go up if Iran-driven energy inflation persists.</li>
+<li class="li-amber"><strong>DELL exploded +16% to an all-time high — Kevin's focus name from this morning.</strong> Best day since Feb 27, YTD +133% (strongest year on record). 3rd most bullish premium in the market. Millions in unusual call prints. The AI server infrastructure thesis confirmed again. Kevin also expanding into space names: ASTS, LUNR, FLY, VOYG.</li>
+<li class="li-amber"><strong>Consumer Sentiment hit an all-time record low at 44.8 — and the market completely ignored it.</strong> Lowest reading since the survey started in 1952. Down -21% since the Iran War. 37% below COVID levels. Inflation expectations jumped to 4.8% (1-year) and 3.9% (long-run). The market absorbed the worst consumer confidence print in 74 years and pushed toward all-time highs anyway. Structure &gt; sentiment.</li>
+<li class="li-amber"><strong>The institutional tape: sell NVDA −$3.82B (Day 2), buy the beneficiaries.</strong> Remove NVDA and the tape is +$1.83B buy. MU +$1.96B (#1 buyer, 2nd straight day). AAPL +$1.26B, TSLA +$935M, AMD +$435M, INTC +$294M. The sell is concentrated in one name — the rest of the market is being accumulated. MU CEO confirmed memory chip shortage lasting beyond 2026. IONQ saw its first floor trade in the flow.</li>
+</ul>
+</div>
+
+<div class="section" id="gloss" style="opacity:0;animation:fadeUp .5s ease forwards 3.15s">
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
+<p style="font-style:italic;font-size:11px;color:rgba(255,255,255,.4);margin-bottom:.8rem">Quick reference — key terms used in this report.</p>
+<div class="gloss-grid">
+<div class="gloss-item"><div class="gloss-term">GEX All-Time High</div><div class="gloss-def">Net Gamma Exposure hit +$1.57B today — the strongest structural reading ever recorded. Surpasses the May 8 record of +$1.39B. When GEX is this high, dealers buy every dip and sell every rip — the market grinds with compressed ranges. The $750 magnet at +$475M is also a single-magnet record. All 10 top levels are magnets. Zero accelerators in the top 10.</div></div>
+<div class="gloss-item"><div class="gloss-term">Warsh Era Begins</div><div class="gloss-def">Kevin Warsh was sworn in as the 17th Fed Chair, replacing Jerome Powell (who stays as governor). Warsh inherits a 5.2% 30-year yield, 3.8% CPI, hot PPI, and oil above $97. First FOMC meeting June 17. The market positioned with all sectors green on Day 1 — but Fed hike odds jumped to 43%. The bond market isn't sure Warsh means cuts.</div></div>
+<div class="gloss-item"><div class="gloss-term">OI Corridor Repriced</div><div class="gloss-def">The options open interest corridor narrowed from $530-$800 to $700-$800. The put wall moved up $170 from $530 to $700. Put OI at $700: 451.5K (new cycle high). Institutions raised their entire hedge floor upward. They're not hedging for a crash — they're hedging for a pullback from higher levels. The floor is being repriced bullish.</div></div>
+<div class="gloss-item"><div class="gloss-term">Structure > Sentiment</div><div class="gloss-def">Consumer Sentiment hit 44.8 — the lowest in 74 years of data. The market went up. This is the defining feature of this cycle: options positioning, dealer mechanics, and institutional flow dominate over survey data. GEX at +$1.57B, 4 straight days of 90M+ flow, and $1.13B in magnets from $745-$760 override any sentiment print.</div></div>
+<div class="gloss-item"><div class="gloss-term">Space Theme Expansion</div><div class="gloss-def">Kevin is expanding the space focus list: ASTS (satellite connectivity), LUNR (lunar landers), FLY (Fly Leasing/space logistics), VOYG (Virgin Orbit/launch). Added alongside SATS/SATL. SpaceX IPO filing, BlackRock $5-10B consideration, and NVDA's 13F positions in space-adjacent names confirm the institutional interest.</div></div>
+<div class="gloss-item"><div class="gloss-term">Iran Deal Fading</div><div class="gloss-def">Iran's Foreign Ministry: "differences are deep and significant," "cannot say agreement is close." Polymarket peace deal dropped from 27% to 19% this session. Qatar mediating with a team in Tehran. UAE/Saudis urging Trump not to restart war. Trump: "Iran dying to make a deal." The longer this drags, the longer oil stays elevated.</div></div>
+</div>
+</div>
+
+<div class="section" id="changed">
+<div class="section-header h-coral">What Changed Since This Morning<span class="anchor-icon">🔗</span></div>
+<p>Five structural shifts between the pre-market report and the close:</p>
+<p><strong>1. GEX hit a new all-time high at +$1.57B.</strong> This morning we noted +$910M rebuilt GEX. By close, it surged to +$1.57B — surpassing the May 8 record of +$1.39B. The $750 magnet hit +$475M, a new single-magnet record. All 10 top GEX levels are magnets. Zero accelerators. The gamma blanket that was shredded at May 15 monthly OPEX has not only rebuilt — it's the strongest ever.</p>
+<p><strong>2. Kevin Warsh was sworn in as Fed Chair and markets went up.</strong> All sectors green. SOXX +2.6% led the session. Value factor led at +1.6% (the Warsh signal — if rates stay elevated, value outperforms growth). But Fed hike odds jumped to 43% and Waller explicitly said rates could go up on Iran-driven inflation. The market is pricing in a new era while hedging for the first time that the new era might mean tightening.</p>
+<p><strong>3. Consumer Sentiment collapsed to 44.8 and the market didn't blink.</strong> The worst reading in 74 years of data. Inflation expectations jumped. The market absorbed it and pushed SPX to tag 7,500. Structure dominated sentiment — this is the defining feature of the 2026 cycle.</p>
+<p><strong>4. DELL exploded +16% to an all-time high.</strong> Kevin called it this morning as a focus name. The AI server infrastructure thesis produced its strongest single-day move since February. Millions in call prints. 3rd most bullish premium in the entire market excluding Mag-7.</p>
+<p><strong>5. Iran deal fading — Polymarket peace deal dropped from 27% to 19%.</strong> Iran Foreign Ministry said differences are "deep and significant," no agreement is close, and nuclear details aren't being discussed. Qatar sent a negotiating team to Tehran. UAE and Saudis urged Trump not to restart the war. The longer this drags, the longer oil stays elevated — WTI settled at $97.10, Brent at $104.05.</p>
+</div>
+
+<div class="section" id="recap">
+<div class="section-header h-blue">Full Session Recap<span class="anchor-icon">🔗</span></div>
+<p>The session played out in three acts on Kevin Warsh's first day as Fed Chair:</p>
+<p><strong>Act 1 (Open–11:30 AM): Gap-up into $745 support, Warsh ceremony.</strong> SPY opened at ~$747.13 (+0.59%), one dollar from the all-time high. The $745 MVC held as intraday support exactly as the morning GEX analysis predicted. Andrew Hiesinger opened a $745/$743 put credit spread at the open, betting on support holding — closed +55% by late morning. Consumer Sentiment dropped at 10 AM (44.8, record low) and the market barely flinched. The tape tested the bottom of the $745-$748 range once and bounced. Calls crossed puts on QQQ around 10:30 AM, confirming the broader bid. DELL started its explosive move, up +8% by late morning on millions in unusual call flow.</p>
+<p><strong>Act 2 (11:30 AM–2 PM): Warsh sworn in, Dow 50K, SPX 7,500.</strong> The White House swearing-in ceremony began at noon. Trump declared "stock market doing well because Warsh is liked" and told Warsh "do your own thing." Warsh said "these years can bring unmatched prosperity." The Dow crossed 50,000 for the first time. SPX tagged the 7,500 magnet — the dominant structural target. DELL extended to +16%, hitting an all-time high. MU CEO confirmed memory chip shortage beyond 2026 — the fundamental thesis underneath Kevin's MU position. At 1:22 PM, Iran headlines hit: Foreign Ministry says deal not close, differences "deep and significant." Oil ticked higher. SPY tested $748.17 dark pool resistance twice and was rejected both times. The tape printed $1.93B in notional at that level.</p>
+<p><strong>Act 3 (2 PM–Close): Weekly OPEX mechanics, ATH tease, holiday positioning.</strong> SPX continued pinning around 7,500. The $750 magnet at +$475M pulled price but the $748.17 dark pool ceiling held as resistance. Weekly OPEX expired 1.61M contracts — standard Friday mechanics compressed the range in the final hours. A $10M QQQ put spike hit the tape near the close (Andrew Hiesinger flagged it). SPY closed at ~$745.57, up +0.58% on the day. The Alphatica composite score peaked at +27.7 (Lean Bullish) with the strongest structure ever recorded heading into the 3-day weekend.</p>
+<div class="callout">S&amp;P 500 has now been positive for 8 consecutive weeks — the 20th week of 2026 and the market keeps grinding. US ETF inflows hit $852B YTD (record pace, +33% above 2025). $8.5B per session average. On track to exceed $1T in 18 trading sessions. Four consecutive sessions of 90M+ institutional flow. The institutional buying is not slowing down — it's accelerating.</div>
+</div>
+
+<div class="section" id="gex">
+<div class="section-header h-teal">EOD GEX Structure<span class="anchor-icon">🔗</span></div>
+<p><strong>All-time record.</strong> The numbers speak for themselves:</p>
+<table class="data-table">
+<tr><th>Metric</th><th>Yesterday</th><th>Today Close</th><th>Change</th></tr>
+<tr><td>Net GEX</td><td>+$910M</td><td>+$1.57B</td><td>+73% — NEW ALL-TIME HIGH</td></tr>
+<tr><td>$750 Magnet</td><td>+$331M</td><td>+$475M</td><td>NEW SINGLE-MAGNET RECORD</td></tr>
+<tr><td>$745 MVC</td><td>+$279M</td><td>+$307M</td><td>Held as support all day</td></tr>
+<tr><td>Top 10 Levels</td><td>8/10 magnets</td><td>10/10 magnets</td><td>Zero accelerators in top 10</td></tr>
+<tr><td>GEX Flip</td><td>~7,394</td><td>$684 (~SPY)</td><td>8.6% cushion — deepest of cycle</td></tr>
+<tr><td>Dealer Short</td><td>124.5M shares</td><td>176.7M shares</td><td>+42% — engine fully rebuilt</td></tr>
+<tr><td>OI Corridor</td><td>$530–$800</td><td>$700–$800</td><td>Floor raised $170 — institutions repricing upward</td></tr>
+</table>
+<p><strong>The magnet runway is unprecedented:</strong> $745 (+$307M), $746 (+$90M), $747 (+$85M), $748 (+$159M), $749 (+$172M), $750 (+$475M), $752 (+$85M), $755 (+$167M), $760 (+$90M). That's $1.63B of magnets from $745 to $760. Zero structural resistance. The runway through the all-time high has never been cleaner.</p>
+<p><strong>The OI corridor shift is the institutional tell.</strong> The put wall moved from $530 to $700 — institutions raised their entire hedge floor by $170. Put OI at $700 hit 451.5K (cycle high). They're not hedging for a crash. They're hedging for a pullback from higher levels. The floor has been repriced bullish.</p>
+<div class="callout-teal">Into Tuesday: The 3-day weekend doesn't change the structure. GEX at +$1.57B means dealers buy every dip and sell every rip. The $750 magnet pulls. The $748.17 dark pool level was the only resistance today — and it was tested twice. If it breaks on Tuesday's open, the path to $750 and $755 is clean through record positive gamma. The ATH attempt is the setup for the next session.</div>
+</div>
+
+<div class="section" id="tape">
+<div class="section-header h-blue">Block Tape EOD<span class="anchor-icon">🔗</span></div>
+<p><strong>Headline: −$1.99B net sell. Remove NVDA and it's +$1.83B buy.</strong> The sell is one name. The rest of the market is being accumulated.</p>
+<p><strong>The buyers (beneficiary rotation confirmed Day 2):</strong></p>
+<ul>
+<li><strong>MU +$1.96B</strong> (2,791 blocks) — #1 buyer for the 2nd straight day. MU CEO confirmed memory shortage beyond 2026. Non-stop block buying per Alphatica. The $NVDA earnings confirmed $91B in Q2 guidance = memory demand. Cross-venue consensus.</li>
+<li><strong>AAPL +$1.26B</strong> (596 blocks) — consumer mega-cap accumulation. The rotation within mega-caps: sell AI names, buy consumer names.</li>
+<li><strong>TSLA +$935M</strong> (1,344 blocks) — calls lead puts by $31M. Second non-AI mega-cap being accumulated.</li>
+<li><strong>IWM +$659M</strong> (300 blocks) — small cap accumulation continuing from yesterday. Breadth participation underneath.</li>
+<li><strong>AMD +$435M</strong> (944 blocks) — chip beneficiary. Semis led the session (SOXX +2.6%).</li>
+<li><strong>INTC +$294M</strong> (626 blocks) — $12M+ in single-leg calls today, most options volume in the market. Quantum/government thesis continuing to attract flow.</li>
+</ul>
+<p><strong>The sellers (NVDA distribution + holiday de-risking):</strong></p>
+<ul>
+<li class="li-red"><strong>NVDA −$3.82B</strong> (2,519 blocks, $461M buys vs $4.28B sells) — cumulative −$6.36B in 2 days post-earnings. The largest post-earnings distribution in the dataset.</li>
+<li class="li-red"><strong>SPY −$1.24B</strong> (2,110 blocks) — standard 3-day weekend de-risking. Not bearish, just holiday mechanics.</li>
+<li class="li-red"><strong>QQQ −$1.14B</strong> (3,017 blocks) — same holiday pattern. $10M put spike near the close.</li>
+<li class="li-red"><strong>META −$847M</strong> (324 blocks) — layoffs + AI capex backlash continuing.</li>
+<li class="li-red"><strong>MSFT −$820M</strong> ($51M buys vs $871M sells) — 3rd straight session being sold with near-zero buyer interest.</li>
+<li class="li-red"><strong>GOOGL −$522M</strong> (291 blocks) — mega-cap AI complex under sustained distribution.</li>
+</ul>
+<p>Today's market state: call volume 45.1M vs put volume 28.9M. Put/call ratio 0.639 — heavily call-skewed. Call premium $27.7B vs put premium $12.7B. The conviction remains overwhelmingly bullish at the options level despite the headline net-sell tape.</p>
+</div>
+
+<div class="section" id="greeks">
+<div class="section-header h-purple">Greek Forces EOD<span class="anchor-icon">🔗</span></div>
+<p><strong>Vanna: partially spent, reloading over the weekend.</strong> VIX closed at 19.65, up +1.5% from the morning's 19.53. The slight vol bounce into the 3-day weekend is normal — institutions add protection before a holiday. But IV at 14.7% (SPY options) is a cycle low. Options are the cheapest since before the Iran War. The vol compression over the past week means vanna fired heavily during the session — dealers bought delta as IV crushed. The vanna impulse is largely spent for now but reloads if VIX drops further next week.</p>
+<p><strong>Charm: released through OPEX.</strong> Weekly OPEX expired 1.61M contracts today (1.18M puts). The put decay provided mechanical buying pressure through the afternoon. $748M of gamma expired at the close — this layer is now gone. The charm impulse from today's expiry was the mechanical push that kept SPY above $745 despite the Iran headlines.</p>
+<p><strong>Dealer book: 176.7M shares short — near pre-OPEX levels.</strong> Rebuilt from the 80.5M post-cliff low to 176.7M in less than a week. The forced-buying engine is at full scale. When vol compresses or charm fires, this short delta position converts to buying pressure. The engine that powered the 8-week winning streak is fully operational heading into Tuesday.</p>
+<div class="callout-purple">The 3-day weekend is a Greek reset. No charm or vanna fires when the market is closed. But the structure carries forward intact — dealers wake up Tuesday with 176.7M shares short, GEX at +$1.57B, and $750 pulling. If Tuesday opens with VIX below 19 (possible after a quiet weekend), the vanna cascade fires immediately. Kevin's "biggest moves next week" timing aligns with the Greek setup perfectly.</div>
+</div>
+
+<div class="section" id="afterhours">
+<div class="section-header h-amber">After-Hours Developments<span class="anchor-icon">🔗</span></div>
+<p><strong>Anthropic closing $30B+ funding round at $900B+ valuation</strong> — would make it the most valuable private company in the world, surpassing OpenAI. Sequoia, Dragoneer, Altimeter, Greenoaks co-leading at $2B each. Annualized run rate revenue on track to surpass $50B by end of June. The AI infrastructure investment cycle is not slowing — it's accelerating at the private company level.</p>
+<p><strong>Iran update — progress on some issues but no deal.</strong> Iran's Tasnim reported progress on some matters but said no agreement will be reached until all disputed issues are resolved. Pakistan army chief arrived in Tehran. Qatar sent negotiating team. The diplomatic machinery is in motion but the timeline is unclear. Oil steady at WTI $97.10, Brent $104.05 heading into the weekend.</p>
+<p><strong>Russia selling gold reserves at rapid pace</strong> — 900K ounces in 4 months of 2026, ~$4.3B in proceeds. Bank of Russia gold holdings at lowest since Feb 2022. Raising cash to offset budget deficits from declining energy revenues. The geopolitical cash crunch is real.</p>
+<p><strong>Russia/China spy operations in Cuba expanding</strong> — tripled intelligence personnel since 2023, targeting US military in Florida. Security escalation that adds to the geopolitical backdrop.</p>
+<p><strong>House Oversight launching investigation into prediction market insider trading</strong> — regulatory overhang on Polymarket's Nasdaq partnership. SEC delayed blockchain-based tokenized stocks.</p>
+<div class="callout-amber">The after-hours tape is quiet heading into Memorial Day. No earnings surprises, no geopolitical escalation. The Iran situation is simmering (progress but no deal). The 3-day weekend with the strongest structure ever recorded is the setup. Kevin expects the real action Tuesday.</div>
+</div>
+
+<div class="section" id="vol">
+<div class="section-header h-purple">Volatility Structure<span class="anchor-icon">🔗</span></div>
+<p><strong>VIX closed at 19.65</strong> — up +1.5% from this morning's 19.53 on standard 3-day weekend protection buying. The slight bounce is mechanical, not directional. SPY IV at 14.7% is a cycle low — the cheapest options since before the Iran War. Volatility Rank at 22.58% (lowest since April 17). The vol surface is pricing calm into Tuesday.</p>
+<p>The stock-bond correlation is at −0.70 (lowest since 1999). Over the last 2 months, stocks and the 10-year yield have moved in opposite directions by the largest extent this century. This is the tension underneath: the bond market and the equity market are telling different stories. For now, equities are winning — GEX at +$1.57B overwhelms any signal from the bond market.</p>
+<p>Fed hike odds jumped to 43% today — the highest in months. The market is pricing in the possibility that Warsh's first FOMC meeting (June 17) produces hawkish surprise. Governor Waller explicitly said rates could go up if Iran-driven energy inflation persists. This vol premium is concentrated in rates, not equities — the SPY vol surface is priced for grind, not for crash.</p>
+</div>
+
+<div class="section" id="focus">
+<div class="section-header h-purple">Focus Stocks<span class="anchor-icon">🔗</span></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">DELL</span><span class="mini-card-price">+16% — ALL-TIME HIGH</span></div><div class="mini-card-detail">KEVIN'S CALL FROM THIS MORNING. Exploded to its best day since Feb 27. YTD +133%, strongest year on record. 3rd most bullish premium in the market (ex Mag-7). Millions in unusual call prints. The AI server infrastructure thesis produced its strongest confirmation of the cycle. Kevin identified DELL as a "strong name" at the morning bell.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MU</span><span class="mini-card-price">+$1.96B lit tape buyer</span></div><div class="mini-card-detail">KEVIN IS LONG. #1 buyer on the institutional tape for the 2nd straight day. MU CEO confirmed memory chip shortage lasting beyond 2026. Non-stop block buying per Alphatica. The NVDA $91B Q2 guidance = memory demand. Cross-venue consensus buy. The fundamental + institutional + structural alignment is as strong as it gets.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NOK</span><span class="mini-card-price">$14.50C from Tuesday +160%</span></div><div class="mini-card-detail">KEVIN IS LONG. Nokia options flow highlighted — the $14.50 call from Tuesday returned +160%. Connectivity infrastructure play alongside the AI/space themes. Kevin called out NOK specifically this morning.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">ARM</span><span class="mini-card-price">Trimming — massive trade</span></div><div class="mini-card-detail">KEVIN TRIMMING. The winning call of the week. Added Wednesday, validated by Jefferies within 24 hours, Kevin taking profit into the weekend. The discipline to take gains on a winner is part of the framework.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">INTC</span><span class="mini-card-price">$12M+ single-leg calls today</span></div><div class="mini-card-detail">KEVIN IS LONG. Most options volume in the entire market today. +$294M on the block tape (+626 blocks). The quantum/government thesis continues driving institutional flow. Trump portfolio pattern confirmed again.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">SNDK</span><span class="mini-card-price">Memory theme</span></div><div class="mini-card-detail">KEVIN IS LONG. Memory/storage complex. MU CEO's shortage-beyond-2026 confirmation benefits the entire memory supply chain. SNDK rides the same demand wave as MU.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">SWKS</span><span class="mini-card-price">$80C from Friday → +140%</span></div><div class="mini-card-detail">KEVIN IS LONG. Skyworks options flow highlighted — the $80 call from last Friday returned +140% (partially rolled to $95C today). Connectivity semiconductor benefiting from AI infrastructure build.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">GOOGL</span><span class="mini-card-price">Institutional selling</span></div><div class="mini-card-detail">KEVIN IS LONG but caution warranted. −$522M on the block tape today. The mega-cap AI complex (NVDA/MSFT/GOOGL/META) is under sustained institutional distribution. The sell-the-platform, buy-the-beneficiary rotation continues.</div></div>
+<div class="mini-card" style="border-color:rgba(0,210,180,.15)"><div class="mini-card-header"><span class="mini-card-ticker" style="color:#00d2b4;text-shadow:0 0 8px rgba(0,210,180,.3)">IONQ / RGTI / QBTS / QUBT</span><span class="mini-card-price" style="color:#00d2b4">Quantum — Day 1</span></div><div class="mini-card-detail">KEVIN'S NEW THEME. IONQ saw its first floor trade in the flow alerts today ($68C, $125K). The quantum thesis is getting institutional attention on Day 1 of Kevin's call. Trump's $2B investment with equity stakes is the catalyst. The pattern that doubled INTC is being applied. Watch the flow next week for confirmation.</div></div>
+<div class="mini-card" style="border-color:rgba(0,210,180,.15)"><div class="mini-card-header"><span class="mini-card-ticker" style="color:#00d2b4;text-shadow:0 0 8px rgba(0,210,180,.3)">ASTS / LUNR / FLY / VOYG</span><span class="mini-card-price" style="color:#00d2b4">Space — Expanding</span></div><div class="mini-card-detail">KEVIN'S EXPANDED SPACE THEME. ASTS (satellite connectivity), LUNR (lunar landers), FLY (space logistics), VOYG (launch). Added alongside existing SATS/SATL positions. SpaceX IPO filed under $SPCX. BlackRock considering $5-10B investment. NVDA's 13F maintained space-adjacent positions. The space theme is going institutional.</div></div>
+</div>
+
+<div class="section" id="sectors">
+<div class="section-header h-blue">Sector Rotation EOD<span class="anchor-icon">🔗</span></div>
+<table class="data-table">
+<tr><th>Sector</th><th>8:40 AM</th><th>12:15 PM</th><th>Close</th><th>Read</th></tr>
+<tr><td>XLK</td><td style="color:#44ff88">+0.82%</td><td style="color:#44ff88">+1.48%</td><td style="color:#44ff88">~+1.4%</td><td>SESSION LEADER. DELL +16%, SOXX +2.6%. Semis carrying.</td></tr>
+<tr><td>XLV</td><td style="color:#44ff88">+0.69%</td><td style="color:#44ff88">+1.02%</td><td style="color:#44ff88">~+1.0%</td><td>Healthcare strong. Steady bid.</td></tr>
+<tr><td>XLI</td><td style="color:#ff3355">−0.12%</td><td style="color:#44ff88">+0.82%</td><td style="color:#44ff88">~+0.8%</td><td>Industrials flipped green. BAH reported pre-market.</td></tr>
+<tr><td>XLU</td><td style="color:#44ff88">+1.10%</td><td style="color:#44ff88">+0.63%</td><td style="color:#44ff88">~+0.6%</td><td>Utilities gave back morning lead but held green.</td></tr>
+<tr><td>XLY</td><td style="color:#44ff88">+0.64%</td><td style="color:#44ff88">+0.61%</td><td style="color:#44ff88">~+0.6%</td><td>Consumer discretionary steady. TSLA +$935M flow.</td></tr>
+<tr><td>SPY</td><td style="color:#44ff88">+0.20%</td><td style="color:#44ff88">+0.63%</td><td style="color:#44ff88">+0.58%</td><td>8th consecutive green week. $2.60 from ATH.</td></tr>
+<tr><td>XLF</td><td style="color:#44ff88">+0.14%</td><td style="color:#44ff88">+0.45%</td><td style="color:#44ff88">~+0.5%</td><td>Financials steady. Warsh premium.</td></tr>
+<tr><td>XLB</td><td style="color:#44ff88">+0.60%</td><td style="color:#44ff88">+0.39%</td><td style="color:#44ff88">~+0.4%</td><td>Materials held green. Copper +1.08%.</td></tr>
+<tr><td>XLE</td><td style="color:#ff3355">−1.12%</td><td style="color:#44ff88">+0.15%</td><td style="color:#44ff88">~+0.2%</td><td>Energy recovered from morning weakness. Oil +0.8%.</td></tr>
+<tr><td>XLP</td><td style="color:#ff3355">−1.01%</td><td style="color:#44ff88">+0.12%</td><td style="color:#44ff88">~+0.1%</td><td>Staples recovered. BJ reported, market absorbed.</td></tr>
+<tr><td>XLRE</td><td style="color:#44ff88">+0.16%</td><td style="color:#44ff88">+0.11%</td><td style="color:#44ff88">~+0.1%</td><td>Real estate flat but positive. Rate-sensitive caution.</td></tr>
+<tr><td>XLC</td><td style="color:rgba(255,255,255,.5)">flat</td><td style="color:#ff3355">−0.39%</td><td style="color:#ff3355">~−0.4%</td><td>ONLY RED SECTOR. GOOGL −$522M, META −$847M dragging.</td></tr>
+</table>
+<p><strong>All sectors green except Communications.</strong> The rotation scanner confirmed: all sectors green, all factors green, semis and software leading. This is Warsh Day 1 — the market is positioned for the new regime with broad participation. Value led factors at +1.6% (the Warsh signal — if rates stay elevated, value outperforms growth). SOXX +2.6% was the thematic leader.</p>
+<p>The only red sector was XLC — dragged by GOOGL (−$522M) and META (−$847M). The mega-cap AI/cloud complex is the sole source of weakness while everything else participates. This is the narrowest sector weakness of the entire cycle — 10 of 11 green, with the one red sector caused entirely by two names being institutionally distributed.</p>
+</div>
+
+<div class="section" id="commodities">
+<div class="section-header h-blue">Commodities<span class="anchor-icon">🔗</span></div>
+<div class="comm-grid">
+<div>
+<div class="comm-group-title">Energy</div>
+<div class="comm-row"><span class="comm-name">Crude Oil (WTI)</span><svg class="comm-spark" id="spark-wti"></svg><span class="comm-price">$97.10</span><span class="comm-change" style="color:#44ff88">+0.8%</span></div>
+<div class="comm-row"><span class="comm-name">Brent Crude</span><svg class="comm-spark" id="spark-brent"></svg><span class="comm-price">$104.05</span><span class="comm-change" style="color:#44ff88">+1.4%</span></div>
+<div class="comm-row"><span class="comm-name">Natural Gas</span><svg class="comm-spark" id="spark-natgas"></svg><span class="comm-price">$2.922</span><span class="comm-change" style="color:#ff3355">−3.2%</span></div>
+<div class="comm-row"><span class="comm-name">Gasoline RBOB</span><span class="comm-price">$3.460</span><span class="comm-change" style="color:#44ff88">+2.4%</span></div>
+<div class="comm-row"><span class="comm-name">Heating Oil</span><span class="comm-price">$3.920</span><span class="comm-change" style="color:#44ff88">+2.3%</span></div>
+</div>
+<div>
+<div class="comm-group-title">Precious Metals</div>
+<div class="comm-row"><span class="comm-name">Gold</span><svg class="comm-spark" id="spark-gold"></svg><span class="comm-price">$4,511</span><span class="comm-change" style="color:#ff3355">−0.7%</span></div>
+<div class="comm-row"><span class="comm-name">Silver</span><svg class="comm-spark" id="spark-silver"></svg><span class="comm-price">$75.87</span><span class="comm-change" style="color:#ff3355">−1.1%</span></div>
+<div class="comm-row"><span class="comm-name">Platinum</span><svg class="comm-spark" id="spark-platinum"></svg><span class="comm-price">$1,932</span><span class="comm-change" style="color:#ff3355">−2.3%</span></div>
+<div class="comm-row"><span class="comm-name">Palladium</span><span class="comm-price">$1,358</span><span class="comm-change" style="color:#ff3355">−2.1%</span></div>
+</div>
+<div>
+<div class="comm-group-title">Industrial / Other</div>
+<div class="comm-row"><span class="comm-name">Copper</span><svg class="comm-spark" id="spark-copper"></svg><span class="comm-price">$13,669</span><span class="comm-change" style="color:#44ff88">+1.1%</span></div>
+<div class="comm-row"><span class="comm-name">Bitcoin</span><svg class="comm-spark" id="spark-btc"></svg><span class="comm-price">~$77,500</span><span class="comm-change" style="color:#44ff88">flat</span></div>
+<div class="comm-row"><span class="comm-name">Wheat</span><svg class="comm-spark" id="spark-wheat"></svg><span class="comm-price">647.00</span><span class="comm-change" style="color:#ff3355">−0.1%</span></div>
+<div class="comm-row"><span class="comm-name">Lumber</span><span class="comm-price">585.50</span><span class="comm-change" style="color:rgba(255,255,255,.5)">flat</span></div>
+</div>
+</div>
+<div class="callout" style="margin-top:1rem">Oil firmed into the close — WTI $97.10 (+0.8%), Brent $104.05 (+1.4%). The Iran headlines (deal not close, differences "deep and significant") pushed crude higher as de-escalation hopes faded. Gasoline +2.4%, heating oil +2.3% — refined products bid on Iran supply risk. Precious metals sold across the board (gold −0.7%, silver −1.1%, platinum −2.3%) as risk-on pulled capital from safe havens. Russia selling gold reserves rapidly (900K oz in 4 months) adding to supply. Copper firm at $13,669 (+1.1%) — the Alphatica Copper/Gold ratio signal continues holding at day 53+ with 9 consecutive higher lows. Bitcoin flat at ~$77,500 heading into the weekend. China accelerating strategic mineral reserves buildup per Bloomberg.</div>
+</div>
+
+<div class="section" id="catalyst">
+<div class="section-header h-coral">Catalyst Watch — Next 24-72 Hours<span class="anchor-icon">🔗</span></div>
+<p><strong>Monday May 25 — Memorial Day (markets closed).</strong></p>
+<p><strong>Tuesday May 26 — Markets reopen:</strong></p>
+<ul>
+<li class="li-coral"><strong>ATH attempt at $748.17</strong> — SPY closed $2.60 below. If it breaks, both bearish patterns (rising wedge + head-and-shoulders) fail simultaneously. The $750 magnet at +$475M pulls.</li>
+<li class="li-coral"><strong>ZS (Zscaler) earnings PM</strong> — cybersecurity read. Expected move ±$20.42 (~12%). 4 of last 5 quarters had 10%+ reaction.</li>
+<li class="li-coral"><strong>SMTC (Semtech) earnings PM</strong> — semiconductor read. Expected move ±$33.98 (~22%). High beta reaction likely.</li>
+<li class="li-coral"><strong>AZO (AutoZone) earnings AM</strong> — S&P 500 name. Consumer spending read.</li>
+<li class="li-coral"><strong>BOX earnings PM</strong> — enterprise software/cloud read.</li>
+<li class="li-coral"><strong>MOD (Modine) earnings PM</strong> — AI cooling/infrastructure. Expected move ±$46.64 (~18%).</li>
+</ul>
+<p><strong>Later next week:</strong></p>
+<ul>
+<li class="li-coral"><strong>ESTC (Elastic) earnings May 28</strong> — $50P floor trade appeared in today's flow.</li>
+<li class="li-coral"><strong>BURL (Burlington) earnings May 28</strong> — $270P floor trade, $1.41M. Consumer read.</li>
+<li class="li-coral"><strong>June 17 — Warsh's first FOMC meeting</strong> — the big one. Markets will begin pricing this next week.</li>
+<li class="li-coral"><strong>Iran negotiations</strong> — Qatar mediating, Pakistan army chief in Tehran. Any headline moves oil.</li>
+</ul>
+</div>
+
+<div class="section" id="gamma">
+<div class="section-header h-teal">Gamma Decay Schedule<span class="anchor-icon">🔗</span></div>
+<p>The 3-day weekend creates no gamma decay — structure carries forward intact. Here's the schedule:</p>
+<p><strong>Today's weekly OPEX:</strong> 1.61M contracts expired, including 1.18M puts and $748M in gamma. This layer is gone. But the surviving structure at +$1.57B is so strong that the weekly roll barely registers — the gamma blanket is deeper than any point pre-OPEX.</p>
+<p><strong>Tuesday's reopen:</strong> Gamma enters the session intact. The $750 magnet at +$475M is the dominant structural feature. No scheduled OPEX until Friday May 29 (weekly). The structure has a full week to operate without meaningful decay.</p>
+<p><strong>May 29 weekly OPEX:</strong> Standard weekly drain. Another layer of gamma rolls off. This is routine — the monthly OPEX cliff isn't until June 19.</p>
+<p><strong>June 19 monthly OPEX:</strong> The next structural cliff. If GEX is still at +$1.57B or above by then, the June monthly drain could be even larger than May's 36.8% rolloff. But that's 4 weeks away. Kevin's "biggest moves next week" thesis plays out long before the next structural cliff.</p>
+<div class="callout-teal">The gamma schedule is the most favorable of the entire cycle heading into Tuesday. Record GEX, no decay over the weekend, a full week before the next weekly OPEX, and a month before the next structural cliff. The structure that supports the ATH attempt is fully intact.</div>
+</div>
+
+<div class="section" id="tuesday">
+<div class="section-header h-purple">Tuesday's Setup<span class="anchor-icon">🔗</span></div>
+<table class="data-table">
+<tr><th>Metric</th><th>Level</th><th>Detail</th></tr>
+<tr><td>SPY ATH</td><td>$748.17</td><td>$2.60 above Friday's close. The target.</td></tr>
+<tr><td>SPY Range</td><td>$743 – $752</td><td>$745 floor / $750 magnet pull / $748 DP resistance</td></tr>
+<tr><td>SPX Range</td><td>7,460 – 7,530</td><td>7,500 magnet dominant. Breakout = 7,550+</td></tr>
+<tr><td>Bias</td><td>Bullish</td><td>Kevin's call. Record structure. ATH attempt.</td></tr>
+</table>
+<p><strong>The setup into Tuesday is the cleanest of the entire cycle.</strong> GEX at +$1.57B (all-time high). $1.63B in magnets from $745 to $760. Zero accelerators in the top 10. GEX flip at $684 with 8.6% cushion. Dealer book at 176.7M shares short. OI corridor raised to $700-$800. Both bearish patterns (rising wedge Day 14, H&S right shoulder) being challenged from price approaching ATH. Both buy signals on pace (inflation matrix Day 9, CPI selloff Day 10).</p>
+<p><strong>Kevin's timing framework:</strong> "biggest moves next week" — this is it. The 3-day weekend is the final calm before the resolution. Tuesday opens with record structure, record flow momentum (4 consecutive 90M+ days), and the ATH $2.60 away. The $748.17 dark pool level that rejected price twice today is the key. If it breaks on Tuesday's open (possible with a gap-up from weekend positioning), the $750 magnet at +$475M takes over and the ATH breakout begins.</p>
+<p><strong>Key names to watch:</strong> DELL (does the +16% move extend?), MU (memory shortage thesis follow-through), IONQ/RGTI/QBTS/QUBT (quantum flow Day 2), ASTS/LUNR/FLY/VOYG (Kevin's space expansion), ZS/SMTC/MOD earnings PM (cybersecurity + semiconductor + AI cooling reads).</p>
+</div>
+
+<div class="section visible bottom-line" id="bottom">
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
+<p>Kevin was right every day this week. <strong>The market enters Memorial Day weekend with the strongest structure ever recorded — GEX at +$1.57B (all-time high), $750 magnet at +$475M (single-magnet record), all 10 top levels are magnets, zero accelerators, GEX flip at $684 with 8.6% cushion.</strong> SPY closed ~$745.57, $2.60 from the all-time high. The S&amp;P 500 has been positive for 8 consecutive weeks. The Dow hit 50,000. US ETF inflows are running at a record $852B YTD.</p>
+<p>Kevin Warsh took the gavel on a day where consumer sentiment hit a 74-year low and the market went up. That's the defining characteristic of this cycle — structure dominates sentiment. The GEX blanket absorbs everything. The institutional flow is decisive: sell NVDA (−$6.36B cumulative in 2 days), buy the beneficiaries (MU +$1.96B, AAPL +$1.26B, TSLA +$935M, AMD +$435M, INTC +$294M). Kevin's focus names are on the right side of that rotation.</p>
+<p>DELL exploded +16% to an all-time high on Kevin's call from this morning. MU CEO confirmed memory chip shortage beyond 2026. IONQ got its first institutional floor trade. Kevin is expanding into space (ASTS, LUNR, FLY, VOYG) alongside the existing quantum thesis (IONQ, RGTI, QBTS, QUBT). The Trump portfolio pattern (government capital → specific names → institutional flow) continues producing across sectors.</p>
+<p><strong>Bull case (Kevin's base case):</strong> Strongest structure ever recorded going into a 3-day weekend. $1.13B in magnets from $745 to $760. OI corridor repriced to $700-$800. Four consecutive days of 90M+ institutional flow. Record GEX. Record single-magnet. Both bearish patterns (rising wedge, H&amp;S) being killed simultaneously. Both buy signals on pace (inflation matrix Day 9 of 20, CPI selloff edge Day 10). The ATH at $748.17 is $2.60 away. Kevin expects biggest moves next week. The structure says the breakout happens Tuesday.</p>
+<p><strong>Bear case (not Kevin's call):</strong> Consumer Sentiment at 74-year low with inflation expectations jumping. Fed hike odds at 43%. Warsh inherits 5.2% 30Y, hot inflation, Iran oil shock. Iran deal fading (Polymarket 19%, down from 27%). Fed Governor Waller explicitly said rates could go up. Foreign Treasury dumping accelerating ($139B in March). Tulsi Gabbard forced out as DNI — political instability noise. Stock-bond correlation at -0.70 (lowest since 1999). Alphatica called "the crash will be epic." NVDA cumulative sell at −$6.36B is the largest post-earnings distribution in the dataset.</p>
+<p><strong>What resolves it:</strong> Whether the ATH at $748.17 breaks Tuesday. If yes, the rising wedge and head-and-shoulders patterns both fail simultaneously — both bearish narratives die at once. MU and the memory complex holding confirms the beneficiary rotation has structural legs. Warsh's first public comments on rate direction set the monetary policy tone for June FOMC. Iran negotiations: any headline moves oil and the tape. Kevin's framework: "biggest moves next week" — the 3-day weekend is the calm before the resolution.</p>
+</div>
+
+<div class="sources-footer">Sources: Data providers, quantitative research platforms, financial news services, social media, and publicly available market data referenced for educational commentary only.</div>
+
+<div class="legal">
+<p><strong>IMPORTANT DISCLAIMER &amp; LEGAL NOTICE — PLEASE READ</strong></p>
+<p><strong>For informational and educational purposes only.</strong> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, or any other form of professional advice.</p>
+<p><strong>Personal opinions only — not professional recommendations.</strong> All market commentary, analysis, directional observations, level calls, and scenario frameworks are the sole personal opinions of the author based on publicly available data and third-party sources believed to be reliable.</p>
+<p><strong>No buy, sell, or hold recommendation.</strong> Nothing published by The Market Bishop should be interpreted as a recommendation to buy, sell, or hold any financial instrument. References to specific securities, strikes, or price levels are strictly for illustrating market mechanics.</p>
+<p><strong>Options trading involves substantial risk of loss.</strong> Options are complex instruments that carry a high degree of risk. The mechanics described — including dealer hedging, gamma exposure, vanna, and charm — are educational explanations, not predictive frameworks.</p>
+<p><strong>No fiduciary relationship.</strong> By reading or using any content published by The Market Bishop, no fiduciary, advisory, or professional relationship is created. The author is not a registered investment advisor or licensed professional. Consult a qualified professional before making any investment decisions.</p>
+<p><strong>You are solely responsible for your own decisions.</strong> All trading and investment decisions are made at your own discretion and risk. The Market Bishop accepts no liability for any losses arising from reliance on this content.</p>
+<p><strong>Third-party data and sources.</strong> This report references data from third-party sources including data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not verify or warrant the accuracy of third-party content.</p>
+<p><strong>Forward-looking statements.</strong> Any statements regarding potential future market movements are speculative and subject to significant uncertainty. Actual outcomes may differ materially from any scenarios described.</p>
+<p>By accessing this report, you confirm agreement with this disclaimer. The Market Bishop · All Rights Reserved.</p>
+</div>
+</main>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var s=window.scrollY;var p=h>0?Math.min((s/h)*100,100):0;document.getElementById('progressFill').style.width=p+'%';});
+(function(){var txt=document.querySelector('.page').textContent||'';var words=txt.trim().split(/\s+/).length;var totalMin=Math.ceil(words/230);var el=document.getElementById('readTimeText');var hasScrolled=false;el.textContent=totalMin+' min read';window.addEventListener('scroll',function(){if(window.scrollY>50)hasScrolled=true;var h=document.documentElement.scrollHeight-window.innerHeight;var pct=h>0?window.scrollY/h:0;if(pct>=.95){el.textContent='Done ✓';}else if(hasScrolled){var left=Math.max(1,Math.ceil(totalMin*(1-pct)));el.textContent=left+' min left';}else{el.textContent=totalMin+' min read';}});})();
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){obs.observe(s);});
+var pulseObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var h=e.target.querySelector('.section-header');if(h)h.style.animation='neonPulse .9s ease';pulseObs.unobserve(e.target);}});},{threshold:0.15});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){pulseObs.observe(s);});
+document.querySelectorAll('.section-header').forEach(function(h){h.addEventListener('click',function(){var sec=h.closest('.section');if(!sec||!sec.id)return;var url=window.location.href.split('#')[0]+'#'+sec.id;navigator.clipboard.writeText(url).then(function(){var icon=h.querySelector('.anchor-icon');if(icon)icon.classList.add('copied');var toast=document.getElementById('anchorToast');toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');if(icon)icon.classList.remove('copied');},1800);});});});
+document.getElementById('navCollapse').addEventListener('click',function(){this.textContent=document.querySelector('nav').classList.contains('collapsed')?'Hide Menu':'Show Menu';});
+(function(){var sections=document.querySelectorAll('.section[id],.snapshot');var navLinks=document.querySelectorAll('.nav-links a');function updateActive(){var scrollPos=window.scrollY+120;var current='';sections.forEach(function(s){if(s.offsetTop<=scrollPos){current=s.id;}});navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});}window.addEventListener('scroll',updateActive);updateActive();})();
+function drawSpark(id,data,color){var svg=document.getElementById(id);if(!svg||!data||data.length<2)return;var w=48,h=18,pad=2;var min=Math.min.apply(null,data),max=Math.max.apply(null,data);var range=max-min||1;var pts=data.map(function(v,i){var x=pad+i*((w-2*pad)/(data.length-1));var y=h-pad-(v-min)/(range)*(h-2*pad);return x+','+y;});var poly=document.createElementNS('http://www.w3.org/2000/svg','polyline');poly.setAttribute('points',pts.join(' '));poly.setAttribute('fill','none');poly.setAttribute('stroke',color);poly.setAttribute('stroke-width','1.5');poly.setAttribute('stroke-linecap','round');svg.appendChild(poly);var lastPts=pts[pts.length-1].split(',');var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',lastPts[0]);dot.setAttribute('cy',lastPts[1]);dot.setAttribute('r','2');dot.setAttribute('fill',color);svg.appendChild(dot);}
+document.addEventListener('DOMContentLoaded',function(){drawSpark('spark-wti',[100.14,101.37,96.35,96.69,97.10],'#ff3355');drawSpark('spark-brent',[107.43,104.80,102.57,103.51,104.05],'#ff3355');drawSpark('spark-natgas',[3.01,2.98,3.02,2.976,2.922],'#ff3355');drawSpark('spark-gold',[4520,4543,4542,4520,4511],'#ff3355');drawSpark('spark-silver',[75.50,76.20,76.70,76.03,75.87],'#44ff88');drawSpark('spark-platinum',[1955,1970,1976,1941,1932],'#ff3355');drawSpark('spark-copper',[13400,13550,13600,13637,13669],'#44ff88');drawSpark('spark-btc',[76200,77500,77800,77500,77500],'#44ff88');drawSpark('spark-wheat',[655,660,664,647,647],'#ff3355');});
+</script>
+</body>
+</html>
