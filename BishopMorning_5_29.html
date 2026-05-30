@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Market Bishop · Pre-Market Report · May 29 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:rgba(255,255,255,.88);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,sans-serif;line-height:1.7;overflow-x:hidden}
+::selection{background:rgba(0,170,255,.3);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#000}
+::-webkit-scrollbar-thumb{background:rgba(0,170,255,.3);border-radius:3px}
+nav{position:fixed;top:0;left:0;width:210px;height:100vh;background:rgba(6,6,12,.97);border-right:1px solid rgba(0,170,255,.08);padding:1.5rem 1rem;z-index:100;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+nav.collapsed{transform:translateX(-210px)}
+.nav-brand{font-size:11px;font-weight:700;letter-spacing:.12em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.06em;margin-bottom:.3rem;opacity:0;animation:fadeUp .5s ease forwards 1.8s}
+.nav-home{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(0,170,255,.6);text-decoration:none;padding:.3rem 0;margin-bottom:.3rem;transition:color .2s,text-shadow .2s}
+.nav-home:hover{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.5);text-decoration:none}
+.nav-collapse-btn{font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.3);cursor:pointer;padding:.3rem 0;margin-bottom:.8rem;transition:color .2s}
+.nav-collapse-btn:hover{color:rgba(255,255,255,.6)}
+.nav-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.2);text-transform:uppercase;margin-bottom:.5rem;margin-top:.5rem}
+.nav-links{list-style:none;flex:1;overflow-y:auto}
+.nav-links li{margin-bottom:.15rem}
+.nav-links a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;padding:.25rem .4rem;display:block;border-radius:4px;transition:all .25s cubic-bezier(.22,1,.36,1);letter-spacing:.02em}
+.nav-links a:hover{color:#00aaff;background:rgba(0,170,255,.06);text-shadow:0 0 8px rgba(0,170,255,.2)}
+.nav-links a.active{color:#00aaff;background:rgba(0,170,255,.08);text-shadow:0 0 8px rgba(0,170,255,.3);border-left:2px solid #00aaff;padding-left:calc(.4rem - 2px)}
+.nav-progress{margin-top:auto;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+.nav-progress-label{font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.08em;margin-bottom:.4rem}
+.nav-progress-bar{height:2px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden}
+.nav-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#00aaff,#aa55ff);border-radius:1px;transition:width .15s ease}
+.page{margin-left:calc(210px + (100% - 210px - 740px) / 2);max-width:740px;padding:2.5rem 2rem 4rem}
+.page-brand{font-size:11px;font-weight:700;letter-spacing:.14em;color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);text-transform:uppercase;margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 1.65s}
+.page-title{font-size:22px;font-weight:700;color:rgba(255,255,255,.92);margin-bottom:.2rem;opacity:0;animation:fadeUp .5s ease forwards 1.85s}
+.page-sub{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:.15rem;opacity:0;animation:fadeUp .5s ease forwards 2.0s}
+.page-stamp{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:1rem;opacity:0;animation:fadeUp .5s ease forwards 2.15s}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}
+@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.disclaimer-bar{background:rgba(255,170,0,.06);border:1px solid rgba(255,170,0,.12);border-radius:8px;padding:.6rem 1rem;margin-bottom:1.5rem;font-size:11px;color:rgba(255,170,0,.7);text-shadow:0 0 6px rgba(255,170,0,.15);opacity:0;animation:fadeUp .5s ease forwards 2.3s}
+.snapshot{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.75rem;margin-bottom:2rem}
+.snap-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:.8rem;text-align:center;transition:transform .2s ease,box-shadow .2s ease;opacity:0;animation:cardIn .5s ease forwards}
+.snap-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,170,255,.08)}
+.snap-card:nth-child(1){animation-delay:2.35s}.snap-card:nth-child(2){animation-delay:2.4s}.snap-card:nth-child(3){animation-delay:2.45s}.snap-card:nth-child(4){animation-delay:2.5s}.snap-card:nth-child(5){animation-delay:2.55s}.snap-card:nth-child(6){animation-delay:2.6s}
+.snap-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase;margin-bottom:.3rem}
+.snap-value{font-size:18px;font-weight:700;color:rgba(255,255,255,.9)}
+.snap-detail{font-size:10px;color:rgba(255,255,255,.35);margin-top:.2rem}
+.snap-up{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.snap-down{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}
+.snap-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}
+.section{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;margin-bottom:2rem}
+.section.visible{opacity:1;transform:translateY(0)}
+.section-header{position:relative;cursor:pointer;font-size:15px;font-weight:700;letter-spacing:.06em;padding:.6rem 0;margin-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.section-header:hover{padding-right:2.5rem}
+.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}
+.section-header:hover .anchor-icon{opacity:.5}
+.section-header .anchor-icon.copied{opacity:1}
+.h-blue{color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3);border-color:rgba(0,170,255,.15)}
+.h-purple{color:#aa55ff;text-shadow:0 0 12px rgba(170,85,255,.3);border-color:rgba(170,85,255,.15)}
+.h-teal{color:#00d2b4;text-shadow:0 0 12px rgba(0,210,180,.3);border-color:rgba(0,210,180,.15)}
+.h-red{color:#ff3355;text-shadow:0 0 12px rgba(255,51,85,.3);border-color:rgba(255,51,85,.15)}
+.h-amber{color:#ffaa00;text-shadow:0 0 12px rgba(255,170,0,.3);border-color:rgba(255,170,0,.15)}
+.h-green{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.3);border-color:rgba(68,255,136,.15)}
+.h-coral{color:#ff7f50;text-shadow:0 0 12px rgba(255,127,80,.3);border-color:rgba(255,127,80,.15)}
+.section p,.section ul{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:.8rem}
+.section ul{list-style:none;padding-left:0}
+.section li{position:relative;padding-left:1.2rem;margin-bottom:.5rem}
+.section li::before{content:'';position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:#00aaff;box-shadow:0 0 6px rgba(0,170,255,.4)}
+.li-amber::before{background:#ffaa00!important;box-shadow:0 0 6px rgba(255,170,0,.4)!important}
+.li-teal::before{background:#00d2b4!important;box-shadow:0 0 6px rgba(0,210,180,.4)!important}
+.li-purple::before{background:#aa55ff!important;box-shadow:0 0 6px rgba(170,85,255,.4)!important}
+.li-green::before{background:#44ff88!important;box-shadow:0 0 6px rgba(68,255,136,.4)!important}
+.li-coral::before{background:#ff7f50!important;box-shadow:0 0 6px rgba(255,127,80,.4)!important}
+.li-red::before{background:#ff3355!important;box-shadow:0 0 6px rgba(255,51,85,.4)!important}
+strong{color:rgba(255,255,255,.95)}
+.callout{border-left:3px solid rgba(0,170,255,.3);background:rgba(0,170,255,.04);border-radius:0 8px 8px 0;padding:.8rem 1rem;margin-bottom:1rem;font-size:12px;color:rgba(255,255,255,.7);animation:breatheBlue 3s ease-in-out infinite}
+.callout-amber{border-color:rgba(255,170,0,.3);background:rgba(255,170,0,.04);animation:breatheAmber 3s ease-in-out infinite}
+.callout-teal{border-color:rgba(0,210,180,.3);background:rgba(0,210,180,.04);animation:breatheTeal 3s ease-in-out infinite}
+.callout-purple{border-color:rgba(170,85,255,.3);background:rgba(170,85,255,.04);animation:breathePurple 3s ease-in-out infinite}
+@keyframes breatheBlue{0%,100%{box-shadow:0 0 8px rgba(0,170,255,.05)}50%{box-shadow:0 0 16px rgba(0,170,255,.12)}}
+@keyframes breatheAmber{0%,100%{box-shadow:0 0 8px rgba(255,170,0,.05)}50%{box-shadow:0 0 16px rgba(255,170,0,.12)}}
+@keyframes breatheTeal{0%,100%{box-shadow:0 0 8px rgba(0,210,180,.05)}50%{box-shadow:0 0 16px rgba(0,210,180,.12)}}
+@keyframes breathePurple{0%,100%{box-shadow:0 0 8px rgba(170,85,255,.05)}50%{box-shadow:0 0 16px rgba(170,85,255,.12)}}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.gloss-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.6rem .7rem;transition:transform .2s ease,box-shadow .2s ease}
+.gloss-item:hover{transform:translateY(-3px);box-shadow:0 4px 16px rgba(0,170,255,.06)}
+.gloss-term{font-size:11px;font-weight:700;color:#00aaff;text-shadow:0 0 6px rgba(0,170,255,.2);margin-bottom:.2rem}
+.gloss-def{font-size:10px;color:rgba(255,255,255,.5);line-height:1.5}
+.mini-card{background:rgba(255,255,255,.02);border:1px solid rgba(170,85,255,.1);border-radius:10px;padding:.8rem 1rem;margin-bottom:.75rem;transition:transform .2s ease,box-shadow .2s ease}
+.mini-card:hover{transform:translateY(-3px);box-shadow:0 4px 20px rgba(170,85,255,.08)}
+.mini-card-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.3rem}
+.mini-card-ticker{font-size:14px;font-weight:700;color:#aa55ff;text-shadow:0 0 8px rgba(170,85,255,.3)}
+.mini-card-price{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.mini-card-detail{font-size:11px;color:rgba(255,255,255,.45)}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:12px}
+.data-table th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.35);text-transform:uppercase;padding:.4rem .5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.data-table td{padding:.4rem .5rem;color:rgba(255,255,255,.7);border-bottom:1px solid rgba(255,255,255,.03)}
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.comm-group-title{font-size:10px;font-weight:700;letter-spacing:.1em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:.5rem}
+.comm-row{display:flex;align-items:center;justify-content:space-between;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:11px}
+.comm-name{color:rgba(255,255,255,.6);flex:1}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+.comm-price{color:rgba(255,255,255,.85);font-weight:600;margin-right:.5rem;white-space:nowrap}
+.comm-change{font-weight:600;white-space:nowrap}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}
+.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px)}
+.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}
+.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.bottom-line{border-top:1px solid rgba(255,170,0,.15);padding-top:1.5rem;margin-top:1rem}
+.sources-footer{font-size:10px;color:rgba(255,255,255,.2);margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.04)}
+.legal{margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,.01);border:1px solid rgba(255,255,255,.04);border-radius:10px}
+.legal p{font-size:10px;color:rgba(255,255,255,.25);margin-bottom:.6rem;line-height:1.6}
+.legal strong{color:rgba(255,255,255,.35)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes neonPulse{0%{filter:brightness(1);transform:scale(1)}30%{filter:brightness(2);transform:scale(1.02)}60%{filter:brightness(1.6);transform:scale(1.01)}100%{filter:brightness(1);transform:scale(1)}}
+@media(max-width:768px){nav{transform:translateX(-210px)}nav.open{transform:translateX(0)}.page{margin-left:0;padding:1.5rem 1rem 3rem}.gloss-grid{grid-template-columns:1fr}.comm-grid{grid-template-columns:1fr}.snapshot{grid-template-columns:repeat(2,1fr)}.hamburger{display:flex!important}.read-time{top:14px;right:14px}}
+.hamburger{display:none;position:fixed;top:14px;left:14px;z-index:200;width:32px;height:32px;background:rgba(6,6,12,.9);border:1px solid rgba(0,170,255,.15);border-radius:6px;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#00aaff}
+@media print{body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:-1}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}nav,.hamburger,.read-time,.anchor-toast{display:none!important}.page{margin-left:0;max-width:100%}.section{opacity:1!important;transform:none!important;animation:none!important}.snap-card,.gloss-item,.mini-card{opacity:1!important;animation:none!important}.page-brand,.page-title,.page-sub,.page-stamp,.disclaimer-bar{opacity:1!important;animation:none!important}.stamp-live{animation:none!important}.callout,.callout-amber,.callout-teal,.callout-purple{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
+<div class="hamburger" id="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">☰</div>
+<nav id="mainNav">
+<div class="nav-brand">The Market Bishop</div>
+<div class="nav-date">May 29, 2026 · Pre-Market</div>
+<a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a>
+<div class="nav-collapse-btn" id="navCollapse" onclick="document.querySelector('nav').classList.toggle('collapsed')">Hide Menu</div>
+<div class="nav-label">Sections</div>
+<ul class="nav-links">
+<li><a href="#snapshot">Snapshot</a></li>
+<li><a href="#gloss">Glossary</a></li>
+<li><a href="#tldr">TL;DR</a></li>
+<li><a href="#overnight">Overnight</a></li>
+<li><a href="#gex">GEX Structure</a></li>
+<li><a href="#greeks">Greek Forces</a></li>
+<li><a href="#catalyst">Catalyst Watch</a></li>
+<li><a href="#ranges">Expected Ranges</a></li>
+<li><a href="#earnings">Earnings on Deck</a></li>
+<li><a href="#focus">Focus Stocks</a></li>
+<li><a href="#sectors">Sector Setup</a></li>
+<li><a href="#commodities">Commodities</a></li>
+<li><a href="#bottom">Bottom Line</a></li>
+</ul>
+<div class="nav-progress"><div class="nav-progress-label">Reading progress</div><div class="nav-progress-bar"><div class="nav-progress-fill" id="progressFill"></div></div></div>
+</nav>
+
+<main class="page">
+<div class="page-brand">The Market Bishop</div>
+<div class="page-title">Pre-Market Report</div>
+<div class="page-sub">Friday, May 29, 2026</div>
+<div class="page-stamp"><span class="stamp-live">Generated ~8:50 AM ET · DELL +39% · Iran ceasefire reached</span></div>
+
+<div class="disclaimer-bar">⚠ Not financial advice. All content published by The Market Bishop reflects personal opinions and market observations only. Nothing here constitutes a recommendation to buy, sell, or hold any security. Trade your own plan — past analysis does not guarantee future results.</div>
+
+<div class="snapshot" id="snapshot">
+<div class="snap-card"><div class="snap-label">ES Futures</div><div class="snap-value snap-up">7,586</div><div class="snap-detail">+0.05% · Recovery from yesterday</div></div>
+<div class="snap-card"><div class="snap-label">DELL AH</div><div class="snap-value snap-up">+39%</div><div class="snap-detail">Kevin's #1 call · VALIDATED</div></div>
+<div class="snap-card"><div class="snap-label">VIX</div><div class="snap-value snap-up">17.82</div><div class="snap-detail">−0.9% · Vol compression continues</div></div>
+<div class="snap-card"><div class="snap-label">WTI Oil</div><div class="snap-value snap-up">$87.97</div><div class="snap-detail">−1.1% · Iran ceasefire pulling oil down</div></div>
+<div class="snap-card"><div class="snap-label">Iran Deal</div><div class="snap-value snap-up">CEASEFIRE</div><div class="snap-detail">Hormuz reopening · Pending Trump</div></div>
+<div class="snap-card"><div class="snap-label">NVDA Dark Pool</div><div class="snap-value snap-up">+$2.27B</div><div class="snap-detail">Institutions loading the reversal</div></div>
+</div>
+
+<div class="section" id="gloss" style="opacity:0;animation:fadeUp .5s ease forwards 2.85s">
+<div class="section-header h-blue">Glossary<span class="anchor-icon">🔗</span></div>
+<p style="font-style:italic;font-size:11px;color:rgba(255,255,255,.4);margin-bottom:.8rem">Quick reference — key terms used in this report.</p>
+<div class="gloss-grid">
+<div class="gloss-item"><div class="gloss-term">DELL +39%</div><div class="gloss-def">Kevin's #1 focus name crushed earnings after the close. Stock surged from ~$319 to ~$443 overnight — the largest post-earnings move in Dell Technologies history. AI server infrastructure demand validated at scale. The entire AI supply chain thesis (MU, SNDK, NTAP, AMD, INTC) gets a fresh catalyst. Kevin called this.</div></div>
+<div class="gloss-item"><div class="gloss-term">Iran Ceasefire + Hormuz</div><div class="gloss-def">Per Reuters: US and Iran reached an agreement to extend their ceasefire and lift restrictions on Strait of Hormuz shipping. Pending Trump approval. If signed, this is Kevin's second-leg catalyst — the event he's been calling for since April. Oil already falling from $90.68 to $87.97. If Hormuz fully reopens, the energy shock that drove 3.8% CPI begins to reverse over 2-3 prints.</div></div>
+<div class="gloss-item"><div class="gloss-term">NVDA $2.27B Dark Pool</div><div class="gloss-def">NVIDIA saw +$2.27B net dark pool buying this morning — the largest single-session institutional accumulation since the post-earnings selloff began. After 8 days of mechanical selling ($3B block profit-taking + 22pt IV compression), the stock printed its first green close yesterday. Institutions accumulated the entire time. The reversal is mechanical.</div></div>
+<div class="gloss-item"><div class="gloss-term">Central Bank Hawkish Tilt</div><div class="gloss-def">Every major central bank leaned hawkish this week — Fed (Waller, Cook, Kashkari all open to hikes), ECB (Schnabel confirmed June hike), BOJ (rate hike discussions), RBNZ/BOK (hawkish holds). But the market is pricing the Iran deal as the inflation solution. If oil stays at $88 and Hormuz reopens, the energy impulse reverses and gives every CB cover to wait.</div></div>
+<div class="gloss-item"><div class="gloss-term">Anthropic $36B</div><div class="gloss-def">Apollo and Blackstone are bringing additional investors into a roughly $36 billion debt financing deal to help Anthropic build out AI infrastructure. This confirms AI demand at the institutional debt-financing level — not equity speculation, but infrastructure capital. The AI buildout is being financed like real infrastructure.</div></div>
+<div class="gloss-item"><div class="gloss-term">The Iran MOU as CB Policy</div><div class="gloss-def">The key insight from this week: the Iran ceasefire isn't just a geopolitical story — it's the central bank story. If oil drops and Hormuz reopens, every central bank gets cover to wait on hikes. If the deal collapses and oil reclaims $100, the rate hike cycle goes global. Crude is setting monetary policy for six central banks simultaneously.</div></div>
+</div>
+</div>
+
+<div class="section" id="tldr" style="opacity:0;animation:fadeUp .5s ease forwards 3.15s">
+<div class="section-header h-amber">TL;DR — What You Need To Know<span class="anchor-icon">🔗</span></div>
+<ul>
+<li class="li-amber"><strong>DELL +39% overnight — Kevin's #1 focus name delivered the largest post-earnings move in company history.</strong> The AI server infrastructure thesis is confirmed at a scale nobody expected. Stock went from ~$319 to ~$443 after-hours. Yesterday Kevin said "I was right on DELL" — he was. The entire AI supply chain (MU, SNDK, NTAP, AMD, INTC) gets a massive sympathy catalyst at the open. ES futures are up +0.05%, SPY pre-market at $754.60 (+0.55%), XLK +1.31% — tech leading on the back of DELL.</li>
+<li class="li-amber"><strong>US and Iran reached a ceasefire agreement + Hormuz shipping restrictions to be lifted.</strong> Per Reuters, pending Trump approval. This is the second-leg catalyst Kevin has been calling for since April. WTI already fell from $90.68 to $87.97 (−1.1%). If Trump signs, the oil shock that drove 3.8% CPI and 6.0% PPI begins to reverse. Every hawkish central bank gets cover to wait. This single event transforms the macro outlook.</li>
+<li class="li-amber"><strong>NVDA $2.27B net dark pool buy this morning — institutional reversal confirmed.</strong> After 8 straight days of mechanical selling post-earnings ($3B block profit-taking, 22pts IV compression), NVDA printed its first green close yesterday. IV crossed below realized vol for the first time. The mechanical seller exhausted. Institutions accumulated underneath every single session. The +$2.27B dark pool print is the confirmation signal.</li>
+<li class="li-amber"><strong>Anthropic $36B debt financing (Apollo + Blackstone), South Korea +101% YTD on AI.</strong> AI infrastructure demand confirmed at the debt-financing level. The buildout is being financed like real infrastructure. South Korea's stock market has doubled in 2026 on AI alone. The global AI cycle is accelerating, not peaking.</li>
+<li class="li-amber"><strong>No sentiment flags this session — analysis reflects AI read only.</strong> Kevin deferred to the model with one note: he was right on DELL. The structural setup is the most bullish of the entire cycle: DELL +39% (supply chain catalyst), Iran ceasefire (macro catalyst), NVDA reversal (technical catalyst), VIX 17.82 and falling (vol compression), oil pulling back. Three independent bullish catalysts firing simultaneously.</li>
+</ul>
+</div>
+
+<div class="section" id="overnight">
+<div class="section-header h-coral">Overnight Developments<span class="anchor-icon">🔗</span></div>
+<p>Yesterday the market returned from Memorial Day to a Bandar Abbas strike and a partial Hormuz blockade. Today, 24 hours later, everything has reversed. The whiplash is extreme — and it's all bullish.</p>
+<p><strong>DELL +39% after-hours — the largest post-earnings move in company history.</strong> Kevin flagged DELL as his #1 focus name. Expected move was ±$25.90 (~8%). The stock delivered +39%, surging from ~$319 to ~$443 overnight. AI server infrastructure revenue crushed all estimates. The magnitude of the beat — nearly 5x the expected move — signals that Wall Street systematically underestimated the scale of enterprise AI hardware demand. Every AI supply chain name (MU, SNDK, NTAP, AMD, INTC) gets the read-through at today's open.</p>
+<p><strong>US and Iran reached a ceasefire agreement with Hormuz shipping restrictions to be lifted.</strong> Per Reuters, pending Trump approval. Less than 24 hours after the Bandar Abbas strike, IRGC Hormuz blockade, and Kuwait missile exchange, the two sides reached a deal. Oil has already fallen from $90.68 to $87.97 (−1.1%) on the news. If Trump signs, the energy shock that drove 3.8% CPI and 6.0% PPI begins to reverse over the next 2-3 prints. This gives every hawkish central bank — Fed, ECB, BOJ, RBNZ, BOK — cover to wait rather than hike.</p>
+<p><strong>NVDA printed $2.27B net dark pool buy this morning.</strong> After 8 consecutive sessions of mechanical selling post-earnings ($3B in block profit-taking, 22 points of IV compression forcing dealers to sell shares every day), NVDA printed its first green close yesterday. IV crossed below realized vol for the first time. The mechanical seller exhausted. This morning, institutions loaded $2.27B through dark pools — the largest single-session accumulation since the selloff began. The reversal is happening.</p>
+<p><strong>Anthropic $36B debt financing.</strong> Apollo and Blackstone bringing additional investors into a ~$36B debt deal for AI infrastructure buildout. This is institutional debt financing — not equity speculation. The AI buildout is being capitalized like physical infrastructure: highways, power plants, data centers. The scale validates the entire thesis.</p>
+<p><strong>Every major central bank leaned hawkish this week — but the market stopped listening.</strong> Fed rate hike pricing actually dropped from 25bps to 13bps this week despite Waller, Cook, and Kashkari all floating hikes. The market is pricing the Iran deal as the inflation solution. Oil at $88 and Hormuz reopening does what the Fed hasn't: eases financial conditions through lower energy costs, not lower rates.</p>
+<p><strong>Global markets green.</strong> Nikkei +0.94%, Hang Seng +0.45%, DAX +0.27%, FTSE flat. South Korea +101% YTD on AI — a record. Taiwan SGX +3.0% on semiconductor sympathy. The DELL earnings ripple is global.</p>
+<div class="callout">Yesterday: Bandar Abbas strike, Hormuz blockade, Bitcoin crash, ES −0.15%. Today: Iran ceasefire, DELL +39%, NVDA $2.27B institutional buy, oil falling, ES +0.05%. The 24-hour reversal is the most dramatic of the entire cycle. Kevin's framework — sell-offs get bought — proved correct in real time.</div>
+</div>
+
+<div class="section" id="gex">
+<div class="section-header h-teal">GEX Structure<span class="anchor-icon">🔗</span></div>
+<p><strong>Record structure carrying forward into a triple-catalyst day.</strong> Friday's GEX was at +$1.57B (all-time high) going into the long weekend. Yesterday's session likely redistributed some gamma around the Iran headlines, but the core structure remains intact. Key levels:</p>
+<table class="data-table">
+<tr><th>Level</th><th>Role</th><th>Today's Context</th></tr>
+<tr><td>$750</td><td>+$475M magnet (ATH record)</td><td>SPY pre-market at $754.60 — already above the magnet</td></tr>
+<tr><td>$755</td><td>+$167M magnet</td><td>DELL gap-up pushes SPY through this level</td></tr>
+<tr><td>$745</td><td>+$307M MVC support</td><td>Floor if profit-taking hits</td></tr>
+<tr><td>$760</td><td>New magnet territory</td><td>If Iran deal confirmed + DELL holds, this is the target</td></tr>
+<tr><td>$700</td><td>Put wall (451.5K OI)</td><td>Institutional floor — untouchable from here</td></tr>
+<tr><td>$684</td><td>GEX flip</td><td>9.3% cushion — structural impossibility today</td></tr>
+</table>
+<p><strong>The setup is ideal for a squeeze higher.</strong> With GEX at record levels and three independent bullish catalysts firing (DELL, Iran, NVDA reversal), dealers will be forced to buy delta as the market pushes above the $750 magnet. The $755 and $760 levels become the new magnets. VIX at 17.82 and falling means vanna is actively supporting — dealers buy as vol compresses. The positive gamma environment absorbs any profit-taking dips.</p>
+<p><strong>Friday OPEX dynamics:</strong> Weekly options expiry today adds charm pressure. As short-dated options decay into worthlessness, the delta they carried gets released — adding buying pressure in a bullish tape. This is the mechanical tailwind underneath.</p>
+</div>
+
+<div class="section" id="greeks">
+<div class="section-header h-purple">Greek Forces<span class="anchor-icon">🔗</span></div>
+<p><strong>Vanna: firing hard.</strong> VIX at 17.82 (−0.9% from yesterday's 18.68). Vol is compressing into the DELL beat and Iran ceasefire. Every tick lower on VIX forces dealers to buy delta. The 176.7M dealer short book is the engine — as vol compresses, that short delta converts to forced buying. This is the mechanical squeeze Kevin's thesis has been building toward. If VIX drops below 17 today, the vanna cascade accelerates.</p>
+<p><strong>Charm: Friday OPEX release.</strong> Weekly expiry today. As short-dated contracts decay to zero, the delta hedges dealers held against them get unwound — releasing buying pressure into the tape. Charm is additive to vanna today, not offsetting. Both Greek forces are pulling in the same direction: up.</p>
+<p><strong>Dealer book: 176.7M shares short.</strong> Fully loaded and ready to convert. This is the coiled spring. When DELL gaps +39% and pulls the tech tape higher, when VIX drops on the Iran ceasefire, when charm releases on the Friday expiry — the dealer book fires all at once. The mechanical setup hasn't been this aligned since the April rally began.</p>
+<div class="callout-purple">All three Greek forces aligned bullish: vanna firing on VIX compression (17.82 and falling), charm releasing on Friday OPEX, dealer book at 176.7M shares short. The mechanical setup is the most constructive of the cycle. The question isn't whether the structure supports a move higher — it does. The question is how far.</div>
+</div>
+
+<div class="section" id="catalyst">
+<div class="section-header h-coral">Catalyst Watch<span class="anchor-icon">🔗</span></div>
+<ul>
+<li class="li-coral"><strong>Trump decision on Iran ceasefire</strong> — THE binary event. If he signs, oil drops further, Hormuz fully reopens, inflation trajectory reverses, and the second leg fires. If he delays or rejects, oil reclaims $90+ and the hawkish CB tilt becomes action. Could come at any time today.</li>
+<li class="li-coral"><strong>DELL gap-up at the open (~$443, +39%)</strong> — Massive recalibration of the options chain. Market makers will scramble to hedge the upside. Sympathy trades across the entire AI supply chain: MU, SNDK, NTAP, AMD, INTC.</li>
+<li class="li-coral"><strong>NVDA reaction to dark pool accumulation</strong> — $2.27B net buy this morning. Does the reversal hold? If NVDA rallies today alongside DELL, the tech tape enters a new phase.</li>
+<li class="li-coral"><strong>Friday weekly OPEX</strong> — Charm release, gamma decay, week-end positioning. Short-dated options expire worthless, releasing delta pressure.</li>
+<li class="li-coral"><strong>No major US economic data today</strong> — Clean tape. No PCE, no GDP, no Fed speakers to distract. Market can react purely to DELL + Iran + positioning.</li>
+<li class="li-coral"><strong>Light earnings calendar</strong> — No major names reporting. DELL owns the narrative.</li>
+</ul>
+</div>
+
+<div class="section" id="ranges">
+<div class="section-header h-blue">Expected Ranges<span class="anchor-icon">🔗</span></div>
+<table class="data-table">
+<tr><th>Index</th><th>Pre-Market</th><th>Expected Range</th><th>Key Levels</th></tr>
+<tr><td>SPY</td><td>$754.60 (+0.55%)</td><td>$752 – $762</td><td>$755 magnet / $760 upside target / $750 support</td></tr>
+<tr><td>SPX</td><td>~7,586</td><td>7,550 – 7,650</td><td>7,600 round / 7,500 support</td></tr>
+<tr><td>QQQ</td><td>~$512 (est)</td><td>$509 – $517</td><td>NQ 30,300 pre-market. DELL + NVDA sympathy</td></tr>
+<tr><td>IWM</td><td>~$293 (est)</td><td>$290 – $295</td><td>Russell 2,937 pre-market</td></tr>
+</table>
+<p>The range is skewed bullish. DELL +39% gap-up, Iran ceasefire, NVDA reversal, and VIX compression all point to upside. The $760 level on SPY is the stretch target if the Iran deal gets Trump's approval during market hours. Downside limited to $750 (record GEX magnet) even in a profit-taking scenario. The structure is unambiguously supportive.</p>
+</div>
+
+<div class="section" id="earnings">
+<div class="section-header h-coral">Earnings on Deck<span class="anchor-icon">🔗</span></div>
+<p><strong>Light calendar today.</strong> DELL owns the narrative from last night's report. No major S&amp;P 500 names reporting today.</p>
+<p><strong>Yesterday's after-hours results (driving today's tape):</strong></p>
+<table class="data-table">
+<tr><th>Name</th><th>Result</th><th>Read-Through</th></tr>
+<tr><td><strong>DELL</strong></td><td style="color:#44ff88">+39% AH</td><td>AI server infrastructure crushed. Kevin's #1 call. Entire supply chain benefits.</td></tr>
+<tr><td><strong>COST</strong></td><td>Reported PM</td><td>Consumer bellwether — tariff impact + membership model resilience.</td></tr>
+<tr><td><strong>MDB</strong></td><td>Reported PM</td><td>Database/AI workload demand signal for enterprise software.</td></tr>
+<tr><td><strong>NTAP</strong></td><td>Reported PM</td><td>Storage infrastructure — direct MU/SNDK read-through.</td></tr>
+<tr><td><strong>OKTA</strong></td><td>Reported PM</td><td>Cybersecurity — geopolitical escalation relevance.</td></tr>
+</table>
+</div>
+
+<div class="section" id="focus">
+<div class="section-header h-purple">Focus Stocks<span class="anchor-icon">🔗</span></div>
+<div class="mini-card" style="border-color:rgba(68,255,136,.2)"><div class="mini-card-header"><span class="mini-card-ticker" style="color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)">DELL</span><span class="mini-card-price" style="color:#44ff88">~$443 (+39%) · KEVIN WAS RIGHT</span></div><div class="mini-card-detail">KEVIN'S #1 FOCUS — VALIDATED. The largest post-earnings move in Dell Technologies history. Stock surged from $319 to $443 overnight. Expected move was ±$25.90 (8%) — it delivered nearly 5x that. AI server infrastructure demand at a scale nobody modeled. Every analyst will raise their price target today. The entire supply chain thesis is confirmed.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NOW</span><span class="mini-card-price">Kevin is long</span></div><div class="mini-card-detail">KEVIN IS LONG. ServiceNow benefits from the same enterprise AI spending wave that drove DELL's beat. The SNOW → NOW read-through Kevin flagged yesterday should get another boost from the DELL confirmation.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">NVDA</span><span class="mini-card-price">$2.27B dark pool buy</span></div><div class="mini-card-detail">INSTITUTIONAL REVERSAL CONFIRMED. $2.27B net dark pool buy this morning. First green close yesterday after 8 days of mechanical selling. IV crossed below realized vol. The mechanical seller exhausted. DELL +39% is the rising tide for the entire GPU/AI supply chain. If NVDA rallies today, the post-earnings correction is over.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">MU</span><span class="mini-card-price">DELL sympathy</span></div><div class="mini-card-detail">KEVIN IS LONG. DELL's AI server demand = memory demand. NTAP earnings last night add the storage layer. MU CEO confirmed memory shortage beyond 2026. This was #1 institutional buyer last week at +$1.96B. DELL +39% is the catalyst MU has been waiting for.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">INTC</span><span class="mini-card-price">Breakout watch</span></div><div class="mini-card-detail">KEVIN WATCHING FOR BREAKOUT. The DELL beat confirms AI server demand flows through the entire supply chain — including Intel's foundry and server CPU business. If INTC breaks out of its consolidation on this catalyst, Kevin's thesis is confirmed.</div></div>
+<div class="mini-card"><div class="mini-card-header"><span class="mini-card-ticker">IREN</span><span class="mini-card-price">Positive catalyst</span></div><div class="mini-card-detail">KEVIN FLAGGED. AI/crypto mining infrastructure. The broader AI infrastructure demand signal from DELL + Anthropic $36B financing supports the entire compute buildout thesis.</div></div>
+<div class="mini-card" style="border-color:rgba(0,210,180,.15)"><div class="mini-card-header"><span class="mini-card-ticker" style="color:#00d2b4;text-shadow:0 0 8px rgba(0,210,180,.3)">IONQ / RGTI / QBTS / QUBT</span><span class="mini-card-price" style="color:#00d2b4">Quantum theme</span></div><div class="mini-card-detail">KEVIN'S QUANTUM THEME. IBM $10B commitment filed yesterday (8-K). The institutional capital is arriving. DELL's infrastructure beat is the hardware validation — quantum is the next compute frontier being funded at scale.</div></div>
+<div class="mini-card" style="border-color:rgba(0,210,180,.15)"><div class="mini-card-header"><span class="mini-card-ticker" style="color:#00d2b4;text-shadow:0 0 8px rgba(0,210,180,.3)">ASTS / LUNR / FLY / VOYG</span><span class="mini-card-price" style="color:#00d2b4">Space theme</span></div><div class="mini-card-detail">KEVIN'S SPACE EXPANSION. SpaceX IPO now targeting $1.8T (down from $2T). Blue Origin rocket exploded in static-fire test — negative near-term but highlights SpaceX dominance. The space infrastructure thesis is maturing.</div></div>
+</div>
+
+<div class="section" id="sectors">
+<div class="section-header h-blue">Sector Setup<span class="anchor-icon">🔗</span></div>
+<p>UW bot sector snapshot (8:44 AM ET, pre-market):</p>
+<table class="data-table">
+<tr><th>Sector</th><th>Pre-Market</th><th>Read</th></tr>
+<tr><td>XLV</td><td style="color:#44ff88">+1.40%</td><td>SESSION LEADER. Healthcare surging. Defensive + growth.</td></tr>
+<tr><td>XLK</td><td style="color:#44ff88">+1.31%</td><td>Tech strong on DELL +39%. NVDA reversal. AI supply chain.</td></tr>
+<tr><td>SPY</td><td style="color:#44ff88">+0.55%</td><td>Broad market recovery from yesterday's Iran sell-off.</td></tr>
+<tr><td>XLY</td><td style="color:#44ff88">+0.42%</td><td>Consumer discretionary recovering. BURL beat yesterday.</td></tr>
+<tr><td>XLB</td><td style="color:#44ff88">+0.35%</td><td>Materials positive. Copper $13,650.</td></tr>
+<tr><td>XLC</td><td style="color:#44ff88">+0.35%</td><td>Communications steady.</td></tr>
+<tr><td>XLE</td><td style="color:#ff3355">−0.07%</td><td>Energy flat. Iran ceasefire = lower oil = negative for producers.</td></tr>
+<tr><td>XLP</td><td style="color:#ff3355">−0.18%</td><td>Staples fading. Defensive rotation unwinding.</td></tr>
+<tr><td>XLF</td><td style="color:#ff3355">−0.29%</td><td>Financials weak. Rate uncertainty persists.</td></tr>
+<tr><td>XLI</td><td style="color:#ff3355">−0.29%</td><td>Industrials slightly negative. Blue Origin negative sentiment.</td></tr>
+<tr><td>XLRE</td><td style="color:#ff3355">−0.49%</td><td>Real estate weak. Rate-sensitive selling continues.</td></tr>
+<tr><td>XLU</td><td style="color:#ff3355">−1.13%</td><td>WORST SECTOR. Utilities crushed on rate concerns. BOJ/ECB hawkish.</td></tr>
+</table>
+<p><strong>The rotation tells the story.</strong> Tech (+1.31%) and healthcare (+1.40%) leading — this is a growth/quality rotation, not defensive. Yesterday's defensive leaders (XLP, XLU) are today's laggards — the risk-off positioning from the Iran escalation is being unwound as the ceasefire news reverses the narrative. Energy flat despite oil falling — the Iran ceasefire is bearish for oil producers but bullish for the broader market. XLK leadership confirms DELL is pulling the entire tech sector higher.</p>
+</div>
+
+<div class="section" id="commodities">
+<div class="section-header h-blue">Commodities<span class="anchor-icon">🔗</span></div>
+<div class="comm-grid">
+<div>
+<div class="comm-group-title">Energy</div>
+<div class="comm-row"><span class="comm-name">Crude Oil (WTI)</span><svg class="comm-spark" id="spark-wti"></svg><span class="comm-price">$87.97</span><span class="comm-change" style="color:#44ff88">−1.1%</span></div>
+<div class="comm-row"><span class="comm-name">Brent Crude</span><svg class="comm-spark" id="spark-brent"></svg><span class="comm-price">$91.49</span><span class="comm-change" style="color:#44ff88">−1.3%</span></div>
+<div class="comm-row"><span class="comm-name">Natural Gas</span><svg class="comm-spark" id="spark-natgas"></svg><span class="comm-price">$3.365</span><span class="comm-change" style="color:#44ff88">+2.4%</span></div>
+<div class="comm-row"><span class="comm-name">Gasoline RBOB</span><span class="comm-price">$3.074</span><span class="comm-change" style="color:#ff3355">−0.9%</span></div>
+<div class="comm-row"><span class="comm-name">Heating Oil</span><span class="comm-price">$3.540</span><span class="comm-change" style="color:#ff3355">−0.4%</span></div>
+</div>
+<div>
+<div class="comm-group-title">Precious Metals</div>
+<div class="comm-row"><span class="comm-name">Gold</span><svg class="comm-spark" id="spark-gold"></svg><span class="comm-price">$4,545</span><span class="comm-change" style="color:#44ff88">+0.3%</span></div>
+<div class="comm-row"><span class="comm-name">Silver</span><svg class="comm-spark" id="spark-silver"></svg><span class="comm-price">$75.62</span><span class="comm-change" style="color:#ff3355">−0.4%</span></div>
+<div class="comm-row"><span class="comm-name">Platinum</span><svg class="comm-spark" id="spark-platinum"></svg><span class="comm-price">$1,923</span><span class="comm-change" style="color:#ff3355">−0.2%</span></div>
+<div class="comm-row"><span class="comm-name">Palladium</span><span class="comm-price">$1,391</span><span class="comm-change" style="color:#ff3355">−0.4%</span></div>
+</div>
+<div>
+<div class="comm-group-title">Industrial / Other</div>
+<div class="comm-row"><span class="comm-name">Copper</span><svg class="comm-spark" id="spark-copper"></svg><span class="comm-price">$13,650</span><span class="comm-change" style="color:#ff3355">−0.5%</span></div>
+<div class="comm-row"><span class="comm-name">Bitcoin</span><svg class="comm-spark" id="spark-btc"></svg><span class="comm-price">~$74,500</span><span class="comm-change" style="color:#44ff88">+2.8%</span></div>
+<div class="comm-row"><span class="comm-name">Wheat</span><svg class="comm-spark" id="spark-wheat"></svg><span class="comm-price">623.10</span><span class="comm-change" style="color:#ff3355">flat</span></div>
+<div class="comm-row"><span class="comm-name">Lumber</span><span class="comm-price">588.00</span><span class="comm-change" style="color:rgba(255,255,255,.5)">flat</span></div>
+</div>
+</div>
+<div class="callout" style="margin-top:1rem">The commodity story is dominated by the Iran ceasefire. Oil is pulling back hard — WTI $87.97 (−1.1%), Brent $91.49 (−1.3%) — as the Hormuz restrictions are set to be lifted. Gasoline −0.9%, heating oil −0.4%. If Trump signs the deal and Hormuz fully reopens, the oil trajectory shifts from $100 back toward $80, and the entire inflation impulse that drove 3.8% CPI begins to reverse. Gold rebounding to $4,545 (+0.3%) after yesterday's sell-off — central bank demand (reserves at 26.6% of total, highest since 1993) provides structural support. Bitcoin recovering to ~$74,500 (+2.8%) from yesterday's crash below $73K. Natural gas +2.4% ($3.365) — notable divergence from crude. The commodities picture is transitioning from crisis-pricing to normalization.</div>
+</div>
+
+<div class="section visible bottom-line" id="bottom">
+<div class="section-header h-amber">Bottom Line<span class="anchor-icon">🔗</span></div>
+<p>No sentiment flags this session — Kevin deferred to the AI analysis with one statement: he was right on DELL. He was. <strong>Three independent bullish catalysts are firing simultaneously: DELL +39% (AI supply chain), Iran ceasefire + Hormuz reopening (macro), and NVDA institutional reversal ($2.27B dark pool). This is the most constructive pre-market setup of the entire cycle.</strong></p>
+<p>DELL +39% is the clearest validation of the AI infrastructure thesis since the cycle began. This isn't a beat-and-sell — it's a beat-and-moonshot. The stock went from $319 to $443 overnight. The expected move was ±$25.90 (~8%) and it delivered +39%. Every AI supply chain name — MU, SNDK, NTAP, AMD, INTC — gets the read-through at the open. Kevin's positioning across this supply chain has been the conviction trade of the year.</p>
+<p>The Iran ceasefire is potentially the bigger story. If Trump signs, the Hormuz partial blockade from yesterday reverses completely. Oil falls further from $87.97 toward $80. The 3.8% CPI and 6.0% PPI that forced central banks into a hawkish tilt begin to reverse over the next 2-3 prints. Every central bank that leaned hawkish this week gets cover to wait. The rate hike cycle that was threatening to go global gets pre-empted by the deal. This is Kevin's second-leg catalyst — the event he framed as the trigger for the next sustained move higher.</p>
+<p>The NVDA dark pool print is the technical confirmation. $2.27B net buy — institutions loading after 8 days of mechanical selling. IV below realized vol for the first time. The sellers exhausted. The buyers are in control. This matters for the entire semiconductor complex and the broader tech tape.</p>
+<p><strong>Bull case (AI + macro alignment):</strong> DELL +39% triggers sympathy across the entire AI supply chain. Iran ceasefire pulls oil below $85, inflation expectations drop, central banks get cover to wait. NVDA reversal draws tech capital back in. VIX at 17.82 and falling — vanna fires hard. Dealer book at 176.7M shares short converts to forced buying on vol compression. SPY breaks the $754.60 pre-market level and runs toward $760. The 9th consecutive green week. The second leg begins.</p>
+<p><strong>Bear case (deal falls apart):</strong> Trump rejects or delays the Iran ceasefire. Hormuz stays restricted. Oil reclaims $90+ and heads toward $100. The hawkish CB tilt becomes action — ECB hikes in June, Fed hike odds spike above 50%. DELL's +39% gap gets sold into as profit-taking overwhelms the sympathy trade. The Friday close traps late buyers. Consumer stress (auto loans at record delinquency, student loans, credit cards) catches up to the market.</p>
+<p><strong>What resolves it:</strong> Trump's decision on the Iran ceasefire is the single biggest variable. Everything else — DELL, NVDA, oil, rates — flows from that binary event. If he signs, the second leg fires and the market enters a new phase. If he delays or rejects, the pullback Kevin expected yesterday extends into next week. The structure (record GEX, massive OI corridor, 176.7M dealer book) provides the floor either way. The question is ceiling, not floor.</p>
+</div>
+
+<div class="sources-footer">Sources: Data providers, quantitative research platforms, financial news services, social media, and publicly available market data referenced for educational commentary only.</div>
+
+<div class="legal">
+<p><strong>IMPORTANT DISCLAIMER &amp; LEGAL NOTICE — PLEASE READ</strong></p>
+<p><strong>For informational and educational purposes only.</strong> The Market Bishop and all content, analysis, commentary, data interpretations, market observations, and reports published under this name are provided solely for informational and educational purposes. Nothing contained herein constitutes financial advice, investment advice, trading advice, or any other form of professional advice.</p>
+<p><strong>Personal opinions only — not professional recommendations.</strong> All market commentary, analysis, directional observations, level calls, and scenario frameworks are the sole personal opinions of the author based on publicly available data and third-party sources believed to be reliable.</p>
+<p><strong>No buy, sell, or hold recommendation.</strong> Nothing published by The Market Bishop should be interpreted as a recommendation to buy, sell, or hold any financial instrument. References to specific securities, strikes, or price levels are strictly for illustrating market mechanics.</p>
+<p><strong>Options trading involves substantial risk of loss.</strong> Options are complex instruments that carry a high degree of risk. The mechanics described — including dealer hedging, gamma exposure, vanna, and charm — are educational explanations, not predictive frameworks.</p>
+<p><strong>No fiduciary relationship.</strong> By reading or using any content published by The Market Bishop, no fiduciary, advisory, or professional relationship is created. The author is not a registered investment advisor or licensed professional. Consult a qualified professional before making any investment decisions.</p>
+<p><strong>You are solely responsible for your own decisions.</strong> All trading and investment decisions are made at your own discretion and risk. The Market Bishop accepts no liability for any losses arising from reliance on this content.</p>
+<p><strong>Third-party data and sources.</strong> This report references data from third-party sources including data providers, financial news services, social media, and quantitative research platforms. The Market Bishop does not verify or warrant the accuracy of third-party content.</p>
+<p><strong>Forward-looking statements.</strong> Any statements regarding potential future market movements are speculative and subject to significant uncertainty. Actual outcomes may differ materially from any scenarios described.</p>
+<p>By accessing this report, you confirm agreement with this disclaimer. The Market Bishop · All Rights Reserved.</p>
+</div>
+</main>
+
+<div class="anchor-toast" id="anchorToast">Link copied ✓</div>
+
+<script>
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;var s=window.scrollY;var p=h>0?Math.min((s/h)*100,100):0;document.getElementById('progressFill').style.width=p+'%';});
+(function(){var txt=document.querySelector('.page').textContent||'';var words=txt.trim().split(/\s+/).length;var totalMin=Math.ceil(words/230);var el=document.getElementById('readTimeText');var hasScrolled=false;el.textContent=totalMin+' min read';window.addEventListener('scroll',function(){if(window.scrollY>50)hasScrolled=true;var h=document.documentElement.scrollHeight-window.innerHeight;var pct=h>0?window.scrollY/h:0;if(pct>=.95){el.textContent='Done ✓';}else if(hasScrolled){var left=Math.max(1,Math.ceil(totalMin*(1-pct)));el.textContent=left+' min left';}else{el.textContent=totalMin+' min read';}});})();
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){obs.observe(s);});
+var pulseObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){var h=e.target.querySelector('.section-header');if(h)h.style.animation='neonPulse .9s ease';pulseObs.unobserve(e.target);}});},{threshold:0.15});document.querySelectorAll('.section:not(#gloss):not(#tldr)').forEach(function(s){pulseObs.observe(s);});
+document.querySelectorAll('.section-header').forEach(function(h){h.addEventListener('click',function(){var sec=h.closest('.section');if(!sec||!sec.id)return;var url=window.location.href.split('#')[0]+'#'+sec.id;navigator.clipboard.writeText(url).then(function(){var icon=h.querySelector('.anchor-icon');if(icon)icon.classList.add('copied');var toast=document.getElementById('anchorToast');toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');if(icon)icon.classList.remove('copied');},1800);});});});
+document.getElementById('navCollapse').addEventListener('click',function(){this.textContent=document.querySelector('nav').classList.contains('collapsed')?'Hide Menu':'Show Menu';});
+(function(){var sections=document.querySelectorAll('.section[id],.snapshot');var navLinks=document.querySelectorAll('.nav-links a');function updateActive(){var scrollPos=window.scrollY+120;var current='';sections.forEach(function(s){if(s.offsetTop<=scrollPos){current=s.id;}});navLinks.forEach(function(a){a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});}window.addEventListener('scroll',updateActive);updateActive();})();
+function drawSpark(id,data,color){var svg=document.getElementById(id);if(!svg||!data||data.length<2)return;var w=48,h=18,pad=2;var min=Math.min.apply(null,data),max=Math.max.apply(null,data);var range=max-min||1;var pts=data.map(function(v,i){var x=pad+i*((w-2*pad)/(data.length-1));var y=h-pad-(v-min)/(range)*(h-2*pad);return x+','+y;});var poly=document.createElementNS('http://www.w3.org/2000/svg','polyline');poly.setAttribute('points',pts.join(' '));poly.setAttribute('fill','none');poly.setAttribute('stroke',color);poly.setAttribute('stroke-width','1.5');poly.setAttribute('stroke-linecap','round');svg.appendChild(poly);var lastPts=pts[pts.length-1].split(',');var dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('cx',lastPts[0]);dot.setAttribute('cy',lastPts[1]);dot.setAttribute('r','2');dot.setAttribute('fill',color);svg.appendChild(dot);}
+document.addEventListener('DOMContentLoaded',function(){drawSpark('spark-wti',[97.10,96.69,88.84,90.68,87.97],'#44ff88');drawSpark('spark-brent',[104.05,103.51,92.21,94.16,91.49],'#44ff88');drawSpark('spark-natgas',[2.922,2.976,3.10,3.08,3.365],'#44ff88');drawSpark('spark-gold',[4511,4480,4428,4397,4545],'#44ff88');drawSpark('spark-silver',[75.87,74.90,73.62,73.36,75.62],'#44ff88');drawSpark('spark-platinum',[1932,1920,1895,1895,1923],'#44ff88');drawSpark('spark-copper',[13669,13550,13596,13596,13650],'#44ff88');drawSpark('spark-btc',[77500,77500,73000,72500,74500],'#44ff88');drawSpark('spark-wheat',[647,647,630,626,623],'#ff3355');});
+</script>
+</body>
+</html>
