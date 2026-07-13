@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bishop Pre-Market — July 13, 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;color:#e8e8ec;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;line-height:1.65;min-height:100vh;letter-spacing:.01em;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(0,170,255,.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(255,68,170,.03) 0%,transparent 50%);pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;width:210px;height:100vh;background:rgba(8,8,14,.85);backdrop-filter:blur(20px);border-right:1px solid rgba(255,255,255,.05);padding:1.5rem 1rem;z-index:100;overflow-y:auto;transition:transform .3s ease}
+nav.collapsed{transform:translateX(-180px)}
+.nav-title{font-size:11px;font-weight:700;letter-spacing:.15em;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:.25rem}
+.nav-date{font-size:10px;color:rgba(255,255,255,.3);margin-bottom:.3rem;letter-spacing:.06em}
+.nav-home{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;color:rgba(0,170,255,.6);text-decoration:none;padding:.3rem 0;margin-bottom:.3rem;transition:color .2s,text-shadow .2s}
+.nav-home:hover{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.5);text-decoration:none}
+.nav-collapse-btn{position:absolute;right:.5rem;top:1.5rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);width:24px;height:24px;border-radius:6px;cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center}
+.nav-collapse-btn:hover{background:rgba(0,170,255,.15);color:#00aaff}
+.nav-progress{height:2px;background:rgba(255,255,255,.05);border-radius:1px;margin:.75rem 0 1rem;overflow:hidden}
+.nav-progress-bar{height:100%;background:linear-gradient(90deg,#00aaff,#ff44aa);width:0%;transition:width .15s ease;box-shadow:0 0 8px rgba(0,170,255,.4)}
+.nav-links{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:11px;padding:.4rem .6rem;border-radius:6px;display:block;transition:all .2s;letter-spacing:.04em}
+.nav-links a:hover{background:rgba(0,170,255,.08);color:#00aaff}
+.nav-links a.active{color:#00aaff;background:rgba(0,170,255,.08);text-shadow:0 0 8px rgba(0,170,255,.3);border-left:2px solid #00aaff;padding-left:calc(.6rem - 2px)}
+.read-time{position:fixed;top:16px;right:20px;z-index:200;display:flex;align-items:center;gap:6px;background:rgba(8,8,14,.92);border:1px solid rgba(68,255,136,.2);border-radius:20px;padding:.35rem .85rem;backdrop-filter:blur(10px)}
+.read-time-icon{font-size:11px;color:rgba(68,255,136,.5)}
+.read-time-text{font-size:11px;font-weight:600;letter-spacing:.06em;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+@media(max-width:768px){.read-time{top:14px;right:14px}}
+.page{margin-left:calc(210px + (100% - 210px - 740px) / 2);max-width:740px;padding:2.5rem 2rem 4rem;position:relative;z-index:1}
+.page-header{margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s ease forwards;animation-delay:.15s}
+.page-title{font-size:2.2rem;font-weight:200;letter-spacing:-.02em;color:#fff;margin-bottom:.5rem;line-height:1.1}
+.page-title .accent{font-weight:600;background:linear-gradient(90deg,#00aaff,#44ff88);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-subtitle{color:rgba(255,255,255,.5);font-size:.9rem;letter-spacing:.05em}
+.page-stamp{display:block;margin-top:.5rem;font-size:.7rem;color:rgba(255,255,255,.25);letter-spacing:.1em;font-family:'SF Mono',monospace}
+.stamp-live{display:inline-block;animation:stampPulse 2s ease-in-out 2s 1}
+@keyframes stampPulse{0%{color:rgba(255,255,255,.25);text-shadow:none}30%{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.4)}100%{color:rgba(255,255,255,.25);text-shadow:none}}
+.snapshot{background:linear-gradient(135deg,rgba(0,170,255,.04),rgba(255,68,170,.04));border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;opacity:0;animation:fadeUp .8s ease forwards;animation-delay:.3s}
+@media(max-width:600px){.snapshot{grid-template-columns:repeat(2,1fr)}}
+.snap-item{display:flex;flex-direction:column;gap:.15rem}
+.snap-label{font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.snap-value{font-size:1.05rem;font-weight:600;letter-spacing:.01em}
+.snap-value.red{color:#ff3355;text-shadow:0 0 12px rgba(255,51,85,.3)}
+.snap-value.amber{color:#ffaa00;text-shadow:0 0 12px rgba(255,170,0,.3)}
+.snap-value.green{color:#44ff88;text-shadow:0 0 12px rgba(68,255,136,.3)}
+.snap-value.blue{color:#00aaff;text-shadow:0 0 12px rgba(0,170,255,.3)}
+.snap-value.purple{color:#ff44aa;text-shadow:0 0 12px rgba(255,68,170,.3)}
+.section{margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:cardIn .7s cubic-bezier(.22,1,.36,1) forwards}
+.section-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem;padding:.6rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);position:relative;cursor:pointer;transition:padding .2s}
+.section-header:hover{padding-right:2.5rem}
+.section-header .anchor-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:12px;opacity:0;transition:opacity .2s ease}
+.section-header:hover .anchor-icon{opacity:.5}
+.section-header .anchor-icon.copied{opacity:1}
+.section-num{font-size:.7rem;letter-spacing:.15em;color:rgba(255,255,255,.4);font-family:'SF Mono',monospace}
+.section-title{font-size:1.1rem;font-weight:600;letter-spacing:.02em}
+.h-blue .section-title{color:#00aaff;text-shadow:0 0 14px rgba(0,170,255,.4)}
+.h-blue{border-left:3px solid #00aaff;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(0,170,255,.15)}
+.h-purple .section-title{color:#ff44aa;text-shadow:0 0 14px rgba(255,68,170,.4)}
+.h-purple{border-left:3px solid #ff44aa;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(255,68,170,.15)}
+.h-teal .section-title{color:#00ffcc;text-shadow:0 0 14px rgba(0,255,204,.4)}
+.h-teal{border-left:3px solid #00ffcc;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(0,255,204,.15)}
+.h-red .section-title{color:#ff3355;text-shadow:0 0 14px rgba(255,51,85,.4)}
+.h-red{border-left:3px solid #ff3355;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(255,51,85,.15)}
+.h-amber .section-title{color:#ffaa00;text-shadow:0 0 14px rgba(255,170,0,.4)}
+.h-amber{border-left:3px solid #ffaa00;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(255,170,0,.15)}
+.h-green .section-title{color:#44ff88;text-shadow:0 0 14px rgba(68,255,136,.4)}
+.h-green{border-left:3px solid #44ff88;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(68,255,136,.15)}
+.h-coral .section-title{color:#ff8866;text-shadow:0 0 14px rgba(255,136,102,.4)}
+.h-coral{border-left:3px solid #ff8866;padding-left:1.1rem;box-shadow:inset 4px 0 18px -8px rgba(255,136,102,.15)}
+.content{padding-left:1.5rem}
+.content p{margin-bottom:1rem;color:rgba(232,232,236,.85);font-size:.95rem}
+.content p.tight{margin-bottom:.5rem}
+.lead{font-size:1rem;color:rgba(255,255,255,.95);margin-bottom:1.2rem;font-weight:500}
+.kev{display:inline-block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:#ffaa00;background:rgba(255,170,0,.1);border:1px solid rgba(255,170,0,.25);padding:.15rem .5rem;border-radius:4px;font-weight:600;margin-right:.4rem;vertical-align:middle}
+.tag-new{display:inline-block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#44ff88;background:rgba(68,255,136,.1);border:1px solid rgba(68,255,136,.25);padding:.15rem .45rem;border-radius:4px;font-weight:600;margin-right:.35rem;vertical-align:middle}
+.tag-cont{display:inline-block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#00aaff;background:rgba(0,170,255,.1);border:1px solid rgba(0,170,255,.25);padding:.15rem .45rem;border-radius:4px;font-weight:600;margin-right:.35rem;vertical-align:middle}
+ul.bullets{list-style:none;padding-left:0;margin-bottom:1rem}
+ul.bullets li{position:relative;padding-left:1.5rem;margin-bottom:.6rem;color:rgba(232,232,236,.85);font-size:.92rem}
+ul.bullets li::before{content:'';position:absolute;left:.3rem;top:.55rem;width:6px;height:6px;border-radius:50%;background:#00aaff;box-shadow:0 0 8px rgba(0,170,255,.7)}
+ul.bullets.purple li::before{background:#ff44aa;box-shadow:0 0 8px rgba(255,68,170,.7)}
+ul.bullets.amber li::before{background:#ffaa00;box-shadow:0 0 8px rgba(255,170,0,.7)}
+ul.bullets.teal li::before{background:#00ffcc;box-shadow:0 0 8px rgba(0,255,204,.7)}
+ul.bullets.red li::before{background:#ff3355;box-shadow:0 0 8px rgba(255,51,85,.7)}
+ul.bullets.green li::before{background:#44ff88;box-shadow:0 0 8px rgba(68,255,136,.7)}
+ul.bullets.coral li::before{background:#ff8866;box-shadow:0 0 8px rgba(255,136,102,.7)}
+strong{color:#fff;font-weight:600}
+.hl-blue{color:#00aaff;text-shadow:0 0 8px rgba(0,170,255,.3)}
+.hl-purple{color:#ff44aa;text-shadow:0 0 8px rgba(255,68,170,.3)}
+.hl-amber{color:#ffaa00;text-shadow:0 0 8px rgba(255,170,0,.3)}
+.hl-green{color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3)}
+.hl-red{color:#ff3355;text-shadow:0 0 8px rgba(255,51,85,.3)}
+.hl-teal{color:#00ffcc;text-shadow:0 0 8px rgba(0,255,204,.3)}
+.hl-coral{color:#ff8866;text-shadow:0 0 8px rgba(255,136,102,.3)}
+.callout{border-left:3px solid #ffaa00;background:rgba(255,170,0,.05);padding:1rem 1.2rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:.9rem;color:rgba(255,255,255,.85);box-shadow:0 0 30px -10px rgba(255,170,0,.15);animation:calloutBreath 5s ease-in-out infinite}
+.callout.green{border-left-color:#44ff88;background:rgba(68,255,136,.05);box-shadow:0 0 30px -10px rgba(68,255,136,.15)}
+.callout.red{border-left-color:#ff3355;background:rgba(255,51,85,.05);box-shadow:0 0 30px -10px rgba(255,51,85,.15)}
+.callout.blue{border-left-color:#00aaff;background:rgba(0,170,255,.05);box-shadow:0 0 30px -10px rgba(0,170,255,.15)}
+.callout.purple{border-left-color:#ff44aa;background:rgba(255,68,170,.05);box-shadow:0 0 30px -10px rgba(255,68,170,.15)}
+@keyframes calloutBreath{0%,100%{box-shadow:0 0 30px -10px rgba(255,170,0,.15)}50%{box-shadow:0 0 40px -8px rgba(255,170,0,.25)}}
+.callout-title{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#ffaa00;margin-bottom:.4rem}
+.callout.green .callout-title{color:#44ff88}
+.callout.red .callout-title{color:#ff3355}
+.callout.blue .callout-title{color:#00aaff}
+.callout.purple .callout-title{color:#ff44aa}
+.gloss-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem 1.4rem;padding:.5rem 0}
+@media(max-width:680px){.gloss-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.gloss-grid{grid-template-columns:1fr}}
+.gloss-item{font-size:.82rem;line-height:1.5}
+.gloss-term{display:block;color:#ff44aa;font-weight:700;letter-spacing:.04em;margin-bottom:.15rem;text-shadow:0 0 8px rgba(255,68,170,.3)}
+.gloss-def{color:rgba(232,232,236,.75)}
+.gloss-intro{font-style:italic;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:1rem;padding-left:.2rem}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:.5rem}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem 1.1rem;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);border-color:rgba(255,68,170,.3);box-shadow:0 0 24px -8px rgba(255,68,170,.3)}
+.card-tick{font-family:'SF Mono',monospace;font-size:.95rem;font-weight:700;color:#ff44aa;letter-spacing:.04em;text-shadow:0 0 8px rgba(255,68,170,.3);margin-bottom:.15rem}
+.card-name{font-size:.7rem;color:rgba(255,255,255,.45);letter-spacing:.06em;margin-bottom:.5rem;text-transform:uppercase;font-weight:600}
+.card-line{font-size:.82rem;color:rgba(232,232,236,.85);margin-bottom:.35rem;line-height:1.45}
+.card-line .lbl{display:inline-block;color:rgba(255,255,255,.45);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-right:.4rem;font-weight:600}
+.comm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:.5rem}
+@media(max-width:680px){.comm-grid{grid-template-columns:1fr}}
+.comm-col{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:1rem 1.1rem}
+.comm-col-title{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#ff8866;font-weight:700;margin-bottom:.7rem;text-shadow:0 0 8px rgba(255,136,102,.3)}
+.comm-row{display:flex;align-items:center;justify-content:space-between;padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.85rem}
+.comm-row:last-child{border-bottom:none}
+.comm-name{color:rgba(255,255,255,.7);font-weight:500;flex:1;min-width:0}
+.comm-spark{width:48px;height:18px;margin-right:.5rem;flex-shrink:0}
+.comm-price{color:#fff;font-family:'SF Mono',monospace;font-weight:600;font-size:.82rem;text-align:right;min-width:64px}
+.comm-chg{font-size:.7rem;color:rgba(255,255,255,.5);margin-left:.5rem;min-width:48px;text-align:right;font-family:'SF Mono',monospace}
+.comm-chg.up{color:#44ff88}
+.comm-chg.down{color:#ff3355}
+.anchor-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:rgba(68,255,136,.12);border:1px solid rgba(68,255,136,.3);border-radius:10px;padding:.45rem 1rem;font-size:12px;font-weight:600;color:#44ff88;text-shadow:0 0 8px rgba(68,255,136,.3);letter-spacing:.06em;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:999}
+.anchor-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.disclaimer-short{margin:3rem 0 1rem;padding:.8rem 1rem;border-left:3px solid rgba(255,170,0,.5);background:rgba(255,170,0,.04);font-size:.78rem;color:rgba(255,170,0,.85);border-radius:0 6px 6px 0;line-height:1.55}
+.disclaimer-long{font-size:.7rem;color:rgba(255,255,255,.4);line-height:1.65;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05)}
+.disclaimer-long p{margin-bottom:.7rem}
+.sources{margin-top:2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.05);font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.04em;line-height:1.55}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes openIn{from{opacity:0;transform:translateY(15px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes neonPulse{0%{filter:brightness(1);transform:scale(1)}30%{filter:brightness(2);transform:scale(1.02)}60%{filter:brightness(1.6);transform:scale(1.01)}100%{filter:brightness(1);transform:scale(1)}}
+.section:nth-of-type(1){animation-delay:.45s}
+.section:nth-of-type(2){animation-delay:.6s}
+#gloss{animation-delay:2.85s}
+#tldr{animation-delay:3.15s}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  body{background:#000!important;color:#e8e8ec!important}
+  nav,.read-time,.anchor-toast{display:none!important}
+  .page{margin-left:0;max-width:100%;padding:1rem}
+  .stamp-live{animation:none!important}
+  .section{break-inside:avoid;page-break-inside:avoid}
+  .section-header{background:rgba(255,255,255,.03)!important}
+  .callout{background:rgba(255,170,0,.08)!important}
+  .callout.green{background:rgba(68,255,136,.08)!important}
+  .callout.red{background:rgba(255,51,85,.08)!important}
+  .callout.blue{background:rgba(0,170,255,.08)!important}
+  .callout.purple{background:rgba(255,68,170,.08)!important}
+  .snapshot{background:rgba(0,170,255,.04)!important}
+  .card{background:rgba(255,255,255,.03)!important}
+  .comm-col{background:rgba(255,255,255,.03)!important}
+}
+@media(max-width:768px){
+  nav{transform:translateX(-180px)}
+  nav.expanded{transform:translateX(0)}
+  .page{margin-left:0;padding:2rem 1.2rem 3rem}
+}
+</style>
+</head>
+<body>
+
+<div class="read-time" id="readTime"><span class="read-time-icon">◷</span><span class="read-time-text" id="readTimeText"></span></div>
+
+<nav id="nav">
+  <button class="nav-collapse-btn" id="navBtn">‹</button>
+  <div class="nav-title">Bishop · Pre-Market</div>
+  <div class="nav-date">July 13, 2026</div>
+  <a class="nav-home" href="https://themarketbishop.github.io/Bishop-Reports/" target="_blank">← All Reports</a>
+  <div class="nav-progress"><div class="nav-progress-bar" id="progressBar"></div></div>
+  <ul class="nav-links">
+    <li><a href="#gloss">Glossary</a></li>
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#overnight">Overnight</a></li>
+    <li><a href="#gex">GEX Structure</a></li>
+    <li><a href="#greeks">Greek Forces</a></li>
+    <li><a href="#catalyst">Catalysts</a></li>
+    <li><a href="#ranges">Expected Ranges</a></li>
+    <li><a href="#earnings">Earnings</a></li>
+    <li><a href="#focus">Focus Stocks</a></li>
+    <li><a href="#rotation">Sector Rotation</a></li>
+    <li><a href="#commodities">Commodities</a></li>
+    <li><a href="#bottom">Bottom Line</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <div class="page-header">
+    <h1 class="page-title">Pre-Market <span class="accent">Monday</span></h1>
+    <div class="page-subtitle">July 13, 2026 · Hormuz Closed · CPI Tuesday · Bank Earnings</div>
+    <span class="page-stamp"><span class="stamp-live">◉ LIVE · Built 9:05 AM ET</span></span>
+  </div>
+
+    <div class="snapshot">
+    <div class="snap-item"><span class="snap-label">SPY Pre-Mkt</span><span class="snap-value amber">752.7 · −0.3%</span></div>
+    <div class="snap-item"><span class="snap-label">Net GEX</span><span class="snap-value green">+$1.11B · crossed $1B</span></div>
+    <div class="snap-item"><span class="snap-label">Flip Cushion</span><span class="snap-value green">7,448 · 127 pts</span></div>
+    <div class="snap-item"><span class="snap-label">Hormuz</span><span class="snap-value red">CLOSED · Brent $79</span></div>
+    <div class="snap-item"><span class="snap-label">Bishop Read</span><span class="snap-value green">BULLISH · RISK-ON</span></div>
+    <div class="snap-item"><span class="snap-label">Watch</span><span class="snap-value amber">CPI + BANKS TUE</span></div>
+  </div>
+
+  <div class="section h-purple" id="gloss">
+    <div class="section-header"><span class="section-num">00</span><span class="section-title">Glossary <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="gloss-intro">Quick reference — key terms used in this report.</p>
+      <div class="gloss-grid">
+        <div class="gloss-item"><span class="gloss-term">The Blanket</span><span class="gloss-def">Net dealer gamma — now <strong>+$1.11B</strong>, across the $1B threshold for the first time since the June crisis. This is the suppression regime that compressed daily ranges to 0.5% and carried the index from 7,200 to 7,600 in the spring. It's fully restored.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Suppression Regime</span><span class="gloss-def">What a thick positive-gamma blanket does: dealers sell rips, buy dips, and compress volatility mechanically. Dips get bought within hours. Headlines get absorbed. It is the single most important structural fact on the board today.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Flip Level</span><span class="gloss-def">Where dealer gamma flips positive to negative — 7,448, now <strong>127 points (1.7%) below spot</strong>. The widest cushion in the history of the series; the oscillation regime ran on 3–8 points. The regime boundary isn't near the edge anymore.</span></div>
+        <div class="gloss-item"><span class="gloss-term">OPEX Drain</span><span class="gloss-def">Weekly expiration strips near-dated gamma. Friday's drain <em>strengthened</em> the structure (+$844M → +$1.11B) because it cleared the last near-dated puts while the longer-dated magnets above survived and grew.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Magnet Corridor</span><span class="gloss-def">The band of call-heavy strikes that pull price. Every $25 increment from spot to 7,700 is now a magnet ($604M across 7,600–7,700), with no accelerators interrupting the path. Max magnet migrated 7,550 → 7,600.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Strait of Hormuz</span><span class="gloss-def">The oil chokepoint Iran declared closed this weekend. Roughly a fifth of global crude transits it. This is the one geopolitical headline that reaches past sentiment and into energy costs, inflation expectations, and Fed policy — hence today's counterpoint.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Max Pain</span><span class="gloss-def">The strike where the most options expire worthless — 750 on SPY today, drifting to 744 by Friday. It sits <em>below</em> spot all week, a mild downward tug against the upside gamma magnets.</span></div>
+        <div class="gloss-item"><span class="gloss-term">IV Rank</span><span class="gloss-def">Where implied vol sits in its recent range — <strong>13.5%</strong>, near the floor, even with a war resuming and oil up 7%. The market is pricing less uncertainty now than at almost any point this cycle.</span></div>
+        <div class="gloss-item"><span class="gloss-term">HBM</span><span class="gloss-def">High-bandwidth memory — the DRAM stacked onto AI accelerators, and the supply-constrained heart of the memory trade. SK Hynix holds roughly 56–58% share; Micron and Samsung split most of the rest.</span></div>
+        <div class="gloss-item"><span class="gloss-term">ADS / ADR</span><span class="gloss-def">American Depositary Share — the US-listed wrapper on a foreign stock. SK Hynix's ADS debuted Friday at $149, opened $170, closed $168.01. Ten ADSs equal one Korean share.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Capital Diversion</span><span class="gloss-def">The risk that institutional money earmarked for memory rotates <em>out of</em> Micron and into the newly-accessible SK Hynix ADS. Watch MU's relative strength this week for the tell.</span></div>
+        <div class="gloss-item"><span class="gloss-term">Single-Stock Vol Gap</span><span class="gloss-def">The spread between individual-stock volatility and the VIX — at a record 34 points. Index calm is masking real stress underneath. Why "careful entries" is a standing discipline, not a market call.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-amber" id="tldr">
+    <div class="section-header"><span class="section-num">01</span><span class="section-title">TL;DR — What You Need To Know <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <ul class="bullets amber">
+        <li><strong>Bullish, risk-on — unchanged, and the tape is backing it.</strong> Iran closed the Strait of Hormuz, resumed the war, and sent Brent above $79 — and the S&amp;P is down <span class="hl-amber">three-tenths of one percent</span>. Gold isn't even bid. The market is treating this as the same Iran noise it has faded three times running. Lead memory/semis, keep careful entries.</li>
+        <li><strong>The structure is the strongest it has ever been.</strong> The blanket <span class="hl-green">crossed $1B (+$1.11B)</span> — OPEX <em>strengthened</em> it rather than draining it — restoring the suppression regime that carried 7,200 to 7,600 in the spring. The flip sits <span class="hl-green">127 points below spot</span>, the widest cushion in series history. Eight straight positive-gamma sessions, the longest streak on record.</li>
+        <li><strong>The breakout confirmed.</strong> Friday closed <span class="hl-green">754.95</span> — through the $751.72 falling-wedge trigger on the fourth attempt. Every $25 strike from spot to 7,700 is now a magnet, with no resistance in the path.</li>
+        <li><strong>SK Hynix delivered — with a caveat worth watching.</strong> The debut closed <span class="hl-green">+13%</span> ($149 → opened $170 → closed $168.01), the largest foreign listing in US history at a $1.27T cap. Real demand. But it opened at its high and faded all day, and the SPCX benchmark is itself fading (−10% on the week). Solid confirmation, not a blowout.</li>
+        <li><strong>Leadership rotated <em>within</em> semis.</strong> Friday: <span class="hl-green">NVDA +4.0%</span>, AMD +2.0%, SNDK +3.1% — while memory names pulled back (<span class="hl-red">MU −1.2%, MRVL −3.1%</span>). Watch MU: the new SK Hynix listing is a live capital-diversion risk for it.</li>
+        <li><strong>The honest counterpoint — careful entries.</strong> A physical Strait closure is the one shock the blanket has never been tested by; it feeds oil, inflation, and the Fed directly. <span class="hl-amber">CPI lands Tuesday</span> alongside bank earnings and Warsh's testimony. Single-stock vol vs VIX is at a record 34-point gap. Size into strength; don't chase.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section h-coral" id="overnight">
+    <div class="section-header"><span class="section-num">02</span><span class="section-title">Overnight Developments <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">The weekend delivered a genuine escalation — Iran closed the Strait of Hormuz, the war resumed, and oil ripped. The market's answer, so far, is a shrug: futures opened down a tenth, and the S&amp;P is off three-tenths pre-market. The structure that spent last week rebuilding is now the strongest of the series, and it is being asked to absorb the one headline it has never faced.</p>
+
+      <p><span class="tag-new">NEW</span><strong>Hormuz is closed — and the war is back on.</strong> Iran declared the Strait closed "until stability is restored," with its Strait Authority calling transit "not possible." IRGC forces <em>fired on commercial shipping</em>; US aircraft downed an Iranian cruise missile and an attack drone; US forces launched further strikes, with explosions reported around Bandar Abbas and Qeshm Island — both on the Strait itself. Bahrain intercepted Iranian aerial attacks this morning. Traffic collapsed: <span class="hl-red">roughly 6 vessels crossed in 24 hours</span> against a ~25/day baseline. Iran's leadership adviser has ruled out any retreat, and the US–Iran understanding is described as being in a "crisis phase."</p>
+
+      <p><span class="tag-new">NEW</span><strong>Trump: the US is "taking over" the Strait.</strong> He framed it as guardianship — and said countries must <em>pay</em> the US for defending the passage. He also confirmed an 11-hour meeting with the Iranians and said the prior deal was broken. <span class="hl-green">Brent surged 4.5% through $79</span>; WTI added roughly 5%. Energy is the one asset repricing this — equities are not.</p>
+
+      <p><span class="tag-new">NEW</span><strong>SK Hynix landed — the biggest foreign listing in US history.</strong> Priced at $149, opened at $170, closed at <span class="hl-green">$168.01 (+13%)</span> on a $26.5B raise — past Alibaba's record — for a $1.27T market cap that makes it instantly one of the ten-or-so most valuable companies listed in the US. Demand was real: 7× oversubscribed, with roughly $5B to cornerstone holders. It moves to its permanent ticker today, and leveraged long/inverse products list alongside it.</p>
+
+      <p><span class="tag-new">NEW</span><strong>The memory fundamentals got louder, not quieter.</strong> TSMC reported a <span class="hl-green">68% surge in June revenue</span> — and reports Thursday. Chipmakers are now projected to generate roughly <span class="hl-green">$430B in combined free cash flow</span> over the next twelve months, triple the level of two years ago, while the big hyperscalers' combined free cash flow is projected to turn <em>negative</em> for the first time on record as AI capex balloons toward $1.4T by 2028. The picks-and-shovels are collecting the cash; the platforms are spending it.</p>
+
+      <p><span class="tag-cont">CONT</span><strong>The institutional bid never blinked.</strong> Last week's dark-pool tape ran <span class="hl-green">+$24.2B net</span> with the top ten conviction names hitting 10-for-10; NVDA alone drew +$7.34B and returned +8.3%. Friday set a fresh series record at +$3.29B. The blocks bought the sell, the bottom, and the bounce — and kept buying into the weekend risk.</p>
+    </div>
+  </div>
+
+  <div class="section h-teal" id="gex">
+    <div class="section-header"><span class="section-num">03</span><span class="section-title">GEX Structure <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">The blanket crossed $1B. Net GEX hit <span class="hl-green">+$1.11B</span> on OPEX Friday — the threshold that defined the April–May suppression regime, the one that compressed daily ranges to half a percent, made every dip a buy within hours, and carried the index from 7,200 to 7,600. The round trip from the June crisis is complete.</p>
+
+      <p><strong>OPEX strengthened the structure — it didn't drain it.</strong> The blanket went <span class="hl-green">+$844M into expiration and +$1.11B out of it</span>. The weekly drain cleared the last near-dated puts that were suppressing the reading, while the magnets above — sitting on longer-dated expirations — survived and grew. That's the pattern at every OPEX since May: the drain strips the negative gamma, the positive gamma persists, and the net result is a thicker blanket.</p>
+
+      <p><strong>The cushion is now in a different zip code.</strong> The flip sits at <span class="hl-green">7,448 — 127 points, or 1.7%, below spot</span>. That is the widest cushion the series has ever recorded. For scale: the oscillation regime ran on 3–8 points of cushion, and the June crisis ran with <em>negative</em> cushion (the flip sat above spot). Reaching the flip from here would take a major gap or several sessions of sustained selling. Eight consecutive positive-gamma sessions — the longest streak on record — sit underneath it.</p>
+
+      <p><strong>No resistance to 7,700.</strong> All ten top strikes are magnets for a second straight session, and the max magnet migrated from 7,550 to <span class="hl-green">7,600 (+$148M)</span>. The corridor from 7,600 to 7,700 carries $604M and <em>every $25 increment is a magnet</em> — no accelerators interrupt the path. The center of gravity at 7,685 pulls 1.4% above spot. Implied vol rank sits at <span class="hl-green">13.5%</span>, near the floor, even with a war resuming.</p>
+
+      <div class="callout green">
+        <div class="callout-title">This Is The Regime That Absorbs Headlines</div>
+        A $1.11B blanket with a 127-point cushion is the mechanical reason a closed Strait produced a −0.3% tape. Dealers suppress the dips, the magnets pull toward 7,600, and volatility compresses. <strong>The one honest caveat: this structure has absorbed military headlines all cycle — it has never been tested by a physical shipping closure, which reaches oil, inflation, and the Fed directly. That's what the flip at 7,448 is for.</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-purple" id="greeks">
+    <div class="section-header"><span class="section-num">04</span><span class="section-title">Greek Forces <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p><strong>Gamma — thick, positive, and suppressing.</strong> With the blanket back above $1B, dealers lean against moves in both directions. They sell strength and buy weakness mechanically, which pins price toward the magnets and dampens shocks. This is the single biggest reason the Hormuz headline is producing a shrug rather than a gap.</p>
+
+      <p><strong>Charm — cleanly reset post-OPEX.</strong> Friday's expiration cleared the near-dated book, so time decay isn't pulling in any strong direction today. The magnets and the flow are in charge.</p>
+
+      <p><strong>Vanna — a tailwind, with the caveat.</strong> IV rank at 13.5% sits near the floor of its range, so falling and low vol keeps dealers buying back into the move — the grind-up fuel is on. The flip side: vol this cheap means there is very little premium cushioning the book if the Strait closure actually starts repricing inflation. Cheap vol is a tailwind until it's a trapdoor.</p>
+
+      <div class="callout purple">
+        <div class="callout-title">What This Means For Today</div>
+        The most constructive Greek backdrop of the entire series — thick positive gamma pinning toward 7,600, a 127-point cushion below, vanna working for the bulls. <strong>Lean the long side (memory/semis), and keep careful entries on:</strong> vol is priced for calm into a CPI print and a shipping closure, so size into strength and don't chase the extended names.
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-coral" id="catalyst">
+    <div class="section-header"><span class="section-num">05</span><span class="section-title">Catalyst Watch <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p><strong>Today — the Hormuz reaction, and SK Hynix goes regular-way.</strong> The tape's response to a closed Strait is the read. SK Hynix moves to its permanent ticker with leveraged long/inverse products listing alongside it — a froth amplifier worth watching for the memory complex. Fed's Waller speaks midday; the monthly federal budget lands in the afternoon.</p>
+
+      <p><strong>Tuesday — the week in one morning.</strong> <span class="hl-amber">June CPI at 8:30</span> (Street looks for −0.2% on the month and 3.8% year-over-year, down from 4.2%), <strong>bank earnings pre-market</strong> (JPM, BAC, C, WFC, GS), and <strong>Warsh testifies to Congress</strong> at 10:00 — with four more Fed speakers behind him. The single densest catalyst day of the quarter so far.</p>
+
+      <p><strong>The CPI trap worth naming.</strong> June CPI is <em>backward-looking</em> — the data was collected before the July oil spike. A soft print is likely, and it will read as bullish. But it tells you nothing about an inflation picture that just got worse in real time. A rally on soft June data into a $79 Brent tape is a rally on old news; the forward print is the one that matters.</p>
+
+      <div class="callout amber">
+        <div class="callout-title">Then PPI, Retail Sales, TSM</div>
+        Wednesday: June PPI, Empire State, the Beige Book, Warsh again, plus ASML, JNJ and MS (UAL after the bell — the airline tell after Delta's beat). Thursday: retail sales, Philly Fed, claims, and the two focus-list prints — <strong>TSM (~5.4% implied) and UNH (~5.3% implied)</strong>, with Netflix after the close. Friday brings sentiment and inflation expectations into weekly OPEX.
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-blue" id="ranges">
+    <div class="section-header"><span class="section-num">06</span><span class="section-title">Expected Ranges <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">The band tightens as the $1B blanket compresses everything — the desk reads 7,525–7,625 on SPX, the tightest effective range since April. The 7,600 magnet pulls, the 7,448 flip anchors 127 points below, and the suppression regime does what it did for seven weeks in the spring: absorbs.</p>
+
+      <p><strong>SPX: 7,525 → 7,625.</strong> The 7,600 magnet (+$148M) sits just above and pulls; the corridor to 7,700 is open with no resistance. Structural floor: <span class="hl-green">7,448 near (−1.7%)</span>, 6,910 deep. Losing the flip is the only thing that changes the regime.</p>
+
+      <p><strong>SPY: 749 → 758.</strong> Pre-market <span class="hl-amber">752.7 (−0.3%)</span> after Friday's 754.95 close confirmed the $751.72 wedge breakout. Max pain 750 today (744 by Friday) is a persistent, mild downward tug against the upside magnets.</p>
+
+      <p><strong>QQQ: 720 → 732.</strong> Closed 725.51 <span class="hl-green">(+0.31%)</span> Friday. The highest-beta read on the semis leadership — and the place the SK Hynix read-through shows up first.</p>
+
+      <p><strong>IWM: 293 → 300.</strong> Closed 295.99 <span class="hl-red">(−0.42%)</span> Friday — small caps faded while the index closed green. Breadth is the thing to watch: if IWM keeps lagging, the leadership is narrowing again.</p>
+    </div>
+  </div>
+
+  <div class="section h-blue" id="earnings">
+    <div class="section-header"><span class="section-num">07</span><span class="section-title">Earnings On Deck <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">Nothing marquee today — the week detonates Tuesday. Roughly a tenth of the S&amp;P reports across the next five sessions, and two focus-list names (TSM and UNH) print Thursday.</p>
+
+      <p><strong>Tuesday, pre-market — the banks.</strong> JPM (~$10.75 implied), GS (~$42.33), C (~$5.53), WFC (~$3.79), BAC (~$1.87). They land the same morning as CPI, which means the vol reaction is as much macro as it is credit. Worth remembering: <strong>the dark pool sold JPM roughly $299M ahead of this print</strong> and hasn't taken it back.</p>
+
+      <p><strong>Wednesday — ASML (~7.4% implied), JNJ, MS; UAL after the bell.</strong> ASML is the semi-cap read-through and a live input to the memory-capex thesis. UAL is the airline confirmation after Delta beat and guided up hard.</p>
+
+      <p><strong>Thursday — the focus prints.</strong> <span class="hl-green">TSM (~5.4% implied)</span> reports on the back of a 68% June revenue surge — the cleanest fundamental check on the whole AI-hardware trade. <span class="hl-green">UNH (~5.3% implied)</span> is the healthcare read. Netflix follows after the close.</p>
+    </div>
+  </div>
+
+  <div class="section h-purple" id="focus">
+    <div class="section-header"><span class="section-num">08</span><span class="section-title">Focus Stocks <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">The focus stays on memory/semis — but Friday's tape rotated <em>within</em> the complex, from memory into AI-compute. NVDA and AMD led while MU, MRVL and ALAB gave back. That rotation, plus the new SK Hynix listing, is the thing to watch this week. Closes below are Friday's; careful entries into a CPI week.</p>
+
+      <p style="font-size:.85rem;margin-bottom:.5rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:1.5rem">AI-Compute — Friday's Leaders</p>
+      <div class="cards">
+        <div class="card"><div class="card-tick">NVDA</div><div class="card-name">Nvidia</div>
+          <div class="card-line"><span class="lbl">Close</span>$210.96 <span class="hl-green">+4.03%</span></div>
+          <div class="card-line"><span class="lbl">Signal</span>+$7.34B dark-pool buy last week (→ +8.3%), zero sell sessions. The top conviction name on the board.</div>
+          <div class="card-line"><span class="lbl">Read</span>Took the leadership back and broke out. The quality core — and the name the blocks defend hardest.</div>
+        </div>
+        <div class="card"><div class="card-tick">AMD</div><div class="card-name">Advanced Micro Devices</div>
+          <div class="card-line"><span class="lbl">Close</span>$557.89 <span class="hl-green">+2.04%</span></div>
+          <div class="card-line"><span class="lbl">Signal</span>+$5.58B dark-pool buy last week (→ +7.7%), four sessions.</div>
+          <div class="card-line"><span class="lbl">Read</span>The base broke and it keeps extending. Second-strongest conviction name behind NVDA.</div>
+        </div>
+        <div class="card"><div class="card-tick">SNDK</div><div class="card-name">Sandisk</div>
+          <div class="card-line"><span class="lbl">Close</span>$1,915.92 <span class="hl-green">+3.10%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>The highest-beta memory name kept ripping while the rest of memory paused — the storage shortage is its own catalyst. Trade it, size it.</div>
+        </div>
+      </div>
+
+      <p style="font-size:.85rem;margin-bottom:.5rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:1.5rem">Memory — Paused, And Now With A New Competitor Listed</p>
+      <div class="cards">
+        <div class="card"><div class="card-tick">MU</div><div class="card-name">Micron</div>
+          <div class="card-line"><span class="lbl">Close</span>$979.30 <span class="hl-red">−1.24%</span></div>
+          <div class="card-line"><span class="lbl">Signal</span>+$2.44B dark-pool buy last week, but only +0.38% return — the weakest conviction-name payoff on the board.</div>
+          <div class="card-line"><span class="lbl">Read</span><strong>The capital-diversion tell.</strong> SK Hynix now lists at ~5.4× forward with 56–58% HBM share vs MU's ~6.7× and 21%. Memory money finally has a cheaper, bigger pure-play. Watch MU's relative strength this week — it's the single most informative line on the list.</div>
+        </div>
+        <div class="card"><div class="card-tick">MRVL</div><div class="card-name">Marvell</div>
+          <div class="card-line"><span class="lbl">Close</span>$235.81 <span class="hl-red">−3.07%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>The sharpest giveback in the complex — high-beta names cut both ways. Confirms the rotation ran to compute, not networking.</div>
+        </div>
+        <div class="card"><div class="card-tick">AVGO</div><div class="card-name">Broadcom / Astera</div>
+          <div class="card-line"><span class="lbl">Close</span>AVGO $399.97 <span class="hl-red">−0.28%</span>, ALAB $412.97 −1.07%</div>
+          <div class="card-line"><span class="lbl">Read</span>Both digesting big weeks (AVGO +$1.53B dark buy → +11%). Consolidation, not distribution.</div>
+        </div>
+        <div class="card"><div class="card-tick">TSM</div><div class="card-name">Taiwan Semi</div>
+          <div class="card-line"><span class="lbl">Close</span>$434.11 <span class="hl-red">−0.65%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>June revenue +68% YoY — and it <strong>reports Thursday</strong> (~5.4% implied). The cleanest fundamental check on the whole trade.</div>
+        </div>
+      </div>
+
+      <p style="font-size:.85rem;margin-bottom:.5rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:1.5rem">Energy — The Hedge That's Finally Paying</p>
+      <div class="cards">
+        <div class="card"><div class="card-tick">XOM</div><div class="card-name">Exxon / Chevron / Conoco</div>
+          <div class="card-line"><span class="lbl">Fri</span>CVX <span class="hl-green">+1.35%</span>, XOM +1.03%, COP +0.94%</div>
+          <div class="card-line"><span class="lbl">Read</span>Energy turned green Friday and now has a genuine physical catalyst: a closed Strait with Brent through $79. The Iran-tail hedge on the memory book — and the one position that <em>wants</em> the counterpoint to be right.</div>
+        </div>
+        <div class="card"><div class="card-tick">OXY</div><div class="card-name">Occidental / Devon</div>
+          <div class="card-line"><span class="lbl">Fri</span>OXY <span class="hl-green">+1.13%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>The high-beta E&amp;P — the sharp end of the crude move. Tactical, and the most direct expression of the Hormuz risk.</div>
+        </div>
+      </div>
+
+      <p style="font-size:.85rem;margin-bottom:.5rem;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:1.5rem">The Counterpoint &amp; Context</p>
+      <div class="cards">
+        <div class="card"><div class="card-tick">JPM</div><div class="card-name">JPMorgan</div>
+          <div class="card-line"><span class="lbl">Close</span>$336.47 <span class="hl-green">+0.30%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>Reports Tuesday pre-market alongside CPI (~$10.75 implied). The dark pool sold ~$299M into it and never took it back — the one clearly negative positioning signal on the board.</div>
+        </div>
+        <div class="card"><div class="card-tick">CRM</div><div class="card-name">Salesforce</div>
+          <div class="card-line"><span class="lbl">Close</span>$163.32 <span class="hl-green">+0.50%</span></div>
+          <div class="card-line"><span class="lbl">Read</span>A small bounce after the upgrades elsewhere in software (SHOP, TWLO). Still −37% YTD vs MU +232% — the hardware-over-software divergence is intact, but the Street is differentiating rather than abandoning.</div>
+        </div>
+        <div class="card"><div class="card-tick">AAPL</div><div class="card-name">Apple / UnitedHealth</div>
+          <div class="card-line"><span class="lbl">Close</span>AAPL $315.32 <span class="hl-red">−0.28%</span>, UNH $424.62 −1.63%</div>
+          <div class="card-line"><span class="lbl">Read</span>AAPL consolidating a strong July run (+$2.90B dark buy, near-zero sells). UNH is the defensive ballast — and it prints Thursday.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-green" id="rotation">
+    <div class="section-header"><span class="section-num">09</span><span class="section-title">Sector Rotation — Hardware Leads <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">Friday's tape was broad but the <em>quality</em> of the leadership slipped — materials and staples led, tech barely participated, and healthcare was the only red sector. It's the one wrinkle in an otherwise clean bullish picture: everything went up, but the defensives went up most.</p>
+
+      <p>Friday's close: <span class="hl-green">XLB +1.25%</span>, <span class="hl-amber">XLP +1.11%</span> (staples), XLC +1.02%, XLU +0.62%, XLRE +0.50%, XLE +0.47%, XLI +0.45%, XLY +0.33%, XLF +0.31% — while <span class="hl-amber">XLK managed only +0.23%</span> and <span class="hl-red">XLV −0.82%</span> was the lone loser. Staples and utilities outrunning tech on a green day is a defensive fingerprint, even inside a rally.</p>
+
+      <p>Underneath, the real rotation was <strong>within</strong> semis: money moved from memory (MU, MRVL, ALAB all red) into AI-compute (NVDA +4.0%, AMD +2.0%). The macro thesis is unchanged — hardware over software, picks-and-shovels over platforms, with chipmakers heading for $430B of free cash flow while the hyperscalers' turns negative. But the leadership <em>inside</em> the trade is shifting, and the SK Hynix listing gives memory money a new place to go.</p>
+
+      <div class="callout green">
+        <div class="callout-title">The Trade Today</div>
+        Lead with memory/semis — the conviction, the fundamentals (TSMC +68%, $430B FCF), and the institutional bid all still line up. Keep energy on as the Hormuz hedge; it's the position that pays if the counterpoint is right. <strong>Use careful entries:</strong> the defensive tint to Friday's leadership, the memory pause, and a CPI print two days out all argue for sizing into strength rather than chasing.
+      </div>
+    </div>
+  </div>
+
+  <div class="section h-coral" id="commodities">
+    <div class="section-header"><span class="section-num">10</span><span class="section-title">Commodities <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">Energy is repricing the Strait closure hard — and it's the <em>only</em> asset class doing so. Crude is up roughly 5% with Brent through $79, while gold is actually <strong>softer</strong>. That's the whole story in one line: there is no haven bid, no panic, no fear trade. The commodity complex is pricing a supply problem, not a crisis.</p>
+
+      <div class="comm-grid">
+        <div class="comm-col">
+          <div class="comm-col-title">Energy</div>
+          <div class="comm-row"><span class="comm-name">WTI Crude</span><svg class="comm-spark" id="spark-wti"></svg><span class="comm-price">$76.05</span><span class="comm-chg up">+5.0%</span></div>
+          <div class="comm-row"><span class="comm-name">Brent</span><svg class="comm-spark" id="spark-brent"></svg><span class="comm-price">$79.45</span><span class="comm-chg up">+4.5%</span></div>
+          <div class="comm-row"><span class="comm-name">Natural Gas</span><svg class="comm-spark" id="spark-gas"></svg><span class="comm-price">$3.45</span><span class="comm-chg up">+4.5%</span></div>
+        </div>
+        <div class="comm-col">
+          <div class="comm-col-title">Precious Metals</div>
+          <div class="comm-row"><span class="comm-name">Gold</span><svg class="comm-spark" id="spark-gold"></svg><span class="comm-price">$4,120</span><span class="comm-chg down">−0.4%</span></div>
+          <div class="comm-row"><span class="comm-name">Silver</span><svg class="comm-spark" id="spark-silv"></svg><span class="comm-price">$59.75</span><span class="comm-chg down">−0.6%</span></div>
+          <div class="comm-row"><span class="comm-name">Platinum</span><svg class="comm-spark" id="spark-plat"></svg><span class="comm-price">$1,610</span><span class="comm-chg down">−0.6%</span></div>
+        </div>
+        <div class="comm-col">
+          <div class="comm-col-title">Industrial</div>
+          <div class="comm-row"><span class="comm-name">Copper</span><svg class="comm-spark" id="spark-copp"></svg><span class="comm-price">$13,290</span><span class="comm-chg up">+0.2%</span></div>
+          <div class="comm-row"><span class="comm-name">Palladium</span><svg class="comm-spark" id="spark-pall"></svg><span class="comm-price">$1,245</span><span class="comm-chg up">+0.2%</span></div>
+          <div class="comm-row"><span class="comm-name">Aluminum</span><svg class="comm-spark" id="spark-alum"></svg><span class="comm-price">$3,170</span><span class="comm-chg up">+0.1%</span></div>
+        </div>
+      </div>
+
+      <p style="margin-top:1.2rem"><strong>Oil finally gets its catalyst — the physical one.</strong> For two weeks the energy thesis was tightness that the tape refused to pay for. A closed Strait with ~6 transits in 24 hours is not a premium; it is a supply constraint. Brent through $79 with US power costs already at 17-year highs on data-center demand puts a real floor under the complex — and turns the energy hedge from a laggard into the position that actually pays if the counterpoint plays out.</p>
+
+      <p><strong>Gold's silence is the loudest signal on the board.</strong> A war resumes, a chokepoint closes, and the classic haven <em>falls</em>. There is no fear trade. That is the single cleanest confirmation of the read that the market is treating this as noise — and it's the reason equities are down three-tenths instead of three percent. <strong>If gold turns and starts bidding hard, that's the tell that the market has changed its mind.</strong></p>
+    </div>
+  </div>
+
+  <div class="section h-amber" id="bottom">
+    <div class="section-header"><span class="section-num">11</span><span class="section-title">Bottom Line <span class="anchor-icon">🔗</span></span></div>
+    <div class="content">
+      <p class="lead">Bullish, risk-on — unchanged, and the tape is validating it. Iran closed the Strait of Hormuz and restarted the war, and the S&amp;P is down three-tenths of one percent with gold falling. This is the same Iran story the market has faded three times, and it is being faded a fourth. Lead memory/semis, hold energy as the hedge, keep careful entries into a CPI week.</p>
+
+      <p>The structure is the strongest it has ever been, and it's the mechanical reason for the shrug. The blanket crossed <strong>$1B (+$1.11B)</strong> — OPEX strengthened it rather than draining it — restoring the suppression regime that carried the index from 7,200 to 7,600 in the spring. The flip sits <strong>127 points below spot</strong>, the widest cushion on record, on the back of eight straight positive-gamma sessions. Every $25 strike from spot to 7,700 is a magnet. Friday's close confirmed the wedge breakout. Institutions bought $24.2B on the week and set a record on Friday. Everything that can line up is lined up.</p>
+
+      <div class="callout green">
+        <div class="callout-title">The Bull Case Runs If…</div>
+        The Hormuz closure keeps getting faded — the tape's −0.3% answer and gold's <em>absence</em> of a bid say it is. June CPI comes in soft Tuesday (the Street sees 3.8% vs 4.2%), the banks print clean, and the $1.11B blanket does what it did for seven weeks in the spring: absorbs everything and pulls price to the 7,600 magnet and the open corridor to 7,700. TSMC's +68% June revenue and the $430B chipmaker cash-flow wave keep the memory/semis leadership fed.
+      </div>
+
+      <div class="callout coral">
+        <div class="callout-title">It Stalls If…</div>
+        The Strait closure stops being a headline and starts being a <em>supply shock</em>. This is the one thing the blanket has never been tested by — airstrikes are sentiment, but a chokepoint reaches oil, inflation expectations, and Fed policy directly, and no amount of gamma absorbs a real supply constraint. It lands two days before CPI, with vol priced at a 13.5% rank and single-stock volatility already at a record 34-point gap to the VIX. Watch for gold turning bid, MU losing ground to the new SK Hynix listing, and Friday's defensive leadership tint (staples over tech) spreading. Losing the 7,448 flip changes the regime — that's what careful entries are for.
+      </div>
+
+      <div class="callout amber">
+        <div class="callout-title">What Resolves It</div>
+        Today: how the tape digests a closed Strait, and whether SK Hynix holds its debut gains as it goes regular-way. Tuesday: CPI plus the banks plus Warsh — the densest catalyst morning of the quarter, and the real test. Thursday: TSM. Watch gold for the fear tell, MU for the capital-diversion tell, and the 7,448 flip for the structural line. Lead the memory/semis long, hedge with energy, size with care.
+      </div>
+    </div>
+  </div>
+<div class="disclaimer-short">
+    This report is The Market Bishop's personal market read. Not financial advice. Not a recommendation to buy or sell anything. Markets are risky. Do your own work.
+  </div>
+
+  <div class="disclaimer-long">
+    <p><strong style="color:rgba(255,170,0,.7)">Full Disclaimer.</strong></p>
+    <p>This report is published by The Market Bishop ("Bishop") as personal market commentary and educational content. Nothing in this report constitutes financial, investment, legal, accounting, or tax advice. No content herein should be interpreted as a recommendation, solicitation, or offer to buy, sell, hold, or otherwise transact in any security, derivative, commodity, currency, cryptocurrency, or other financial instrument.</p>
+    <p>The author is not a registered investment adviser, broker-dealer, financial planner, or tax professional. All opinions expressed are the author's own personal views as of the date of publication and are subject to change at any time without notice. Information presented may be incomplete, outdated, or incorrect.</p>
+    <p>Market data, options flow, gamma exposure metrics, dark pool prints, sentiment indicators, and other quantitative inputs referenced in this report are sourced from third-party providers including but not limited to Unusual Whales, public exchange feeds, and aggregated news services. The Market Bishop makes no warranty as to the accuracy, completeness, or timeliness of any third-party data.</p>
+    <p>Past performance, including any patterns, regimes, or historical correlations discussed, is not indicative of future results. Markets are inherently uncertain and prior structural patterns can fail without warning. The author and this publication accept no liability for losses arising from reliance on any content herein.</p>
+    <p>Any references to specific tickers, sectors, or positioning are for illustrative and educational purposes only. They do not constitute recommendations. Readers should consult their own licensed financial advisor before making any investment decision and should consider their own risk tolerance, time horizon, and overall financial situation.</p>
+    <p>Options trading involves substantial risk, including the potential for complete loss of capital invested in option premiums. Strategies referenced may be unsuitable for many investors. Concepts such as gamma exposure, charm, vanna, and dealer positioning are theoretical frameworks, not deterministic predictors.</p>
+    <p>The Market Bishop may have personal positions in any securities or instruments discussed and may transact in them before, during, or after publication of this report without notice. No fiduciary relationship is created between the author and any reader.</p>
+    <p>By continuing to read this report you acknowledge that you have read and accepted these terms in full. If you do not accept them, discontinue reading. © 2026 The Market Bishop · All Rights Reserved.</p>
+  </div>
+
+  <div class="sources">
+    Sources: Unusual Whales (flow, GEX, dark pool, futures, sector ETFs), Bishop News Triage (Connor Bates, Alphatica, Kobeissi, Cheddar Flow, Watcher Guru, Andrew Hiesinger, DeItaone, unusual_whales tweet feed), live MCP pulls.
+  </div>
+
+  <div class="anchor-toast" id="anchorToast">Link copied ✓</div>
+
+</main>
+
+<script>
+(function(){
+  // Reading time
+  var pageText = document.querySelector('.page').innerText;
+  var words = pageText.trim().split(/\s+/).length;
+  var minutes = Math.max(1, Math.round(words / 230));
+  var readTimeEl = document.getElementById('readTimeText');
+  readTimeEl.textContent = minutes + ' min read';
+  var hasScrolled = false;
+  function updateReadTime(){
+    var scrollY = window.scrollY;
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    if(scrollY > 50) hasScrolled = true;
+    var pct = docH > 0 ? scrollY / docH : 0;
+    if(pct >= 0.97){
+      readTimeEl.textContent = 'Done ✓';
+    } else if(hasScrolled){
+      var remaining = Math.max(1, Math.round(minutes * (1 - pct)));
+      readTimeEl.textContent = remaining + ' min left';
+    } else {
+      readTimeEl.textContent = minutes + ' min read';
+    }
+    document.getElementById('progressBar').style.width = (pct * 100) + '%';
+  }
+  window.addEventListener('scroll', updateReadTime);
+  updateReadTime();
+
+  // Active nav highlighting
+  var sections = document.querySelectorAll('.section[id],.snapshot');
+  var navLinks = document.querySelectorAll('.nav-links a');
+  function updateActive(){
+    var scrollPos = window.scrollY + 120;
+    var current = '';
+    sections.forEach(function(s){ if(s.offsetTop <= scrollPos) current = s.id; });
+    navLinks.forEach(function(a){
+      a.classList.remove('active');
+      if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  // Section anchor copy
+  var toast = document.getElementById('anchorToast');
+  document.querySelectorAll('.section-header').forEach(function(h){
+    h.addEventListener('click', function(e){
+      var sec = h.closest('.section');
+      if(!sec || !sec.id) return;
+      var url = window.location.href.split('#')[0] + '#' + sec.id;
+      navigator.clipboard.writeText(url).then(function(){
+        toast.classList.add('show');
+        var icon = h.querySelector('.anchor-icon');
+        if(icon) icon.classList.add('copied');
+        setTimeout(function(){
+          toast.classList.remove('show');
+          if(icon) icon.classList.remove('copied');
+        }, 1800);
+      });
+    });
+  });
+
+  // Nav collapse
+  var nav = document.getElementById('nav');
+  var navBtn = document.getElementById('navBtn');
+  navBtn.addEventListener('click', function(){
+    nav.classList.toggle('collapsed');
+    navBtn.textContent = nav.classList.contains('collapsed') ? '›' : '‹';
+  });
+
+  // Neon pulse on intersection
+  var pulseObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var hdr = entry.target.querySelector('.section-header');
+        if(hdr){
+          hdr.style.animation = 'neonPulse .9s ease';
+          setTimeout(function(){ hdr.style.animation = ''; }, 1000);
+        }
+        pulseObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.section').forEach(function(s){ pulseObs.observe(s); });
+
+  // Sparklines
+  function drawSpark(id, data, color){
+    var svg = document.getElementById(id);
+    if(!svg) return;
+    var w = 48, h = 18, pad = 2;
+    var min = Math.min.apply(null, data), max = Math.max.apply(null, data);
+    var range = max - min || 1;
+    var pts = data.map(function(v, i){
+      var x = pad + (i / (data.length - 1)) * (w - 2 * pad);
+      var y = h - pad - ((v - min) / range) * (h - 2 * pad);
+      return x + ',' + y;
+    }).join(' ');
+    var lastPt = pts.split(' ').pop().split(',');
+    svg.innerHTML = '<polyline points="' + pts + '" fill="none" stroke="' + color + '" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/><circle cx="' + lastPt[0] + '" cy="' + lastPt[1] + '" r="1.6" fill="' + color + '"/>';
+  }
+  // Commodities sparks
+      drawSpark('spark-wti', [72.4, 73.8, 75.1, 75.8, 76.05], '#44ff88');
+    drawSpark('spark-brent', [76.4, 77.6, 78.7, 79.2, 79.45], '#44ff88');
+        drawSpark('spark-gas', [3.30, 3.36, 3.41, 3.44, 3.45], '#44ff88');
+      drawSpark('spark-gold', [4135, 4130, 4124, 4121, 4120], '#ff3355');
+      drawSpark('spark-silv', [60.10, 60.0, 59.9, 59.8, 59.75], '#ff3355');
+      drawSpark('spark-plat', [1620, 1617, 1614, 1611, 1610], '#ff3355');
+      drawSpark('spark-copp', [13270, 13276, 13282, 13288, 13290], '#44ff88');
+      drawSpark('spark-pall', [1242, 1243, 1244, 1245, 1245], '#44ff88');
+      drawSpark('spark-alum', [3166, 3167, 3169, 3170, 3170], '#44ff88');
+})();
+</script>
+</body>
+</html>
