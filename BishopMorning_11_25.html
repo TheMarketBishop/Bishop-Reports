@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-Market Wednesday · Nov 25, 2026 · The Market Bishop</title>
+<style>
+:root{--blue:#00aaff;--purple:#ff44aa;--teal:#00e5cc;--red:#ff3355;--amber:#ffaa00;--green:#44ff88;--coral:#ff7a59;--text:#e8e8ec;--dim:rgba(255,255,255,.5);--line:rgba(255,255,255,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#000;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;line-height:1.65;letter-spacing:.01em;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 15% 0%,rgba(0,170,255,.07) 0%,transparent 50%),radial-gradient(ellipse at 85% 100%,rgba(255,68,170,.05) 0%,transparent 50%);pointer-events:none;z-index:0}
+.mono{font-family:"SF Mono","JetBrains Mono",Menlo,Consolas,monospace}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--green));z-index:20;box-shadow:0 0 10px rgba(0,170,255,.6)}
+nav.top{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .inner{max-width:820px;margin:0 auto;display:flex;gap:.35rem;overflow-x:auto;padding:.55rem 1rem;scrollbar-width:none}
+nav.top a{flex:none;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);text-decoration:none;padding:.3rem .65rem;border-radius:999px;border:1px solid transparent;transition:.2s}
+nav.top a:hover,nav.top a.on{color:#fff;border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+.page{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:2.2rem 1.25rem 4rem}
+.hdr{margin-bottom:1.6rem;animation:up .7s ease both}
+.kicker{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+h1{font-size:2.5rem;font-weight:200;letter-spacing:-.02em;color:#fff;line-height:1.1;margin:.35rem 0 .5rem}
+h1 .accent{font-weight:650;background:linear-gradient(90deg,var(--blue),var(--green));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.headline{font-size:1.15rem;color:#fff;font-weight:500}
+.stamp{display:inline-flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin-top:.6rem;font-size:.7rem;letter-spacing:.1em;color:rgba(255,255,255,.35)}
+.live{color:var(--green);text-shadow:0 0 8px rgba(68,255,136,.5)}
+.sample{color:var(--amber);border:1px solid rgba(255,170,0,.35);padding:.05rem .45rem;border-radius:6px}
+.snap{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;padding:1.1rem 1.25rem;border-radius:16px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(0,170,255,.05),rgba(255,68,170,.05));margin-bottom:1.8rem;animation:up .7s .15s ease both}
+@media(max-width:620px){.snap{grid-template-columns:repeat(2,1fr)}h1{font-size:2rem}}
+.snap .l{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:600}
+.snap .v{display:block;font-size:1.02rem;font-weight:650;margin-top:.1rem}
+.red{color:var(--red);text-shadow:0 0 12px rgba(255,51,85,.35)}.amber{color:var(--amber);text-shadow:0 0 12px rgba(255,170,0,.35)}.green{color:var(--green);text-shadow:0 0 12px rgba(68,255,136,.35)}.blue{color:var(--blue);text-shadow:0 0 12px rgba(0,170,255,.35)}.purple{color:var(--purple);text-shadow:0 0 12px rgba(255,68,170,.35)}.teal{color:var(--teal)}
+section{position:relative;margin:0 0 1.5rem;padding:1.4rem 1.4rem 1.3rem;border-radius:18px;background:rgba(255,255,255,.025);border:1px solid var(--line);opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+section.in{opacity:1;transform:none}
+section::before{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;box-shadow:inset 0 0 40px var(--glow,rgba(0,170,255,.05))}
+.sh{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.9rem}
+.num{font-family:"SF Mono",Menlo,monospace;font-size:.75rem;letter-spacing:.1em;opacity:.7}
+h2{font-size:1.2rem;font-weight:650;letter-spacing:.01em}
+.h-amber{--c:var(--amber);--glow:rgba(255,170,0,.06)}.h-coral{--c:var(--coral);--glow:rgba(255,122,89,.06)}.h-teal{--c:var(--teal);--glow:rgba(0,229,204,.06)}.h-blue{--c:var(--blue);--glow:rgba(0,170,255,.06)}.h-purple{--c:var(--purple);--glow:rgba(255,68,170,.06)}.h-green{--c:var(--green);--glow:rgba(68,255,136,.06)}.h-red{--c:var(--red);--glow:rgba(255,51,85,.06)}
+section h2,section .num{color:var(--c);text-shadow:0 0 14px color-mix(in srgb,var(--c) 45%,transparent)}
+section{border-color:color-mix(in srgb,var(--c) 22%,transparent)}
+p.ln{margin:.18rem 0}
+.read60 li{list-style:none;position:relative;padding:.55rem 0 .55rem 1.55rem;border-bottom:1px dashed var(--line)}
+.read60 li:last-child{border-bottom:0}
+.read60 li::before{content:"";position:absolute;left:.2rem;top:1.05rem;width:8px;height:8px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+.read60 b{color:#fff}
+.news{display:flex;flex-direction:column;gap:.7rem}
+.item{display:grid;grid-template-columns:auto 1fr;gap:.8rem;padding:.75rem .85rem;border-radius:12px;background:rgba(255,255,255,.025);border:1px solid var(--line)}
+.tag{font-family:"SF Mono",Menlo,monospace;font-size:.62rem;font-weight:700;letter-spacing:.08em;padding:.18rem .45rem;border-radius:6px;height:fit-content;white-space:nowrap}
+.tag.new{color:var(--green);border:1px solid rgba(68,255,136,.45);background:rgba(68,255,136,.06)}
+.tag.cont{color:var(--amber);border:1px solid rgba(255,170,0,.45);background:rgba(255,170,0,.06)}
+.item .t{color:#fff;font-weight:600}
+.item .why{color:var(--dim);font-size:.92rem;margin-top:.15rem}
+.item .why b{color:rgba(255,255,255,.8);font-weight:600}
+.ladder{width:100%;height:auto;margin:.4rem 0 .8rem}
+.ladder .px{font:600 12px "SF Mono",Menlo,monospace}
+.ladder .lbl{font:500 12.5px -apple-system,"Segoe UI",sans-serif}
+.ladder .dim{fill:rgba(0,170,255,.8);font-size:11px}
+.note{margin-top:.8rem;padding:.75rem .9rem;border-radius:12px;border-left:3px solid var(--c);background:color-mix(in srgb,var(--c) 7%,transparent);font-size:.93rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);text-align:left;padding:.45rem .5rem;border-bottom:1px solid var(--line)}
+td{padding:.6rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.tk{font-family:"SF Mono",Menlo,monospace;font-weight:700;color:#fff;white-space:nowrap}
+.cal{display:flex;flex-direction:column}
+.cal .row{display:grid;grid-template-columns:92px 1fr;gap:.8rem;padding:.55rem 0;border-bottom:1px dashed var(--line)}
+.cal .row:last-child{border-bottom:0}
+.cal .time{font-family:"SF Mono",Menlo,monospace;font-size:.82rem;color:var(--c);font-weight:700}
+.cal b{color:#fff}
+.strip{display:grid;grid-template-columns:repeat(11,1fr);gap:4px;margin:.4rem 0 .7rem}
+@media(max-width:620px){.strip{grid-template-columns:repeat(4,1fr)}}
+.cell{border-radius:8px;padding:.45rem .2rem;text-align:center;font-family:"SF Mono",Menlo,monospace;font-size:.72rem;line-height:1.25}
+.cell b{display:block;font-size:.7rem;color:#fff}
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+@media(max-width:620px){.cases{grid-template-columns:1fr}}
+.case{padding:.85rem .95rem;border-radius:12px;font-size:.92rem}
+.case h3{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem}
+.case.bull{background:rgba(68,255,136,.05);border:1px solid rgba(68,255,136,.3)}.case.bull h3{color:var(--green)}
+.case.bear{background:rgba(255,51,85,.05);border:1px solid rgba(255,51,85,.3)}.case.bear h3{color:var(--red)}
+.case.res{grid-column:1/-1;background:rgba(0,170,255,.05);border:1px solid rgba(0,170,255,.3)}.case.res h3{color:var(--blue)}
+.case ul{padding-left:1.1rem}.case li{margin:.15rem 0}
+.read-call{display:inline-block;font-weight:800;letter-spacing:.08em;font-size:.82rem;padding:.3rem .7rem;border-radius:8px;color:var(--amber);border:1px solid rgba(255,170,0,.5);background:rgba(255,170,0,.08);margin-bottom:.8rem;text-shadow:0 0 10px rgba(255,170,0,.4)}
+.kev{margin:0 0 .8rem;padding:.75rem .9rem;border-radius:12px;border:1px solid rgba(255,170,0,.35);background:rgba(255,170,0,.06);font-size:.95rem}
+.kev b{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:.2rem}
+.learn{background:linear-gradient(135deg,rgba(0,229,204,.06),rgba(0,170,255,.04))}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.8rem 0}
+.mini div{padding:.7rem .8rem;border-radius:10px;border:1px solid var(--line);font-size:.88rem}
+.mini b{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.2rem}
+.played{border-style:dashed}
+.score{display:flex;flex-direction:column;gap:.45rem}
+.score div{display:grid;grid-template-columns:26px 1fr;gap:.5rem;align-items:start}
+.ok{color:var(--green);font-weight:800}.mid{color:var(--amber);font-weight:800}
+abbr{text-decoration:underline dotted rgba(255,255,255,.35);cursor:help}
+footer{margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:.8rem;color:rgba(255,255,255,.45)}
+footer .sig{font-size:1rem;color:#fff;margin-bottom:.8rem}
+footer p{margin:.35rem 0}
+footer a{color:var(--blue)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}nav.top,.progress{display:none}section{opacity:1!important;transform:none!important;break-inside:avoid}body::before{position:fixed}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}section{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<nav class="top"><div class="inner">
+<a href="#read">60-sec read</a><a href="#score">Scorecard</a><a href="#overnight">Overnight</a><a href="#levels">Levels</a><a href="#calendar">Calendar</a><a href="#focus">Focus</a><a href="#sectors">Sectors</a><a href="#bishop">Bishop's Read</a><a href="#learn">Learn</a>
+</div></nav>
+<main class="page">
+<header class="hdr">
+<div class="kicker">The Market Bishop · Pre-Market Report</div>
+<h1>Pre-Market <span class="accent">Wednesday</span></h1>
+<div class="headline">November 25, 2026 · PCE morning, SPY parked right under the flip</div>
+<div class="stamp mono"><span class="live">◉ BUILT 1:55 AM ET</span><span>·</span><span>~5 min read</span><span class="sample">TEST RUN</span></div>
+</header>
+
+<div class="snap">
+<div><span class="l">SPY Tuesday close</span><span class="v red">718.78 · −0.49%</span></div>
+<div><span class="l">SPY vs the flip</span><span class="v amber">2 under 720.94</span></div>
+<div><span class="l">QQQ vs the flip</span><span class="v red">638.10 · under 641.84</span></div>
+<div><span class="l">Main event</span><span class="v blue">PCE · 8:30 AM</span></div>
+<div><span class="l">Bishop's Read</span><span class="v amber">CAUTIOUS · DATA FIRST</span></div>
+<div><span class="l">Watch today</span><span class="v blue">720.94 · 712</span></div>
+</div>
+
+<section id="read" class="h-amber">
+<div class="sh"><span class="num">01</span><h2>The 60-Second Read</h2></div>
+<ul class="read60">
+<li><b>What happened overnight:</b> Dell crushed its numbers, jumped about 7% after hours and got rejected at 310, Trump said he'd pardon Jensen Huang if needed and the US could still take a stake in Nvidia, and the AI selloff spread to Asia with SoftBank down over 10%</li>
+<li><b>What matters today:</b> PCE inflation at 8:30, the Fed's favorite inflation number and the last one before the December meeting. SPY closed 2 points under the 720.94 flip, Tuesday's high stopped at 720.93</li>
+<li><b>What would change my view:</b> A cool PCE and SPY back over 720.94 makes this a normal pullback. A hot print and a break of Tuesday's low 712.14 puts 700 back in play</li>
+</ul>
+</section>
+
+<section id="score" class="h-blue played">
+<div class="sh"><span class="num">02</span><h2>Yesterday's Scorecard</h2></div>
+<p class="ln" style="color:var(--dim);font-size:.88rem;margin-bottom:.6rem">What Tuesday's report said, and what actually happened</p>
+<div class="score">
+<div><span class="ok">✓</span><span>We said 712 to 713.50 had to hold. SPY's low was 712.14, it held and bounced</span></div>
+<div><span class="ok">✓</span><span>We said getting back over the flip turns it into a normal pullback. It never did, the high was 720.93 and it closed 718.78</span></div>
+<div><span class="mid">~</span><span>$NVDA broke Monday's low of 156.93, but held 149.44 with a low of 150.50, closing 155.38 (−5.9%)</span></div>
+<div><span class="ok">✓</span><span>We said watch defensives if tech gave some back. $XLK −3.26%, $XLV +2.95%, $XLP +1.66%</span></div>
+</div>
+</section>
+
+<section id="overnight" class="h-coral">
+<div class="sh"><span class="num">03</span><h2>Overnight News</h2></div>
+<div class="news">
+<div class="item"><span class="tag new">NEW</span><div><div class="t">$DELL blew past estimates, then got rejected at 310</div><div class="why">Revenue $54.94B vs about $49.3B expected, EPS $9.45 vs about $6.62, plus a record $132.3B AI backlog. It jumped about 7% after hours, got rejected at 310, and was last seen up about 4%. <b>Why it matters:</b> AI server demand is clearly there, but sellers showed up into the pop, that tells you how heavy positioning still is</div></div></div>
+<div class="item"><span class="tag new">NEW</span><div><div class="t">$HPQ up about 15% after hours, $WDAY a small beat</div><div class="why">Options were pricing HPQ at about ±9.1%, so this is bigger than expected. Workday revenue $2.7B vs $2.69B, EPS $2.82 vs $2.74. <b>Why it matters:</b> hardware is getting rewarded while software reactions stay muted</div></div></div>
+<div class="item"><span class="tag cont">DAY 3</span><div><div class="t">$NVDA is a political story now</div><div class="why">Trump said he's willing to pardon Jensen Huang "if necessary" and that the US taking a stake in Nvidia is "probably not too late". POLITICO says Congress is going after Nvidia, and there were more personal headlines on Huang from WSJ and Bloomberg. <b>Why it matters:</b> these headlines can hit any time of day, Nvidia is the biggest weight in the index so it moves everything</div></div></div>
+<div class="item"><span class="tag new">NEW</span><div><div class="t">The bond market is getting nervous about AI spending</div><div class="why">Oracle's credit default swaps (the cost to insure its debt) are now wider than Bear Stearns' were in January 2008. Lending to a hyperscaler for 30 years now pays 162bp over Treasuries. SoftBank fell over 10% in Asia. <b>Why it matters:</b> when lenders want more to fund the AI build, that pressure usually shows up in the stocks next</div></div></div>
+<div class="item"><span class="tag new">NEW</span><div><div class="t">A string of big outages and a Treasury cyber breach</div><div class="why">FinCEN, the Treasury's financial crimes agency, is investigating a breach and took some systems offline. Microsoft declared a "Code Red" after a 24-hour outage, and there was a ground stop at Chicago O'Hare. Palmer Luckey said the public will soon find out what's behind the outages. <b>Why it matters:</b> nothing confirmed yet, but if this turns into a cyberattack story it's a new risk headline in a thin holiday week</div></div></div>
+<div class="item"><span class="tag cont">DAY 2</span><div><div class="t">Tariffs: no new details overnight</div><div class="why">Nothing new on the China, EU and 14-country tariff report since Tuesday morning. <b>Why it matters:</b> it's still out there, an actual announcement with numbers would be a fresh hit</div></div></div>
+<div class="item"><span class="tag new">NEW</span><div><div class="t">China new home prices down 2.4% from a year ago</div><div class="why">That's the 40th month in a row of declines. <b>Why it matters:</b> background weakness, not a mover today</div></div></div>
+</div>
+</section>
+
+<section id="levels" class="h-teal">
+<div class="sh"><span class="num">04</span><h2>Today's Levels · $SPY</h2></div>
+<svg viewBox="0 0 660 440" class="ladder" role="img" aria-label="SPY levels for Wednesday">
+<rect x="70" y="52.1" width="30" height="225.5" rx="6" fill="rgba(0,170,255,.12)" stroke="rgba(0,170,255,.45)"/>
+<text x="85" y="34.1" text-anchor="middle" class="lbl dim">±$9.80</text><text x="85" y="46.1" text-anchor="middle" class="lbl dim">expected</text>
+<text x="58" y="56.1" text-anchor="end" class="px" fill="rgba(0,170,255,.8)">728.56</text>
+<text x="58" y="281.6" text-anchor="end" class="px" fill="rgba(0,170,255,.8)">709.00</text>
+<line x1="120" y1="24" x2="120" y2="416" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+<line x1="112" y1="140.0" x2="648" y2="140.0" stroke="#ffaa00" stroke-opacity="0.9" stroke-width="2" stroke-dasharray="0"/>
+<text x="58" y="144.0" text-anchor="end" class="px" fill="#ffaa00">720.94</text>
+<text x="136" y="136.0" class="lbl" fill="#ffaa00">Gamma flip · Tuesday's high 720.93 stopped right here</text>
+<line x1="112" y1="185.4" x2="648" y2="185.4" stroke="#ff44aa" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="58" y="189.4" text-anchor="end" class="px" fill="#ff44aa">717.00</text>
+<text x="136" y="199.4" class="lbl" fill="#ff44aa">Max pain for today's expiration</text>
+<line x1="112" y1="241.4" x2="648" y2="241.4" stroke="#8a8a9a" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="58" y="245.4" text-anchor="end" class="px" fill="#8a8a9a">712.14</text>
+<text x="136" y="237.4" class="lbl" fill="#8a8a9a">Tuesday low</text>
+<line x1="112" y1="381.4" x2="648" y2="381.4" stroke="#44ff88" stroke-opacity="0.5" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="58" y="385.4" text-anchor="end" class="px" fill="#44ff88">700.00</text>
+<text x="136" y="377.4" class="lbl" fill="#44ff88">Biggest gamma strike (magnet)</text>
+<circle cx="120" cy="164.9" r="7" fill="#00aaff"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+<text x="58" y="168.9" text-anchor="end" class="px" fill="#00aaff">718.78</text>
+<text x="136" y="169.9" class="lbl" fill="#00aaff" font-weight="700">● Tuesday close · futures to be added at 8:00 AM</text>
+</svg>
+<p class="ln">Tuesday's high was 720.93 and the <abbr title="The price where dealer hedging switches from calming moves to adding to them">flip</abbr> is 720.94, it went right up to it and got turned away</p>
+<p class="ln">We closed 718.78, so we're starting the day just under it, bigger swings than usual are likely until we get back over</p>
+<p class="ln">717 is today's <abbr title="The price where the most options expiring today would finish worthless">max pain</abbr>, very close to where we closed</p>
+<p class="ln">Under that, 712.14 is Tuesday's low, and 700 is the big magnet</p>
+<p class="ln">Options are pricing about ±$9.80 for today, roughly 709 to 728.50</p>
+<div class="note"><b class="teal">$QQQ is weaker.</b> It closed 638.10, under its 641.84 flip, with the biggest gamma strike at 635 right underneath. On Tuesday someone bought about $1.58M of the Dec 8 $600 puts, that's protection against a much bigger drop</div>
+</section>
+
+<section id="calendar" class="h-blue">
+<div class="sh"><span class="num">05</span><h2>Today's Calendar · ET</h2></div>
+<div class="cal">
+<div class="row"><span class="time">PREMARKET</span><span>$DE earnings (options pricing about ±4.7%) · also $LI, $GDS, $BZ</span></div>
+<div class="row"><span class="time">8:30</span><span><b>PCE inflation (October)</b> · core y/y forecast 3.2%, last 3.1% · core m/m forecast 0.3% · headline y/y forecast 3.8%, last 3.6%</span></div>
+<div class="row"><span class="time">8:30</span><span>Personal income 0.4% (last 0.2%) · spending 0.4% (last 0.5%) · durable goods 1.1% (last 1.8%) · jobless claims 200K (last 203K)</span></div>
+<div class="row"><span class="time">10:00</span><span>New home sales (October) · forecast 650K, last 676K</span></div>
+<div class="row"><span class="time">2:00</span><span>Fed Beige Book</span></div>
+<div class="row"><span class="time">THU / FRI</span><span>Market closed Thursday for Thanksgiving · Friday closes early at 1:00 PM</span></div>
+</div>
+<div class="note">This is the last PCE the Fed sees before its December 9 decision, so a surprise either way matters more than usual</div>
+</section>
+
+<section id="focus" class="h-purple">
+<div class="sh"><span class="num">06</span><h2>Focus Stocks</h2></div>
+<table>
+<thead><tr><th>Ticker</th><th>Tuesday</th><th>What I'm watching</th></tr></thead>
+<tbody>
+<tr><td class="tk">$NVDA</td><td>155.38<br><span class="red">−5.9%</span></td><td>149.44 is still the level that has to hold, Tuesday's low 150.50 came close. 187.58 is the wall above. The pardon and stake headlines can move it before the open either way</td></tr>
+<tr><td class="tk">$DELL</td><td>295.28<br><span class="red">−0.9%</span></td><td>Huge beat, but rejected at 310 after hours. Options were pricing about ±$33.58. How it opens tells you if the market still wants AI hardware</td></tr>
+<tr><td class="tk">$HPQ</td><td>27.94</td><td>About +15% after hours, bigger than the ±9.1% options priced in</td></tr>
+<tr><td class="tk">$AMD</td><td>413.27<br><span class="red">−8.9%</span></td><td>Down about 63 points from Monday's open of 476.92. Tuesday's low 396.01 is the line I'm watching</td></tr>
+<tr><td class="tk">$ORCL</td><td>109.50<br><span class="red">−3.7%</span></td><td>The credit story is centered here. I'd treat it as a gauge for how worried the market is about AI debt</td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="sectors" class="h-green">
+<div class="sh"><span class="num">07</span><h2>Sectors · Tuesday's Close</h2></div>
+<div class="strip"><div class="cell" style="background:rgba(68,255,136,0.26)"><b>XLV</b>+2.95%</div><div class="cell" style="background:rgba(68,255,136,0.18)"><b>XLP</b>+1.66%</div><div class="cell" style="background:rgba(68,255,136,0.16)"><b>XLRE</b>+1.31%</div><div class="cell" style="background:rgba(68,255,136,0.14)"><b>XLE</b>+0.97%</div><div class="cell" style="background:rgba(68,255,136,0.13)"><b>XLF</b>+0.83%</div><div class="cell" style="background:rgba(68,255,136,0.13)"><b>XLC</b>+0.82%</div><div class="cell" style="background:rgba(68,255,136,0.12)"><b>XLY</b>+0.68%</div><div class="cell" style="background:rgba(68,255,136,0.11)"><b>XLB</b>+0.54%</div><div class="cell" style="background:rgba(68,255,136,0.09)"><b>XLU</b>+0.18%</div><div class="cell" style="background:rgba(255,51,85,0.24)"><b>XLI</b>-0.53%</div><div class="cell" style="background:rgba(255,51,85,0.46)"><b>XLK</b>-3.26%</div></div>
+<p class="ln">The opposite of Monday, tech was the only big loser at $XLK −3.26%</p>
+<p class="ln">Health care, staples and real estate led, that's money going defensive</p>
+<p class="ln">If PCE comes in hot, I'd expect that rotation to keep going</p>
+</section>
+
+<section id="bishop" class="h-amber">
+<div class="sh"><span class="num">08</span><h2>Bishop's Read</h2></div>
+<span class="read-call">CAUTIOUS · DATA FIRST</span>
+<div class="kev"><b>AI read only</b>Kevin didn't add his take to this one</div>
+<p class="ln">SPY went right up to the flip Tuesday and got turned away to the cent</p>
+<p class="ln">Now we're 2 points under it going into PCE at 8:30</p>
+<p class="ln">I didn't see any new tariff details overnight, the headlines are all Nvidia and AI debt right now</p>
+<p class="ln">It's also the last full day before Thanksgiving, holiday sessions can get thin and move fast</p>
+<p class="ln">I'm waiting for the 8:30 number before doing anything</p>
+<p class="ln">If you are trading today, keep your size smaller than usual, one bad print in a thin market can do a lot of damage</p>
+<div class="cases">
+<div class="case bull"><h3>Bull case needs</h3><ul><li>Core PCE at or under the 3.2% forecast</li><li>SPY gets back over 720.94 and holds it</li><li>$DELL and $HPQ hold their after-hours moves</li><li>$NVDA stays above 150.50</li></ul></div>
+<div class="case bear"><h3>Bear case needs</h3><ul><li>Core PCE comes in above 3.2%</li><li>SPY loses 712.14, opening the door to 700</li><li>$NVDA loses 149.44</li><li>The AI debt worry spreads past Oracle</li></ul></div>
+<div class="case res"><h3>What resolves it</h3>The 8:30 PCE print, and whether SPY can get back over 720.94 in the first hour</div>
+</div>
+</section>
+
+<section id="learn" class="h-teal learn">
+<div class="sh"><span class="num">09</span><h2>Learn One Thing · Max Pain</h2></div>
+<p class="ln">You could think of max pain like this</p>
+<p class="ln">It's the price where the most options expiring today would finish worthless, so the people who sold them keep the most premium</p>
+<div class="mini">
+<div style="border-color:rgba(255,68,170,.3)"><b class="purple">Today's max pain</b>717 on SPY</div>
+<div style="border-color:rgba(0,170,255,.3)"><b class="blue">Tuesday's close</b>718.78, less than 2 points away</div>
+</div>
+<p class="ln">The reason why that's important is because on expiration days, price sometimes drifts toward it into the close, especially on a slow day</p>
+<p class="ln">The truth is, it's only a tendency, a hot or cold PCE number at 8:30 can drag price far away from it and then it stops mattering</p>
+<p class="ln">I'd use it as one more level on the chart</p>
+<p class="ln">If you want more on levels that pull price around on data days, watch my <a href="https://www.youtube.com/watch?v=G7jJY2qTefU" style="color:var(--teal)">Market Magnets session</a>, hopefully that makes sense</p>
+</section>
+
+<footer>
+<div class="sig">Not financial advice, just my opinion · Good luck and take care</div>
+<p>This report is personal market commentary and education from The Market Bishop. It is not a recommendation to buy, sell or hold anything. Options carry real risk and you can lose your whole premium.</p>
+<p>Data: Unusual Whales (prices, options flow, gamma levels, max pain, earnings, economic calendar). News via X: Walter Bloomberg, The Kobeissi Letter, unusual_whales, Watcher Guru, Cheddar Flow, Alphatica and earnings posts, citing WSJ, Bloomberg, NY Post and POLITICO. Futures, VIX and premarket movers are added at 8:00 AM ET on live days; this test run was built overnight before those were available.</p>
+</footer>
+</main>
+<script>
+const secs=[...document.querySelectorAll('section')],links=[...document.querySelectorAll('nav.top a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}}),{threshold:.12});
+secs.forEach(s=>io.observe(s));
+addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('prog').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+setTimeout(()=>secs.forEach(s=>s.classList.add('in')),2500);
+</script>
+</body>
+</html>
